@@ -29,12 +29,13 @@ class HomeController extends AbstractController
         //     $documentManager->flush();
         // }
         
-        // $user->setUserName('Jason');
+        $user->setUserName('Cyril');
 
-        // $userRepository->save($user);
+        $userRepository->save($user);
 
         $allData = $userRepository->findAllFromBdd();
         
+        //findbyId
         
 
         return $this->render('Home/base.html.twig',[
