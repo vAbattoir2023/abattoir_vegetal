@@ -33,9 +33,15 @@ class HomeController extends AbstractController
 
         // $userRepository->save($user);
 
-        $allData = $userRepository->findAllFromBdd();
+       $allData = $userRepository->findAllFromBdd();
+
+       $id = $allData[0]->getId();
         
-        
+        $userById = $userRepository->findById($id);
+
+        echo'<pre>';
+        var_dump($userById);
+        echo'<pre>';
 
         return $this->render('Home/base.html.twig',[
 
