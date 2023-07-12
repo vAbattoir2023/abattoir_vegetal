@@ -7,11 +7,11 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 
-#[Route('/home', name: 'app_home')]
+#[Route('/', name: 'app_home')]
 
 class HomeController extends AbstractController
 {
-    #[Route('/', name: 'app_home')]
+    #[Route('/home', name: 'app_home')]
     public function index(): JsonResponse
     {
         return $this->json([
