@@ -14,14 +14,15 @@
         {% endblock %}
     </head>
     <body>
-        <h1>Test add bdd</h1>
-        {# {{ form_errors(UserForm)}}
+        <h1>Test add user to BDD</h1>
+        {{ form_errors(UserForm)}}
 
         {{ form_start(UserForm)}}
             {{ form_row(UserForm.username) }}
             {{ form_widget(UserForm.submit) }}
-        {{ form_end(UserForm)}} #}
+        {{ form_end(UserForm)}}
 
+        <h1>all Users from BDD</h1>
         {% for data in allData %}
             <li>{{ data.username }}</li>
         {% endfor %}

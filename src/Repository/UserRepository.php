@@ -37,6 +37,16 @@ class UserRepository extends ServiceDocumentRepository
         return $this->findBy([ 'id' => $userID ]);
     }
 
+    public function removeByDocument(object $user) : void
+    {
+        $this->getDocumentManager()->remove($user);
+        $this->getDocumentManager()->flush();
+    }
+    
+    public function setUserDocument($data) {
+        
+    }
+
     // public function remove(User $entity, bool $flush = false): void
     // {
     //     $this->getEntityManager()->remove($entity);

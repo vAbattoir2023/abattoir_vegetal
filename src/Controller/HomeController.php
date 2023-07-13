@@ -20,32 +20,45 @@ class HomeController extends AbstractController
     {
 
         $user = new User();
-        // $form = $this->createForm(UserType::class, $user);
-        // $form->handleRequest($request);
-
-        // if($form->isSubmitted() && $form->isValid()){
-            
-        //     $documentManager->persist($user);
-        //     $documentManager->flush();
-        // }
         
-        $user->setUserName('Cyril');
+        // $user->setUserName('Cyril');
 
-        $userRepository->save($user);
+        // $userRepository->save($user);
 
        $allData = $userRepository->findAllFromBdd();
 
+       //get id of data user from BDD
        $id = $allData[0]->getId();
+
+       //get User Document
+       $userDoc = $allData[0];
         
+       //find by id with $id
         $userById = $userRepository->findById($id);
 
+        // echo user by id
         echo'<pre>';
         var_dump($userById);
         echo'<pre>';
 
+        // test pour les inputs
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            
+            $userRepository->save($user);
+
+        }
+
+        //remove byId 
+        //$userRepository->removeByDocument($userDoc);
+
+
+
         return $this->render('Home/base.html.twig',[
 
-            // 'UserForm' => $form->createView(),
+            'UserForm' => $form->createView(),
             'allData' => $allData
 
         ]);
