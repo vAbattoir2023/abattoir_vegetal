@@ -20,14 +20,14 @@ class HomeController extends AbstractController
     {
 
         $user = new User();
-        // $form = $this->createForm(UserType::class, $user);
-        // $form->handleRequest($request);
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
 
-        // if($form->isSubmitted() && $form->isValid()){
+        if($form->isSubmitted() && $form->isValid()){
             
-        //     $documentManager->persist($user);
-        //     $documentManager->flush();
-        // }
+            $documentManager->persist($user);
+            $documentManager->flush();
+        }
         
         // $user->setUserName('Jason');
 
@@ -40,12 +40,12 @@ class HomeController extends AbstractController
         $userById = $userRepository->findById($id);
 
         echo'<pre>';
-        var_dump($userById);
+        var_dump($allData);
         echo'<pre>';
 
         return $this->render('Home/base.html.twig',[
 
-            // 'UserForm' => $form->createView(),
+            'UserForm' => $form->createView(),
             'allData' => $allData
 
         ]);
