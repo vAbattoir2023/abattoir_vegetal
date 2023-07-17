@@ -51,11 +51,11 @@ class User
      */
     protected array $centerOfInterest;
 
-    // #[MongoDB\Field(type: 'string')]
-    // private string $email;
+    #[MongoDB\Field(type: 'string')]
+    private string $email;
 
-    // #[MongoDB\Field(type: 'string')]
-    // private string $password;
+    #[MongoDB\Field(type: 'string')]
+    private string $allergy;
 
     // #[MongoDB\Field(type: 'string')]
     // private string $role;
@@ -98,7 +98,30 @@ class User
 
         return $this;
     }
-    
+    public function getAllergy(): string
+    {
+        
+        return $this->allergy;
+    }
+
+    public function setAllergy(string $allergy): User
+    {
+        $this->allergy = $allergy;
+
+        return $this;
+    }
+    public function getEmail(): string
+    {
+        
+        return $this->email;
+    }
+
+    public function setEmail(string $email): User
+    {
+        $this->email = $email;
+
+        return $this;
+    }
     public function getAge(): int
     {
         
