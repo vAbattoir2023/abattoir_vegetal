@@ -8,16 +8,35 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 class User
 {
     #[MongoDB\Id]
-    private string $id;
+    protected string $id;
 
     #[MongoDB\Field(type: 'string')]
-    private string $userName;
+    protected string $username;
 
-    #[MongoDB\Field(type: 'string')]
-    private string $email;
 
-    #[MongoDB\Field(type: 'string')]
-    private string $password;
+    // #[MongoDB\Field(type: 'string')]
+    // private string $email;
+
+    // #[MongoDB\Field(type: 'string')]
+    // private string $password;
+
+    // #[MongoDB\Field(type: 'string')]
+    // private string $gender;
+
+    // #[MongoDB\Field(type: 'string')]
+    // private string $role;
+
+    // #[MongoDB\Field(type: 'string')]
+    // private string $image;
+
+    // #[MongoDB\Field(type: 'string')]
+    // private string $birthdate;
+
+    // #[MongoDB\Field(type: 'string')]
+    // private string $job;
+
+    // #[MongoDB\Field(type: 'string')]
+    // private string $description;
 
 
     public function getId(): string
@@ -25,39 +44,17 @@ class User
         return $this->id;
     }
 
-    public function getCity(): string
+    public function getUserName(): string
     {
-        return $this->userName;
+        
+        return $this->username;
     }
 
-    public function getFirstName(): string
+    public function setUserName(string $username): User
     {
-        return $this->email;
-    }
-
-    public function getLastName(): string
-    {
-        return $this->password;
-    }
-
-    public function setUserName(string $userName): User
-    {
-        $this->userName = $userName;
+        $this->username = $username;
 
         return $this;
     }
 
-    public function setEmail(string $email): User
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    public function setPassword(string $password): User
-    {
-        $this->password = $password;
-
-        return $this;
-    }
 }
