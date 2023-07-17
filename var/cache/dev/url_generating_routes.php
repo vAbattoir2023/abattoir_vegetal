@@ -4,9 +4,9 @@
 
 return [
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '\\d+', 'code', true], ['text', '/_error']], [], [], []],
-    'app_home' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/register']], [], [], []],
+    'app_home' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/test']], [], [], []],
     'update' => [['id'], ['_controller' => 'App\\Controller\\HomeController::update'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/update']], [], [], []],
-    'app_register' => [[], ['_controller' => 'App\\Controller\\RegisterController::index'], [], [['text', '/register']], [], [], []],
+    'app_registerapp_register' => [[], ['_controller' => 'App\\Controller\\RegisterController::index'], [], [['text', '/register/add']], [], [], []],
     'app_reservation' => [[], ['_controller' => 'App\\Controller\\ReservationController::index'], [], [['text', '/reservation']], [], [], []],
     'app_userapp_user' => [[], ['_controller' => 'App\\Controller\\UserController::logout'], [], [['text', '/user/logout']], [], [], []],
     'app_user_profilapp_user_profil' => [[], ['_controller' => 'App\\Controller\\UserProfilController::index'], [], [['text', '/user/profil']], [], [], []],

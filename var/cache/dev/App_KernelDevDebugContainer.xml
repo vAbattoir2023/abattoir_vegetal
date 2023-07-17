@@ -270,6 +270,10 @@
     </service>
     <service id="App\Document\Group" class="App\Document\Group" autowire="true" autoconfigure="true"/>
     <service id="App\Document\User" class="App\Document\User" autowire="true" autoconfigure="true"/>
+    <service id="App\Form\LoginType" class="App\Form\LoginType" autowire="true" autoconfigure="true"/>
+    <service id="App\Form\RegisterType" class="App\Form\RegisterType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\UserType" class="App\Form\UserType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -779,6 +783,7 @@
         <argument>Doctrine\Bundle\MongoDBBundle\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\RegisterType</argument>
         <argument>App\Form\UserType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
@@ -1681,7 +1686,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.c79NSnE"/>
+      <argument type="service" id=".service_locator.i91OFt0"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -3144,6 +3149,8 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\UserProfilController" class="App\Controller\UserProfilController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\UserProfilController" class="App\Controller\UserProfilController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\UserProfilController" class="App\Controller\UserProfilController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegisterType" class="App\Form\RegisterType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\RegisterType" class="App\Form\RegisterType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\UserType" class="App\Form\UserType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\UserType" class="App\Form\UserType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\MongoDBBundle\Repository\ServiceDocumentRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" abstract="true"/>
@@ -3605,9 +3612,10 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.c79NSnE" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.i91OFt0" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\RegisterType" type="service_closure" id="App\Form\RegisterType"/>
         <argument key="App\Form\UserType" type="service_closure" id="App\Form\UserType"/>
         <argument key="Doctrine\Bundle\MongoDBBundle\Form\Type\DocumentType" type="service_closure" id="form.type.mongodb_document"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
@@ -4465,7 +4473,7 @@
     <service id=".service_locator.5aBRXwF" alias=".service_locator.OslS0zN"/>
     <service id=".service_locator.w_L3MBG" alias=".service_locator.JcwLPaN"/>
     <service id=".service_locator.CBB_zRA" alias=".service_locator.EU6ZLHl"/>
-    <service id=".service_locator.B6AoSPt" alias=".service_locator.c79NSnE"/>
+    <service id=".service_locator.hXWBV1q" alias=".service_locator.i91OFt0"/>
     <service id=".service_locator.qBCHs1a" alias=".service_locator.QXcJQkF"/>
     <service id=".service_locator._eRAkJb" alias=".service_locator.jIxfAsi"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>
