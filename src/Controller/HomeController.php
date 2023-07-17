@@ -20,10 +20,6 @@ class HomeController extends AbstractController
     {
 
         $user = new User();
-        
-        // $user->setUserName('Cyril');
-
-        // $userRepository->save($user);
 
        $allData = $userRepository->findAllFromBdd();
 

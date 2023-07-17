@@ -14,12 +14,10 @@ class UserRepository extends ServiceDocumentRepository
 
     // bool $flush = false, DocumentManager $dm
 
-
     public function __construct(ManagerRegistry $registery)
     {
         parent::__construct($registery, User::class);
     }
-
 
     public function save($user): void
     {
