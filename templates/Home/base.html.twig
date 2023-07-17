@@ -21,11 +21,18 @@
             {{ form_row(UserForm.username) }}
             {{ form_widget(UserForm.submit) }}
         {{ form_end(UserForm)}}
+        {# <form method='post'>
+            <label>email</label>
+            <input type='email' name='email' />
+            <label>password</label>
+            <input type='password' name='password' />
+            <button type='submit' >sign in</button>
+        </form> #}
 
         <h1>all Users from BDD</h1>
-        {% for data in allData %}
+        {# {% for data in allData %}
             <li>{{ data.username }}</li>
-        {% endfor %}
+        {% endfor %} #}
 
         {% block body %}{% endblock %}
     </body>

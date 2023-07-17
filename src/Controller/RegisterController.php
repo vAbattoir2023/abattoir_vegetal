@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Document\User;
+use App\Form\User2Type;
 use App\Repository\UserRepository;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,21 +19,12 @@ class RegisterController extends AbstractController
     {
 
         $user = new User();
-
-        // test pour les inputs
-        $form = $this->createForm(UserType::class, $user);
+        
+        $form = $this->createForm(User2Type::class, $user);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
-            
-            $userRepository->save($user);
-
-        }
-
         return $this->render('user_profil/index.html.twig',[
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/RegisterController.php',
-            'register_form' => $form->createView()
+            'Form' => $form->createView()
         ]);
     }
 }

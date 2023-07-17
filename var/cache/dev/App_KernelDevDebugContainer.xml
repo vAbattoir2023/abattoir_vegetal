@@ -270,10 +270,10 @@
     </service>
     <service id="App\Document\Group" class="App\Document\Group" autowire="true" autoconfigure="true"/>
     <service id="App\Document\User" class="App\Document\User" autowire="true" autoconfigure="true"/>
-    <service id="App\Form\RegisterController" class="App\Form\RegisterController" autowire="true" autoconfigure="true"/>
     <service id="App\Form\UserType" class="App\Form\UserType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\user" class="App\Form\user" autowire="true" autoconfigure="true"/>
     <service id="App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine_mongodb.odm.repository_service"/>
       <argument type="service" id="doctrine_mongodb"/>
@@ -3527,16 +3527,26 @@
         <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.iwhIogO" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.OslS0zN" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="documentManager" type="service_closure" id="doctrine_mongodb.odm.default_document_manager"/>
+        <argument key="user" type="service_closure" id="App\Document\User"/>
+        <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.JcwLPaN" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\HomeController::index" type="service_closure" id=".service_locator.thcXORb"/>
+        <argument key="App\Controller\HomeController::update" type="service_closure" id=".service_locator.OslS0zN"/>
         <argument key="App\Controller\RegisterController::index" type="service_closure" id=".service_locator.thcXORb"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.xUrKPVU"/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.xUrKPVU"/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.xUrKPVU"/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.xUrKPVU"/>
         <argument key="App\Controller\HomeController:index" type="service_closure" id=".service_locator.thcXORb"/>
+        <argument key="App\Controller\HomeController:update" type="service_closure" id=".service_locator.OslS0zN"/>
         <argument key="App\Controller\RegisterController:index" type="service_closure" id=".service_locator.thcXORb"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.xUrKPVU"/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.xUrKPVU"/>
@@ -3770,12 +3780,12 @@
     <service id="debug.argument_resolver.request.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestValueResolver"/>
     <service id="debug.argument_resolver.session.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\SessionValueResolver"/>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.iwhIogO"/>
+      <argument type="service" id=".service_locator.JcwLPaN"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.iwhIogO"/>
+      <argument type="service" id=".service_locator.JcwLPaN"/>
     </service>
     <service id=".doctrine.orm.default_metadata_driver.inner" class="Doctrine\Persistence\Mapping\Driver\MappingDriverChain">
       <call method="addDriver">
@@ -4446,13 +4456,14 @@
     <service id="Twig\Environment" alias="twig"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.iwhIogO"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.JcwLPaN"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>
     <service id=".service_locator.0GV1BZZ" alias=".service_locator.gSv9zYw"/>
     <service id=".service_locator.ug1LklU" alias=".service_locator.thcXORb"/>
-    <service id=".service_locator.o4bDuMy" alias=".service_locator.iwhIogO"/>
+    <service id=".service_locator.5aBRXwF" alias=".service_locator.OslS0zN"/>
+    <service id=".service_locator.w_L3MBG" alias=".service_locator.JcwLPaN"/>
     <service id=".service_locator.CBB_zRA" alias=".service_locator.EU6ZLHl"/>
     <service id=".service_locator.B6AoSPt" alias=".service_locator.c79NSnE"/>
     <service id=".service_locator.qBCHs1a" alias=".service_locator.QXcJQkF"/>
@@ -4472,6 +4483,7 @@
     <service id="doctrine.orm.default_metadata_driver" alias=".doctrine.orm.default_metadata_driver"/>
     <service id=".service_locator.uo5c0SP" alias=".service_locator.xUrKPVU"/>
     <service id=".service_locator.R3Enu0p" alias=".service_locator.thcXORb"/>
+    <service id=".service_locator.lkwp1sO" alias=".service_locator.OslS0zN"/>
     <service id=".service_locator.7zhdZSM" alias=".service_locator.jIxfAsi"/>
     <service id=".service_locator.u6DWx23" alias=".service_locator.cXsfP3P"/>
   </services>

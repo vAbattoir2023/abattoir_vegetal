@@ -11,9 +11,9 @@
 
 {% block body %}
 <body class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    {{  }}
+    {{ form_errors(Form)}}
+        {{ form_start(Form)}}
+        {{ form_end(Form)}}
 </body>
 {% endblock %}
 {% block javascript %}
