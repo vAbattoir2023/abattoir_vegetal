@@ -9,7 +9,8 @@ return [
     false, // $matchHost
     [ // $staticRoutes
         '/test' => [[['_route' => 'app_home', '_controller' => 'App\\Controller\\HomeController::index'], null, null, null, false, false, null]],
-        '/register/add' => [[['_route' => 'app_registerapp_register', '_controller' => 'App\\Controller\\RegisterController::index'], null, null, null, false, false, null]],
+        '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\LoginController::index'], null, null, null, false, false, null]],
+        '/register/add' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegisterController::index'], null, null, null, false, false, null]],
         '/reservation' => [[['_route' => 'app_reservation', '_controller' => 'App\\Controller\\ReservationController::index'], null, null, null, false, false, null]],
         '/user/logout' => [[['_route' => 'app_userapp_user', '_controller' => 'App\\Controller\\UserController::logout'], null, null, null, false, false, null]],
         '/user/profil' => [[['_route' => 'app_user_profilapp_user_profil', '_controller' => 'App\\Controller\\UserProfilController::index'], null, null, null, false, false, null]],

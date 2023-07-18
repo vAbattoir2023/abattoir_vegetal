@@ -45,6 +45,13 @@ class UserRepository extends ServiceDocumentRepository
         
     }
 
+    public function findUserByEmail(string $email) : object
+    {
+        if($email){
+            return $this->findOneBy([ 'email' => $email]);
+        }
+    }
+
     // public function remove(User $entity, bool $flush = false): void
     // {
     //     $this->getEntityManager()->remove($entity);

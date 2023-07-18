@@ -10,12 +10,12 @@
 
 {% block body %}
 <body class="example-wrapper">
-    {{ form_errors(FormRegister)}}
-        {{ form_start(FormRegister)}}
-            {{ form_row(FormRegister.email) }}
-            {{ form_row(FormRegister.password) }}
-            {{ form_widget(FormRegister.submit) }}
-        {{ form_end(FormRegister)}}
+    {{ form_errors(Form)}}
+        {{ form_start(Form)}}
+            {{ form_row(Form.email) }}
+            {{ form_row(Form.password) }}
+            {{ form_widget(Form.submit) }}
+        {{ form_end(Form)}}
 </body>
 {% endblock %}
 

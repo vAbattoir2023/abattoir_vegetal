@@ -9,13 +9,14 @@ use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/register', name: 'app_register')]
+#[Route('/register')]
 class RegisterController extends AbstractController
 {
     #[Route('/add', name: 'app_register')]
-    public function index(Request $request, UserRepository $userRepository, DocumentManager $documentManager): Response
+    public function index(Request $request, UserRepository $userRepository, DocumentManager $documentManager, SessionInterface $sessionInterface): Response
     {
         // instantiates the class User
         $user = new User();
@@ -32,7 +33,13 @@ class RegisterController extends AbstractController
             $passwordHash = password_hash($user->getPassword(), PASSWORD_BCRYPT); // hash password from form 
             $user->setPassword($passwordHash); // update password in User class
             $userRepository->save($user); // Post user to database
-            return $this->redirectToRoute('app_home'); // redirect to app_home route
+            return $this->redirectToRoute('app_login'); // redirect to app_home route
+        }
+
+        $email = $sessionInterface->get('email');
+
+        if(isset($email)){
+            echo $email;
         }
 
         // return to Register/index.html.twig page

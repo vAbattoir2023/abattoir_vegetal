@@ -11,16 +11,16 @@ use Symfony\Component\Validator\Constraints\Date;
 class User
 {
     #[MongoDB\Id]
-    protected string $id;
+    public string $id;
 
     #[MongoDB\Field(type: 'string')]
-    protected string $username;
+    public string $username;
 
     #[MongoDB\Field(type: 'string')]
-    protected string $email;
+    public string $email;
 
     #[MongoDB\Field(type: 'string')]
-    protected string $password;
+    public string $password;
 
     // #[MongoDB\Field(type: 'int')]
     // protected string $age;
