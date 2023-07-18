@@ -35,17 +35,33 @@ class LoginController extends AbstractController
             if(password_verify($password, $userFromBdd->password)){
                 
                 $sessionInterface->set('email', $email);
+                $sessionInterface->set('id', $userFromBdd->id);
 
-                return $this->redirectToRoute('app_register');
+                if(empty($userFromBdd->getCenterOfInterest())) {
+                    // redirect to profil user with form data
+                }else{
+                    // redirect to profil user for fill in form
+                    return $this->redirectToRoute('app_home');
+                }
             }
 
+        }
+        $email = $sessionInterface->get('email');
+
+        if(isset($email)){
+            echo $email;
         }
 
 
         return $this->render('Login/index.html.twig',[
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/ReservationController.php',
             'Form' => $form->createView()
         ]);
     }
+    #[Route('/logout', name: 'app_logout')]
+    public function logout(UserRepository $userRepository, Request $request, SessionInterface $sessionInterface)
+    {
+        $sessionInterface->clear();
+
+        return $this->redirectToRoute('app_home');
+    }  
 }

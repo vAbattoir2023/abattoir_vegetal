@@ -41,8 +41,12 @@ class UserRepository extends ServiceDocumentRepository
         $this->getDocumentManager()->flush();
     }
     
-    public function setUserDocument($data) {
+    public function setUserDocument($id) {
         
+        $this->getDocumentManager()->getRepository(User::class)->find($id);
+
+        $this->getDocumentManager()->flush();
+
     }
 
     public function findUserByEmail(string $email) : object
@@ -50,6 +54,20 @@ class UserRepository extends ServiceDocumentRepository
         if($email){
             return $this->findOneBy([ 'email' => $email]);
         }
+    }
+    public function findUserById(string $id) : object
+    {
+        if($id){
+            return $this->findOneBy([ 'id' => $id]);
+        }
+    }
+    public function checkUserRegister(string $emailCheck) : bool
+    {
+        $check = $this->findOneBy(['email'=>$emailCheck]);
+
+        $check ? $check = true : $check = false ;
+
+        return $check;
     }
 
     // public function remove(User $entity, bool $flush = false): void

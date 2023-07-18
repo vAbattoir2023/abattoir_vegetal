@@ -1,20 +1,117 @@
-<!DOCTYPE html>
-<head>
-    <title>Hello UserProfilController!</title>
-    <Link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css'/>
+{% extends 'base.html.twig' %}
 
-    <style>
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    </style>
-</head>
+{% block title  %} Profil User {% endblock %}
 
 {% block body %}
-<body class="example-wrapper">
-    {{ form_errors(Form)}}
-        {{ form_start(Form)}}
-        {{ form_end(Form)}}
-</body>
-{% endblock %}
-{% block javascript %}
+<h1>INSCRIPTION PROFIL </h1>
+
+<div class="container mt-5 d-flex justify-content-end">
+    {{ form_errors(UserForm) }}
+
+
+    <div class="row box8">
+        <div class="mx-auto mb-4 d-flex flex-row justify-content-end">
+            <h2 class="fw-bold mx-3">JE SUIS</h2>
+            <h2 class="fw-bold mx-3">J'AIME</h2>
+            <h2 class="fw-bold mx-3">JE VEUX</h2>
+        </div>
+        
+        {{ form_start(UserForm) }}
+
+
+    <fieldset class="active">
+
+        <div class="row "  >
+            <div class="col-md-6">
+                <!-- Partie Gauche -->
+                <div class="labelalign">
+                    {{ form_row(UserForm.username) }}
+                </div>
+                <div class="labelalign">
+                    {{ form_row(UserForm.city) }}
+                </div>
+                {# <div class="form-group">
+                    {{ form_row(UserForm.birthdate) }}
+                </div> #}
+                <div class="labelalign">
+                    {{ form_row(UserForm.age) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(UserForm.gender) }}
+                </div>
+                <div  class="labelalign">
+                    {{ form_row(UserForm.language) }}
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <!-- Partie Droite -->
+                <div class="form-group">
+                    <img class="img-thumbnail  float-start" src="https://media.istockphoto.com/id/1300845620/fr/vectoriel/appartement-dic%C3%B4ne-dutilisateur-isol%C3%A9-sur-le-fond-blanc-symbole-utilisateur.jpg?s=612x612&w=0&k=20&c=BVOfS7mmvy2lnfBPghkN__k8OMsg7Nlykpgjn0YOHj0=" alt="">
+                    {{ form_widget(UserForm.image) }}
+                </div>
+
+                <div class="labelalign">
+                    {{ form_row(UserForm.job) }}
+                </div>
+
+                <div class="labelalign">
+                    {{ form_row(UserForm.description) }}
+                </div>
+
+        </div>
+        <div class="form-group mb-5">
+             {{ form_label(UserForm.diet) }}
+   <div class="d-flex justify-content-center ">
+        {% for choice in UserForm.diet %}
+            <label class="{{ choice.vars.attr.class}}" style="margin-right : 10px;">
+                {{ form_widget(choice) }}
+                {{ choice.vars.label }}
+            </label>
+        {% endfor %}
+    </div>
+        </div>
+
+        </div>
+        
+              <button type="button" class="btn btn-primary" onclick="nextStep()">Suivant</button>
+</fieldset>
+
+    <fieldset style="display: none;">
+
+        {# Etape 2 #}
+        <div class="container" >
+            {{ form_label(UserForm.centerOfInterest) }}
+            <div class=" ">
+              {% for choice in UserForm.centerOfInterest %}
+            <label class="{{ choice.vars.attr.class }}" style="margin-right: 10px;">
+                {{ form_widget(choice) }}
+                {{ choice.vars.label }}
+            </label>
+        {% endfor %}
+            </div>
+            <div class="labelalign">
+            {{ form_row(UserForm.centerOfInterestPerso) }}
+            </div>
+        </div>
+<button type="button" class="btn btn-primary" onclick="previousStep()">Retour</button>
+      <button type="button" class="btn btn-primary" onclick="nextStep()">Suivant</button>
+</fieldset>
+
+    <fieldset style="display: none;">
+
+        {# Etape 3 #}
+        <div class="container" >
+           JE VEUX
+                           <button type="button" class="btn btn-primary" onclick="previousStep()">Retour</button>
+{{ form_widget(UserForm.submit) }}
+        </div>
+</fieldset>
+
+
+        </div>
+
+
+{{ form_end(UserForm) }}
+
 {% endblock %}

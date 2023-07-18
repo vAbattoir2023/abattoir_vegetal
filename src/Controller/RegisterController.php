@@ -30,6 +30,12 @@ class RegisterController extends AbstractController
         // if from is submitted and valid then save the forms values in database
         if($form->isSubmitted() && $form->isValid() ){
 
+            if($userRepository->checkUserRegister($user->getEmail())){
+                echo 'cet email existe déjà';
+                die;
+            }
+
+            echo 'cet email n\'existe pas';
             $passwordHash = password_hash($user->getPassword(), PASSWORD_BCRYPT); // hash password from form 
             $user->setPassword($passwordHash); // update password in User class
             $userRepository->save($user); // Post user to database
@@ -47,5 +53,7 @@ class RegisterController extends AbstractController
 
             'FormRegister' => $form->createView() //send the form
         ]);
+
+       
     }
 }

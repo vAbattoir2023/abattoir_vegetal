@@ -18,7 +18,12 @@ class RegisterType extends AbstractType
     {
         $builder
             ->add('email', TextType::class)
-            ->add('password', PasswordType::class)
+            ->add('password', RepeatedType::class,[
+                'first_name' => 'password',
+                'second_name' => 'confirm',
+                'type' => PasswordType::class,
+                ])
+            // Matth add CJU
             ->add('submit', SubmitType::class);
     }
 
