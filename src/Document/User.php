@@ -3,6 +3,7 @@
 namespace App\Document;
 
 use DateTime;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 #[MongoDB\Document]
@@ -11,8 +12,15 @@ class User
     #[MongoDB\Id]
     protected string $id;
 
+    // REGISTRATION SLIDE 1
     #[MongoDB\Field(type: 'string')]
     protected string $username;
+
+    #[MongoDB\Field(type: 'string')]
+    protected string $password;
+
+    #[MongoDB\Field(type: 'string')]
+    protected string $email;
 
     #[MongoDB\Field(type: 'string')]
     protected string $city;
@@ -41,7 +49,14 @@ class User
     #[MongoDB\Field(type: 'string')]
     protected string $diet;
 
-    
+    // REGISTRATION SLIDE 2
+    #[MongoDB\Field(type: 'string')]
+    protected string $centerOfInterestPerso;
+
+ 
+    #[MongoDB\Field(type: 'collection')]
+    protected array $centerOfInterest = [];
+
     // #[MongoDB\Field(type: 'string')]
     // private string $email;
 
@@ -77,13 +92,45 @@ class User
         return $this;
     }
     
+
+    public function getPassword(): string
+    {
+        
+        return $this->password;
+    }
+
+    public function setPassword(string $password): User
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+    
+    
+
+    public function getEmail(): string
+    {
+        
+        return $this->email;
+    }
+
+    public function setEmail(string $email): User
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+    
+
+
+
     public function getCity(): string
     {
         
         return $this->city;
     }
 
-    public function setCity(string $city): static
+    public function setCity(string $city): User
     {
         $this->city = $city;
 
@@ -96,7 +143,7 @@ class User
         return $this->age;
     }
 
-    public function setAge(int $age): static
+    public function setAge(int $age): User
     {
         $this->age = $age;
 
@@ -127,7 +174,7 @@ class User
         return $this->gender;
     }
 
-    public function setGender(string $gender): static
+    public function setGender(string $gender): User
     {
         $this->gender = $gender;
 
@@ -140,7 +187,7 @@ class User
         return $this->language;
     }
 
-    public function setLanguage(string $language): static
+    public function setLanguage(string $language): User
     {
         $this->language = $language;
 
@@ -152,7 +199,7 @@ class User
         return $this->image;
     }
 
-    public function setImage(string $image): static
+    public function setImage(string $image): User
     {
         $this->image = $image;
 
@@ -193,6 +240,7 @@ class User
     }
 
 
+
   //DIET
     public function getDiet(): string
     {
@@ -206,5 +254,34 @@ class User
  
          return $this;
      }
+
+      //CENTEROFINTEREST-PERSO
+    public function getCenterOfInterestPerso(): string
+    {
+        
+        return $this->centerOfInterestPerso;
+    }
+
+    public function setCenterOfInterestPerso(string $centerOfInterestPerso): User
+    {
+        $this->centerOfInterestPerso = $centerOfInterestPerso;
+
+        return $this;
+    }
+
+    //CENTEROFINTEREST-avec multi choix
+    public function getCenterOfInterest(): array
+    {
+        
+        return $this->centerOfInterest;
+    }
+
+    public function setCenterOfInterest(array $centerOfInterest): User
+    {
+        $this->centerOfInterest = $centerOfInterest;
+
+        return $this;
+    }
+
 
 }

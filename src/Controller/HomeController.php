@@ -16,37 +16,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(Request $request, UserRepository $userRepository, DocumentManager $documentManager): Response
+    public function index(): Response
     {
 
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
-            
-            $documentManager->persist($user);
-            $documentManager->flush();
-        }
-        
-        // $user->setUserName('Jason');
+        return $this->render('base.html.twig',[
 
-        // $userRepository->save($user);
+            'message' => 'Welcome to your new controller!',
 
-       $allData = $userRepository->findAllFromBdd();
-
-       $id = $allData[0]->getId();
-        
-        $userById = $userRepository->findById($id);
-
-        echo'<pre>';
-        var_dump($allData);
-        echo'<pre>';
-
-        return $this->render('Home/base.html.twig',[
-
-            'UserForm' => $form->createView(),
-            'allData' => $allData
 
         ]);
     }
