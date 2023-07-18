@@ -37,8 +37,9 @@ class LoginController extends AbstractController
                 $sessionInterface->set('email', $email);
                 $sessionInterface->set('id', $userFromBdd->id);
 
-                if(empty($userFromBdd->getCenterOfInterest())) {
+                if(empty($userFromBdd->getCenterOfInterest)) {
                     // redirect to profil user with form data
+                    return $this->redirectToRoute('app_user_profil_success');
                 }else{
                     // redirect to profil user for fill in form
                     return $this->redirectToRoute('app_home');
