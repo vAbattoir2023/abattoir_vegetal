@@ -15,22 +15,28 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/user_profil')]
 class UserProfilController extends AbstractController
 {
-    #[Route('/', name: 'app_user_profil')]
-    public function index(Request $request, UserRepository $userRepository, DocumentManager $documentManager, ): Response
+    #[Route('/{id}', name: 'app_user_profil')]
+    public function index(Request $request, UserRepository $userRepository, DocumentManager $documentManager, $id): Response
     {
-        $user = new User();
+        $user = $userRepository->find($id);
+        
+        if (!$user) {
+            return $this->redirectToRoute('app_register');
+        }
+        
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            var_dump($form->isSubmitted()); // Add this line
-
             // All steps completed, process the form data
-            $documentManager->persist($user);
             $documentManager->flush();
 
             // Redirect to success page or next action
-            return $this->redirectToRoute('app_user_profil_success');
+            return $this->redirectToRoute('app_user_profil_success', ['id' => $user->getId()]);
+        }if( $id ){
+            echo 'voici l\'id'. $id;
+        }else{
+            echo 'aucun id récupéré' ;
         }
 
         return $this->render('user_profil/index.html.twig', [
@@ -38,15 +44,14 @@ class UserProfilController extends AbstractController
         ]);
     }
 
-    #[Route('/success', name: 'app_user_profil_success')]
-    public function success(): Response
+    #[Route('/profil/{id}', name: 'app_user_profil_success')]
+    public function success($id, UserRepository $userRepository): Response
     {
-        // Render the success page or perform additional actions
-        return $this->render('user_profil/success.html.twig', [
-
-            'message' => 'Welcome to your profil',
-
-
+        // Get the user by ID
+        $user = $userRepository->find($id);
+        //dd($user);
+        return $this->render('user_profil/profil.html.twig', [
+            'user' => $user,
         ]);
     }
 }

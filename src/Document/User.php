@@ -3,6 +3,7 @@
 namespace App\Document;
 
 use DateTime;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 #[MongoDB\Document]
@@ -13,49 +14,54 @@ class User
 
     // REGISTRATION SLIDE 1
     #[MongoDB\Field(type: 'string')]
-    protected string $username;
+    protected ?string $username = null;
 
     #[MongoDB\Field(type: 'string')]
-    protected string $city;
+    protected ?string $password = null;
+
+    #[MongoDB\Field(type: 'string')]
+    protected ?string $email = null;
+
+    #[MongoDB\Field(type: 'string')]
+    protected ?string $city = null;
 
     // #[MongoDB\Field(type: 'string')]
     // protected string $birthdate;
 
     #[MongoDB\Field(type: 'int')]
-    protected int $age;
+    protected ?int $age = null;
 
     #[MongoDB\Field(type: 'string')]
-    protected string $gender;
+    protected ?string $gender = null;
 
     #[MongoDB\Field(type: 'string')]
-    protected string $language;
+    protected ?string $language = null;
 
     #[MongoDB\Field(type: 'string')]
-    protected string $image;
+    protected ?string $image = null;
 
     #[MongoDB\Field(type: 'string')]
-    protected string $job;
+    protected ?string $job = null;
 
     #[MongoDB\Field(type: 'string')]
-    protected string $description;
+    protected ?string $description = null;
 
     #[MongoDB\Field(type: 'string')]
-    protected string $diet;
+    protected ?string $diet = null;
 
     // REGISTRATION SLIDE 2
     #[MongoDB\Field(type: 'string')]
-    protected string $centerOfInterestPerso;
+    protected ?string $centerOfInterestPerso = null;
 
-      /**
-     * @MongoDB\Field(name="centerOfInterest", type="collection")
-     */
-    protected array $centerOfInterest;
+ 
+    #[MongoDB\Field(type: 'collection')]
+    protected ?array $centerOfInterest = null;
 
-    #[MongoDB\Field(type: 'string')]
-    private string $email;
+    // #[MongoDB\Field(type: 'string')]
+    // private string $email;
 
-    #[MongoDB\Field(type: 'string')]
-    private string $allergy;
+    // #[MongoDB\Field(type: 'string')]
+    // private string $password;
 
     // #[MongoDB\Field(type: 'string')]
     // private string $role;
@@ -68,67 +74,76 @@ class User
     // private string $description;
 
 
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function getUserName(): string
+    public function getUserName(): ?string
     {
         
         return $this->username;
     }
 
-    public function setUserName(string $username): User
+    public function setUserName(?string $username): User
     {
         $this->username = $username;
 
         return $this;
     }
     
-    public function getCity(): string
+
+    public function getPassword(): ?string
     {
         
-        return $this->city;
+        return $this->password;
     }
 
-    public function setCity(string $city): User
+    public function setPassword(?string $password): User
     {
-        $this->city = $city;
+        $this->password = $password;
 
         return $this;
     }
-    public function getAllergy(): string
-    {
-        
-        return $this->allergy;
-    }
+    
+    
 
-    public function setAllergy(string $allergy): User
-    {
-        $this->allergy = $allergy;
-
-        return $this;
-    }
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         
         return $this->email;
     }
 
-    public function setEmail(string $email): User
+    public function setEmail(?string $email): User
     {
         $this->email = $email;
 
         return $this;
     }
-    public function getAge(): int
+    
+
+
+
+    public function getCity(): ?string
+    {
+        
+        return $this->city;
+    }
+
+    public function setCity(?string $city): User
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+    
+    public function getAge(): ?int
     {
         
         return $this->age;
     }
 
-    public function setAge(int $age): User
+    public function setAge(?int $age): User
     {
         $this->age = $age;
 
@@ -153,38 +168,38 @@ class User
     // }
 
 
-    public function getGender(): string
+    public function getGender(): ?string
     {
         
         return $this->gender;
     }
 
-    public function setGender(string $gender): User
+    public function setGender(?string $gender): User
     {
         $this->gender = $gender;
 
         return $this;
     }
 
-    public function getLanguage(): string
+    public function getLanguage(): ?string
     {
         
         return $this->language;
     }
 
-    public function setLanguage(string $language): User
+    public function setLanguage(?string $language): User
     {
         $this->language = $language;
 
         return $this;
     }
 
-    public function getImage(): string
+    public function getImage(): ?string
     {
         return $this->image;
     }
 
-    public function setImage(string $image): User
+    public function setImage(?string $image): User
     {
         $this->image = $image;
 
@@ -193,14 +208,14 @@ class User
 
 
     //DESCRIPTION
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         
         return $this->description;
     }
 
     
-    public function setDescription(string $description): User
+    public function setDescription(?string $description): User
     {
         $this->description = $description;
 
@@ -210,14 +225,14 @@ class User
 
 
     //JOB
-    public function getJob(): string
+    public function getJob(): ?string
     {
         
         return $this->job;
     }
 
     
-    public function setJob(string $job): User
+    public function setJob(?string $job): User
     {
         $this->job = $job;
 
@@ -227,13 +242,13 @@ class User
 
 
   //DIET
-    public function getDiet(): string
+    public function getDiet(): ?string
     {
         
         return $this->diet;
     }
 
-     public function setDiet(string $diet): User
+     public function setDiet(?string $diet): User
      {
          $this->diet = $diet;
  
@@ -241,13 +256,13 @@ class User
      }
 
       //CENTEROFINTEREST-PERSO
-    public function getCenterOfInterestPerso(): string
+    public function getCenterOfInterestPerso(): ?string
     {
         
         return $this->centerOfInterestPerso;
     }
 
-    public function setCenterOfInterestPerso(string $centerOfInterestPerso): User
+    public function setCenterOfInterestPerso(?string $centerOfInterestPerso): User
     {
         $this->centerOfInterestPerso = $centerOfInterestPerso;
 
@@ -255,13 +270,13 @@ class User
     }
 
     //CENTEROFINTEREST-avec multi choix
-    public function getCenterOfInterest(): array
+    public function getCenterOfInterest(): ?array
     {
         
         return $this->centerOfInterest;
     }
 
-    public function setCenterOfInterest(array $centerOfInterest): User
+    public function setCenterOfInterest(?array $centerOfInterest): User
     {
         $this->centerOfInterest = $centerOfInterest;
 

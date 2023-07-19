@@ -1,18 +1,27 @@
-// step1
-function step1() {
-    document.getElementById("step1").style.display = "none";
-    document.getElementById("step2").style.display = "block";
-    document.getElementById("backbtn1").style.display = "block";
-    document.getElementById("nextbtn1").style.display = "none";
-    document.getElementById("submitBtn").style.display = "block";
-  }
+function nextStep() {
+  var fieldsets = document.getElementsByTagName('fieldset');
   
-// back step1
-function back1() {
-    document.getElementById("step1").style.display = "block";
-    document.getElementById("step2").style.display = "none";
-    document.getElementById("nextbtn1").style.display = "block";
-    document.getElementById("backbtn1").style.display = "none";
-    document.getElementById("submitBtn").style.display = "none";
+  for (var i = 0; i < fieldsets.length; i++) {
+    if (fieldsets[i].classList.contains('active')) {
+      fieldsets[i].classList.remove('active');
+      fieldsets[i].style.display = 'none';
+      fieldsets[i+1].classList.add('active');
+      fieldsets[i+1].style.display = 'block';
+      break;
+    }
   }
+}
+
+function previousStep() {
+  var fieldsets = document.getElementsByTagName('fieldset');
   
+  for (var i = 0; i < fieldsets.length; i++) {
+    if (fieldsets[i].classList.contains('active')) {
+      fieldsets[i].classList.remove('active');
+      fieldsets[i].style.display = 'none';
+      fieldsets[i-1].classList.add('active');
+      fieldsets[i-1].style.display = 'block';
+      break;
+    }
+  }
+}

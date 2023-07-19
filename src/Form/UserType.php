@@ -21,21 +21,29 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class UserType extends AbstractType
 {
-    // j'initie la faonction
-            
+    
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
-        
+
         // Existing fields for Step 1: JE SUIS
             $builder
+               
+            // ->add('email', EmailType::class)
             
+            // ->add('password', RepeatedType::class,[
+            //     'first_name' => 'password',
+            //     'second_name' => 'confirm',
+            //     'type' => PasswordType::class,
+            //     ])
+               
             ->add('username', TextType::class,[
                 'label' => 'Je m\'appelle ...',
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
+
             ->add('city', TextType::class,[
                 'label' => 'J\'habite ...',
                 'attr' => [
@@ -121,17 +129,27 @@ class UserType extends AbstractType
                 'class' => 'form-control'
             ],
             'choices'  => [
+                
+                //
                 'Animaux' => 'Animaux',
                 'Environnement' => 'Environnement',
+                'Jeux vidéos' => 'Jeux vidéos',
                 'Art et Culture' => 'Art et Culture',
-                'Musique' => 'Musique'
+                'Sport' => 'Sport',
+                'Voyage' => 'Voyage',
+                'Musique' => 'Musique',
+                'Danse' => 'Danse',
+                'Sciences' => 'Sciences',
+                'Bien-etre' => 'Bien-etre',
+                'Food' => 'Food',
+                'Activités sociales' => 'Activités sociales'
             ],
             'multiple' => true,
             'expanded' => true
         ])
 
         ->add('centerOfInterestPerso', TextType::class, [
-            'label' => 'J\'en est d\'autres ...',
+            'label' => 'J\'en ai d\'autres ...',
             'attr' => [
                 'class' => 'form-control',
             ]
