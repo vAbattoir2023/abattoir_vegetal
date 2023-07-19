@@ -1,9 +1,9 @@
 <?php return array (
   0 => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController',
-  1 => 'App\\Controller\\HomeController',
-  2 => 'App\\Controller\\LoginController',
-  3 => 'App\\Controller\\RegisterController',
-  4 => 'App\\Controller\\ReservationController',
+  1 => 'App\\Controller\\GroupController',
+  2 => 'App\\Controller\\HomeController',
+  3 => 'App\\Controller\\LoginController',
+  4 => 'App\\Controller\\RegisterController',
   5 => 'App\\Controller\\UserController',
   6 => 'App\\Controller\\UserProfilController',
   7 => 'Doctrine\\Bundle\\DoctrineBundle\\Controller\\ProfilerController',

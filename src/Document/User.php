@@ -15,6 +15,7 @@ class User
     #[MongoDB\Id]
     public string $id;
 
+    // REGISTRATION SLIDE 1
     #[MongoDB\Field(type: 'string')]
     public ?string $username = '';
 
@@ -88,6 +89,34 @@ class User
 
         return $this;
     }
+    
+
+    public function getPassword(): string
+    {
+        
+        return $this->password;
+    }
+
+    public function setPassword(string $password): User
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+    
+    public function getEmail(): string
+    {
+        
+        return $this->email;
+    }
+
+    public function setEmail(string $email): User
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
 
     public function getCity(): string
     {
@@ -114,24 +143,6 @@ class User
 
         return $this;
     }
-
-    //BIRTHDAY
-    // public function getBirthday(): DateTime
-    // {
-        
-    //     return DateTime::createFromFormat('Y-m-d', $this->birthdate);
-    // }
-
-    
-    // public function setBirthday(DateTime  $birthdate): User
-    // {
-    //     if ($birthdate !== null) {
-    //         $this->birthdate = $birthdate->format('Y-m-d');
-    //     }
-
-    //     return $this;
-    // }
-
 
     public function getGender(): string
     {
@@ -187,8 +198,6 @@ class User
         return $this;
     }
 
-
-
     //JOB
     public function getJob(): string
     {
@@ -203,8 +212,6 @@ class User
 
         return $this;
     }
-
-
 
   //DIET
     public function getDiet(): string
@@ -248,237 +255,22 @@ class User
         return $this;
     }
 
-
-    // //EMAIL
-    public function getEmail(): string
-    {
-        
-        return $this->email;
-    }
-
-
-    public function setEmail(string $email): User
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    // //PASSWORD
-    public function getPassword(): string
-    {
-        
-        return $this->password;
-    }
-
-    
-    public function setPassword(string $password): User
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    // //AGE
-    // public function getAge(): int
+    //BIRTHDAY
+    // public function getBirthday(): DateTime
     // {
         
-    //     return $this->age;
+    //     return DateTime::createFromFormat('Y-m-d', $this->birthdate);
     // }
 
     
-    // public function setAge(int $age): User
+    // public function setBirthday(DateTime  $birthdate): User
     // {
-    //     $this->age = $age;
+    //     if ($birthdate !== null) {
+    //         $this->birthdate = $birthdate->format('Y-m-d');
+    //     }
 
     //     return $this;
     // }
 
-    // //GENDER
-    // public function getGender(): string
-    // {
-        
-    //     return $this->gender;
-    // }
 
-    
-    // public function setGender(string $gender): User
-    // {
-    //     $this->gender = $gender;
-
-    //     return $this;
-    // }
-
-    // //ROLE
-    // public function getRole(): string
-    // {
-        
-    //     return $this->role;
-    // }
-
-    
-    // public function setRole(string $role): User
-    // {
-    //     $this->role = $role;
-
-    //     return $this;
-    // }
-
-    // //IMAGE
-    // public function getImage(): string
-    // {
-        
-    //     return $this->image;
-    // }
-
-    
-    // public function setImage(string $image): User
-    // {
-    //     $this->image = $image;
-
-    //     return $this;
-    // }
-
-    // //BIRTHDAY
-    // public function getBirthday(): date
-    // {
-        
-    //     return $this->birthdate;
-    // }
-
-    
-    // public function setBirthday(date $birthdate): User
-    // {
-    //     $this->birthdate = $birthdate;
-
-    //     return $this;
-    // }
-
-    // //JOB
-    // public function getJob(): string
-    // {
-        
-    //     return $this->job;
-    // }
-
-    
-    // public function setJob(string $job): User
-    // {
-    //     $this->job = $job;
-
-    //     return $this;
-    // }
-
-    // //DESCRIPTION
-    // public function getDescription(): string
-    // {
-        
-    //     return $this->description;
-    // }
-
-    
-    // public function setDescription(string $description): User
-    // {
-    //     $this->description = $description;
-
-    //     return $this;
-    // }
-
-    // //CITY
-    // public function getCity(): string
-    // {
-        
-    //     return $this->city;
-    // }
-
-    
-    // public function setCity(string $city): User
-    // {
-    //     $this->city = $city;
-
-    //     return $this;
-    // }
-
-    // //  //LANGUAGE
-    // //  public function getLanguage(): array
-    // //  {
-         
-    // //      return $this->language;
-    // //  }
-
-    // //  public function setLanguage(array $language): User
-    // // {
-    // //     $this->language = $language;
-
-    // //     return $this;
-    // // }
- 
-    // //DIET
-    // public function getDiet(): string
-    // {
-        
-    //     return $this->diet;
-    // }
-
-    //  public function setDiet(string $diet): User
-    //  {
-    //      $this->diet = $diet;
- 
-    //      return $this;
-    //  }
-
-    // //GROUPENBR
-    // public function getGroupNbr(): int
-    // {
-        
-    //     return $this->groupNbr;
-    // }
-
-    // public function setGroupNbr(int $groupNbr): User
-    // {
-    //     $this->groupNbr = $groupNbr;
-
-    //     return $this;
-    // }
-    // //ALLERGY
-    // public function getAllergy(): array
-    // {
-        
-    //     return $this->Allergy;
-    // }
-
-    // public function setAllergy(array $Allergy): User
-    // {
-    //     $this->Allergy = $Allergy;
-
-    //     return $this;
-    // }
-
-    // //CENTEROFINTEREST-PERSO
-    // public function getCenterOfInterestPerso(): string
-    // {
-        
-    //     return $this->centerOfInterestPerso;
-    // }
-
-    // public function setCenterOfInterestPerso(string $centerOfInterestPerso): User
-    // {
-    //     $this->centerOfInterestPerso = $centerOfInterestPerso;
-
-    //     return $this;
-    // }
-
-    // //CENTEROFINTEREST-PERSO
-    // public function getCenterOfInterest(): array
-    // {
-        
-    //     return $this->centerOfInterest;
-    // }
-
-    // public function setCenterOfInterest(array $centerOfInterest): User
-    // {
-    //     $this->centerOfInterest = $centerOfInterest;
-
-    //     return $this;
-    // }
 }
