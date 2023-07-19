@@ -4,14 +4,20 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ReservationController extends AbstractController
+#[Route('/group')]
+class GroupController extends AbstractController
 {
-    #[Route('/reservation', name: 'app_reservation')]
-    public function index(): JsonResponse
+    #[Route('/add', name: 'app_group')]
+    public function index(): Response
     {
-        return $this->json([
+        // data checkbox
+        // centerOfInterest from user
+        // all useres from bdd
+
+        return $this->render('Group/index.html.twig',[
             'message' => 'Welcome to your new controller!',
             'path' => 'src/Controller/ReservationController.php',
         ]);

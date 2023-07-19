@@ -22,6 +22,9 @@ class UserProfilController extends AbstractController
         // get id user from session
         $idSession = $sessionInterface->get('id');
 
+        if(!$idSession){
+            return $this->redirectToRoute('app_home');
+        }
         // gey user by id session 
         $userFromBdd = $userRepository->findUserById($idSession);
 
@@ -53,13 +56,19 @@ class UserProfilController extends AbstractController
     public function success( UserRepository $userRepository, SessionInterface $sessionInterface): Response
     {
         // get id user from session
-        $id = $sessionInterface->get('id');
+        $idSession = $sessionInterface->get('id');
+
+        if(!$idSession){
+            return $this->redirectToRoute('app_home');
+        }
+
         // get document user from database
-        $user = $userRepository->findUserById($id);
+        $userFromBdd = $userRepository->findUserById($idSession);
+        
 
         return $this->render('user_profil/profil.html.twig', [
             // send data user from database
-            'user' => $user,
+            'user' => $userFromBdd,
         ]);
     }
 }

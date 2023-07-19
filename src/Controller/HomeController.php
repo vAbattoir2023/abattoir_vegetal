@@ -21,6 +21,8 @@ class HomeController extends AbstractController
     public function index(SessionInterface $sessionInterface): Response
     {
         $email = $sessionInterface->get('email');
+        $idSession = $sessionInterface->get('id');
+
 
         if(isset($email)){
             echo $email;
@@ -28,6 +30,7 @@ class HomeController extends AbstractController
 
         return $this->render('base.html.twig',[
             'message' => 'Welcome to your new controller!',
+            'idSession' => $idSession,
         ]);
         
     }

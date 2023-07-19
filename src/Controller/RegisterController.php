@@ -18,6 +18,9 @@ class RegisterController extends AbstractController
     #[Route('/add', name: 'app_register')]
     public function index(Request $request, UserRepository $userRepository, DocumentManager $documentManager, SessionInterface $sessionInterface): Response
     {
+
+        $messageAlert = '';
+
         // instantiates the class User
         $user = new User();
         
@@ -31,15 +34,13 @@ class RegisterController extends AbstractController
         if($form->isSubmitted() && $form->isValid() ){
 
             if($userRepository->checkUserRegister($user->getEmail())){
-                echo 'cet email existe déjà';
-                die;
+                $messageAlert = 'cet email existe déjà';
+            }else{
+                $passwordHash = password_hash($user->getPassword(), PASSWORD_BCRYPT); // hash password from form 
+                $user->setPassword($passwordHash); // update password in User class
+                $userRepository->save($user); // Post user to database
+                return $this->redirectToRoute('app_login'); // redirect to app_home route
             }
-
-            echo 'cet email n\'existe pas';
-            $passwordHash = password_hash($user->getPassword(), PASSWORD_BCRYPT); // hash password from form 
-            $user->setPassword($passwordHash); // update password in User class
-            $userRepository->save($user); // Post user to database
-            return $this->redirectToRoute('app_login'); // redirect to app_home route
         }
 
         $email = $sessionInterface->get('email');
@@ -51,7 +52,8 @@ class RegisterController extends AbstractController
         // return to Register/index.html.twig page
         return $this->render('Register/index.html.twig',[
 
-            'FormRegister' => $form->createView() //send the form
+            'FormRegister' => $form->createView(), //send the form
+            'alert' => $messageAlert
         ]);
 
        

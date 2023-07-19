@@ -16,7 +16,7 @@ class User
     public string $id;
 
     #[MongoDB\Field(type: 'string')]
-    public string $username;
+    public ?string $username = '';
 
     #[MongoDB\Field(type: 'string')]
     public string $email;
@@ -26,38 +26,38 @@ class User
     public string $password;
 
     #[MongoDB\Field(type: 'string')]
-    public string $city;
+    public ?string $city = null;
 
     #[MongoDB\Field(type: 'int')]
-    public int $age;
+    public ?int $age = null;
 
     #[MongoDB\Field(type: 'string')]
-    public string $gender;
+    public ?string $gender = null;
 
     #[MongoDB\Field(type: 'string')]
-    public string $language;
+    public ?string $language = null;
 
     #[MongoDB\Field(type: 'string')]
-    public string $image;
+    public ?string $image = null;
 
     #[MongoDB\Field(type: 'string')]
-    public string $job;
+    public ?string $job = null;
 
     #[MongoDB\Field(type: 'string')]
-    public string $description;
+    public ?string $description = null;
 
     #[MongoDB\Field(type: 'string')]
-    public string $diet;
+    public ?string $diet = null;
 
     // REGISTRATION SLIDE 2
     #[MongoDB\Field(type: 'string')]
-    public string $centerOfInterestPerso;
+    public ?string $centerOfInterestPerso = null;
  
     #[MongoDB\Field(type: 'collection')]
     public array $centerOfInterest = [];
 
     #[MongoDB\Field(type: 'int')]
-    public string $groupNbr;
+    public ?string $groupNbr = null;
 
     // #[MongoDB\Field(type: 'array')]
     // public array $Allergy;

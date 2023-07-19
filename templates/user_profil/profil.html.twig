@@ -1,102 +1,104 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Profil user{% endblock %}
+{% block title %}Profil user
+{% endblock %}
 
 {% block body %}
-    <h1>mes informations </h1>
+	<h1>mes informations
+	</h1>
 
-    <div class="container mt-5 d-flex justify-content-end">
+	<div class="container mt-5 d-flex justify-content-end">
 
-        <div class="row box8">
-            <div class="mx-auto mb-4 d-flex flex-row justify-content-end">
-                <h2 class="fw-bold mx-3">JE SUIS</h2>
-                <h2 class="fw-bold mx-3">J'AIME</h2>
-                <h2 class="fw-bold mx-3">JE VEUX</h2>
-            </div>
-
-           
- <fieldset class="active">
-
-        <div class="row "  >
-            <div class="col-md-6">
-                <!-- Partie Gauche -->
-                <div class="form-group">
-                    {{ user.username }}
-                </div>
-                <div class="form-group">
-                    {{ user.city }}
-                </div>
-                {# <div class="form-group">
-                    {{ form_row(UserForm.birthdate) }}
-                </div> #}
-                <div class="form-group">
-                    {{ user.age }}
-                </div>
-                <div class="form-group">
-                    {{ user.gender }}
-                </div>
-                <div  class="form-group">
-                    {{ user.language }}
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <!-- Partie Droite -->
-                <div class="form-group">
-                    <img class="img-thumbnail  float-start" src="https://media.istockphoto.com/id/1300845620/fr/vectoriel/appartement-dic%C3%B4ne-dutilisateur-isol%C3%A9-sur-le-fond-blanc-symbole-utilisateur.jpg?s=612x612&w=0&k=20&c=BVOfS7mmvy2lnfBPghkN__k8OMsg7Nlykpgjn0YOHj0=" alt="">
-                    {{ user.image }}
-                </div>
-
-                <div class="form-group">
-                    {{ user.job }}
-                </div>
-
-                <div class="form-group">
-                        {{ user.description }}
-                </div>
-
-                <div class="form-group">
-                    {{ user.diet }}
-                </div>
-        </div>
-        </div>
-        
-              <button type="button" class="btn btn-primary" onclick="nextStep()">Suivant</button>
-</fieldset>
-
-    <fieldset style="display: none;">
+		<div class="row box8">
+			<div class="mx-auto mb-4 d-flex flex-row justify-content-end">
+				<h2 class="fw-bold mx-3">JE SUIS</h2>
+				<h2 class="fw-bold mx-3">J'AIME</h2>
+				<h2 class="fw-bold mx-3">JE VEUX</h2>
+			</div>
 
 
+			<fieldset class="active">
 
-    {# Etape 2 #}
-        <div class="container" >
-                <h1>Mes centres d'interets</h1>
-            <div class="d-flex justify-content-center">
-{%  for interest in user.centerOfInterest  %}
-                    {{ interest }}
-                {% endfor %}        
-                    </div>
-                {{ user.centerOfInterestPerso }}
-        </div>
-<button type="button" class="btn btn-primary" onclick="previousStep()">Retour</button>
-      <button type="button" class="btn btn-primary" onclick="nextStep()">Suivant</button>
-</fieldset>
+				<div class="row ">
+					<div
+						class="col-md-6">
+						<!-- Partie Gauche -->
+						<div class="form-group">
+							{{ user.username }}
+						</div>
+						<div class="form-group">
+							{{ user.city }}
+						</div>
+						{# <div class="form-group">
+						                    {{ form_row(UserForm.birthdate) }}
+						                </div> #}
+						<div class="form-group">
+							{{ user.age }}
+						</div>
+						<div class="form-group">
+							{{ user.gender }}
+						</div>
+						<div class="form-group">
+							{{ user.language }}
+						</div>
+					</div>
+
+					<div
+						class="col-md-6">
+						<!-- Partie Droite -->
+						<div class="form-group">
+							<img class="img-thumbnail  float-start" src="https://media.istockphoto.com/id/1300845620/fr/vectoriel/appartement-dic%C3%B4ne-dutilisateur-isol%C3%A9-sur-le-fond-blanc-symbole-utilisateur.jpg?s=612x612&w=0&k=20&c=BVOfS7mmvy2lnfBPghkN__k8OMsg7Nlykpgjn0YOHj0=" alt="">
+							{{ user.image }}
+						</div>
+
+						<div class="form-group">
+							{{ user.job }}
+						</div>
+
+						<div class="form-group">
+							{{ user.description }}
+						</div>
+
+						<div class="form-group">
+							{{ user.diet }}
+						</div>
+					</div>
+				</div>
+
+				<button type="button" class="btn btn-primary" onclick="nextStep()">Suivant</button>
+			</fieldset>
+
+			<fieldset
+				style="display: none;">
 
 
+				{# Etape 2 #}
+				<div class="container">
+					<h1>Mes centres d'interets</h1>
+					<div class="d-flex justify-content-center">
+						{%  for interest in user.centerOfInterest  %}
+							{{ interest }}
+						{% endfor %}
+					</div>
+					{{ user.centerOfInterestPerso }}
+				</div>
+				<button type="button" class="btn btn-primary" onclick="previousStep()">Retour</button>
+				<button type="button" class="btn btn-primary" onclick="nextStep()">Suivant</button>
+			</fieldset>
 
-<fieldset style="display: none;">
 
-        {# Etape 3 #}
-        <div class="container" >
-           JE VEUX
-                           <button type="button" class="btn btn-primary" onclick="previousStep()">Retour</button>
-        </div>
-</fieldset>
+			<fieldset
+				style="display: none;">
+
+				{# Etape 3 #}
+				<div class="container">
+					JE VEUX
+					<button type="button" class="btn btn-primary" onclick="previousStep()">Retour</button>
+				</div>
+			</fieldset>
 
 
-
-
-        </div>
-    </div>
+		</div>
+	</div>
 
 {% endblock %}
