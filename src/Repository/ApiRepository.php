@@ -29,4 +29,19 @@ class ApiRepository extends ServiceDocumentRepository
     {
         return $this->findBy(['id' => $userID]);
     }
+
+/*     public function updateCity(User $user, string $codePostal): void
+    {
+        // Vérifier si l'utilisateur a déjà une ville définie
+        if ($user->getCity()) {
+            // Si la ville est déjà définie, ne pas effectuer d'appel à l'API pour éviter de mettre à jour une valeur existante
+            return;
+        }
+
+        // Vérifier si le code postal est vide
+        if (!$codePostal) {
+            // Si le code postal est vide, ne pas effectuer d'appel à l'API car il n'y a pas d'information pour trouver la ville
+            return;
+        }
+    } */
 }

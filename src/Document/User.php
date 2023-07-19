@@ -25,6 +25,12 @@ class User
     #[MongoDB\Field(type: 'string')]
     protected ?string $city = null;
 
+    #[MongoDB\Field(type: 'string')]
+    protected ?string $postalCode = null;
+
+    #[MongoDB\Field(type: 'string')]
+    protected ?string $nameRegion = null;
+
     // #[MongoDB\Field(type: 'string')]
     // protected string $birthdate;
 
@@ -37,6 +43,9 @@ class User
     #[MongoDB\Field(type: 'string')]
     protected ?string $language = null;
 
+    #[MongoDB\Field(type: 'string')]
+    protected ?string $flagIconUrl = null;
+    
     #[MongoDB\Field(type: 'string')]
     protected ?string $image = null;
 
@@ -136,6 +145,28 @@ class User
 
         return $this;
     }
+
+    public function getPostalCode(): ?string
+    {
+        return $this->postalCode;
+    }
+
+    public function setPostalCode(?string $postalCode): User
+    {
+        $this->postalCode = $postalCode;
+        return $this;
+    }
+
+    public function getNameRegion(): ?string
+    {
+        return $this->nameRegion;
+    }
+
+    public function setNameRegion(?string $nameRegion): User
+    {
+        $this->nameRegion = $nameRegion;
+        return $this;
+    }
     
     public function getAge(): ?int
     {
@@ -190,6 +221,19 @@ class User
     public function setLanguage(?string $language): User
     {
         $this->language = $language;
+
+        return $this;
+    }
+
+    public function getFlagIconUrl(): ?string
+    {
+        
+        return $this->flagIconUrl;
+    }
+
+    public function setFlagIconUrl(?string $flagIconUrl): User
+    {
+        $this->flagIconUrl = $flagIconUrl;
 
         return $this;
     }

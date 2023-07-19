@@ -22,9 +22,14 @@ class ApiUserType extends AbstractType
                 'attr' => ['class' => 'form-control',
                         'placeholder' => 'Entre une profession'],
             ])
-            ->add('city', TextType::class, [
-                'attr' => ['class' => 'form-control',
-                        'placeholder' => 'Entre une ville'],
+            ->add('postalCode', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'Entrez un code postal',
+                ],
+                'constraints' => [
+                    new Length(['min' => 5, 'max' => 5, 'exactMessage' => 'Le code postal doit comporter 5 chiffres.']),
+                ],
             ])
             ->add('diet', ChoiceType::class, [
                 'label' => 'Diet',
@@ -45,6 +50,28 @@ class ApiUserType extends AbstractType
             ->add('description', TextType::class, [
                 'attr' => ['class' => 'form-control',
                         'placeholder' => 'Entre une description'],
+            ])
+            ->add('centerOfInterest', ChoiceType::class, [
+                'label' => 'CenterOfInterest',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+                'choices' => [
+                        'Animaux' => 'Animaux',
+                        'Environnement' => 'Environnement',
+                        'Jeux vidéos' => 'Jeux vidéos',
+                        'Art et Culture' => 'Art et Culture',
+                        'Sport' => 'Sport',
+                        'Voyage' => 'Voyage',
+                        'Musique' => 'Musique',
+                        'Danse' => 'Danse',
+                        'Sciences' => 'Sciences',
+                        'Bien-etre' => 'Bien-etre',
+                        'Food' => 'Food',
+                        'Activités sociales' => 'Activités sociales',
+                ],
+                'multiple' => true,
+                'expanded' => true,
             ])
                 
             
