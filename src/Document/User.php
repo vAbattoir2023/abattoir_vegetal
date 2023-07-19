@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints\Date;
 class User
 {
     #[MongoDB\Id]
-    public string $id;
+    private string $id;
 
     #[MongoDB\Field(type: 'string')]
     public ?string $username = '';
@@ -58,6 +58,9 @@ class User
 
     #[MongoDB\Field(type: 'int')]
     public ?string $groupNbr = null;
+    
+    #[MongoDB\Field(type: 'collection')]
+    private array $roles = [];
 
     // #[MongoDB\Field(type: 'array')]
     // public array $Allergy;
@@ -65,8 +68,6 @@ class User
     // #[MongoDB\Field(type: 'string')]
     // protected string $birthdate;
 
-    // #[MongoDB\Field(type: 'string')]
-    // private string $role;
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -270,20 +271,42 @@ class User
         
         return $this->password;
     }
-
+    
     
     public function setPassword(string $password): User
     {
         $this->password = $password;
+        
+        return $this;
+    }
+    
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles); 
+       }
+
+    
+    public function setRoles(array $roles): User
+    {
+        $this->roles = $roles;
 
         return $this;
     }
+
 
     // //AGE
     // public function getAge(): int
     // {
         
-    //     return $this->age;
+        //     return $this->age;
     // }
 
     
@@ -309,20 +332,6 @@ class User
     //     return $this;
     // }
 
-    // //ROLE
-    // public function getRole(): string
-    // {
-        
-    //     return $this->role;
-    // }
-
-    
-    // public function setRole(string $role): User
-    // {
-    //     $this->role = $role;
-
-    //     return $this;
-    // }
 
     // //IMAGE
     // public function getImage(): string

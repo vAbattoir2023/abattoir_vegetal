@@ -19,6 +19,8 @@ class UserProfilController extends AbstractController
     #[Route('/edit', name: 'app_user_profil')]
     public function index(Request $request, UserRepository $userRepository, DocumentManager $documentManager, SessionInterface $sessionInterface): Response
     {
+
+        $user  = new User();
         // get id user from session
         $idSession = $sessionInterface->get('id');
 

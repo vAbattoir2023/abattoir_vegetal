@@ -87,12 +87,12 @@ class UserType extends AbstractType
             ])
 
 
-            // ->add('image', FileType::class, [
-            //     'label' => 'Mon image',
-            //     'attr' => [
-            //         'class' => 'form-control'
-            //     ],
-            // ])
+            ->add('image', TextType::class, [
+                'label' => 'Mon image',
+                'attr' => [
+                    'class' => 'form-control'
+                ],
+            ])
 
             ->add('job', TextType::class,[
                 'label' => 'Je boss dans ...',

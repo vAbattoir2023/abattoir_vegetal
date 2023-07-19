@@ -18,9 +18,5 @@ class UserController extends AbstractController
             'path' => 'src/Controller/UserController.php',
         ]);
     }
-    #[Route('/logout', name: 'app_user')]
-    public function logout(): void
-    {
-        
-    }
+
 }
