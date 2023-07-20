@@ -16,6 +16,7 @@ use Doctrine\Common\DataFixtures\Loader as DataFixturesLoader;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use InvalidArgumentException;
+use Jean85\PrettyVersions;
 use Symfony\Bridge\Doctrine\DependencyInjection\AbstractDoctrineExtension;
 use Symfony\Bridge\Doctrine\Messenger\DoctrineClearEntityManagerWorkerSubscriber;
 use Symfony\Component\Cache\Adapter\ApcuAdapter;
@@ -31,6 +32,7 @@ use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\Messenger\MessageBusInterface;
+use Throwable;
 
 use function array_keys;
 use function array_merge;
@@ -48,6 +50,9 @@ use function sprintf;
  */
 class DoctrineMongoDBExtension extends AbstractDoctrineExtension
 {
+    /** @var string */
+    private static $odmVersion;
+
     /** @internal */
     public const CONFIGURATION_TAG = 'doctrine.odm.configuration';
 
@@ -407,6 +412,11 @@ class DoctrineMongoDBExtension extends AbstractDoctrineExtension
             $driverOptions['context'] = new Reference($driverOptions['context']);
         }
 
+        $driverOptions['driver'] = [
+            'name' => 'symfony-mongodb',
+            'version' => self::getODMVersion(),
+        ];
+
         return $driverOptions;
     }
 
@@ -469,9 +479,7 @@ class DoctrineMongoDBExtension extends AbstractDoctrineExtension
         $odmConfigDef->addMethodCall('setDocumentNamespaces', [$this->aliasMap]);
     }
 
-    /**
-     * @param string $name
-     */
+    /** @param string $name */
     protected function getObjectManagerElementName($name): string
     {
         return 'doctrine_mongodb.odm.' . $name;
@@ -516,9 +524,7 @@ class DoctrineMongoDBExtension extends AbstractDoctrineExtension
         return 'http://symfony.com/schema/dic/doctrine/odm/mongodb';
     }
 
-    /**
-     * @return string
-     */
+    /** @return string */
     public function getXsdValidationBasePath()
     {
         return __DIR__ . '/../Resources/config/schema';
@@ -613,5 +619,18 @@ class DoctrineMongoDBExtension extends AbstractDoctrineExtension
         return method_exists(BaseNode::class, 'getDeprecation')
             ? ['doctrine/mongodb-odm-bundle', $version, $message]
             : [$message];
+    }
+
+    private static function getODMVersion(): string
+    {
+        if (self::$odmVersion === null) {
+            try {
+                self::$odmVersion = PrettyVersions::getVersion('doctrine/mongodb-odm')->getPrettyVersion();
+            } catch (Throwable $t) {
+                return 'unknown';
+            }
+        }
+
+        return self::$odmVersion;
     }
 }

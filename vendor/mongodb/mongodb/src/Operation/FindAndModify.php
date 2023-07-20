@@ -6,7 +6,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *   https://www.apache.org/licenses/LICENSE-2.0
+ *   http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -26,7 +26,6 @@ use MongoDB\Exception\InvalidArgumentException;
 use MongoDB\Exception\UnexpectedValueException;
 use MongoDB\Exception\UnsupportedException;
 
-use function array_key_exists;
 use function current;
 use function is_array;
 use function is_bool;
@@ -45,13 +44,15 @@ use function MongoDB\server_supports_feature;
  * FindOneAndUpdate operation classes.
  *
  * @internal
- * @see https://mongodb.com/docs/manual/reference/command/findAndModify/
+ * @see http://docs.mongodb.org/manual/reference/command/findAndModify/
  */
 class FindAndModify implements Executable, Explainable
 {
-    private const WIRE_VERSION_FOR_HINT = 9;
+    /** @var integer */
+    private static $wireVersionForHint = 9;
 
-    private const WIRE_VERSION_FOR_UNSUPPORTED_OPTION_SERVER_SIDE_ERROR = 8;
+    /** @var integer */
+    private static $wireVersionForUnsupportedOptionServerSideError = 8;
 
     /** @var string */
     private $databaseName;
@@ -71,10 +72,6 @@ class FindAndModify implements Executable, Explainable
      *    array elements an update should apply.
      *
      *  * collation (document): Collation specification.
-     *
-     *  * comment (mixed): BSON value to attach as a comment to this command.
-     *
-     *    This is not supported for servers versions < 4.4.
      *
      *  * bypassDocumentValidation (boolean): If true, allows the write to
      *    circumvent document level validation.
@@ -115,11 +112,6 @@ class FindAndModify implements Executable, Explainable
      *    matches the query. This option is ignored for remove operations. The
      *    default is false.
      *
-     *  * let (document): Map of parameter names and values. Values must be
-     *    constant or closed expressions that do not reference document fields.
-     *    Parameters can then be accessed as variables in an aggregate
-     *    expression context (e.g. "$$var").
-     *
      *  * writeConcern (MongoDB\Driver\WriteConcern): Write concern.
      *
      * @param string $databaseName   Database name
@@ -127,9 +119,13 @@ class FindAndModify implements Executable, Explainable
      * @param array  $options        Command options
      * @throws InvalidArgumentException for parameter/option parsing errors
      */
-    public function __construct(string $databaseName, string $collectionName, array $options)
+    public function __construct($databaseName, $collectionName, array $options)
     {
-        $options += ['remove' => false];
+        $options += [
+            'new' => false,
+            'remove' => false,
+            'upsert' => false,
+        ];
 
         if (isset($options['arrayFilters']) && ! is_array($options['arrayFilters'])) {
             throw InvalidArgumentException::invalidType('"arrayFilters" option', $options['arrayFilters'], 'array');
@@ -155,7 +151,7 @@ class FindAndModify implements Executable, Explainable
             throw InvalidArgumentException::invalidType('"maxTimeMS" option', $options['maxTimeMS'], 'integer');
         }
 
-        if (array_key_exists('new', $options) && ! is_bool($options['new'])) {
+        if (! is_bool($options['new'])) {
             throw InvalidArgumentException::invalidType('"new" option', $options['new'], 'boolean');
         }
 
@@ -187,12 +183,8 @@ class FindAndModify implements Executable, Explainable
             throw InvalidArgumentException::invalidType('"writeConcern" option', $options['writeConcern'], WriteConcern::class);
         }
 
-        if (array_key_exists('upsert', $options) && ! is_bool($options['upsert'])) {
+        if (! is_bool($options['upsert'])) {
             throw InvalidArgumentException::invalidType('"upsert" option', $options['upsert'], 'boolean');
-        }
-
-        if (isset($options['let']) && ! is_array($options['let']) && ! is_object($options['let'])) {
-            throw InvalidArgumentException::invalidType('"let" option', $options['let'], 'array or object');
         }
 
         if (isset($options['bypassDocumentValidation']) && ! $options['bypassDocumentValidation']) {
@@ -207,8 +199,8 @@ class FindAndModify implements Executable, Explainable
             unset($options['writeConcern']);
         }
 
-        $this->databaseName = $databaseName;
-        $this->collectionName = $collectionName;
+        $this->databaseName = (string) $databaseName;
+        $this->collectionName = (string) $collectionName;
         $this->options = $options;
     }
 
@@ -216,6 +208,7 @@ class FindAndModify implements Executable, Explainable
      * Execute the operation.
      *
      * @see Executable::execute()
+     * @param Server $server
      * @return array|object|null
      * @throws UnexpectedValueException if the command response was malformed
      * @throws UnsupportedException if hint or write concern is used and unsupported
@@ -225,7 +218,7 @@ class FindAndModify implements Executable, Explainable
     {
         /* Server versions >= 4.2.0 raise errors for unsupported update options.
          * For previous versions, the CRUD spec requires a client-side error. */
-        if (isset($this->options['hint']) && ! server_supports_feature($server, self::WIRE_VERSION_FOR_UNSUPPORTED_OPTION_SERVER_SIDE_ERROR)) {
+        if (isset($this->options['hint']) && ! server_supports_feature($server, self::$wireVersionForUnsupportedOptionServerSideError)) {
             throw UnsupportedException::hintNotSupported();
         }
 
@@ -233,7 +226,7 @@ class FindAndModify implements Executable, Explainable
          * unacknowledged write concern on an unsupported server. */
         if (
             isset($this->options['writeConcern']) && ! is_write_concern_acknowledged($this->options['writeConcern']) &&
-            isset($this->options['hint']) && ! server_supports_feature($server, self::WIRE_VERSION_FOR_HINT)
+            isset($this->options['hint']) && ! server_supports_feature($server, self::$wireVersionForHint)
         ) {
             throw UnsupportedException::hintNotSupported();
         }
@@ -251,60 +244,50 @@ class FindAndModify implements Executable, Explainable
 
         $result = current($cursor->toArray());
 
-        return is_object($result) ? ($result->value ?? null) : null;
+        return $result->value ?? null;
     }
 
     /**
      * Returns the command document for this operation.
      *
      * @see Explainable::getCommandDocument()
+     * @param Server $server
      * @return array
      */
-    public function getCommandDocument()
+    public function getCommandDocument(Server $server)
     {
         return $this->createCommandDocument();
     }
 
     /**
      * Create the findAndModify command document.
+     *
+     * @return array
      */
-    private function createCommandDocument(): array
+    private function createCommandDocument()
     {
         $cmd = ['findAndModify' => $this->collectionName];
 
         if ($this->options['remove']) {
             $cmd['remove'] = true;
         } else {
-            if (isset($this->options['new'])) {
-                $cmd['new'] = $this->options['new'];
-            }
-
-            if (isset($this->options['upsert'])) {
-                $cmd['upsert'] = $this->options['upsert'];
-            }
+            $cmd['new'] = $this->options['new'];
+            $cmd['upsert'] = $this->options['upsert'];
         }
 
-        foreach (['collation', 'fields', 'let', 'query', 'sort'] as $option) {
+        foreach (['collation', 'fields', 'query', 'sort'] as $option) {
             if (isset($this->options[$option])) {
                 $cmd[$option] = (object) $this->options[$option];
             }
         }
 
         if (isset($this->options['update'])) {
-            /** @psalm-var array|object */
-            $update = $this->options['update'];
-            /* A non-empty pipeline will encode as a BSON array, so leave it
-             * as-is. Cast anything else to an object since a BSON document is
-             * likely expected. This includes empty arrays, which historically
-             * can be used to represent empty replacement documents.
-             *
-             * This also allows an empty pipeline expressed as a PackedArray or
-             * Serializable to still encode as a BSON array, since the object
-             * cast will have no effect. */
-            $cmd['update'] = is_pipeline($update) ? $update : (object) $update;
+            $cmd['update'] = is_pipeline($this->options['update'])
+                ? $this->options['update']
+                : (object) $this->options['update'];
         }
 
-        foreach (['arrayFilters', 'bypassDocumentValidation', 'comment', 'hint', 'maxTimeMS'] as $option) {
+        foreach (['arrayFilters', 'bypassDocumentValidation', 'hint', 'maxTimeMS'] as $option) {
             if (isset($this->options[$option])) {
                 $cmd[$option] = $this->options[$option];
             }
@@ -316,9 +299,10 @@ class FindAndModify implements Executable, Explainable
     /**
      * Create options for executing the command.
      *
-     * @see https://php.net/manual/en/mongodb-driver-server.executewritecommand.php
+     * @see http://php.net/manual/en/mongodb-driver-server.executewritecommand.php
+     * @return array
      */
-    private function createOptions(): array
+    private function createOptions()
     {
         $options = [];
 

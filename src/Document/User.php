@@ -9,7 +9,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 use Symfony\Component\Validator\Constraints\Date;
 
 // A secondary class that is embedded in an array in our primary class
-#[MongoDB\EmbeddedDocument]
+// #[MongoDB\EmbeddedDocument]
 #[MongoDB\Document]
 class User
 {

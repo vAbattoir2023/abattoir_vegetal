@@ -3,76 +3,32 @@
 {% block title  %}
 	Reservation
 {% endblock %}
-{% block stylesheets %}<link rel="stylesheet" href="{{ asset('./assets/css/reservation.css') }}">
-{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="{{asset('./assets/css/reservation.css')}}">{% endblock %}
 
 {% block body %}
-	<form action="">
-		<fieldset>
-			<legend>centre d'intérêts</legend>
-
-			<div>
-				<input name="animaux" type="checkbox" id="checkbox_animaux" name="checkbox_animaux" class="filter-checkbox">
-				<label for="checkbox_animaux">Animaux</label>
-			</div>
-
-			<div>
-				<input type="checkbox" id="checkbox_environnement" class="filter-checkbox" value="id2">
-				<label for="checkbox_environnement">Environnement</label>
-			</div>
-
-			<div>
-				<input type="checkbox" id="checkbox_jeuxVideos" class="filter-checkbox" value="id3">
-				<label for="checkbox_jeuxVideos">Jeux vidéos</label>
-			</div>
-
-			<div>
-				<input type="checkbox" id="checkbox_artEtCulture" class="filter-checkbox" value="id4">
-				<label for="checkbox_artEtCulture">Art et Culture</label>
-			</div>
-
-			<div>
-				<input type="checkbox" id="checkbox_sport" class="filter-checkbox" value="id5">
-				<label for="checkbox_sport">Sport</label>
-			</div>
-
-			<div>
-				<input type="checkbox" id="checkbox_voyage" class="filter-checkbox" value="id6">
-				<label for="checkbox_voyage">Voyage</label>
-			</div>
-
-			<div>
-				<input type="checkbox" id="checkbox_musique" class="filter-checkbox" value="id7">
-				<label for="checkbox_musique">Musique</label>
-			</div>
-
-			<div>
-				<input type="checkbox" id="checkbox_danse" class="filter-checkbox" value="id8">
-				<label for="checkbox_danse">Danse</label>
-			</div>
-
-			<div>
-				<input type="checkbox" id="checkbox_sciences" class="filter-checkbox" value="id9">
-				<label for="checkbox_sciences">Sciences</label>
-			</div>
-
-			<div>
-				<input type="checkbox" id="checkbox_bien_etre" class="filter-checkbox" value="id10">
-				<label for="checkbox_bien-etre">Bien-etre</label>
-			</div>
-
-			<div>
-				<input type="checkbox" id="checkbox_food" class="filter-checkbox" value="id11" name="food">
-				<label for="checkbox_food">Food</label>
-			</div>
-
-			<div>
-				<input type="checkbox" id="checkbox_activitesSociales" class="filter-checkbox" value="id12" name="activites-sociales">
-				<label for="checkbox_activitesSociales">Activités sociales</label>
-			</div>
-		</fieldset>
-		<button>recherche</button>
-	</form>
-	<div id="checkbox_users"></div>
+<div class="container">
+	<div class="row">
+		<div class="col-6">
+			<form action="">
+				<fieldset>
+					<legend>centre d'intérêts</legend>
+					{% for formData in dataFormCheckbox %}
+						<div>
+							<input name="{{ formData }}" type="checkbox" id="checkbox_{{ formData }}" name="checkbox_{{ formData }}" data-filter="{{formData}}" class="filter-checkbox">
+							<label for="checkbox_{{ formData }}">{{ formData }}</label>
+						</div>
+					{% endfor %}
+				</fieldset>
+				<button>recherche</button>
+			</form>
+		</div>
+		<div class="col-6">
+			<div id="users_list"></div>		
+		</div>
+	</div>
+</div>
+	
 
 {% endblock %}
+
+{% block javascripts %}<script src="{{ asset('./assets/js/createGroup.js')}}"></script> {% endblock %}

@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/admin')]
 class AdminController extends AbstractController
 {
-    #[Route('/', name: 'app_admin_index', methods: ['GET'])]
+    #[Route('/', name: 'app_admin_index')]
     public function index(UserRepository $userRepository, sessionInterface $sessionInterface): Response    {
 
            // get id user from session
@@ -33,7 +33,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_admin_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'app_admin_show')]
     public function show(User $user, $id, UserRepository  $userRepository): Response
     {
    // get id user from session
@@ -52,7 +52,7 @@ class AdminController extends AbstractController
     }
 
 
-    #[Route('/edit/{id}', name: 'app_admin_edit', methods: ['GET', 'POST'])]
+    #[Route('/edit/{id}', name: 'app_admin_edit')]
     public function edit($id, Request $request, UserRepository $userRepository, DocumentManager $documentManager, SessionInterface $sessionInterface): Response
     {
     
@@ -79,7 +79,7 @@ class AdminController extends AbstractController
     ]);
 }
 
-#[Route('/delete/{id}', name: 'app_admin_delete', methods: ['POST'])]
+#[Route('/delete/{id}', name: 'app_admin_delete')]
 public function delete(Request $request, UserRepository $userRepository, $id): Response
 {
     $userFromBdd = $userRepository->findUserById($id);
