@@ -18,11 +18,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminController extends AbstractController
 {
     #[Route('/', name: 'app_admin_index', methods: ['GET'])]
-    public function index(UserRepository $userRepository): Response
-    {
+    public function index(UserRepository $userRepository, sessionInterface $sessionInterface): Response    {
 
-         // get id user from session
-        $admins = $userRepository->findUserByRoles('ROLE_ADMIN');
+           // get id user from session
+           $admins = $sessionInterface->get('id');
+           $userRepository->findUserByRoles('ROLE_ADMIN');
           // if not user then redirect to app_register
           if (!$admins) {
             return $this->redirectToRoute('app_register');
@@ -52,7 +52,7 @@ class AdminController extends AbstractController
     }
 
 
-    #[Route('/{id}/edit', name: 'app_admin_edit', methods: ['GET', 'POST'])]
+    #[Route('/edit/{id}', name: 'app_admin_edit', methods: ['GET', 'POST'])]
     public function edit($id, Request $request, UserRepository $userRepository, DocumentManager $documentManager, SessionInterface $sessionInterface): Response
     {
     
@@ -66,8 +66,8 @@ class AdminController extends AbstractController
 
     // if data from form is submitted and valid
     if ($form->isSubmitted() && $form->isValid()) {
-        //update the data to user in database
-        $documentManager->flush();
+             //update the data to user in database
+             $userRepository->save($userFromBdd, true);
         // Redirect to success page
         return $this->redirectToRoute('app_admin_index');
     }

@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints\Date;
 class User
 {
     #[MongoDB\Id]
-    private string $id;
+    public string $id;
 
     #[MongoDB\Field(type: 'string')]
     public ?string $username = '';
@@ -36,7 +36,10 @@ class User
 
     #[MongoDB\Field(type: 'string')]
     public ?string $language = null;
-
+    
+    #[MongoDB\Field(type: 'string')]
+    protected ?string $flagIconUrl = '';
+    
     #[MongoDB\Field(type: 'string')]
     public ?string $image = null;
 
@@ -62,6 +65,9 @@ class User
     #[MongoDB\Field(type: 'collection')]
     private array $roles = [];
 
+
+    #[MongoDB\Field(type: 'string')]
+    protected ?string $postalCode = null;
     // #[MongoDB\Field(type: 'array')]
     // public array $Allergy;
 
@@ -301,6 +307,32 @@ class User
         return $this;
     }
 
+
+    // FLAG 
+    public function getFlagIconUrl(): string
+    {
+        
+        return $this->flagIconUrl;
+    }
+
+    public function setFlagIconUrl(string $flagIconUrl): User
+    {
+        $this->flagIconUrl = $flagIconUrl;
+
+        return $this;
+    }
+
+    //POSTAL CODE 
+    public function getPostalCode(): ?string
+    {
+        return $this->postalCode;
+    }
+
+    public function setPostalCode(?string $postalCode): User
+    {
+        $this->postalCode = $postalCode;
+        return $this;
+    }
 
     // //AGE
     // public function getAge(): int

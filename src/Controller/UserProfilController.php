@@ -29,12 +29,12 @@ class UserProfilController extends AbstractController
         }
         // gey user by id session 
         $userFromBdd = $userRepository->findUserById($idSession);
-
+        
         // if not user then redirect to app_register
         if (!$userFromBdd) {
             return $this->redirectToRoute('app_register');
         }
-        
+        //  dd($userFromBdd);
         // create form for the database
         $form = $this->createForm(UserType::class, $userFromBdd);
         // get the data from form
@@ -42,16 +42,18 @@ class UserProfilController extends AbstractController
 
         // if data from form is submitted and valid
         if ($form->isSubmitted() && $form->isValid()) {
+            
             //update the data to user in database
-            $documentManager->flush();
+            $userRepository->save($userFromBdd, true);
             // Redirect to success page
             return $this->redirectToRoute('app_user_profil_success');
         }
 
-        return $this->render('user_profil/index.html.twig', [
+       return $this->render('user_profil/index.html.twig', [
             // send form for database
-            'UserForm' => $form->createView(),
-        ]);
+             'UserForm' => $form->createView(),
+        ]); 
+        return new Response('test');
     }
 
     #[Route('/profil', name: 'app_user_profil_success')]
