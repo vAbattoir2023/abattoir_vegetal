@@ -46,6 +46,7 @@ return [
                         .'|/edit(*:203)'
                     .')'
                     .'|delete/([^/]++)(*:227)'
+                    .'|reservation(*:246)'
                 .')'
             .')/?$}sDu',
     ],
@@ -59,8 +60,9 @@ return [
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
         190 => [[['_route' => 'app_admin_show', '_controller' => 'App\\Controller\\AdminController::show'], ['id'], ['GET' => 0], null, false, true, null]],
         203 => [[['_route' => 'app_admin_edit', '_controller' => 'App\\Controller\\AdminController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        227 => [
-            [['_route' => 'app_admin_delete', '_controller' => 'App\\Controller\\AdminController::delete'], ['id'], ['POST' => 0], null, false, true, null],
+        227 => [[['_route' => 'app_admin_delete', '_controller' => 'App\\Controller\\AdminController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        246 => [
+            [['_route' => 'app_admin_reservation', '_controller' => 'App\\Controller\\AdminController::reservation'], [], ['POST' => 0], null, false, false, null],
             [null, null, null, null, false, false, 0],
         ],
     ],
