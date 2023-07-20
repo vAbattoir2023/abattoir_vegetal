@@ -3,11 +3,12 @@
 namespace App\Form;
 
 use App\Document\User;
+// use Doctrine\ODM\MongoDB\Types\DateType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeTpe;
+use Symfony\Component\Form\Extension\Core\Type\DateType ;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -15,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -38,11 +40,7 @@ class UserType extends AbstractType
             //     ])
                
             ->add('username', TextType::class,[
-                'label' => 'Je m\'appelle ...',
-                'attr' => [
-                    'class' => 'form-control'
-                ]
-            ])
+                'label' => 'Je m\'appelle ...'])
 
             ->add('city', TextType::class,[
                 'label' => 'J\'habite ...',
@@ -51,29 +49,30 @@ class UserType extends AbstractType
                 ]
             ])
 
-            // ->add('birthdate', BirthdayType::class, [
-            //     'widget' => 'single_text',
+            ->add('dateOfBirth', DateType::class, [
+                'label' => 'Je suis né(e) le ...',
+                'widget' => 'single_text',
+                // this is actually the default format for single_text
+                'format' => 'yyyy-MM-dd',
+            ])
+
+            // ->add('age', IntegerType::class, [
             //     'attr' => [
             //         'class' => 'form-control'
-            //     ],
-            //     'format' => 'yyyy-MM-dd',
+            //     ]
             // ])
-
-            ->add('age', IntegerType::class, [
-                'attr' => [
-                    'class' => 'form-control'
-                ]
-            ])
 
             ->add('gender', ChoiceType::class, [
                 'label' => 'Je suis ...',
-                'attr' => [
-                    'class' => 'form-control'
-                ],
                 'choices'  => [
-                    'Homme' => 'Homme',
-                    'Femme' => 'Femme',
-                    'Non-binaire' => 'Non-binaire'
+                    'H' => 'Homme ',
+                    'F' => 'Femme ',
+                    'Non-binaire' => 'Non-binaire '
+                ],
+                'choice_attr'  => [
+                    'H' => ['style' => 'margin:0px 5px;'],
+                    'F' => ['style' => 'margin:0px 5px;'],
+                    'Non-binaire' => ['style' => 'margin:0px 5px;'],
                 ],
                 'multiple' => false,
                 'expanded' => true
@@ -90,7 +89,7 @@ class UserType extends AbstractType
             ->add('image', TextType::class, [
                 'label' => 'Mon image',
                 'attr' => [
-                    'class' => 'form-control'
+                    'placeholder' => 'image = link url',
                 ],
             ])
 
@@ -101,7 +100,7 @@ class UserType extends AbstractType
                 ]
             ])
 
-            ->add('description', TextType::class,[
+            ->add('description', TextareaType::class,[
                 'label' => 'Je me décris en quelque mot ...',
                 'attr' => [
                     'class' => 'form-control'
@@ -118,12 +117,12 @@ class UserType extends AbstractType
                     'Végétarien(ne)' => 'Végétarien(ne)',
                     'Fléxitarien(ne)' => 'Fléxitarien(ne)'
                 ],
-                'choice_attr' => [
-                    'Végan(ne)' => ['class' => 'btn btn-outline-danger'],
-                    'Curieu(x/se)' => ['class' => 'btn btn-outline-danger'],
-                    'Végétarien(ne)' => ['class' => 'btn btn-outline-danger'],
-                    'Fléxitarien(ne)' => ['class' => 'btn btn-outline-danger'],
-                ],
+            'choice_attr' => [
+                'Végan(ne)' => ['class' => 'preferences demo2 demoyes' ],
+                'Curieu(x/se)' => ['class' => 'preferences demo2 demoyes mx-3'],
+                'Végétarien(ne)' => ['class' => 'preferences demo2 demoyes'],
+                'Fléxitarien(ne)' => ['class' => 'preferences demo2 demoyes']
+         ],
                 'multiple' => false,
                 'expanded' => true
             ])

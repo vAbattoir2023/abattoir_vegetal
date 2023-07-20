@@ -596,6 +596,7 @@ class ComposerStaticInitee1ac4a6d31877ba5ecdf3935eeedd16
         'App\\Controller\\UserController' => __DIR__ . '/../..' . '/src/Controller/UserController.php',
         'App\\Controller\\UserProfilController' => __DIR__ . '/../..' . '/src/Controller/UserProfilController.php',
         'App\\Document\\Group' => __DIR__ . '/../..' . '/src/Document/Group.php',
+        'App\\Document\\Reservation' => __DIR__ . '/../..' . '/src/Document/Reservation.php',
         'App\\Document\\User' => __DIR__ . '/../..' . '/src/Document/User.php',
         'App\\Form\\ApiUserType' => __DIR__ . '/../..' . '/src/Form/ApiUserType.php',
         'App\\Form\\LoginType' => __DIR__ . '/../..' . '/src/Form/LoginType.php',

@@ -15,6 +15,7 @@ return array(
     'App\\Controller\\UserController' => $baseDir . '/src/Controller/UserController.php',
     'App\\Controller\\UserProfilController' => $baseDir . '/src/Controller/UserProfilController.php',
     'App\\Document\\Group' => $baseDir . '/src/Document/Group.php',
+    'App\\Document\\Reservation' => $baseDir . '/src/Document/Reservation.php',
     'App\\Document\\User' => $baseDir . '/src/Document/User.php',
     'App\\Form\\ApiUserType' => $baseDir . '/src/Form/ApiUserType.php',
     'App\\Form\\LoginType' => $baseDir . '/src/Form/LoginType.php',
