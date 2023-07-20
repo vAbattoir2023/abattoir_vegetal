@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints\Date;
 class User
 {
     #[MongoDB\Id]
-    private string $id;
+    public string $id;
 
     #[MongoDB\Field(type: 'string')]
     public ?string $username = '';
