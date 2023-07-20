@@ -18,15 +18,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminController extends AbstractController
 {
     #[Route('/', name: 'app_admin_index', methods: ['GET'])]
-    public function index(UserRepository $userRepository, sessionInterface $sessionInterface): Response
+    public function index(UserRepository $userRepository): Response
     {
 
          // get id user from session
-        $admins = $sessionInterface->get('id');
-        $userRepository->findUserByRoles('ROLE_ADMIN');
+        $admins = $userRepository->findUserByRoles('ROLE_ADMIN');
           // if not user then redirect to app_register
           if (!$admins) {
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_register');
         } 
         return $this->render('admin/index.html.twig', [
             //on recupere la liste des administrateur en fonction du ROLE_ADMIN

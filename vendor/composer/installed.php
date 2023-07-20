@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
-        'reference' => '4e6999228449f2450c735da82c9ca45d6aa52e6c',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
+        'reference' => NULL,
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '4e6999228449f2450c735da82c9ca45d6aa52e6c',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'reference' => NULL,
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -146,9 +146,9 @@
             'dev_requirement' => false,
         ),
         'doctrine/mongodb-odm-bundle' => array(
-            'pretty_version' => '4.5.2',
-            'version' => '4.5.2.0',
-            'reference' => 'c525e2dc7527cc88a453be50126d5cdfcc53795d',
+            'pretty_version' => '4.5.3',
+            'version' => '4.5.3.0',
+            'reference' => '78849b4489e805e8e8ec3209de3ef936c5aa255f',
             'type' => 'symfony-bundle',
             'install_path' => __DIR__ . '/../doctrine/mongodb-odm-bundle',
             'aliases' => array(),
