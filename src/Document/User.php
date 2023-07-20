@@ -19,26 +19,25 @@ class User
     public ?string $username = '';
 
     #[MongoDB\Field(type: 'string')]
-    public string $email;
-
-    // REGISTRATION SLIDE 1
+    public string $email = '';
+// REGISTRATION SLIDE 1    
     #[MongoDB\Field(type: 'string')]
-    public string $password;
+    public string $password = '';
 
     #[MongoDB\Field(type: 'string')]
-    public ?string $city = null;
+    public ?string $city = '';
 
     #[MongoDB\Field(type: 'int')]
     public ?int $age = null;
 
     #[MongoDB\Field(type: 'string')]
-    public ?string $gender = null;
+    public ?string $gender = '';
 
     #[MongoDB\Field(type: 'string')]
-    public ?string $language = null;
+    public ?string $language = '';
 
     #[MongoDB\Field(type: 'string')]
-    public ?string $image = null;
+    public ?string $image = '';
 
     #[MongoDB\Field(type: 'string')]
     public ?string $job = null;
@@ -48,6 +47,14 @@ class User
 
     #[MongoDB\Field(type: 'string')]
     public ?string $diet = null;
+
+    // REGISTRATION API
+    #[MongoDB\Field(type: 'string')]
+    protected ?string $postalCode = null;
+
+    #[MongoDB\Field(type: 'string')]
+    protected ?string $flagIconUrl = null;
+
 
     // REGISTRATION SLIDE 2
     #[MongoDB\Field(type: 'string')]
