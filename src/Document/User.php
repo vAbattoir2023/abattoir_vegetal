@@ -8,7 +8,8 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 // use Doctrine\ODM\MongoDB\Mapping\Annotations\EmbedOne;
 use Symfony\Component\Validator\Constraints\Date;
 
-
+// A secondary class that is embedded in an array in our primary class
+#[MongoDB\EmbeddedDocument]
 #[MongoDB\Document]
 class User
 {
@@ -59,24 +60,29 @@ class User
     #[MongoDB\Field(type: 'collection')]
     public array $centerOfInterest = [];
 
-    #[MongoDB\Field(type: 'int')]
-    public ?string $groupNbr = null;
-    
     #[MongoDB\Field(type: 'collection')]
     private array $roles = [];
-
-
+    
+    
     #[MongoDB\Field(type: 'string')]
     protected ?string $postalCode = null;
+
+    // #[MongoDB\Field(type: 'int')]
+    // public ?string $groupNbr = null;
+    
     // #[MongoDB\Field(type: 'array')]
     // public array $Allergy;
 
     // #[MongoDB\Field(type: 'string')]
     // protected string $birthdate;
 
-
+ 
+    // ...
+    
+    
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    
+ 
     public function getId(): string
     {
         return $this->id;
