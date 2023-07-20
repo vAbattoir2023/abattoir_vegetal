@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+    <h1>Création de User en base de donnée</h1>
+
+ {% if form.vars.errors|length > 0 %}
+        <div class="alert alert-danger">
+            {# Afficher les messages d'erreur associés au champ "postalCode" #}
+            {{ form_errors(form.postalCode) }}
+        </div>
+    {% endif %}
+
+    <table>
+        <tbody>
+       
+            <tr>
+                <td>{{ apiuser.username }}</td>
+                <td>{{ apiuser.job }}</td>
+                <td>{{ apiuser.postalCode }}</td>
+                <td>{{ apiuser.diet }}</td>
+                {# <td>{{ user.allergy }}</td> #}
+                <td>{{ apiuser.description }}</td>
+                <td>{{ apiuser.centerOfInterest|join(', ') }}</td>
+            </tr>
+     
+        </tbody>
+    </table>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit">Enregistrer</button>
+    {{ form_end(form) }}
+
+{% endblock %}
+
+

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Register{% endblock %}
+
+
+{% block body %}
+<body class="example-wrapper">
+    {{ form_errors(FormRegister)}}
+        {{ form_start(FormRegister)}}
+            {{ form_row(FormRegister.email) }}
+            {{ form_row(FormRegister.password) }}
+            {# <label>re-password</label>
+            <input type='password' /> #}
+            {{ form_widget(FormRegister.submit) }}
+        {{ form_end(FormRegister)}}
+</body>
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}
