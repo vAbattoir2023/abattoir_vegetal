@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Document\Reservation;
+use App\Document\User;
 use App\Repository\UserRepository;
+use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -44,6 +46,7 @@ class GroupController extends AbstractController
             'allUsers' => $allUser
         ]);
     }
+
     #[Route('/getAllUsers', name: 'getAllUsers_app')]
     public function getAllUsers(UserRepository $userRepository): Response
     {
@@ -58,5 +61,45 @@ class GroupController extends AbstractController
         ]);
     }
 
-   
+    #[Route('/users-list/{filters}', name: 'app_get_users_list_from_filters')]
+    public function showUsersList(string $filters, DocumentManager $dm): Response{
+        $users = [];
+        $filters = explode('#', $filters);
+        
+        $iter = $dm->createQueryBuilder()
+            ->find(User::class)
+            ->field('centerOfInterest')->all($filters)
+            ->getQuery()
+            ->execute();
+
+        $users = [];
+        while($iter->valid()) {
+            $users[] = $iter->current();
+            $iter->next();
+        }
+
+        return $this->render('Group/usersList.html.twig',[
+            'users' => $users
+        ]);
+    }
+
+    #[Route('/users-list/', name: 'app_get_users_list_without_filters')]
+    public function showUsersListFull(DocumentManager $dm): Response{
+        $users = [];
+        
+        $iter = $dm->createQueryBuilder()
+            ->find(User::class)
+            ->getQuery()
+            ->execute();
+
+        $users = [];
+        while($iter->valid()) {
+            $users[] = $iter->current();
+            $iter->next();
+        }
+
+        return $this->render('Group/usersList.html.twig',[
+            'users' => $users
+        ]);
+    }
 }

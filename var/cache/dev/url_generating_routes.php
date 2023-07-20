@@ -17,6 +17,8 @@ return [
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     'app_select_group' => [[], ['_controller' => 'App\\Controller\\GroupController::select_group'], [], [['text', '/group/select_group']], [], [], []],
     'getAllUsers_app' => [[], ['_controller' => 'App\\Controller\\GroupController::getAllUsers'], [], [['text', '/group/getAllUsers']], [], [], []],
+    'app_get_users_list_from_filters' => [['filters'], ['_controller' => 'App\\Controller\\GroupController::showUsersList'], [], [['variable', '/', '[^/]++', 'filters', true], ['text', '/group/users-list']], [], [], []],
+    'app_get_users_list_without_filters' => [[], ['_controller' => 'App\\Controller\\GroupController::showUsersListFull'], [], [['text', '/group/users-list/']], [], [], []],
     'app_home' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/']], [], [], []],
     'app_login' => [[], ['_controller' => 'App\\Controller\\LoginController::login'], [], [['text', '/login']], [], [], []],
     'app_logout' => [[], ['_controller' => 'App\\Controller\\LoginController::logout'], [], [['text', '/logout']], [], [], []],
