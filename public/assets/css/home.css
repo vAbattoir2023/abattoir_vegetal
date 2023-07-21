@@ -1,0 +1,949 @@
+
+
+
+/* regles reponsive typo */
+/* Smallest devices */
+@media (max-width: 576px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+
+/* CSS COMMUN TYPOGRAPHIE */
+body {
+    font-family: 'Gasoek One', sans-serif;
+    font-family: 'Work Sans', sans-serif;
+    color: var(--foret-noire);
+    background-image: url(../img/background/BackgroundR.png);
+    background-repeat: no-repeat;
+    
+}
+
+
+h1,
+h2,
+h3 {
+    font-family: 'Gasoek One';
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+H2 {
+    font-size: 2.2rem;
+}
+
+h3 {
+    font-size: 1.6rem;
+}
+
+h4 {
+    font-family: 'Work Sans';
+    font-weight: 800;
+    font-size: 1.25rem;
+}
+
+p {
+    font-family: 'Work Sans';
+    font-weight: 400;
+    font-size: 1.25rem;
+}
+
+.pbig {
+    font-family: 'Work Sans';
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.psmall {
+    font-family: 'Work Sans';
+    font-weight: 400;
+    font-size: 1.125rem;
+}
+
+.psmallest {
+    font-family: 'Work Sans';
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.numeros {
+    font-family: 'Work Sans';
+    font-weight: 900;
+    font-size: 5rem;
+    text-transform: uppercase;
+}
+
+.titre-on {
+    font-family: 'Gasoek One';
+    font-size: 2.75rem;
+    text-transform: uppercase;
+}
+
+.titre-off {
+    font-family: 'Gasoek One';
+    font-size: 1.75rem;
+    text-transform: uppercase;
+}
+
+.date-big {
+    font-family: 'Work Sans';
+    font-weight: 800;
+    font-size: 2.813rem;
+}
+
+.date-big {
+    font-family: 'Work Sans';
+    font-weight: 800;
+    font-size: 1.875rem;
+}
+
+
+/* BOUTONS */
+
+.bouton {
+    display: flex;
+    width: 282px;
+    padding: 13px 93px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1.5px solid var(--foret-noire, #12231A);
+    background: var(--choux-fleur, #FBFAF4);
+    text-transform: uppercase;
+    border-radius: 0px;
+    font-family: 'Work Sans';
+    font-weight: 600;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+}
+
+.bouton-dark {
+    display: flex;
+    width: 282px;
+    padding: 13px 93px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1.5px solid var(--foret-noire, #12231A);
+    border-radius: 0px;
+    font-family: 'Work Sans';
+    font-weight: 600;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    color: var(--choux-fleur);
+    background-color: var(--foret-noire);
+}
+
+.bouton-small-transparent {
+    display: inline-flex;
+    padding: 13px 35px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1.5px solid var(--foret-noire, #12231A);
+    font-family: 'Work Sans';
+    font-weight: 600;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    background-color: transparent;
+}
+
+.bouton-small {
+    display: inline-flex;
+    padding: 13px 35px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1.5px solid var(--foret-noire, #12231A);
+    background: var(--choux-fleur, #FBFAF4);
+    font-family: 'Work Sans';
+    font-weight: 600;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+}
+
+.bouton-smallest-transparent {
+    width: 109px;
+    padding: 7px 25px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1.5px solid var(--foret-noire, #12231A);
+    font-family: 'Work Sans';
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    color: var(--foret-noire);
+    background-color: transparent;
+}
+
+.bouton-smallest-dark {
+    display: flex;
+    width: 109px;
+    padding: 7px 25px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1.5px solid var(--foret-noire, #12231A);
+    background: var(--foret-noire, #12231A);
+    font-family: 'Work Sans';
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--choux-fleur);
+    text-transform: uppercase;
+}
+
+.bouton-smallest-hug {
+    display: inline-flex;
+    padding: 7px 25px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1.5px solid var(--foret-noire, #12231A);
+    font-family: 'Work Sans';
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+}
+
+.bouton-smallest-white {
+    display: inline-flex;
+    padding: 7px 25px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1.5px solid var(--choux-fleur, #FBFAF4);
+    font-family: 'Work Sans';
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    color: var(--choux-fleur);
+}
+
+.bouton-small-white {
+    display: inline-flex;
+    padding: 13px 35px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1.5px solid var(--choux-fleur, #FBFAF4);
+    font-family: 'Work Sans';
+    font-weight: 600;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    color: var(--choux-fleur);
+}
+
+/* FIN DU CSS COMMUN */
+
+/* CSS HEADER */
+
+.header01 {
+    margin: 27px 174px;
+    background-color: white;
+    align-items: center;
+}
+
+.iconeheader {
+    background-color: var(--foret-noire);
+    padding: 8px;
+    border-radius: 100px;
+}
+
+
+.test {
+    padding-bottom: 0px;
+}
+
+.tag {
+    margin-bottom: 0 !important;
+}
+
+
+/* FIN DU CSS HEADER */
+
+/* CSS PROFIL */
+
+.algue-profil {
+    margin-left: 0px;
+    margin-top: 0px;
+}
+
+.marguerite-profil {
+    margin-left: 0px;
+    margin-top: 0px;
+
+}
+
+a {
+    text-decoration: none !important;
+}
+
+a h2 {
+    font-family: 'Gasoek One';
+    text-transform: uppercase;
+    color: var(--sapin);
+}
+
+a.active {
+    position: relative;
+}
+
+a.active h2 {
+    font-size: 2.813rem;
+    color: var(--foret-noire);
+}
+
+a.active::after {
+    content: "";
+    display: block;
+    width: 80%;
+    height: 16px;
+    background-color: var(--menthe-givree);
+    position: absolute;
+    right: -10px;
+    bottom: 10px;
+    z-index: -1;
+}
+
+a.link-jesuis.active::after {
+    background-color: var(--orange-sanguine);
+}
+
+a.link-jaime.active::after {
+    background-color: var(--framboise-ecrasee);
+}
+
+/* JE SUIS */
+
+
+#jesuis .border-card {
+    background: var(--choux-fleur, #FBFAF4);
+    /* style card je suis */
+    box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14);
+    margin-top: 12%;
+    padding-top: 7%;
+    padding-bottom: 7%;
+}
+
+#jesuis .titrecard {
+    margin-top: -10%;
+}
+
+#jesuis .form-check-input:checked {
+    background-color: var(--orange-sanguine);
+    border-color: var(--orange-sanguine);
+    box-shadow: none;
+}
+
+#jesuis .align-text {
+    width: max-content;
+}
+
+#jesuis .date-wrap {
+    display: inline-flex;
+    flex-wrap: nowrap !important;
+}
+
+#jesuis .flex-end {
+    padding-left: 20px;
+}
+
+#jesuis .stroke-input {
+    border: 0px;
+    border-bottom: 1.5px solid var(--foret-noire, #12231A);
+    width: 100%;
+    background-color: transparent;
+}
+
+#jesuis .stroke {
+    border: none;
+    border-bottom: 1.5px solid var(--foret-noire, #12231A);
+    width: 4%;
+    height: 1.3em;
+    background-color: transparent;
+    text-align: center;
+}
+
+#jesuis .stroke-year {
+    border: none;
+    border-bottom: 1.5px solid var(--foret-noire, #12231A);
+    width: 8%;
+    height: 1.3em;
+    background-color: transparent;
+    text-align: center;
+}
+
+/* 2ème partie card */
+
+#jesuis .maDiv {
+    vertical-align: top;
+    display: inline-block;
+}
+
+#jesuis .largeur {
+    width: 91px;
+    height: 91px;
+    border: 1.5px solid var(--foret-noire, #12231A);
+}
+
+#jesuis .size-btn {
+    display: flex;
+    width: max-content;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    font-size: 0.800rem;
+    padding: 1%;
+}
+
+#jesuis .wrap-bouton {
+    display: inline-flex;
+}
+
+#jesuis .position-bouton {
+    margin-left: 17%;
+    padding-top: 10%;
+
+}
+
+/* 3ème partie card */
+
+
+
+#jesuis .preferences {
+    display: none;
+    flex-wrap: wrap;
+}
+
+#jesuis .preferences+label {
+    display: inline-flex;
+    width: 19%;
+    height: auto;
+    padding: 1% 7%;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border: 1.5px solid var(--orange-sanguine, #FF6C27);
+    text-decoration: var(--foret-noire, #12231A);
+    background-color: transparent;
+}
+
+#jesuis .preferences.demoyes:hover+label {
+    background-color: transparent;
+    border: 3px solid var(--orange-sanguine, #FF6C27);
+}
+
+#jesuis .preferences.demoyes:checked+label {
+    background-color: transparent;
+    border: 3px solid var(--orange-sanguine, #FF6C27);
+}
+
+#jesuis .margin-radio+label {
+    margin-left: 1%;
+}
+
+#jesuis .jesuisbouton {
+    margin-top: 4%;
+    margin-left: 91.4%;
+}
+
+/* FIN DE JESUIS */
+
+/* J'AIME */
+
+#jaime .cardjaime {
+    background: var(--choux-fleur, #FBFAF4);
+    /* style card je suis */
+    box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14);
+    font-size: 20px;
+    padding-left: 122px;
+    padding-right: 122px;
+    padding-top: 69px;
+    padding-bottom: 69px;
+    margin-bottom: 50px;
+    margin-top: 9%;
+}
+
+#jaime .btn-outline-primary {
+    padding: 20px 31px !important;
+}
+
+#jaime .jaimechoice {
+    background-color: none;
+    border: 1.5px solid var(--framboise-ecrasee);
+    border-radius: 0px;
+    padding: 17px 10px !important;
+    color: var(--foret-noire);
+    font-size: 18px;
+    width: 175px;
+    margin-top: 25px;
+    margin-bottom: 49px;
+    padding-left: 32px;
+}
+
+#jaime input[type="checkbox"].btn-check:checked+label {
+    background-color: transparent !important;
+    border: 3px solid var(--framboise-ecrasee) !important;
+    font-weight: 600 !important;
+    color: var(--foret-noire);
+}
+
+#jaime .btn-check+.btn:hover {
+    color: var(--foret-noire);
+    background-color: transparent;
+    border-color: var(--framboise-ecrasee);
+}
+
+#jaime .stroke-input {
+    border: 0px;
+    border-bottom: 1.5px solid var(--foret-noire, #12231A);
+    width: 838px;
+    background-color: transparent;
+    margin-top: 30px;
+}
+
+
+#jaime .choice {
+    width: 100%;
+}
+
+
+#jaime .gouts {
+    margin: auto;
+}
+
+#jaime .jaimebouton {
+    margin-bottom: 50px;
+}
+
+/* FIN DE J'AIME */
+
+
+/* JEVEUX */
+
+#jeveuxV2 {
+    background-color: var(--choux-fleur);
+    box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14);
+    margin-top: 150px;
+    margin-bottom: 45px;
+    padding-top: 71px;
+    padding-bottom: 71px;
+}
+
+#jeveuxV2 .jeveuxchoice {
+    background-color: none;
+    border: 1.5px solid var(--menthe-givree);
+    border-radius: 0px;
+    color: var(--foret-noire);
+    font-size: 15px;
+}
+
+input[type="radio"].btn-check:checked+label {
+    background-color: transparent !important;
+    border: 3px solid var(--menthe-givree) !important;
+    font-weight: 600 !important;
+}
+
+
+#jeveuxV2 .iconchoice {
+    margin-bottom: 12px;
+}
+
+#jeveuxV2 .interchoice {
+    color: var(--foret-noire);
+    font-family: Work Sans;
+    font-size: 18px;
+}
+
+#jeveuxV2 .form-check-input:checked {
+    background-color: var(--menthe-givree);
+    border-color: var(--menthe-givree);
+    box-shadow: none;
+}
+
+/* CSS TAG */
+
+#jeveuxV2 .tag-menthe-small {
+    padding: 6px 15px;
+    align-items: center;
+    gap: 20px;
+    background: var(--menthe-givree, #47D4B3);
+    margin-bottom: 10px;
+}
+
+
+#jeveuxV2 .criteres {
+    border-bottom: 1.5px solid var(--foret-noire);
+}
+
+
+#jeveuxV2 .titrecard {
+    margin-top: -100px;
+}
+
+
+.jeveuxbouton {
+    margin-bottom: 50px;
+}
+
+/* FIN DE JEVEUX */
+
+
+/* MUR DE PROFIL */
+#mur .tout {
+    margin-top: 98px;
+}
+
+#mur .somanyfriends {
+    color: var(--orange-sanguine);
+    margin-top: -54px;
+    margin-bottom: 102px;
+    font-size: 2.9rem
+}
+
+#mur .somanyfriends::after {
+    content: "";
+    display: block;
+    width: 12.1875rem;
+    height: 0.5625rem;
+    background-color: var(--menthe-givree);
+    position: absolute;
+    right: -4rem;
+    bottom: 47rem;
+    z-index: -1;
+}
+
+#mur .filtres::before {
+    content: "";
+    display: block;
+    width: 12.1875rem;
+    height: 0.5625rem;
+    background-color: var(--framboise-ecrasee);
+    position: absolute;
+    top: 5.55rem;
+    left: 27.25rem;
+    z-index: -1;
+}
+
+/* ********
+   CSS CARD BIG 
+   *********** */
+
+
+.card-user .entiere {
+    box-shadow: 0px 0px 46px 0px rgba(0, 0, 0, 0.08);
+
+}
+
+/* haut de la carte */
+.card-user .img-user {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/* dessous de la carte */
+
+.card-user .description {
+    padding: 34px;
+    background-color: var(--choux-fleur);
+}
+
+/* tag Ã  droite */
+
+.card-user .tag-menthe-small {
+    padding: 6px 15px;
+    background: var(--menthe-givree, #47D4B3);
+}
+
+.card-user .tag-menthe {
+    gap: 11px;
+    flex-direction: column;
+}
+
+/* Gouts et citation */
+
+.card-user .tag-jaune-small {
+    padding: 6px 15px;
+    align-items: center;
+    background: var(--bouton-dor, #FFE800);
+}
+
+.card-user .citation {
+    font-style: italic;
+    text-align: center;
+    margin-top: 25px;
+}
+
+/* boutons */
+.card-user .a-montrer {
+    display: none;
+}
+
+/* CSS de la petite carte */
+
+.card-user.card-small .infos-contact,
+.card-user.card-small .jm,
+.card-user.card-small .jerfuse,
+.card-user.card-small .a-cacher {
+    display: none !important;
+}
+
+.card-user.card-small .tag-menthe-cache {
+    display: flex !important;
+}
+
+.card-user.card-small .tag-contact {
+    padding-top: 0;
+}
+
+.card-user.card-small .desc {
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.card-user.card-small .tag-prefs {
+    width: 100%;
+}
+
+.card-user.card-small .tag-prefs .flex-column {
+    flex-direction: row !important;
+}
+
+.card-user.card-small .a-montrer {
+    display: block;
+}
+
+.card-user.card-small .reduire {
+    padding: 7px 25px;
+    font-size: 0.875rem;
+}
+
+.card-user.card-small .citation {
+    font-size: 0.938rem;
+}
+
+.card-user.card-small .psmall {
+    font-size: 0.938rem;
+}
+
+.card-user.card-small .description {
+    padding: 20px;
+}
+
+.card-user.card-small .reduire {
+    color: var(--foret-noire);
+    text-decoration: none;
+    padding: 7px 10px;
+}
+
+/* css block des filtres */
+
+#mur .form-check-input {
+    width: 16px;
+    height: 16px;
+    border-radius: 0 !important;
+    border: solid 1.5px var(--foret-noire);
+    background-color: none;
+}
+
+#mur .conteneur {
+    background-color: var(--bouton-dor);
+    padding: 16px;
+}
+
+#mur .filtres .lisere {
+    border: solid 1.5px var(--framboise-ecrasee);
+    padding: 16px;
+}
+
+#mur .filtres h2 {
+    margin-bottom: 16px;
+    margin-top: 16px !important;
+}
+
+#mur .filtres h4 {
+    margin-bottom: 10px;
+}
+
+#mur .filtres .form-filtres {
+    margin-bottom: 16px;
+}
+
+#mur .filtres .form-check-input {
+    background-color: #ffffff10;
+}
+
+/* FIN DE MUR DE PROFIL */
+
+
+/* JE ME CONNECTE */
+
+.card-connexion {
+    display: flex;
+    background: var(--choux-fleur, #FBFAF4);
+    box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14);
+    width: 592px;
+    height: 651px;
+    
+    
+    
+}
+
+
+.titre-connexion {
+    position: relative;
+    top: 55px;
+    margin-left:10px;
+    
+}
+
+
+#card-connexion .card-liseret {
+    border: 1.5px solid var(--orange-sanguine);
+    width: 100%;
+    height: 94.5%;
+    margin: 3%;
+
+}
+
+#card-connexion .input-mt {
+    margin-top: 10%;
+}
+
+#card-connexion .size-connexion {
+    display: block;
+    text-align: left;
+    width: 454px;
+    height: 58px;
+    margin: auto;
+    background-color: var(--gris-inactif-champs);
+    text-transform: capitalize;    
+}
+
+#card-connexion .MDP-center {
+    display: block;
+    text-align: center;
+    color: var(--foret-noire);
+    text-decoration: underline;
+}
+
+#card-connexion .size-bouton {
+    display: block;
+    width: fit-content;
+    padding: 1% 5%;
+    margin: auto;
+    color: var(--foret-noire)   
+}
+
+
+/* FIN DE JE ME CONNECTE */
+
+/* JE M'INSCRIS */
+
+.card-inscription {
+    display: flex;
+    position: relative;
+    background: var(--choux-fleur, #FBFAF4);
+    box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14);
+    width: 592px;
+    height: 651px;
+}
+
+#card-inscription .titre-inscription{
+    position: absolute;
+    top: -31px;
+    right: 380px; 
+    color: var(--framboise-ecrasee);
+}
+
+
+
+#card-inscription .card-liseret {
+    border: 1.5px solid var(--orange-sanguine);
+    width: 100%;
+    height: 94.5%;
+    margin: 3%;
+
+}
+
+#card-inscription .input-mt {
+    margin-top: 8%;
+}
+
+#card-inscription .size-connexion {
+    display: block;
+    text-align: left;
+    width: 454px;
+    height: 58px;
+    margin: auto;
+    background-color: var(--gris-inactif-champs);
+    text-transform: capitalize;    
+}
+
+#card-inscription .MDP-center {
+    display: block;
+    text-align: center;
+    color: var(--foret-noire);
+    text-decoration: none;
+    
+}
+
+#card-inscription .MDP-center-2 {
+    color: var(--foret-noire);
+}
+
+#card-inscription .size-bouton {
+    display: block;
+    width: fit-content;
+    padding: 1% 5%;
+    margin: auto;   
+    color: var(--foret-noire);
+}
+
+
+
+
+/* FIN DE JE M'INSCRIS */

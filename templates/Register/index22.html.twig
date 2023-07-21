@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+{% block title  %}  {% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="{{asset('./assets/css/home.css')}}">{% endblock %}
+
+{% block body %}
+
+
+
+<section>
+        <div class="container  " >
+
+       
+            <div class="row">
+               
+                <div class="col-12 col-md-6">
+                 <h1 class="titre-connexion"  >
+                    s'inscrire</h1>
+                   
+                    <article id="card-connexion" class="card-connexion offset-6 ">
+                    
+                        
+                        <div class="card-liseret">
+                            <div>
+                                <div class="input-mt">
+                                    <label for="username"></label>
+                                    <input type="text" value="" placeholder="Votre adresse mail" id="username"
+                                        class="bouton-small-transparent size-connexion">
+                                    <label for="password"></label>
+                                    <input type="password" value="" placeholder="Mot de passe" id="password"
+                                        class="bouton-small-transparent size-connexion mt-2">
+                                    <label for="confirmpassword"></label>
+                                    <input type="password" value="" placeholder="Confirmez votre mot de passe"
+                                        id="confirmpassword" class="bouton-small-transparent size-connexion mt-2">
+                                    <p class="MDP-center psmallest  mt-4">
+                                        <input type="checkbox" id="CGU" name="CGU" unchecked>
+                                        <label for="CGU">J'ai lu et j'accepte les
+                                            <a href="#" class="MDP-center-2" style="text-decoration:none">conditions
+                                                générales d'utilisation
+                                            </a>
+                                        </label>
+
+                                    </p>
+                                </div>
+                                <div>
+                                    <a href="#"class="bouton-small-transparent size-bouton mt-4">
+                                        JE ME CONNECTE
+                                    </a>
+                                        
+                                    
+                                    <a href="#"                          class="bouton-small-transparent size-bouton mt-4 mb-3">
+                                        JE ME CONNECTE AVEC GOOGLE
+                                    </a>
+                                    <a href="#" class="MDP-center mt-4 psmallest">
+                                        Se connecter
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </article>
+                    <a href="">
+                        
+                    </a>
+                </div>
+             </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ {% endblock %}
