@@ -98,11 +98,18 @@ class GroupController extends AbstractController
         $user = new User();
 
         $listId = explode('#', $lisId); // get center of interest from url
-        dd($listId);
+
+        //test
+        $listId=[
+            '64b7fa3260ce6c146604e5a2',
+            '64b7fa3260ce6c146604e5a2',
+            '64b7fa3260ce6c146604e5a2',
+        ];
 
         $status = 'waiting'; // status
 
-        $username = $user->getUserName(); // username
+
+        $authors = 'Anthony';
 
         $creationGroup = date("Y-m-d"); // date de creation
 
@@ -123,15 +130,23 @@ class GroupController extends AbstractController
 
         //list user invité
         $userList;
-        if(isset($userList) && isset($creationGroup) && isset($username) && isset($status)){
+        if(isset($userList) && isset($creationGroup) && isset($authors) && isset($status)){
 
             //set data document
+            $group->setUser($userList);
+            $group->setAuthors($authors);
+            $group->setStatus($status);
+            $group->setCreateGroup($creationGroup);
+            $group->setReservationDate($creationGroup);
+
+            
+
             
             // GroupRepository->save();
         }
 
-        return $this->render('Group/usersList.html.twig',[
+        // return $this->render('Group/usersList.html.twig',[
 
-        ]);
+        // ]);
     }
 }

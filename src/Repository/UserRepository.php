@@ -19,11 +19,13 @@ class UserRepository extends ServiceDocumentRepository
         parent::__construct($registery, User::class);
     }
 
-    public function save($user): void
+    public function save(User $user): void
     {
             $this->getDocumentManager()->persist($user);
             $this->getDocumentManager()->flush();
     }
+
+ 
 
     public function findAllFromBdd() : array 
     {
@@ -41,6 +43,8 @@ class UserRepository extends ServiceDocumentRepository
         $this->getDocumentManager()->flush();
     }
     
+ 
+
     public function setUserDocument($id) {
         
         $this->getDocumentManager()->getRepository(User::class)->find($id);
@@ -61,6 +65,13 @@ class UserRepository extends ServiceDocumentRepository
             return $this->findOneBy([ 'id' => $id]);
         }
     }
+    public function findUserByRoles(string $roles) : object
+    {
+        if($roles){
+            return $this->findOneBy([ 'roles' => $roles]);
+        }
+    }
+
     public function checkUserRegister(string $emailCheck) : bool
     {
         $check = $this->findOneBy(['email'=>$emailCheck]);

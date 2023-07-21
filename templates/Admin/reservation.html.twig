@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+    <h1>Gestion administrateur</h1>
+
+     <a href="{{ path('app_admin_index')}}" class="btn btn-primary">Liste des utilisateurs</a>
+     <a href="{{ path('app_api_user')}}" class="btn btn-warning">Api</a>
+
+
+    <h4>Liste des utilisateurs </h4>
+    <table class="table bg-light">
+        <thead>
+            <tr>
+                <th>Autheur</th>
+                <th>Email</th>
+                <th>Date</th>
+                <th>Groupe</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+      
+        </tbody>
+    </table>
+
+{% endblock %}

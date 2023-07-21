@@ -8,7 +8,8 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 // use Doctrine\ODM\MongoDB\Mapping\Annotations\EmbedOne;
 use Symfony\Component\Validator\Constraints\Date;
 
-
+// A secondary class that is embedded in an array in our primary class
+// #[MongoDB\EmbeddedDocument]
 #[MongoDB\Document]
 class User
 {
@@ -32,12 +33,20 @@ class User
     #[MongoDB\Field(type: 'int')]
     public ?int $age = null;
 
+
+    // #[MongoDB\Field(type: 'date')]
+    // protected ?Date $dateOfBirth = null;
+
+
     #[MongoDB\Field(type: 'string')]
     public ?string $gender = null;
 
     #[MongoDB\Field(type: 'string')]
     public ?string $language = null;
-
+    
+    #[MongoDB\Field(type: 'string')]
+    protected ?string $flagIconUrl = '';
+    
     #[MongoDB\Field(type: 'string')]
     public ?string $image = null;
 
@@ -57,20 +66,29 @@ class User
     #[MongoDB\Field(type: 'collection')]
     public array $centerOfInterest = [];
 
-    #[MongoDB\Field(type: 'int')]
-    public ?string $groupNbr = null;
+    #[MongoDB\Field(type: 'collection')]
+    private array $roles = [];
+    
+    
+    #[MongoDB\Field(type: 'string')]
+    protected ?string $postalCode = null;
 
+    // #[MongoDB\Field(type: 'int')]
+    // public ?string $groupNbr = null;
+    
     // #[MongoDB\Field(type: 'array')]
     // public array $Allergy;
 
     // #[MongoDB\Field(type: 'string')]
     // protected string $birthdate;
 
-    // #[MongoDB\Field(type: 'string')]
-    // private string $role;
-
+ 
+    // ...
+    
+    
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    
+ 
     public function getId(): string
     {
         return $this->id;
@@ -143,6 +161,19 @@ class User
 
         return $this;
     }
+
+    //BIRTHDAY
+    // public function getDateOfBirth(): ?DateTime
+    // {
+    //     return $this->dateOfBirth;
+    // }
+
+    // public function setDateOfBirth(?DateTime $dateOfBirth): User
+    // {
+    //     $this->dateOfBirth = $dateOfBirth;
+    //     return $this;
+    // }
+
 
     public function getGender(): string
     {
@@ -255,8 +286,148 @@ class User
         return $this;
     }
 
-    //BIRTHDAY
-    // public function getBirthday(): DateTime
+    
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles); 
+       }
+
+    
+    public function setRoles(array $roles): User
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+
+    // FLAG 
+    public function getFlagIconUrl(): string
+    {
+        
+        return $this->flagIconUrl;
+    }
+
+    public function setFlagIconUrl(string $flagIconUrl): User
+    {
+        $this->flagIconUrl = $flagIconUrl;
+
+        return $this;
+    }
+
+    //POSTAL CODE 
+    public function getPostalCode(): ?string
+    {
+        return $this->postalCode;
+    }
+
+    public function setPostalCode(?string $postalCode): User
+    {
+        $this->postalCode = $postalCode;
+        return $this;
+    }
+
+    // //AGE
+    // public function getAge(): int
+    // {
+        
+        //     return $this->age;
+    // }
+
+    
+    // public function setAge(int $age): User
+    // {
+    //     $this->age = $age;
+
+    //     return $this;
+    // }
+
+    // //GENDER
+    // public function getGender(): string
+    // {
+        
+    //     return $this->gender;
+    // }
+
+    
+    // public function setGender(string $gender): User
+    // {
+    //     $this->gender = $gender;
+
+    //     return $this;
+    // }
+
+
+    // //IMAGE
+    // public function getImage(): string
+    // {
+        
+    //     return $this->image;
+    // }
+
+    
+    // public function setImage(string $image): User
+    // {
+    //     $this->image = $image;
+
+    //     return $this;
+    // }
+
+    // //BIRTHDAY
+    // public function getBirthday(): date
+    // {
+        
+    //     return $this->birthdate;
+    // }
+
+    
+    // public function setBirthday(date $birthdate): User
+    // {
+    //     $this->birthdate = $birthdate;
+
+    //     return $this;
+    // }
+
+    // //JOB
+    // public function getJob(): string
+    // {
+        
+    //     return $this->job;
+    // }
+
+    
+    // public function setJob(string $job): User
+    // {
+    //     $this->job = $job;
+
+    //     return $this;
+    // }
+
+    // //DESCRIPTION
+    // public function getDescription(): string
+    // {
+        
+    //     return $this->description;
+    // }
+
+    
+    // public function setDescription(string $description): User
+    // {
+    //     $this->description = $description;
+
+    //     return $this;
+    // }
+
+    // //CITY
+    // public function getCity(): string
     // {
         
     //     return DateTime::createFromFormat('Y-m-d', $this->birthdate);
