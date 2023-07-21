@@ -273,6 +273,8 @@ border: 3px solid var(--orange-sanguine, #FF6C27);
  #jaime .titrecard {
     margin-top: -13%;
  }
+
+
  
  /* FIN DE J'AIME 2*/
 
@@ -309,17 +311,10 @@ a h2 {
     box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14);
     margin-top: 150px;
     margin-bottom: 45px;
-    padding-top : 71px;
-    padding-bottom: 71px;
+    padding-top :71px;
+    padding-bottom: 50px;
 }
 
-#jeveuxV2 .jeveuxchoice {
-    background-color: none; 
-    border: 1.5px solid var(--menthe-givree);
-    border-radius: 0px;
-    color: var(--foret-noire);
-    font-size: 15px;
-} 
 
 input[type="radio"].btn-check:checked + label {
     background-color: transparent !important;
@@ -329,7 +324,7 @@ input[type="radio"].btn-check:checked + label {
 
 
 #jeveuxV2 .iconchoice {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 #jeveuxV2 .interchoice {
