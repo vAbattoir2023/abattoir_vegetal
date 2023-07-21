@@ -18,13 +18,15 @@
                                     <h2>filtres</h2>
                                     <form action="#" method="post">
                                         <div class="form-filtres">
-                                            <div class="d-flex">
+                                            <div class="d-flex"> 
 											<fieldset>
 											<h4 class="me-auto">centre d'intérêts -</h4>
 											{% for formData in dataFormCheckbox %}
 												<div>
-													<input class="form-check-input"  name="{{ formData }}" type="checkbox" id="checkbox_{{ formData }}" name="checkbox_{{ formData }}" data-filter="{{formData}}" class="filter-checkbox">
-													<label for="checkbox_{{ formData }}  class="form-check-label me-auto"">{{ formData }}</label>
+													{# <input class="form-check-input"  name="{{ formData }}" type="checkbox" id="checkbox_{{ formData }}" name="checkbox_{{ formData }}" data-filter="{{formData}}" class="filter-checkbox">
+													<label for="checkbox_{{ formData }}  class="form-check-label me-auto"">{{ formData }}</label> #}
+                                                    <input  name="{{ formData }}" type="checkbox" id="checkbox_{{ formData }}" name="checkbox_{{ formData }}" data-filter="{{formData}}" class="filter-checkbox">
+							                            <label  class="form-check-label me-auto label_checkbox" for="checkbox_{{ formData }}">{{ formData }}</label>
 												</div>
 											{% endfor %}
 											</fieldset>
@@ -36,43 +38,33 @@
                     </div>
 
                     <div class="col-md-9 defile-card d-flex flex-wrap row g-0">
-                        <div class="gauche offset-2 col-12 col-md-4">
+                    <div class="container ms-5 ">
+                    
+                            <h1 class="somanyfriends ms-5">so many friends...</h1>
+                      
+                       <div class="container">
+  
+                         <div id="users_list"></div>
+                        </div>
+
+                         			{# 		 #}
+{# 
+                    <div class="col-md-9 defile-card d-flex flex-wrap row g-0">
+                        {# <div class="gauche offset-2 col-12 col-md-4">
 															<div id="users_list"></div>		
 
                            
 
+                        </div> #}
+
+                        {# <div class="droite  offset-2 col-12 col-md-4 position-relative"> #}
+
                         </div>
-
-                        <div class="droite  offset-2 col-12 col-md-4 position-relative">
-                            <h1 class="somanyfriends">so many friends...</h1>
-
-                         			<div id="users_list"></div>		
-
                         </div>
 
                     </div>
                 </div> 
             </div>
-<div class="container">
-	<div class="row">
-		<div class="col-6">
-			<form action="">
-				<fieldset>
-					<legend>centre d'intérêts</legend>
-					{% for formData in dataFormCheckbox %}
-						<div>
-							<input name="{{ formData }}" type="checkbox" id="checkbox_{{ formData }}" name="checkbox_{{ formData }}" data-filter="{{formData}}" class="filter-checkbox">
-							<label for="checkbox_{{ formData }}">{{ formData }}</label>
-						</div>
-					{% endfor %}
-				</fieldset>
-				<button>recherche</button>
-			</form>
-		</div>
-		<div class="col-6">
-		</div>
-	</div>
-</div>
 	
 
 {% endblock %}
