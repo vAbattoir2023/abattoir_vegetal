@@ -130,9 +130,7 @@ class UserType extends AbstractType
          // New fields for Step 2: J'AIME
         ->add('centerOfInterest',  ChoiceType::class, [
             'label' => 'Mes centres d\'interets ...',
-            'attr' => [
-                'class' => 'form-control'
-            ],
+           
             'choices'  => [
                 
                 //
@@ -150,18 +148,18 @@ class UserType extends AbstractType
                 'Activités sociales' => 'Activités sociales'
             ],
             'choice_attr' => [
-                'Animaux' => ['class' => 'btn btn-outline-danger'],
-                'Environnement' => ['class' => 'btn btn-outline-danger'],
-                'Jeux vidéos' => ['class' => 'btn btn-outline-danger'],
-                'Art et Culture' => ['class' => 'btn btn-outline-danger'],
-                'Sport' => ['class' => 'btn btn-outline-danger'],
-                'Voyage' => ['class' => 'btn btn-outline-danger'],
-                'Musique' => ['class' => 'btn btn-outline-danger'],
-                'Danse' => ['class' => 'btn btn-outline-danger'],
-                'Sciences' => ['class' => 'btn btn-outline-danger'],
-                'Bien-etre' => ['class' => 'btn btn-outline-danger'],
-                'Food' => ['class' => 'btn btn-outline-danger'],
-                'Activités sociales' => ['class' => 'btn btn-outline-danger'],           
+                'Animaux' => ['class' => 'preferences demo2 demoyes'],
+                'Environnement' => ['class' => 'preferences demo2 demoyes'],
+                'Jeux vidéos' => ['class' => 'preferences demo2 demoyes'],
+                'Art et Culture' => ['class' => 'preferences demo2 demoyes'],
+                'Sport' => ['class' => 'preferences demo2 demoyes'],
+                'Voyage' => ['class' => 'preferences demo2 demoyes'],
+                'Musique' => ['class' => 'preferences demo2 demoyes'],
+                'Danse' => ['class' => 'preferences demo2 demoyes'],
+                'Sciences' => ['class' => 'preferences demo2 demoyes'],
+                'Bien-etre' => ['class' => 'preferences demo2 demoyes'],
+                'Food' => ['class' => 'preferences demo2 demoyes'],
+                'Activités sociales' => ['class' => 'preferences demo2 demoyes'],           
              ],
             'multiple' => true,
             'expanded' => true
@@ -169,10 +167,7 @@ class UserType extends AbstractType
 
         ->add('centerOfInterestPerso', TextType::class, [
             'label' => 'J\'en ai d\'autres ...',
-            'attr' => [
-                'class' => 'form-control',
-            ]
-        ])
+                 ])
         ->add('submit', SubmitType::class);
 
     }

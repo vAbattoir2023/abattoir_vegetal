@@ -11,8 +11,7 @@
     <fieldset class="active">
     <div id="jesuis" class="container ">
    <div class=" row">
-        <div class="col-md-12"> </div>
-        <div class="col-9 offset-3">
+        <div class="">
           <article class="psmall border-card">
           
             <div class="row"> <!-- TITRE CARD FORMULAIRE -->
@@ -128,6 +127,74 @@
 
 {# fin card je suis 1 #}
 
+
+{# J'aime partie 2 #}
+    <fieldset class="mt-5" style="display: none;">
+<div class="container" id="jaime">
+          
+                    <div class="cardjaime ">
+                        
+                        <div class="row"> <!-- TITRE CARD FORMULAIRE -->
+                            <div
+                                class="col-11 d-flex justify-content-end titrecard z-3 position-relative align-items-baseline">
+                                <a class="me-4 link-jesuis" href="#">
+                                    <h2>JE SUIS</h2>
+                                </a>
+                                <a class="me-4 link-jaime active" href="#">
+                                    <h2>J'AIME</h2>
+                                </a>
+                                <a href="#" class="link-jeveux">
+                                    <h2>JE VEUX</h2>
+                                </a>
+                            </div>
+    
+                        </div>
+    
+    
+                            <div class="mb-3 ">
+                             {{ form_label(UserForm.centerOfInterest) }}
+                            </div>
+    
+                               <div class="d-flex column">
+                             {{ form_widget(UserForm.centerOfInterest) }}
+                            </div>
+    
+                               
+                        <div class="mt-3">
+    
+                        {{ form_label(UserForm.centerOfInterestPerso) }}
+                          {{ form_widget(UserForm.centerOfInterestPerso, {'attr': {'class': 'stroke-input '}}) }}
+    
+                         </div>
+                            </div>
+    
+    
+                    </div>
+                </div>
+
+                <div class="row g0">
+                    <div class="offset-md-3 col-md-9 d-flex justify-content-between jaimebouton">
+                        <a class="bouton-smallest-transparent" onclick="previousStep()">Retour</a>
+                        <a class="bouton-smallest-transparent" onclick="nextStep()">Suivant</a>
+                    </div>
+              
+        </div>
+        </div>
+        </div>
+</fieldset>
+
+        {# Fin de j'aime partie 2  #}
+
+    <fieldset style="display: none;">
+
+        {# je veux Etape 3 #}
+        <div class="container" >
+           JE VEUX
+                           <button type="button" class="btn btn-primary" onclick="previousStep()">Retour</button>
+{{ form_widget(UserForm.submit) }}
+        </div>
+</fieldset>
+        {# Fin de je veux Etape 3   #}
 
 
 {{ form_end(UserForm) }}
