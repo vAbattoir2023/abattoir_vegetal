@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitaac781c34b3b5acf5d9d7d0eae0a7769
+class ComposerStaticInite572a2573c046abdd475322bdeffbe42
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -597,6 +597,7 @@ class ComposerStaticInitaac781c34b3b5acf5d9d7d0eae0a7769
         'App\\Document\\Group' => __DIR__ . '/../..' . '/src/Document/Group.php',
         'App\\Document\\Reservation' => __DIR__ . '/../..' . '/src/Document/Reservation.php',
         'App\\Document\\User' => __DIR__ . '/../..' . '/src/Document/User.php',
+        'App\\Document\\UserInvitation' => __DIR__ . '/../..' . '/src/Document/UserInvitation.php',
         'App\\Form\\ApiUserType' => __DIR__ . '/../..' . '/src/Form/ApiUserType.php',
         'App\\Form\\LoginType' => __DIR__ . '/../..' . '/src/Form/LoginType.php',
         'App\\Form\\RegisterType' => __DIR__ . '/../..' . '/src/Form/RegisterType.php',
@@ -6714,9 +6715,9 @@ class ComposerStaticInitaac781c34b3b5acf5d9d7d0eae0a7769
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitaac781c34b3b5acf5d9d7d0eae0a7769::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitaac781c34b3b5acf5d9d7d0eae0a7769::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitaac781c34b3b5acf5d9d7d0eae0a7769::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInite572a2573c046abdd475322bdeffbe42::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInite572a2573c046abdd475322bdeffbe42::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInite572a2573c046abdd475322bdeffbe42::$classMap;
 
         }, null, ClassLoader::class);
     }

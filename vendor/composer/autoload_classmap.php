@@ -17,6 +17,7 @@ return array(
     'App\\Document\\Group' => $baseDir . '/src/Document/Group.php',
     'App\\Document\\Reservation' => $baseDir . '/src/Document/Reservation.php',
     'App\\Document\\User' => $baseDir . '/src/Document/User.php',
+    'App\\Document\\UserInvitation' => $baseDir . '/src/Document/UserInvitation.php',
     'App\\Form\\ApiUserType' => $baseDir . '/src/Form/ApiUserType.php',
     'App\\Form\\LoginType' => $baseDir . '/src/Form/LoginType.php',
     'App\\Form\\RegisterType' => $baseDir . '/src/Form/RegisterType.php',
