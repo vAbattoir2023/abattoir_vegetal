@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<body class="example-wrapper">
+    {{ form_errors(Form)}}
+        {{ form_start(Form)}}
+            {{ form_row(Form.email) }}
+            {{ form_row(Form.password) }}
+            {{ form_widget(Form.submit) }}
+        {{ form_end(Form)}}
+</body>
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}
