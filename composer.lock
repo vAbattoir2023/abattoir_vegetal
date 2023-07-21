@@ -1248,7 +1248,6 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineMongoDBBundle/zipball/c525e2dc7527cc88a453be50126d5cdfcc53795d",
                 "url": "https://api.github.com/repos/doctrine/DoctrineMongoDBBundle/zipball/78849b4489e805e8e8ec3209de3ef936c5aa255f",
                 "reference": "78849b4489e805e8e8ec3209de3ef936c5aa255f",
                 "shasum": ""
