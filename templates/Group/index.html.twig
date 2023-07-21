@@ -6,33 +6,29 @@
 {% block stylesheets %}<link rel="stylesheet" href="{{asset('./assets/css/reservation.css')}}">{% endblock %}
 
 {% block body %}
-	<form action="{{ path('app_select_group') }}" action="POST">
-		<fieldset>
-			<legend>centre d'intérêts</legend>
-			{% for formData in dataFormCheckbox %}
-				<div>
-					<input name="{{ formData }}" type="checkbox" id="checkbox_{{ formData }}" name="checkbox_{{ formData }}" class="filter-checkbox">
-					<label for="checkbox_{{ formData }}">{{ formData }}</label>
-				</div>
-			{% endfor %}
-		</fieldset>
-		<input type='submit'/>
-	</form>
-		<div id="checkbox_users"></div>
-			<div class='users'>
-			{% for user in allUsers %}
-				<div class='user'>
-					<figure>
-						<img src="{{ user.image }}" alt=""/>
-					</figure>
-					<article>
-						<span>{{ user.username }}</span>
-						<span>{{ user.age }}</span>
-						<span>{{ user.city }}</span>
-					</article>
-				</div>
-			{% endfor %}
-			</div>
+<div class="container">
+	<div class="row">
+		<div class="col-6">
+			<form action="">
+				<fieldset>
+					<legend>centre d'intérêts</legend>
+					{% for formData in dataFormCheckbox %}
+						<div>
+							<input name="{{ formData }}" type="checkbox" id="checkbox_{{ formData }}" name="checkbox_{{ formData }}" data-filter="{{formData}}" class="filter-checkbox">
+							<label for="checkbox_{{ formData }}">{{ formData }}</label>
+						</div>
+					{% endfor %}
+				</fieldset>
+				<button>recherche</button>
+			</form>
+		</div>
+		<div class="col-6">
+			<div id="users_list"></div>	
+		</div>
+	</div>
+</div>
+	
+
 {% endblock %}
 
 {% block javascripts %}<script src="{{ asset('./assets/js/createGroup.js')}}"></script> {% endblock %}
