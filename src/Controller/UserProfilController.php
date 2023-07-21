@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
-
 #[Route('/user_profil')]
 class UserProfilController extends AbstractController
 {
@@ -43,7 +42,29 @@ class UserProfilController extends AbstractController
 
         // if data from form is submitted and valid
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
+            $selectedLanguages = $form->get('language')->getData();
+            $flagIconUrl = [];
+            if (is_array($selectedLanguages)) {
+                // Définir la valeur de la propriété "language"
+                $user->setLanguage($selectedLanguages);    
+                // URL de base vers l'API des icônes des drapeaux
+                $flagIconsBaseUrl = 'https://www.countryflagicons.com/SHINY/32/';
+                
+                foreach ($selectedLanguages as $languageCode) {
+                    // SI le drapeau correspondant existe dans le tableau $languageFlags
+                    if (isset($languageCode)) {
+                        $flagIconUrl[] = $flagIconsBaseUrl . $languageCode . '.png';
+                    } else {
+                        // SINON le drapeau pour une langue n'est pas disponible, vous pouvez définir une URL générique ou une URL par défaut
+                        $flagIconUrl[] = $flagIconsBaseUrl . 'unknown.png';
+                    }
+                }
+                $user->setFlagIconUrl($flagIconUrl);
+            } else {
+                echo 'false';
+            }
+
             //update the data to user in database
             $userRepository->save($userFromBdd, true);
             // Redirect to success page
@@ -69,7 +90,6 @@ class UserProfilController extends AbstractController
 
         // get document user from database
         $userFromBdd = $userRepository->findUserById($idSession);
-        
 
         return $this->render('user_profil/profil.html.twig', [
             // send data user from database

@@ -1,5 +1,8 @@
 <ul>
     {% for user in users %}
-        <li>{{user.username}}</li>
+        <li id="allIdUser">
+        <p>{{user.username}}</p>
+        <button id="idUser" value="{{user.id}}">aa</button>
+        </li>
     {% endfor %}
 </ul>
