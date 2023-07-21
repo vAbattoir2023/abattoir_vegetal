@@ -1,100 +1,66 @@
-{# 
- <article class="card-user ">
-  {% for user in users %}
-                                <div class="entiere">
-                                    <div>
-                                    <img class="img-user float-start" src="{{ user.image }}" alt="">
-
-                                    </div>
-
-                                    <div class="description">
-
-                                        <!-- LIGNE NOM ET DRAPEAUX -->
-                                        <div class="row">
-                                            <div class="col-8">
-                                                <p class="pbold tag">   {{user.username}} </p>
-                                            </div>
-                                            <div class="col-4 d-flex justify-content-end">
-
-						                    {% for languageCode in user.language %}
-                                            <img src="https://www.countryflagicons.com/SHINY/32/{{ languageCode }}.png" alt="{{ languageCode }} ">
-                                                {% endfor %}
-
-                                            </div>
-                                        </div> 
-
-                                       <div class="row">
-
-                                            <div class="col-8 infos-contact">
-                                                <p class="tag mt-3"><img
-                                                        src="../assets/img/infos-contact/icones/infos-contact/localisation.svg" alt="">  {{user.city}}
-                                                </p>
-                                                <p class="tag mt-2"><img
-                                                        src="../assets/img/infos-contact/icones/infos-contact/anniversaire.svg" alt=""> {{user.age}}</p>
-                                                <p class="tag mt-2"><img
-                                                        src="../assets/img/infos-contact/icones/infos-contact/selection-genre-off.svg" alt="">
-                                                    {{user.gender}}</p>
-                                            </div>
-
-                                            <div class="col-4 tag-prefs" id="myDIV1">
-                                                <div class="tag-menthe d-flex flex-column align-items-end mt-3">
-                                                    <p class="tag-menthe-small psmall tag"  >
-                                                    {{user.centerOfInterestPerso}}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-
-                                            <div class="col jm"id="myDIV2">
-
-                                                <p class="pbold mt-4">J'aime...</p>
-                                                <div class="col d-flex align-items-start">
-                                                    <p class="tag-jaune-small psmall tag" >
-                                                    	{% for interest in user.centerOfInterest %}
-                                                        <p class="border ms-3 p-3 border-danger">{{ interest }}</p>
-                                                    {% endfor %}   
-                                                    </p>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                        <p class="col-12 citation">« {{user.description}} »</p>
-
-                                        <div class="row">
-
-                                            <div class="col jerfuse" id="myDIV3">
-
-                                                <p class="pbold mt-4 ">Je refuse... ( a implémenter )</p>
-                                                <div class="col d-flex align-items-start">
-                                                    <p class="tag-jaune-small psmall tag me-3">Racistes</p>
-                                                    <p class="tag-jaune-small psmall tag me-3">Vegans</p>
-                                                    <p class="tag-jaune-small psmall tag me-3">Jeux d'argent</p>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                        <div class="col-12 boutons d-flex mt-5">
-                                         <button class="bg-transparent btn btn-outline-secondary" onclick="myFunction()">
-                                         <i class="fa-regular fa-eye "></i>
-                                         </button>
-                                          
-                                            <a href="#" class="ms-2 bouton-small-transparent reduire">gimme this friend</a>
-                                        </div>
-                                    </div>
-                                </div> 
-                             {% endfor %}
-                            </article> #}
-
-
-                          
-<ul>
+  
     {% for user in users %}
-        <li>{{user.username}}</li>
-    {% endfor %}
-    
-</ul> 
+  <!-- User Card -->
+    <div class="card mt-5 mb-5 card-user" style="width: 25rem;">
+        <img class="card-img-top" src="{{ user.image }}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{ user.username }}</h5>
+            <!-- Display user's language flags -->
+            {% for languageCode in user.language %}
+                <img src="https://www.countryflagicons.com/SHINY/32/{{ languageCode }}.png" alt="{{ languageCode }}">
+            {% endfor %}
+
+            <div class="row">
+                <div class="col-8 infos-contact">
+                    <p class="tag mt-3"><i class="fa-solid fa-location-dot"></i> {{ user.city }}</p>
+                    <p class="tag mt-2"><i class="fa-solid fa-cake-candles"></i> {{ user.age }}</p>
+                    <p class="tag mt-2"><i class="fa-solid fa-transgender"></i> {{ user.gender }}</p>
+                </div>
+
+                <div class="col-4 tag-prefs">
+                    <div class="tag-menthe d-flex flex-column align-items-end mt-3">
+                        <p class="tag-menthe-small psmall tag">{{ user.centerOfInterestPerso }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion -->
+            <div class="accordion mb-4" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                           <h4>  +  DE DETAILS </h4> 
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="row">
+                                <p class="pbold mt-4">J'aime...</p>
+                                <div class="col d-flex align-items-start">
+                                    <!-- Display user's interests -->
+                                    {% for interest in user.centerOfInterest %}
+                                        <p class="border ms-3 p-3 border-danger">{{ interest }}</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <p class="card-text">
+                                <p class="col-12 citation">« {{ user.description }} »</p>
+                            </p>
+                            <p class="pbold mt-4">Je refuse...</p>
+                            <div class="col d-flex align-items-start">
+                                <p class="tag-jaune-small psmall tag me-3">Racistes</p>
+                                <p class="tag-jaune-small psmall tag me-3">Vegans</p>
+                                <p class="tag-jaune-small psmall tag me-3">Jeux d'argent</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Accordion -->
+            <a href="#" class="ms-2 bouton-small-transparent reduire">gimme this friend</a>
+        </div>
+    </div>
+    <!-- End User Card -->
+     {% endfor %}
+ 
+ 

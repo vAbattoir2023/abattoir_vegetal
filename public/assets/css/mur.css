@@ -157,13 +157,13 @@
     }
     
     #mur .conteneur{
-        background-color: var(--bouton-dor);
         padding: 16px;
     }
     
     #mur .filtres .lisere{
         border: solid 1.5px var(--framboise-ecrasee);
         padding: 16px;
+        background-color: var(--bouton-dor);
     }
     
     #mur .filtres h2{

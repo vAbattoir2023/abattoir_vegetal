@@ -194,9 +194,141 @@
 
         {# je veux Etape 3 #}
         <div class="container" >
-           JE VEUX
-                           <button type="button" class="btn btn-primary" onclick="previousStep()">Retour</button>
-{{ form_widget(UserForm.submit) }}
+
+   <fieldset class="mt-5" style="display: none;">
+   <div class="container" >
+        {# je veux Etape 3 #}
+        <div class="container" style="margin-top: -150px" >
+            <section> <!-- PAGE ENTIERE -->
+            <div class="container justify-content-center" > <!-- MARGES -->
+                <div class="row ">
+
+                <article class="psmall border-card">
+                    <div id="jeveuxV2" class="col-lg-9 jeveux"> <!-- CARD FORMULAIRE -->
+                        <div class="row"> <!-- TITRE CARD FORMULAIRE -->
+                            <div class="col-11 d-flex justify-content-end titrecard z-3 position-relative align-items-baseline">
+                                <a class="me-4 link-jesuis" href="#">
+                                    <h2>JE SUIS</h2>
+                                </a>
+                                <a class="me-4 link-jaime" href="#" >
+                                    <h2>J'AIME</h2>
+                                </a>
+                                <a href="#" class="link-jeveux active">
+                                    <h2>JE VEUX</h2>
+                                </a>
+                            </div>
+            
+                        </div>
+
+                        <div class="row">
+                            <div class="offset-md-1 col-md-4"> <!-- PARTIE GAUCHE -->
+                                <p>Je veux festoyer...</p>
+                                <div class="row mb-5">
+                                    <div class="col-6  mb-2"> <!-- PARTIE GAUCHE - PART GAUCHE -->
+                                        <input type="radio" name="nombre" value="unepersonne" class="btn-check"
+                                            id="btn-check-outlined-1" autocomplete="off">
+                                        <label class="btn btn-outline-primary jeveuxchoice  w-100 h-100" for="btn-check-outlined-1">
+                                            <img class="iconchoice"
+                                                src="Assets/icones/selection/selection-teteatete-off.svg" alt="">
+                                            <br>Avec 1 personne</label>
+                                    </div>
+
+                                    <div class="col-6  mb-2"> <!-- PARTIE GAUCHE - PART DROITE -->
+                                        <input type="radio" name="nombre" value="groupe" class="btn-check"
+                                            id="btn-check-outlined-2" autocomplete="off">
+                                        <label class="btn btn-outline-primary jeveuxchoice w-100 h-100 pt-3"
+                                            for="btn-check-outlined-2">
+                                            <img class="iconchoice"
+                                                src="Assets/icones/selection/selection-groupe-off.svg" alt=""> <br>
+                                            En groupe</label>
+                                    </div>
+
+                                </div>
+
+                                <p>Je préfère festoyer avec...</p>
+                                <div class="row mb-5">
+                                    <div class="col-4 col-md-6 mb-2"> <!-- PARTIE GAUCHE - PART GAUCHE -->
+                                        <input type="radio" name="genre" value="femme" class="btn-check"
+                                            id="btn-check-outlined-3" autocomplete="off">
+                                        <label class="btn btn-outline-primary jeveuxchoice  w-100 h-100" for="btn-check-outlined-3">
+                                            <img class="iconchoice"
+                                                src="Assets/icones/selection/selection-female-off.svg" alt="">
+                                            <br>La gente<br>féminine</label>
+                                    </div>
+
+                                    <div class="col-4 col-md-6  mb-2"> <!-- PARTIE GAUCHE - PART DROITE -->
+                                        <input type="radio" name="genre" value="homme" class="btn-check"
+                                            id="btn-check-outlined-4" autocomplete="off">
+                                        <label class="btn btn-outline-primary jeveuxchoice  w-100 h-100" for="btn-check-outlined-4">
+                                            <img class="iconchoice" src="Assets/icones/selection/selection-male-off.svg"
+                                                alt=""> <br>La gente masculine</label>
+                                    </div>
+
+                                    <div class="col-4 col-md-6  mb-2"> <!-- PARTIE GAUCHE - PART GAUCHE -->
+                                        <input type="radio" name="genre" value="indifferent" class="btn-check"
+                                            id="btn-check-outlined-5" autocomplete="off">
+                                        <label class="btn btn-outline-primary jeveuxchoice w-100 h-100 py-3"
+                                            for="btn-check-outlined-5">
+                                            <img class="iconchoice"
+                                                src="Assets/icones/selection/selection-malefemale-off.svg" alt="">
+                                            <br>Les deux</label>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="offset-md-1 col-md-5"> <!-- PARTIE DROITE -->
+
+                                <p>Je veux une expérience internationale</p>
+                                <div class="d-flex mb-5">
+                                    <div class="form-check me-4">
+                                        <input class="form-check-input" type="radio" name="international" id="oui"
+                                            value="oui">
+                                        <label class="form-check-label interchoice" for="oui">
+                                            Oui
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="international" id="non"
+                                            value="non">
+                                        <label class="form-check-label interchoice" for="non">
+                                            Non
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <p>Je veux une limite d'âge</p>
+                                <img src="Assets/icones/jauge.svg" alt="">
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="offset-md-1 col-md-10 criteres"> <!-- PARTIE EN BAS -->
+                                <p>J'ai des critères rédhibitoires sur ces sujets...</p>
+                                <div class="tag-menthe-small d-inline-block">
+                                    <p class="tag-menthe-small psmall tag">Politique <img
+                                            src="Assets/icones/croix/croix-noire-small.svg" alt=""></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-0">
+                    <div class=" col-md-9 d-flex justify-content-between jaimebouton">
+                    
+        <button type="button" class="btn btn-primary" onclick="previousStep()">Retour</button>
+                       
+                    </div>
+                </div>
+              </div>     
+
+            </div>
+        </section>
+        {# Fin de je veux Etape 3   #}
+        {{ form_widget(UserForm.submit) }}
         </div>
 </fieldset>
         {# Fin de je veux Etape 3   #}

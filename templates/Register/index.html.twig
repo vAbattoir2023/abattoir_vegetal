@@ -1,20 +1,65 @@
 {% extends 'base.html.twig' %}
+{% block title  %} Register User {% endblock %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{asset('./assets/css/auth.css')}}">{% endblock %}
 
 {% block body %}
-<body class="example-wrapper">
     {% if alert|length >1  %}
         <div class='alert alert-danger'>{{ alert }}</div>
     {% endif  %}
 
+     <div class="container  " >
+
+       
+            <div class="row">
+               
+                <div class="col-12 col-md-6">
+                 <h1 class="titre-connexion"  >
+                    s'inscrire</h1>
+                   
+                    <article id="card-connexion" class="card-connexion offset-6 ">
+                    
+                        
+                        <div class="card-liseret">
+                            <div>
+
     {{ form_errors(FormRegister)}}
         {{ form_start(FormRegister)}}
-            {{ form_row(FormRegister.email) }}
-            {{ form_row(FormRegister.password) }}
-            {# <label>re-password</label>
-            <input type='password' /> #}
-            {{ form_widget(FormRegister.submit) }}
+                                <div class="input-mt">
+                                    {{ form_label(FormRegister.email) }}
+                                     {{ form_widget(FormRegister.email, {'attr': {'class': 'bouton-small-transparent size-connexion'}}) }}
+
+                                    {{ form_row(FormRegister.password, {'attr': {'class': 'bouton-small-transparent size-connexion mt-2'}}) }}
+
+                                    <p class="MDP-center psmallest  mt-4">
+                                       {{ form_widget(FormRegister.terms) }}
+                                      {{ form_label(FormRegister.terms) }}
+
+                                            <a href="#" class="MDP-center-2" style="text-decoration:none">conditions
+                                                générales d'utilisation
+                                            </a>
+                                    </p>
+                                </div>
+                                <div>
+                                   {{ form_widget(FormRegister.submit) }}
+                                        
+                                    <a href="{{ path('app_login') }}"     class="bouton-small-transparent size-bouton mt-4 mb-3">
+                                        VOUS AVEZ DEJA UN COMPTE ?
+                                    </a> 
+                                    <a href="#" class="MDP-center mt-4 psmallest">
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </article>
+                 
+                </div>
+             </div>
+        </div>
+          
         {{ form_end(FormRegister)}}
-</body>
+
 {% endblock %}
 
 {% block javascript %}
