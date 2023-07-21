@@ -48,10 +48,15 @@
                           </div>
                         </div>
                       </div>
-                      <div class="mb-1 align-text"> <!-- je suis né inputx3-->
+                      {# <div class="mb-1 align-text"> <!-- je suis né inputx3-->
                       {{ form_label(UserForm.dateOfBirth) }} 
                        <div class="date-wrap">
                       {{ form_widget(UserForm.dateOfBirth, {'attr': {'class': 'stroke-input mb-3'}}) }} 
+                        </div> #}
+                      <div class="mb-1 align-text"> <!-- je suis né inputx3-->
+                      {{ form_label(UserForm.age) }} 
+                       <div class="date-wrap">
+                      {{ form_widget(UserForm.age, {'attr': {'class': 'stroke-input mb-3'}}) }} 
                         </div>
                       </div>
                       <div class="mb-4 date-wrap align-text"> <!-- je suis bouton radio -->

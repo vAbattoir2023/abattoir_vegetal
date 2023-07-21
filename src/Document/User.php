@@ -29,12 +29,12 @@ class User
     #[MongoDB\Field(type: 'string')]
     public ?string $city = null;
 
-    // #[MongoDB\Field(type: 'int')]
-    // public ?int $age = null;
+    #[MongoDB\Field(type: 'int')]
+    public ?int $age = null;
 
 
-    #[MongoDB\Field(type: 'date')]
-    protected ?DateTime $dateOfBirth = null;
+    // #[MongoDB\Field(type: 'date')]
+    // protected ?Date $dateOfBirth = null;
 
 
     #[MongoDB\Field(type: 'string')]
@@ -120,30 +120,30 @@ class User
         return $this;
     }
     
-    // public function getAge(): int
-    // {
-        
-    //     return $this->age;
-    // }
-
-    // public function setAge(int $age): User
-    // {
-    //     $this->age = $age;
-
-    //     return $this;
-    // }
-
-    //BIRTHDAY
-    public function getDateOfBirth(): ?DateTime
+    public function getAge(): int
     {
-        return $this->dateOfBirth;
+        
+        return $this->age;
     }
 
-    public function setDateOfBirth(?DateTime $dateOfBirth): User
+    public function setAge(int $age): User
     {
-        $this->dateOfBirth = $dateOfBirth;
+        $this->age = $age;
+
         return $this;
     }
+
+    //BIRTHDAY
+    // public function getDateOfBirth(): ?DateTime
+    // {
+    //     return $this->dateOfBirth;
+    // }
+
+    // public function setDateOfBirth(?DateTime $dateOfBirth): User
+    // {
+    //     $this->dateOfBirth = $dateOfBirth;
+    //     return $this;
+    // }
 
 
     public function getGender(): string

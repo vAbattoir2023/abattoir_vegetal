@@ -49,18 +49,18 @@ class UserType extends AbstractType
                 ]
             ])
 
-            ->add('dateOfBirth', DateType::class, [
-                'label' => 'Je suis né(e) le ...',
-                'widget' => 'single_text',
-                // this is actually the default format for single_text
-                'format' => 'yyyy-MM-dd',
-            ])
-
-            // ->add('age', IntegerType::class, [
-            //     'attr' => [
-            //         'class' => 'form-control'
-            //     ]
+            // ->add('dateOfBirth', DateType::class, [
+            //     'label' => 'Je suis né(e) le ...',
+            //     'widget' => 'single_text',
+            //     // this is actually the default format for single_text
+            //     'format' => 'yyyy-MM-dd',
             // ])
+
+            ->add('age', IntegerType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
 
             ->add('gender', ChoiceType::class, [
                 'label' => 'Je suis ...',
@@ -177,6 +177,7 @@ class UserType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+           
         ]);
     }
 } 

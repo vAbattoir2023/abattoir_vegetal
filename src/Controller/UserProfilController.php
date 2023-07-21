@@ -21,6 +21,7 @@ class UserProfilController extends AbstractController
     {
 
         $user  = new User();
+        
         // get id user from session
         $idSession = $sessionInterface->get('id');
 
