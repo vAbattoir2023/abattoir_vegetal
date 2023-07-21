@@ -24,7 +24,7 @@ return [
     'app_select_group' => [[], ['_controller' => 'App\\Controller\\GroupController::select_group'], [], [['text', '/group/select_group']], [], [], []],
     'app_get_users_list_from_filters' => [['filters'], ['_controller' => 'App\\Controller\\GroupController::showUsersList'], [], [['variable', '/', '[^/]++', 'filters', true], ['text', '/group/users-list']], [], [], []],
     'app_get_users_list_without_filters' => [[], ['_controller' => 'App\\Controller\\GroupController::showUsersListFull'], [], [['text', '/group/users-list/']], [], [], []],
-    'app_add_group' => [['lisId'], ['_controller' => 'App\\Controller\\GroupController::addGroup'], [], [['variable', '/', '[^/]++', 'lisId', true], ['text', '/group/add']], [], [], []],
+    'app_add_group' => [[], ['_controller' => 'App\\Controller\\GroupController::addGroup'], [], [['text', '/group/add']], [], [], []],
     'app_home' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/']], [], [], []],
     'app_login' => [[], ['_controller' => 'App\\Controller\\LoginController::login'], [], [['text', '/login']], [], [], []],
     'app_logout' => [[], ['_controller' => 'App\\Controller\\LoginController::logout'], [], [['text', '/logout']], [], [], []],

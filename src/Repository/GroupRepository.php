@@ -9,7 +9,7 @@ use Doctrine\Bundle\MongoDBBundle\Repository\ServiceDocumentRepository;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\ODM\MongoDB\Repository\DocumentRepository;
 
-class UserRepository extends ServiceDocumentRepository 
+class GroupRepository extends ServiceDocumentRepository 
 {
 
     // bool $flush = false, DocumentManager $dm
@@ -19,7 +19,7 @@ class UserRepository extends ServiceDocumentRepository
         parent::__construct($registery, Group::class);
     }
 
-    public function save(Group $group): void
+    public function save(Group $group): void 
     {
             $this->getDocumentManager()->persist($group);
             $this->getDocumentManager()->flush();

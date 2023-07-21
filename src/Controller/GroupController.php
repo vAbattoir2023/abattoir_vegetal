@@ -3,10 +3,15 @@
 namespace App\Controller;
 
 use App\Document\Group;
+use App\Document\Guest;
 use App\Document\Reservation;
 use App\Document\User;
+use App\Document\UserInvitation;
+use App\Repository\GroupRepository;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\DocumentManager;
+use stdClass;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -16,6 +21,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/group')]
 class GroupController extends AbstractController
 {
+
     #[Route('/select_group', name: 'app_select_group')]
     public function select_group(UserRepository $userRepository): Response
     {
@@ -90,63 +96,39 @@ class GroupController extends AbstractController
         ]);
     }
 
-    #[Route('/add/{lisId}', name: 'app_add_group')]
-    public function addGroup(DocumentManager $dm, string $lisId): Response{
+    #[Route('/add', name: 'app_add_group')]
+    public function addGroup(DocumentManager $dm, GroupRepository $groupRepository, UserRepository $userRepository): void{
 
         
         $group = new Group();
+        $guest = new Guest();
         $user = new User();
 
-        $listId = explode('#', $lisId); // get center of interest from url
+        // $listId = explode('#', $lisId); // get center of interest from url
 
         //test
         $listId=[
             '64b7fa3260ce6c146604e5a2',
-            '64b7fa3260ce6c146604e5a2',
-            '64b7fa3260ce6c146604e5a2',
+            '64b7fa6860ce6c146604e5a3',
+            '64b7fa8260ce6c146604e5a4',
         ];
 
         $status = 'waiting'; // status
-
+        $group->setStatus($status);
 
         $authors = 'Anthony';
+        $group->setAuthors($authors);
 
         $creationGroup = date("Y-m-d"); // date de creation
-
-        //reservation date selectionné
-        // from input
-
-        // id user from add to objt { user:'id', invitation:false  }
-
-        $usersInviation = [];
-
-        
-        $userList = [];
+        $group->setCreateGroup($creationGroup);
+        $group->setReservationDate($creationGroup);
 
         foreach($listId as $id){
-            $userList['user'] = $id;
-            $userList['invitations'] = false;
+            $guest->setGuest($userRepository->findUserById($id));
+            $guest->setInvitation(false);
+            $group->addGuest($guest);
         }
-
-        //list user invité
-        $userList;
-        if(isset($userList) && isset($creationGroup) && isset($authors) && isset($status)){
-
-            //set data document
-            $group->setUser($userList);
-            $group->setAuthors($authors);
-            $group->setStatus($status);
-            $group->setCreateGroup($creationGroup);
-            $group->setReservationDate($creationGroup);
-
-            
-
-            
-            // GroupRepository->save();
-        }
-
-        // return $this->render('Group/usersList.html.twig',[
-
-        // ]);
+            $groupRepository->save($group);
+            dd('good',$group);
     }
 }

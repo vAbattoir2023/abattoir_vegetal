@@ -588,6 +588,7 @@ class ComposerStaticInitaac781c34b3b5acf5d9d7d0eae0a7769
     public static $classMap = array (
         'App\\Controller\\AdminController' => __DIR__ . '/../..' . '/src/Controller/AdminController.php',
         'App\\Controller\\ApiUserController' => __DIR__ . '/../..' . '/src/Controller/ApiUserController.php',
+        'App\\Controller\\GroupController' => __DIR__ . '/../..' . '/src/Controller/GroupController.php',
         'App\\Controller\\HomeController' => __DIR__ . '/../..' . '/src/Controller/HomeController.php',
         'App\\Controller\\LoginController' => __DIR__ . '/../..' . '/src/Controller/LoginController.php',
         'App\\Controller\\RegisterController' => __DIR__ . '/../..' . '/src/Controller/RegisterController.php',
@@ -602,6 +603,7 @@ class ComposerStaticInitaac781c34b3b5acf5d9d7d0eae0a7769
         'App\\Form\\UserType' => __DIR__ . '/../..' . '/src/Form/UserType.php',
         'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
         'App\\Repository\\ApiRepository' => __DIR__ . '/../..' . '/src/Repository/ApiRepository.php',
+        'App\\Repository\\GroupRepository' => __DIR__ . '/../..' . '/src/Repository/GroupRepository.php',
         'App\\Repository\\UserRepository' => __DIR__ . '/../..' . '/src/Repository/UserRepository.php',
         'Collator' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/Resources/stubs/Collator.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',

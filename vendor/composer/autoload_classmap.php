@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Controller\\AdminController' => $baseDir . '/src/Controller/AdminController.php',
     'App\\Controller\\ApiUserController' => $baseDir . '/src/Controller/ApiUserController.php',
+    'App\\Controller\\GroupController' => $baseDir . '/src/Controller/GroupController.php',
     'App\\Controller\\HomeController' => $baseDir . '/src/Controller/HomeController.php',
     'App\\Controller\\LoginController' => $baseDir . '/src/Controller/LoginController.php',
     'App\\Controller\\RegisterController' => $baseDir . '/src/Controller/RegisterController.php',
@@ -22,6 +23,7 @@ return array(
     'App\\Form\\UserType' => $baseDir . '/src/Form/UserType.php',
     'App\\Kernel' => $baseDir . '/src/Kernel.php',
     'App\\Repository\\ApiRepository' => $baseDir . '/src/Repository/ApiRepository.php',
+    'App\\Repository\\GroupRepository' => $baseDir . '/src/Repository/GroupRepository.php',
     'App\\Repository\\UserRepository' => $baseDir . '/src/Repository/UserRepository.php',
     'Collator' => $vendorDir . '/symfony/polyfill-intl-icu/Resources/stubs/Collator.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',

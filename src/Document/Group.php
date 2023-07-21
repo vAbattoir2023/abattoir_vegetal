@@ -7,7 +7,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 use Symfony\Component\Validator\Constraints\Date;
 use Doctrine\Common\Collections\ArrayCollection;
 use App\Document\User;
-
+use Doctrine\Common\Collections\Collection;
 
 #[MongoDB\Document]
 class Group
@@ -26,15 +26,20 @@ class Group
     
     #[MongoDB\Field(type: "date")]
     private ?string $reservationDate = null;
-        
-    #[MongoDB\EmbedMany(targetDocument: User::class)]
-    private ?array $User = null;
   
     #[MongoDB\Field(type: 'string')]
     protected string $username;
 
-    #[MongoDB\ReferenceOne(targetDocument: User::class)]
-    private ?User $user = null; // Référence à l'utilisateur
+    #[MongoDB\EmbedMany(targetDocument: Guest::class)]
+    private ArrayCollection $guests;
+
+
+    public function __construct()
+    {
+        $this->guests = new ArrayCollection();
+    }
+    // #[MongoDB\ReferenceOne(targetDocument: User::class)]
+    // private ?User $user = null; // Référence à l'utilisateur
 
     
     //ID
@@ -94,14 +99,61 @@ class Group
 
     //Jointure user
     
-    public function getUser(): ?array
+    public function getGuests(): ?array
     {
-        return $this->User;
+        return $this->guests;
     }
 
-    public function setUser(?array $User): void
+    public function setGuests(?ArrayCollection $guests): void
     {
-        $this->User = $User;
+        $this->guests = $guests;
+    }
+
+    public function addGuest(Guest $guest): Group
+    {
+        $this->guests->add($guest);
+        return $this;
+    }
+
+    public function removeGuest(Guest $guest): Group
+    {
+        $this->guests->removeElement($guest);
+        return $this;
     }
   
+}
+
+#[MongoDB\EmbeddedDocument]
+class Guest
+{
+    // An example of a string type property
+    #[MongoDB\ReferenceOne(targetDocument: User::class)]
+    private ?User $guest = null;
+
+    // An example of a string type property
+    #[MongoDB\Field(type: "bool")]
+    private bool $invitation = false;
+
+    // The getters and setters for each of our properties
+    public function getGuest(): ?User
+    {
+        return $this->guest;
+    }
+
+    public function setGuest(?User $guest): Guest
+    {
+        $this->guest = $guest;
+        return $this;
+    }
+
+    public function getInvitation(): bool
+    {
+        return $this->invitation;
+    }
+
+    public function setInvitation(bool $invitation): Guest
+    {
+        $this->invitation = $invitation;
+        return $this;
+    }
 }
