@@ -8,7 +8,51 @@
 {% endblock %}
 
 {% block body %}
+   <div id="mur" class="container tout">
 
+                <div class="row">
+                    <div class="col-12 col-md-3 conteneur filtres">
+                        <article class="lisere">
+                            <div class="row">
+                                <div class="col">
+                                    <h2>filtres</h2>
+                                    <form action="#" method="post">
+                                        <div class="form-filtres">
+                                            <div class="d-flex">
+											<fieldset>
+											<h4 class="me-auto">centre d'intérêts -</h4>
+											{% for formData in dataFormCheckbox %}
+												<div>
+													<input class="form-check-input"  name="{{ formData }}" type="checkbox" id="checkbox_{{ formData }}" name="checkbox_{{ formData }}" data-filter="{{formData}}" class="filter-checkbox">
+													<label for="checkbox_{{ formData }}  class="form-check-label me-auto"">{{ formData }}</label>
+												</div>
+											{% endfor %}
+											</fieldset>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-9 defile-card d-flex flex-wrap row g-0">
+                        <div class="gauche offset-2 col-12 col-md-4">
+															<div id="users_list"></div>		
+
+                           
+
+                        </div>
+
+                        <div class="droite  offset-2 col-12 col-md-4 position-relative">
+                            <h1 class="somanyfriends">so many friends...</h1>
+
+                         			<div id="users_list"></div>		
+
+                        </div>
+
+                    </div>
+                </div> 
+            </div>
 <div class="container">
 	<div class="row">
 		<div class="col-6">
@@ -26,7 +70,6 @@
 			</form>
 		</div>
 		<div class="col-6">
-			<div id="users_list"></div>		
 		</div>
 	</div>
 </div>

@@ -49,9 +49,9 @@ a.link-jaime.active h2::after{
     width: 750px;
     margin-top: 60px;
     padding: 30px 0;   
-    background-image: url("../img/background/registerBackground.png");
+    /* background-image: url("../img/background/registerBackground.png");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
 }
 
 #jesuis .titrecard {
