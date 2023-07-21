@@ -6,7 +6,7 @@
 {% block stylesheets %}<link rel="stylesheet" href="{{asset('./assets/css/reservation.css')}}">{% endblock %}
 
 {% block body %}
-	<form action="">
+	<form action="{{ path('app_select_group') }}" action="POST">
 		<fieldset>
 			<legend>centre d'intérêts</legend>
 			{% for formData in dataFormCheckbox %}
@@ -16,10 +16,22 @@
 				</div>
 			{% endfor %}
 		</fieldset>
-		<button>recherche</button>
+		<input type='submit'/>
 	</form>
 		<div id="checkbox_users"></div>
 			<div class='users'>
+			{% for user in allUsers %}
+				<div class='user'>
+					<figure>
+						<img src="{{ user.image }}" alt=""/>
+					</figure>
+					<article>
+						<span>{{ user.username }}</span>
+						<span>{{ user.age }}</span>
+						<span>{{ user.city }}</span>
+					</article>
+				</div>
+			{% endfor %}
 			</div>
 {% endblock %}
 

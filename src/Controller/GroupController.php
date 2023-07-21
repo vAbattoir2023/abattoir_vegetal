@@ -31,13 +31,34 @@ class GroupController extends AbstractController
             'Activités sociales',
             'Jeux vidéos',
         ];
-        // centerOfInterest from user
+        
         // all useres from bdd
         $allUser = $userRepository->findAllFromBdd();
+        $allUserFilter = [];
 
-        // echo '<pre>';
-        // var_dump($allUser);
-        // echo '</pre>';
+        // if data from post input then get it
+        if($_GET){
+            // store center of interest checked in arrayChoiceCeckbox
+            $arrayChoiceCeckbox = $_GET;
+
+            // get key of arrayChoiceCeckbox ( it's the values dz )
+            $values = array_keys($arrayChoiceCeckbox);
+                
+            foreach($allUser as $key => $user) {
+                
+
+                if(in_array($user->centerOfInterest, $values)){
+                    echo '<pre>';
+                    var_dump($values);
+                    echo '</>';
+                }else{
+                }
+            } 
+            echo '<pre>';
+            var_dump($allUserFilter);
+            echo '</>';
+        }
+        
 
         return $this->render('Group/index.html.twig',[
             'dataFormCheckbox' => $dataCheckbox,

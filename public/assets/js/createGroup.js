@@ -1,33 +1,36 @@
-// function getCheck(){
-//   document.addEventListener('DOMContentLoaded', (e) => {
+  document.addEventListener('DOMContentLoaded', (e) => {
 
-//     const myCheckboxes = document.querySelectorAll(".filter-checkbox");
-//     const filters = [];
+    const myCheckboxes = document.querySelectorAll(".filter-checkbox");
+    const filters = [];
 
-//     myCheckboxes.forEach(checkBox => {
-//       filters[checkBox.id] = checkBox.checked;
+    myCheckboxes.forEach(checkBox => {
+      filters[checkBox.id] = checkBox.checked;
     
-//         checkBox.addEventListener('click', (e) => {
-//             filters[e.currentTarget.id] = e.target.checked;
+        checkBox.addEventListener('click', (e) => {
+            filters[e.currentTarget.id] = e.target.checked;
+            arrar = [];
+            const [key, value] = Object.entries(filters);
 
-//             // console.log('FILTER',filters);
-//             // fonction de raffraichissement de la liste des suggestions
-//             refreshUsersSuggestion();
-//         }); 
-//     });
+            if(key[1]==true){
+              console.log(key);
+            }
 
-//     if (Object.keys(filters).length > 0) {
-//       refreshUsersSuggestion();
-//     }
-//     return filters
-// });
-// }
-// console.log('CHECK',getCheck());
+            // fonction de raffraichissement de la liste des suggestions
+            refreshUsersSuggestion();
+        }); 
+    });
 
-// function refreshUsersSuggestion(){
-//   console.log('Raffraichissement de la liste des suggestions');
-//   //todo inner html
-// }
+    if (Object.keys(filters).length > 0) {
+      refreshUsersSuggestion();
+    }
+    return filters 
+});
+
+
+function refreshUsersSuggestion(){
+  console.log('Raffraichissement de la liste des suggestions');
+  //todo inner html
+}
 
 
 // //Définition des utilisateurs avec leurs centres d'intérêt
@@ -82,16 +85,26 @@
   // // Affichage des résultats
    //console.log(resultats);
 
-  const usersBox = document.querySelector('.users');
+  // const usersBox = document.querySelector('.users');
+  function getData(data){
 
-    function getData(){
+      // const filterInterstTrue = get.filter((data)=> {
+      //   const [key, value] = Object.entries(data)[0];
+      //   return value === true;
+      // })
+      // console.log(filterInterstTrue);
+      // return data
+  }
+  console.log(get);
+
      fetch('http://127.0.0.1:8000/group/getAllUsers')
       .then(response=>response.json())
       .then(data=>{ 
-        return data
+        getData(data)
       })
-    }
 
-// console.log(getData);
+console.log(getData);
 
 // const filter = allUsers.filter((data)=> data.username == 'redzebra463');
+
+console.log('test');
