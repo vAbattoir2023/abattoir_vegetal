@@ -1,102 +1,190 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Profil user{% endblock %}
+{% block title %}Profil user
+{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="{{asset('./assets/css/profil.css')}}">{% endblock %}
 
 {% block body %}
-    <h1>mes informations </h1>
+	{# <h1>mes informations</h1> #}
 
-    <div class="container mt-5 d-flex justify-content-end">
+{# CARD JE SUIS 1 #}
+    <fieldset class="active">
+    <div id="jesuis" class="container ">
+   <div class=" row">
+        <div class="">
+          <article class="psmall border-card">
+          
+            <div class="row"> <!-- TITRE CARD FORMULAIRE -->
+              <div class="col-11 d-flex justify-content-end titrecard z-3 position-relative align-items-baseline">
+                <a class="me-4 link-jesuis active" href="#">
+                  <h2>JE SUIS</h2>
+                </a>
+                <a class="me-4 link-jaime" href="#">
+                  <h2>J'AIME</h2>
+                </a>
+                <a href="#" class="link-jeveux">
+                  <h2>JE VEUX</h2>
+                </a>
+              </div>
 
-        <div class="row box8">
-            <div class="mx-auto mb-4 d-flex flex-row justify-content-end">
-                <h2 class="fw-bold mx-3">JE SUIS</h2>
-                <h2 class="fw-bold mx-3">J'AIME</h2>
-                <h2 class="fw-bold mx-3">JE VEUX</h2>
             </div>
 
-           
- <fieldset class="active">
-
-        <div class="row "  >
-            <div class="col-md-6">
-                <!-- Partie Gauche -->
-                <div class="form-group">
-                    {{ user.username }}
+            
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12 ">
+                  <div class="align-top maDiv col-4 offset-1"> <!-- 1ère partie card -->
+                    <div>
+                      <div class="mb-3"> <!-- je m'appelle et j'habite input -->
+                        <div>
+                          <div>                    
+                          <label>Je m'appelle ...</label>
+                          </div>
+                          <p class="stroke-input mb-3">	{{ user.username }}</p>
+                          <div>
+                            <label>J'habite ...</label>
+                          <p class="stroke-input mb-3">	{{ user.city }}</p>
+                          </div>
+                        </div>
+                      </div>
+                      {# <div class="mb-1 align-text"> <!-- je suis né inputx3-->
+                      {{ form_label(UserForm.dateOfBirth) }} 
+                       <div class="date-wrap">
+                      {{ form_widget(UserForm.dateOfBirth, {'attr': {'class': 'stroke-input mb-3'}}) }} 
+                        </div> #}
+                      <div class="mb-1 align-text"> <!-- je suis né inputx3-->
+                            <label>Age</label>
+                       <div class="date-wrap">
+                          <p class="stroke-input mb-3">	{{ user.age }}</p>
+                        </div>
+                      </div>
+                      <div class="mb-4 date-wrap align-text"> <!-- je suis bouton radio -->
+                        <label >Je suis ...</label>                                 
+                        <div class="flex-end">{{ user.gender }}</div>
+                      </div>
+                      <div> <!-- Je parle input -->
+                        <div>
+							 <label >Je parle ...</label>  
+                        </div>
+						     <img src="https://www.countryflagicons.com/SHINY/32/{{ user.language }}.png"</img>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="align-top maDiv col-4 offset-2"> <!-- 2ème partie card -->
+                    <div class="wrap-bouton mb-1"> <!-- img + btn -->
+                      <div>
+							<img class="img-thumbnail  float-start" src="{{ user.image }}" alt="">
+                      </div>
+                    
+                    </div>
+                    <div class="mb-3"> <!-- input 2ème partie card -->
+                      <div>
+                        <label >Je boss dans ...</label>
+                        </div>
+                        <p class="stroke-input mb-3">	{{ user.job }}</p>
+                     <div class="mt-3">
+                      <label >Je me décris en quelque mot ..</label>
+					  <p class="stroke-input mb-3">	{{ user.description }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="offset-1"> <!-- 3ème partie card -->
+                    <div> <!-- texte 3ème partie card -->
+					<label >Mon régime alimentaire ...</label>               
+    				 </div>
+                    <div> <!-- btn radio -->
+                      <div class="flex-pref mt-4">
+						{{ user.diet }}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="form-group">
-                    {{ user.city }}
-                </div>
-                {# <div class="form-group">
-                    {{ form_row(UserForm.birthdate) }}
-                </div> #}
-                <div class="form-group">
-                    {{ user.age }}
-                </div>
-                <div class="form-group">
-                    {{ user.gender }}
-                </div>
-                <div  class="form-group">
-                    {{ user.language }}
-                </div>
+              </div>
             </div>
+        </div>
 
-            <div class="col-md-6">
-                <!-- Partie Droite -->
-                <div class="form-group">
-                    <img class="img-thumbnail  float-start" src="https://media.istockphoto.com/id/1300845620/fr/vectoriel/appartement-dic%C3%B4ne-dutilisateur-isol%C3%A9-sur-le-fond-blanc-symbole-utilisateur.jpg?s=612x612&w=0&k=20&c=BVOfS7mmvy2lnfBPghkN__k8OMsg7Nlykpgjn0YOHj0=" alt="">
-                    {{ user.image }}
+        </article>
+        <div class="row">
+          <div class="jesuisbouton">
+            <button href="#" onclick="nextStep()" class="bouton-smallest-transparent">
+              suivant
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    </fieldset>
+
+{# fin card je suis 1 #}
+
+
+{# J'aime partie 2 #}
+    <fieldset class="mt-5" style="display: none;">
+<div class="container" id="jaime">
+          
+                    <div class="cardjaime ">
+                        
+                        <div class="row"> <!-- TITRE CARD FORMULAIRE -->
+                            <div
+                                class="col-11 d-flex justify-content-end titrecard z-3 position-relative align-items-baseline">
+                                <a class="me-4 link-jesuis" href="#">
+                                    <h2>JE SUIS</h2>
+                                </a>
+                                <a class="me-4 link-jaime active" href="#">
+                                    <h2>J'AIME</h2>
+                                </a>
+                                <a href="#" class="link-jeveux">
+                                    <h2>JE VEUX</h2>
+                                </a>
+                            </div>
+    
+                        </div>
+    
+    
+                            <div class="mb-3 ">
+                             <label >Mes centres d'interets</label>
+                            </div>
+    
+                               <div class="d-flex column">
+							 {{ user.description }}
+                            </div>
+    
+                               
+                        <div class="mt-3">
+                                 <label >J'en est d'autre</label>
+                        		 <p class="stroke-input mb-3">	{{ user.centerOfInterestPerso }}</p>
+
+                         </div>
+                            </div>
+    
+    
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    {{ user.job }}
-                </div>
-
-                <div class="form-group">
-                        {{ user.description }}
-                </div>
-
-                <div class="form-group">
-                    {{ user.diet }}
-                </div>
+                <div class="row g0">
+                    <div class="offset-md-3 col-md-9 d-flex justify-content-between jaimebouton">
+                        <a class="bouton-smallest-transparent" onclick="previousStep()">Retour</a>
+                        <a class="bouton-smallest-transparent" onclick="nextStep()">Suivant</a>
+                    </div>
+              
         </div>
         </div>
-        
-              <button type="button" class="btn btn-primary" onclick="nextStep()">Suivant</button>
+        </div>
 </fieldset>
+
+        {# Fin de j'aime partie 2  #}
 
     <fieldset style="display: none;">
 
-
-
-    {# Etape 2 #}
-        <div class="container" >
-                <h1>Mes centres d'interets</h1>
-            <div class="d-flex justify-content-center">
-{%  for interest in user.centerOfInterest  %}
-                    {{ interest }}
-                {% endfor %}        
-                    </div>
-                {{ user.centerOfInterestPerso }}
-        </div>
-<button type="button" class="btn btn-primary" onclick="previousStep()">Retour</button>
-      <button type="button" class="btn btn-primary" onclick="nextStep()">Suivant</button>
-</fieldset>
-
-
-
-<fieldset style="display: none;">
-
-        {# Etape 3 #}
+        {# je veux Etape 3 #}
         <div class="container" >
            JE VEUX
                            <button type="button" class="btn btn-primary" onclick="previousStep()">Retour</button>
         </div>
 </fieldset>
-
-
-
-
-        </div>
-    </div>
+        {# Fin de je veux Etape 3   #}
 
 {% endblock %}

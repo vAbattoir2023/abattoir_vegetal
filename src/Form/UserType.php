@@ -3,11 +3,12 @@
 namespace App\Form;
 
 use App\Document\User;
+// use Doctrine\ODM\MongoDB\Types\DateType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeTpe;
+use Symfony\Component\Form\Extension\Core\Type\DateType ;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -15,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -38,11 +40,7 @@ class UserType extends AbstractType
             //     ])
                
             ->add('username', TextType::class,[
-                'label' => 'Je m\'appelle ...',
-                'attr' => [
-                    'class' => 'form-control'
-                ]
-            ])
+                'label' => 'Je m\'appelle ...'])
 
             ->add('city', TextType::class,[
                 'label' => 'J\'habite ...',
@@ -51,11 +49,10 @@ class UserType extends AbstractType
                 ]
             ])
 
-            // ->add('birthdate', BirthdayType::class, [
+            // ->add('dateOfBirth', DateType::class, [
+            //     'label' => 'Je suis né(e) le ...',
             //     'widget' => 'single_text',
-            //     'attr' => [
-            //         'class' => 'form-control'
-            //     ],
+            //     // this is actually the default format for single_text
             //     'format' => 'yyyy-MM-dd',
             // ])
 
@@ -67,29 +64,32 @@ class UserType extends AbstractType
 
             ->add('gender', ChoiceType::class, [
                 'label' => 'Je suis ...',
-                'attr' => [
-                    'class' => 'form-control'
-                ],
                 'choices'  => [
-                    'Homme' => 'Homme',
-                    'Femme' => 'Femme',
-                    'Non-binaire' => 'Non-binaire'
-                ]
+                    'H' => 'Homme ',
+                    'F' => 'Femme ',
+                    'Non-binaire' => 'Non-binaire '
+                ],
+                'choice_attr'  => [
+                    'H' => ['style' => 'margin:0px 5px;'],
+                    'F' => ['style' => 'margin:0px 5px;'],
+                    'Non-binaire' => ['style' => 'margin:0px 5px;'],
+                ],
+                'multiple' => false,
+                'expanded' => true
             ])
 
             ->add('language', TextType::class,[
                 'label' => 'Je parle ...',
                 'attr' => [
                     'class' => 'form-control',
-                    'style' => "background-color:red"
                 ]
             ])
 
 
-            ->add('image', FileType::class, [
+            ->add('image', TextType::class, [
                 'label' => 'Mon image',
                 'attr' => [
-                    'class' => 'form-control'
+                    'placeholder' => 'image = link url',
                 ],
             ])
 
@@ -100,7 +100,7 @@ class UserType extends AbstractType
                 ]
             ])
 
-            ->add('description', TextType::class,[
+            ->add('description', TextareaType::class,[
                 'label' => 'Je me décris en quelque mot ...',
                 'attr' => [
                     'class' => 'form-control'
@@ -110,24 +110,27 @@ class UserType extends AbstractType
 
             ->add('diet', ChoiceType::class, [
                 'label' => 'Mon régime alimentaire ...',
-                'attr' => [
-                    'class' => 'form-control'
-                ],
+                
                 'choices'  => [
                     'Végan(ne)' => 'Végan(ne)',
                     'Curieu(x/se)' => 'Curieu(x/se)',
                     'Végétarien(ne)' => 'Végétarien(ne)',
                     'Fléxitarien(ne)' => 'Fléxitarien(ne)'
-                ]
-
+                ],
+            'choice_attr' => [
+                'Végan(ne)' => ['class' => 'preferences demo2 demoyes' ],
+                'Curieu(x/se)' => ['class' => 'preferences demo2 demoyes mx-3'],
+                'Végétarien(ne)' => ['class' => 'preferences demo2 demoyes'],
+                'Fléxitarien(ne)' => ['class' => 'preferences demo2 demoyes']
+         ],
+                'multiple' => false,
+                'expanded' => true
             ])
        
          // New fields for Step 2: J'AIME
         ->add('centerOfInterest',  ChoiceType::class, [
             'label' => 'Mes centres d\'interets ...',
-            'attr' => [
-                'class' => 'form-control'
-            ],
+           
             'choices'  => [
                 
                 //
@@ -144,16 +147,27 @@ class UserType extends AbstractType
                 'Food' => 'Food',
                 'Activités sociales' => 'Activités sociales'
             ],
+            'choice_attr' => [
+                'Animaux' => ['class' => 'preferences demo2 demoyes'],
+                'Environnement' => ['class' => 'preferences demo2 demoyes'],
+                'Jeux vidéos' => ['class' => 'preferences demo2 demoyes'],
+                'Art et Culture' => ['class' => 'preferences demo2 demoyes'],
+                'Sport' => ['class' => 'preferences demo2 demoyes'],
+                'Voyage' => ['class' => 'preferences demo2 demoyes'],
+                'Musique' => ['class' => 'preferences demo2 demoyes'],
+                'Danse' => ['class' => 'preferences demo2 demoyes'],
+                'Sciences' => ['class' => 'preferences demo2 demoyes'],
+                'Bien-etre' => ['class' => 'preferences demo2 demoyes'],
+                'Food' => ['class' => 'preferences demo2 demoyes'],
+                'Activités sociales' => ['class' => 'preferences demo2 demoyes'],           
+             ],
             'multiple' => true,
             'expanded' => true
         ])
 
         ->add('centerOfInterestPerso', TextType::class, [
             'label' => 'J\'en ai d\'autres ...',
-            'attr' => [
-                'class' => 'form-control',
-            ]
-        ])
+                 ])
         ->add('submit', SubmitType::class);
 
     }
@@ -163,6 +177,7 @@ class UserType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+           
         ]);
     }
 } 

@@ -1,15 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Register{% endblock %}
 
 {% block body %}
 <body class="example-wrapper">
-    {{ form_errors(FormLogin)}}
-        {{ form_start(FormLogin)}}
-            {{ form_row(FormLogin.email) }}
-            {{ form_row(FormLogin.password) }}
-            {{ form_widget(FormLogin.submit) }}
-        {{ form_end(FormLogin)}}
+    {{ form_errors(Form)}}
+        {{ form_start(Form)}}
+            {{ form_row(Form.email) }}
+            {{ form_row(Form.password) }}
+            {{ form_widget(Form.submit) }}
+        {{ form_end(Form)}}
 </body>
 {% endblock %}
 

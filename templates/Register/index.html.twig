@@ -1,10 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Register{% endblock %}
-
-
 {% block body %}
 <body class="example-wrapper">
+    {% if alert|length >1  %}
+        <div class='alert alert-danger'>{{ alert }}</div>
+    {% endif  %}
+
     {{ form_errors(FormRegister)}}
         {{ form_start(FormRegister)}}
             {{ form_row(FormRegister.email) }}

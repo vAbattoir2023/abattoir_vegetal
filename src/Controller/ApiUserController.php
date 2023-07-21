@@ -4,7 +4,8 @@ namespace App\Controller;
 
 use App\Document\User;
 use App\Form\ApiUserType;
-use App\Repository\ApiRepository;
+use App\Form\UserType;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,10 +17,10 @@ use Symfony\Component\Form\FormError;
 class ApiUserController extends AbstractController
 {
     //REGEX du code de département, expression régulière
-    const REGEX_DEPARTEMENT_CODE = '/^(?:0[1-9]|[1-8]\d|9[0-8])\d{3}$/';
+    public const REGEX_DEPARTEMENT_CODE = '/^(?:0[1-9]|[1-8]\d|9[0-8])\d{3}$/';
 
     #[Route('/api_user', name: 'app_api_user', methods: ['GET', 'POST'])]
-    public function new(Request $request, ApiRepository $apiRepository): Response
+    public function new(Request $request, UserRepository $userRepository): Response
     {
         // Instanciation de la class USER
         $apiuser = new User();
@@ -84,7 +85,7 @@ class ApiUserController extends AbstractController
                     $language = $results['nat'];
 
                 // URL de base vers l'API des icônes des drapeaux
-                $flagIconsBaseUrl = 'https://www.countryflagicons.com/SHINY/16/';
+                $flagIconsBaseUrl = 'https://www.countryflagicons.com/SHINY/32/';
 
                 // Nom du fichier d'icône basé sur la valeur de $language en MAJUSCULE 
                 $flagIconFileName = strtoupper($language) . '.png';
@@ -123,7 +124,7 @@ class ApiUserController extends AbstractController
                 }
                 // A DECOMMENTER POUR ENREGISTRER EN BDD !!
                 // Sauvegarder l'entité User mise à jour dans la base de données
-                // $apiRepository->save($apiuser, true);
+                $userRepository->save($apiuser, true);
                 
                 // Rediriger vers la route 'app_api_user' après la sauvegarde
                 return $this->redirectToRoute('app_api_user', [], Response::HTTP_SEE_OTHER);
@@ -131,7 +132,7 @@ class ApiUserController extends AbstractController
         }
         // Retourne le rendu du formulaire (apiuser.html.twig) au format HTML
 // avec les données de ApiUser de la variable $apiuser et les valeurs attribuer à $form
-        return $this->renderform('apiuser.html.twig', [
+        return $this->renderform('Admin/apiuser.html.twig', [
             'apiuser' => $apiuser,
             'form' => $form,
         ]);

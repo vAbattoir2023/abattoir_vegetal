@@ -1,0 +1,273 @@
+
+
+a {
+    text-decoration: none!important;
+}
+
+a h2 {
+    font-family: 'Gasoek One';
+    text-transform: uppercase;
+    color: var(--sapin);
+}
+
+a.active {
+    position: relative;
+}
+
+a.active h2 {
+     font-size: 2.813rem;
+     color: var(--foret-noire);
+}
+
+a.active h2::after{
+    content: "";
+    display: block;
+    width: 80%;
+    height: 16px;
+    background-color: var(--menthe-givree);
+    position: absolute;
+    right: -10px;
+    bottom: 10px;
+    z-index: -1;
+}
+
+a.link-jesuis.active h2::after{
+    background-color: var(--orange-sanguine);
+}
+
+a.link-jaime.active h2::after{
+    background-color: var(--framboise-ecrasee);
+}
+
+/* JE SUIS */
+
+
+#jesuis .border-card {
+    background: var(--choux-fleur, #FBFAF4);
+    /* style card je suis */
+    box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14);
+    width: 750px;
+    margin-top: 60px;
+    padding: 30px 0;   
+    background-image: url("../img/background/registerBackground.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#jesuis .titrecard {
+ margin-top: -10%;
+}
+
+#jesuis .form-check-input:checked{
+    background-color: var(--orange-sanguine);
+    border-color: var(--orange-sanguine);
+    box-shadow: none;
+}
+
+#jesuis .align-text {
+    width: max-content;
+}
+
+#jesuis .date-wrap {
+    display: inline-flex;
+    flex-wrap: nowrap !important;
+}
+
+#jesuis .flex-end {
+    margin-left: 5px;
+    padding-top: 5px;
+}
+
+#jesuis .stroke-input {
+    border: 0px;
+    border-bottom: 1.5px solid var(--foret-noire, #12231A);
+    width: 100%;
+    background-color: transparent;
+}
+
+/* 2ème partie card */
+
+#jesuis .maDiv {
+    vertical-align: top;
+    display: inline-block;
+}
+
+#jesuis .largeur {
+    width: 91px;
+    height: 91px;
+    border: 1.5px solid var(--foret-noire, #12231A);
+}
+
+#jesuis .size-btn {
+    display: flex;
+    width: max-content;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    font-size: 0.800rem;
+    padding: 5px;
+}
+
+#jesuis .wrap-bouton {
+    display: inline-flex;
+}
+
+#jesuis .position-bouton {
+    margin-left: 17px;
+    padding-top: 10px; 
+}
+  
+/* 3ème partie card */
+
+
+
+#jesuis .preferences {
+    display: none;
+    flex-wrap: wrap;
+}
+
+#jesuis .margin-radio+label {
+    margin-left: 10px; 
+}
+
+#jesuis .preferences+label {
+      margin-right: 20px;
+    display: inline-flex;
+    height: auto;
+    padding: 10px 10px; 
+    justify-content: center;
+    align-items: center;
+   font-size: 16px;
+    border: 1.5px solid var(--orange-sanguine, #FF6C27);
+    text-decoration: var(--foret-noire, #12231A);
+    background-color: transparent;
+  }
+  
+
+#jesuis .preferences.demoyes:hover+label {
+ background-color: transparent;
+ border: 3px solid var(--orange-sanguine, #FF6C27);
+}
+
+#jesuis .preferences.demoyes:checked+label {
+ background-color: transparent;
+ border: 3px solid var(--orange-sanguine, #FF6C27);
+}
+
+
+#jesuis .jesuisbouton {
+ margin-top: 4%;
+ margin-left: 91.4%;
+}
+
+/* FIN DE JESUIS */
+
+
+/* J'AIME PARTIE 2 */
+
+/* J'AIME */
+#jaime .colcardjaime{
+    position: relative;
+ }
+ 
+ #jaime .cardjaime {
+    background: var(--choux-fleur, #FBFAF4);
+    /* style card je suis */
+    box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14);
+    font-size: 20px;
+    width: 950px;
+    margin-top: 60px;
+    margin-bottom: 40px;
+    padding: 30px 80px; 
+    position: relative;
+    z-index: 100;
+ }
+ 
+ #jaime .btn-outline-primary {
+    padding: 20px 31px !important;
+ }
+ 
+ #jaime .jaimechoice {
+    background-color: none;
+    border: 1.5px solid var(--framboise-ecrasee);
+    border-radius: 0px;
+    padding: 17px 10px !important;
+    color: var(--foret-noire);
+    font-size: 18px;
+    width: 175px;
+    margin-top: 25px;
+    margin-bottom: 49px;
+    padding-left: 32px;
+ }
+ 
+ #jaime  .preferences {
+    display: none;
+    flex-wrap: wrap;
+}
+
+
+#jaime  .preferences+label {
+    margin-right: 20px;
+  display: inline-flex;
+  height: auto;
+  padding: 10px 10px; 
+  justify-content: center;
+  align-items: center;
+ font-size: 16px;
+  border: 1.5px solid var(--orange-sanguine, #FF6C27);
+  text-decoration: var(--foret-noire, #12231A);
+  background-color: transparent;
+}
+
+
+#jaime  .preferences.demoyes:hover+label {
+background-color: transparent;
+border: 3px solid var(--orange-sanguine, #FF6C27);
+}
+
+#jaime  .preferences.demoyes:checked+label {
+background-color: transparent;
+border: 3px solid var(--orange-sanguine, #FF6C27);
+}
+
+ /* #jaime input[type="checkbox"].btn-check:checked+label {
+    background-color: transparent !important;
+    border: 3px solid var(--framboise-ecrasee) !important;
+    font-weight: 600 !important;
+    color: var(--foret-noire);
+ } */
+ 
+ #jaime .btn-check+.btn:hover {
+    color: var(--foret-noire);
+    background-color: transparent;
+    border-color: var(--framboise-ecrasee);
+ }
+ 
+ #jaime .stroke-input {
+    border: 0px;
+    border-bottom: 1.5px solid var(--foret-noire, #12231A);
+    width: 838px;
+    background-color: transparent;
+    margin-top: 30px;
+ }
+ 
+ 
+ #jaime .choice {
+    width: 100%;
+ }
+ 
+ 
+ #jaime .gouts {
+    margin: auto;
+ }
+ 
+ #jaime .jaimebouton {
+    margin-bottom: 50px;
+ }
+ 
+ #jaime .titrecard {
+    margin-top: -13%;
+ }
+ 
+ /* FIN DE J'AIME 2*/
+ 

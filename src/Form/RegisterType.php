@@ -23,6 +23,7 @@ class RegisterType extends AbstractType
                 'second_name' => 'confirm',
                 'type' => PasswordType::class,
                 ])
+            // Matth add CJU
             ->add('submit', SubmitType::class);
     }
 
