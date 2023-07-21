@@ -87,6 +87,12 @@ class ApiUserController extends AbstractController
                     $image = $results['picture']['large'];
                     $username = $results['login']['username'];
 
+                    if ($gender === 'female') {
+                        $gender = 'femme';
+                    } elseif ($gender === 'male') {
+                        $gender = 'homme';
+                    }
+
                     // Attribuer les valeurs au document USER
                     $apiuser->setGender($gender);
                     $apiuser->setEmail($email);

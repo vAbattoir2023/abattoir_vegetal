@@ -27,6 +27,10 @@ class ApiUserType extends AbstractType
                 'Français' => 'FR',
                 'Espagnol' => 'ES',
                 'Italien' => 'IT',
+                'Néerlandais' => 'NL',
+                'Bresilien' => 'BR',
+                'Chinois ' => 'CN',
+                'Algerien ' => 'DZ',
                 
             ],
             'attr' => [

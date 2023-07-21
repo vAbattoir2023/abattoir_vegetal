@@ -48,6 +48,7 @@ class UserType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
+            
 
             // ->add('dateOfBirth', DateType::class, [
             //     'label' => 'Je suis né(e) le ...',
@@ -77,6 +78,7 @@ class UserType extends AbstractType
                 'multiple' => false,
                 'expanded' => true
             ])
+    
 
             ->add('language', ChoiceType::class, [
                 'label' => 'Je parle ....',
@@ -85,6 +87,10 @@ class UserType extends AbstractType
                     'Français' => 'FR',
                     'Espagnol' => 'ES',
                     'Italien' => 'IT',
+                    'Néerlandais' => 'NL',
+                    'Bresilien' => 'BR',
+                    'Chinois ' => 'CN',
+                    'Algerien ' => 'DZ',
                     
                 ],
                 'attr' => [
