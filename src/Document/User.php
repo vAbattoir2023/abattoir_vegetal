@@ -40,11 +40,11 @@ class User
     #[MongoDB\Field(type: 'string')]
     public ?string $gender = null;
 
-    #[MongoDB\Field(type: 'string')]
-    public ?string $language = null;
-    
-    #[MongoDB\Field(type: 'string')]
-    protected ?string $flagIconUrl = '';
+    #[MongoDB\Field(type: 'collection')]
+    protected ?array $language = null;
+
+    #[MongoDB\Field(type: 'collection')]
+    protected ?array $flagIconUrl = null;
     
     #[MongoDB\Field(type: 'string')]
     public ?string $image = null;
@@ -159,14 +159,15 @@ class User
         return $this;
     }
 
-    public function getLanguage(): string
+    public function getLanguage(): ?array
     {
         
         return $this->language;
     }
 
-    public function setLanguage(string $language): User
+    public function setLanguage(?array $language): User
     {
+        // var_dump($language);
         $this->language = $language;
 
         return $this;
@@ -315,13 +316,13 @@ class User
 
 
     // FLAG 
-    public function getFlagIconUrl(): string
+    public function getFlagIconUrl(): ?array
     {
         
         return $this->flagIconUrl;
     }
 
-    public function setFlagIconUrl(string $flagIconUrl): User
+    public function setFlagIconUrl(?array $flagIconUrl): User
     {
         $this->flagIconUrl = $flagIconUrl;
 
@@ -339,6 +340,7 @@ class User
         $this->postalCode = $postalCode;
         return $this;
     }
+
 
     // //AGE
     // public function getAge(): int

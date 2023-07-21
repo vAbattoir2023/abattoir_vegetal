@@ -19,6 +19,22 @@ class ApiUserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+
+        ->add('language', ChoiceType::class, [
+            'label' => 'Langue',
+            'choices' => [
+                'Anglais' => 'GB',
+                'Français' => 'FR',
+                'Espagnol' => 'ES',
+                'Italien' => 'IT',
+                
+            ],
+            'attr' => [
+                'class' => 'form-control',
+            ],
+            'multiple' => true, 
+            'expanded' => true,
+        ]) 
         ->add('job', TextType::class, [
             'attr' => ['class' => 'form-control',
                     'placeholder' => 'Entre une profession'],
@@ -48,10 +64,7 @@ class ApiUserType extends AbstractType
                 'Fléxitarien(ne)' => 'Fléxitarien(ne)',
             ],
         ])
-            // ->add('allergy', TextType::class, [
-            //     'attr' => ['class' => 'form-control',
-            //             'placeholder' => 'Entre une allergie'],
-            // ])
+          
         ->add('description', TextType::class, [
             'attr' => ['class' => 'form-control',
                     'placeholder' => 'Entre une description'],
@@ -77,7 +90,11 @@ class ApiUserType extends AbstractType
             ],
             'multiple' => true,
             'expanded' => true,
-        ]);    
+        ]);   
+        // ->add('allergy', TextType::class, [
+            //     'attr' => ['class' => 'form-control',
+            //             'placeholder' => 'Entre une allergie'],
+            // ])  
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title  %} Profil User {% endblock %}
 {% block stylesheets %}<link rel="stylesheet" href="{{asset('./assets/css/profil.css')}}">{% endblock %}
 
@@ -66,9 +67,7 @@
                         </div>
                       </div>
                       <div> <!-- Je parle input -->
-                        <div>
-                       {{ form_label(UserForm.language) }}
-                        </div>
+                        
                           {{ form_widget(UserForm.language, {'attr': {'class': 'stroke-input mb-3'}}) }}
                       </div>
                     </div>

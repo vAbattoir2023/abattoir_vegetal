@@ -66,7 +66,9 @@
                         <div>
 							 <label >Je parle ...</label>  
                         </div>
-						     <img src="https://www.countryflagicons.com/SHINY/32/{{ user.language }}.png"</img>
+						    {% for languageCode in user.language %}
+              <img src="https://www.countryflagicons.com/SHINY/32/{{ languageCode }}.png" alt="{{ languageCode }} ">
+                {% endfor %}
                       </div>
                     </div>
                   </div>

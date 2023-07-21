@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Api index{% endblock %}
 
 {% block body %}
@@ -14,15 +15,6 @@
     <hr>
     <h4>Création de User en base de donnée</h4>
 
-{# 
-       <div  class="bg-light">
-                <div >{{ apiuser.job }}</div>
-                 <div>{{ apiuser.postalCode }}</div>
-                 <div >{{ apiuser.diet }}</div>
-                {# <td>{{ user.allergy }}</td> 
-                 <div >{{ apiuser.description }}</div> 
-                <div >{{ apiuser.centerOfInterest|join(', ') }}</div>
-       </div> #}
  {% if form.vars.errors|length > 0 %}
         <div class="alert alert-danger">
             {# Afficher les messages d'erreur associés au champ "postalCode" #}
