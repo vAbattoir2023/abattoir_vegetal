@@ -63,8 +63,9 @@ class GroupController extends AbstractController
 
     #[Route('/users-list/{filters}', name: 'app_get_users_list_from_filters')]
     public function showUsersList(string $filters, DocumentManager $dm): Response{
-        $users = [];
-        $filters = explode('#', $filters);
+
+        $users = []; // user array vide
+        $filters = explode('#', $filters); // get 
         
         $iter = $dm->createQueryBuilder()
             ->find(User::class)
