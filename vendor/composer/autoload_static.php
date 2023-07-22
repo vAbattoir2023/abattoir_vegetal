@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit2e89805ac00ba366b6b5e816f45b07fb
+class ComposerStaticInitcd6eb6b31c16f3bf886e1bf28765f98c
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -595,10 +595,7 @@ class ComposerStaticInit2e89805ac00ba366b6b5e816f45b07fb
         'App\\Controller\\UserController' => __DIR__ . '/../..' . '/src/Controller/UserController.php',
         'App\\Controller\\UserProfilController' => __DIR__ . '/../..' . '/src/Controller/UserProfilController.php',
         'App\\Document\\Group' => __DIR__ . '/../..' . '/src/Document/Group.php',
-        'App\\Document\\Reservation' => __DIR__ . '/../..' . '/src/Document/Reservation.php',
         'App\\Document\\User' => __DIR__ . '/../..' . '/src/Document/User.php',
-        'App\\Document\\UserInvitation' => __DIR__ . '/../..' . '/src/Document/UserInvitation.php',
-        'App\\Form\\ApiUserType' => __DIR__ . '/../..' . '/src/Form/ApiUserType.php',
         'App\\Form\\LoginType' => __DIR__ . '/../..' . '/src/Form/LoginType.php',
         'App\\Form\\RegisterType' => __DIR__ . '/../..' . '/src/Form/RegisterType.php',
         'App\\Form\\UserType' => __DIR__ . '/../..' . '/src/Form/UserType.php',
@@ -6716,9 +6713,9 @@ class ComposerStaticInit2e89805ac00ba366b6b5e816f45b07fb
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit2e89805ac00ba366b6b5e816f45b07fb::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit2e89805ac00ba366b6b5e816f45b07fb::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit2e89805ac00ba366b6b5e816f45b07fb::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitcd6eb6b31c16f3bf886e1bf28765f98c::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitcd6eb6b31c16f3bf886e1bf28765f98c::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitcd6eb6b31c16f3bf886e1bf28765f98c::$classMap;
 
         }, null, ClassLoader::class);
     }

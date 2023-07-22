@@ -24,4 +24,11 @@ class GroupRepository extends ServiceDocumentRepository
             $this->getDocumentManager()->persist($group);
             $this->getDocumentManager()->flush();
     }
+
+    public function findGroupsById(string $id):array{
+
+        return $this->findBy([ 'id' => $id ]);
+
+
+    }
 }
