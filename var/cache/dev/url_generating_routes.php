@@ -29,7 +29,6 @@ return [
     'app_get_resa' => [[], ['_controller' => 'App\\Controller\\GroupController::resa'], [], [['text', '/group/resa']], [], [], []],
     'app_resa_date' => [[], ['_controller' => 'App\\Controller\\GroupController::resaDate'], [], [['text', '/group/resaDate']], [], [], []],
     'app_home' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/']], [], [], []],
-    'app_home_index' => [[], ['_controller' => 'App\\Controller\\HomeController::home'], [], [['text', '/home']], [], [], []],
     'app_home_help' => [[], ['_controller' => 'App\\Controller\\HomeController::help'], [], [['text', '/help']], [], [], []],
     'app_login' => [[], ['_controller' => 'App\\Controller\\LoginController::login'], [], [['text', '/login']], [], [], []],
     'app_logout' => [[], ['_controller' => 'App\\Controller\\LoginController::logout'], [], [['text', '/logout']], [], [], []],

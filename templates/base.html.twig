@@ -18,52 +18,24 @@
 		<link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Work+Sans:ital,wght@0,300;0,400;0,600;0,800;1,400;1,600&display=swap" rel="stylesheet"> {% block stylesheets %}{% endblock %}
 		</head>
 		<body>
-			<div class="container">
-				<nav
-					class="d-inline-flex mt-2 mt-md-0 ms-md-auto mb-5">
-					{# {% if app.user  %}
-									    {% if 'ROLE_ADMIN' in app.user %} #}
-					<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{{ path('app_admin_index') }}">Admin</a>
-					{# {% endif %} #}
-					<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{{ path('app_register') }}">Inscription</a>
-					<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{{ path('app_login') }}">Connexion</a>
-					{# {% else %} #}
-					<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{{ path('app_logout') }}">Déconnexion</a>
-					<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{{ path('app_user_profil') }}">EditProfil</a>
-					<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{{ path('app_user_profil_success') }}">Profil</a>
-					<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{{ path('app_select_group') }}">Groupe</a>
-					{# {% endif %} #}
-				</nav>
+				{% block body %}
+	{% for notif in notifications %}
+		<div class="container bg-success bg-gradient col-6 mb-5 p-3">
+			<div class='d-flex flex-column'>
+				<span class='border border-white'>{{notif.authors}} t'as invité à manger</span>
+				<a href="{{ path('accept_Invitation') }}"><button class='col-12'>accepter</button></a>
+				<a href="{{ path('accept_Invitation') }}"><button class='col-12'>refuser</button></a>
 			</div>
-					{# {% for notif in notifications %}
-						<div class="container bg-success bg-gradient col-6 mb-5 p-3">
-							<div class='d-flex flex-column'>
-								<span class='border border-white'>{{notif.authors}} t'as invité à manger</span>
-								<a href="{{ path('accept_Invitation') }}"><button class='col-12'>accepter</button></a>
-								<a href="{{ path('accept_Invitation') }}"><button class='col-12'>refuser</button></a>
-							</div>
-						</div>
-					{% endfor %} #}
-			{% block body %}{% endblock %}
+		</div>
+	{% endfor %}
+		{% include('Home/index.html.twig') %}
+
+	{% endblock %}
+
 		</body>
+			{{ include('_footer.html.twig') }}
+
 	</html>
 	<script src="{{ asset('./assets/js/form.js')}}"></script>
 	{% block javascripts %}{% endblock %}
-		{# <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Work+Sans:ital,wght@0,300;0,400;0,600;0,800;1,400;1,600&display=swap" rel="stylesheet"> 
-        <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
 
-		{% block stylesheets %}{% endblock %}
-	</head>
-
-			</div>
-		<body class="mb-5">
-                {% block body %}
-						        {% include('Home/index.html.twig') %} 
-
-                {% endblock %}
-		</body>
-				         {{ include('_footer.html.twig') }} 
-
-</html>
-<script src="{{ asset('./assets/js/form.js')}}"></script>
-{% block javascripts %}{% endblock %} #}

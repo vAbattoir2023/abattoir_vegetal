@@ -57,19 +57,24 @@ class HomeController extends AbstractController
         return $this->render('base.html.twig',[
             'message' => 'Welcome to your new controller!',
             'idSession' => $idSession,
-            // 'notifications' => $notifInvitation
+            'notifications' => $notifInvitation
         ]);
         
     }
-    #[Route('/home', name: 'app_home_index')]
-    public function home(SessionInterface $sessionInterface): Response
-    {
 
-        return $this->render('Home/index.html.twig',[
+
+
+
+
+    // #[Route('/home', name: 'app_home_index')]
+    // public function home(SessionInterface $sessionInterface): Response
+    // {
+
+    //     return $this->render('Home/index.html.twig',[
           
-        ]);
+    //     ]);
         
-    }
+    // }
     #[Route('/help', name: 'app_home_help')]
     public function help(SessionInterface $sessionInterface): Response
     {

@@ -57,13 +57,13 @@ document.addEventListener('DOMContentLoaded', (e) => {
       .then(html => {
         document.getElementById('users_list').innerHTML = html;
         
-        let idUser = document.querySelectorAll('#allIdUser #idUser')
+        let idUser = document.querySelectorAll('#idUser')
 
           idUser.forEach(function (element) {
             element.addEventListener("click", function(event) {
             let btnClick = event.currentTarget;
 
-            //console.log(btnClick.value); //log id
+            console.log(btnClick.value); //log id
 
             idUsers.push(btnClick.value); // push id in array idUsers
 

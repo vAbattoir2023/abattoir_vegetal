@@ -3,33 +3,6 @@
 {% block title  %}
 	Green Meet
 {% endblock %}
-<<<<<<< HEAD
-{% block stylesheets %}<link rel="stylesheet" href="{{asset('./assets/css/reservation.css')}}">{% endblock %}
-
-{% block body %}
-<div class="container">
-	<div class="row">
-		<div class="col-6">
-			<form action="">
-				<fieldset>
-					<legend>centre d'intérêts</legend>
-					{% for formData in dataFormCheckbox %}
-						<div>
-							<input name="{{ formData }}" type="checkbox" id="checkbox_{{ formData }}" name="checkbox_{{ formData }}" data-filter="{{formData}}" class="filter-checkbox">
-							<label for="checkbox_{{ formData }}">{{ formData }}</label>
-						</div>
-					{% endfor %}
-				</fieldset>
-				<button>recherche</button>
-			</form>
-		</div>
-		<div class="col-6">
-			<div id="users_list"></div>	
-		</div>
-	</div>
-</div>
-	
-=======
 {% block stylesheets %}
 <link rel="stylesheet" href="{{asset('./assets/css/mur.css')}}">
 {% endblock %}
@@ -76,8 +49,11 @@
                             <h1 class="somanyfriends ms-5 mt-5">so many friends...</h1>
                       
                        <div class="container">
+                                  {# <button type='submit' id="addGroup">add group</button> #}
 
-                         <ul class="d-flex row" id="users_list"></ul>
+                         <ul class="d-flex row" id="users_list">
+
+                         </ul>
                         </div>    
 
 
@@ -88,7 +64,6 @@
                 </div> 
             </div>
 
->>>>>>> c02b2426980e8b386fad8dd3ebc210c260b7024f
 
 {% endblock %}
 
