@@ -25,6 +25,7 @@ return array(
     'App\\Kernel' => $baseDir . '/src/Kernel.php',
     'App\\Repository\\ApiRepository' => $baseDir . '/src/Repository/ApiRepository.php',
     'App\\Repository\\GroupRepository' => $baseDir . '/src/Repository/GroupRepository.php',
+    'App\\Repository\\GuestRepository' => $baseDir . '/src/Repository/GuestRepository.php',
     'App\\Repository\\UserRepository' => $baseDir . '/src/Repository/UserRepository.php',
     'Collator' => $vendorDir . '/symfony/polyfill-intl-icu/Resources/stubs/Collator.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',

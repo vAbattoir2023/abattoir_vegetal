@@ -78,13 +78,21 @@ class UserType extends AbstractType
                 'expanded' => true
             ])
 
-            ->add('language', TextType::class,[
-                'label' => 'Je parle ...',
+            ->add('language', ChoiceType::class, [
+                'label' => 'Je parle ....',
+                'choices' => [
+                    'Anglais' => 'GB',
+                    'Français' => 'FR',
+                    'Espagnol' => 'ES',
+                    'Italien' => 'IT',
+                    
+                ],
                 'attr' => [
                     'class' => 'form-control',
-                ]
+                ],
+                'multiple' => true,
+                'expanded' => true,
             ])
-
 
             ->add('image', TextType::class, [
                 'label' => 'Mon image',

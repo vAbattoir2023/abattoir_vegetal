@@ -13,25 +13,25 @@ use Doctrine\Common\Collections\Collection;
 class Group
 {
     #[MongoDB\Id]
-    protected string $id;
+    public string $id;
 
     #[MongoDB\Field(type: 'string')]
-    protected ?string $status = null;
+    public ?string $status = null;
 
     #[MongoDB\Field(type: 'string')]
-    protected ?string $authors = null;
+    public ?string $authors = null;
     
     #[MongoDB\Field(type: "date")]
-    private ?string $createdAt = null;
+    public ?\DateTime $createdAt = null;
     
     #[MongoDB\Field(type: "date")]
-    private ?string $reservationDate = null;
+    public ?\DateTime $reservationDate = null;
   
     #[MongoDB\Field(type: 'string')]
-    protected string $username;
+    public string $username;
 
     #[MongoDB\EmbedMany(targetDocument: Guest::class)]
-    private ArrayCollection $guests;
+    public ArrayCollection $guests;
 
 
     public function __construct()
@@ -82,7 +82,7 @@ class Group
 
     public function setCreateGroup(?string $createdAt): Group
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt = \DateTime::createFromFormat('Y-m-d', $createdAt);
         return $this;
     }
 
@@ -93,7 +93,7 @@ class Group
 
     public function setReservationDate(?string $reservationDate): Group
     {
-        $this->reservationDate = $reservationDate;
+        $this->reservationDate = \DateTime::createFromFormat('Y-m-d', $reservationDate);
         return $this;
     }
 
@@ -128,11 +128,11 @@ class Guest
 {
     // An example of a string type property
     #[MongoDB\ReferenceOne(targetDocument: User::class)]
-    private ?User $guest = null;
+    public ?User $guest = null;
 
     // An example of a string type property
     #[MongoDB\Field(type: "bool")]
-    private bool $invitation = false;
+    public bool $invitation = false;
 
     // The getters and setters for each of our properties
     public function getGuest(): ?User

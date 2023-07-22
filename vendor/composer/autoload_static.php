@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite572a2573c046abdd475322bdeffbe42
+class ComposerStaticInit2e89805ac00ba366b6b5e816f45b07fb
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -605,6 +605,7 @@ class ComposerStaticInite572a2573c046abdd475322bdeffbe42
         'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
         'App\\Repository\\ApiRepository' => __DIR__ . '/../..' . '/src/Repository/ApiRepository.php',
         'App\\Repository\\GroupRepository' => __DIR__ . '/../..' . '/src/Repository/GroupRepository.php',
+        'App\\Repository\\GuestRepository' => __DIR__ . '/../..' . '/src/Repository/GuestRepository.php',
         'App\\Repository\\UserRepository' => __DIR__ . '/../..' . '/src/Repository/UserRepository.php',
         'Collator' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/Resources/stubs/Collator.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
@@ -6715,9 +6716,9 @@ class ComposerStaticInite572a2573c046abdd475322bdeffbe42
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite572a2573c046abdd475322bdeffbe42::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite572a2573c046abdd475322bdeffbe42::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInite572a2573c046abdd475322bdeffbe42::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit2e89805ac00ba366b6b5e816f45b07fb::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit2e89805ac00ba366b6b5e816f45b07fb::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit2e89805ac00ba366b6b5e816f45b07fb::$classMap;
 
         }, null, ClassLoader::class);
     }

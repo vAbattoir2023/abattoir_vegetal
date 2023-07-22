@@ -63,27 +63,40 @@ document.addEventListener('DOMContentLoaded', (e) => {
             element.addEventListener("click", function(event) {
             let btnClick = event.currentTarget;
 
-            let url = '/group/add/'; // create url
-            console.log(btnClick.value); //log id
+            //console.log(btnClick.value); //log id
 
             idUsers.push(btnClick.value); // push id in array idUsers
 
-            console.log(idUsers); // log array idUsers
+            //console.log(idUsers); // log array idUsers
 
-            let groupeUsers = ''; // initilise groupUsers
-
-            /**
-             * get 
-             */
-            idUsers.forEach(id => {
-                let idUsername = document.getElementById(id).dataset;
-                groupeUsers += (groupeUsers == '') ? idUsername : '#' + idUsername;
-                console.log(groupeUsers);
-          });
-                url += groupeUsers;
         });
       });
+
+      
+      const btnAddGroup = document.querySelector('#addGroup');
+      
+      btnAddGroup.addEventListener('click',()=>{
+        /**
+        * get 
+        */
+        let urlGroup = '/group/add/';
+        let groupeUsers = ''; // initilise groupUsers
+        idUsers.forEach(id => {
+          let idUsername = id;
+          groupeUsers += (groupeUsers == '') ? idUsername : ',' + idUsername;
+        });
+        urlGroup += groupeUsers;
+
+        console.log('brrr', urlGroup);
+        window.location.href = urlGroup;
+
+      }) 
     });
   }
 });
 //RIEN LA
+
+
+
+
+

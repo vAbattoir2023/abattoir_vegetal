@@ -1,8 +1,9 @@
 <ul>
+    <button type='submit' id="addGroup">add group</button>
     {% for user in users %}
         <li id="allIdUser">
-        <p>{{user.username}}</p>
-        <button id="idUser" value="{{user.id}}">aa</button>
+            <p>{{user.username}}</p>
+            <button id="idUser" value="{{user.id}}">aa</button>
         </li>
     {% endfor %}
 </ul>

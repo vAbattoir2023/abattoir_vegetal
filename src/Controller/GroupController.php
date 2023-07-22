@@ -16,7 +16,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use MongoDB\BSON\ObjectId;
 
 #[Route('/group')]
 class GroupController extends AbstractController
@@ -96,39 +98,70 @@ class GroupController extends AbstractController
         ]);
     }
 
-    #[Route('/add', name: 'app_add_group')]
-    public function addGroup(DocumentManager $dm, GroupRepository $groupRepository, UserRepository $userRepository): void{
+    #[Route('/add/{idUsers}', name: 'app_add_group')]
+    public function addGroup(GroupRepository $groupRepository, UserRepository $userRepository, string $idUsers, SessionInterface $session): Response{
 
-        
+
         $group = new Group();
-        $guest = new Guest();
         $user = new User();
 
-        // $listId = explode('#', $lisId); // get center of interest from url
+        $listIdUser = explode(',', $idUsers); // get center of interest from url
 
-        //test
-        $listId=[
-            '64b7fa3260ce6c146604e5a2',
-            '64b7fa6860ce6c146604e5a3',
-            '64b7fa8260ce6c146604e5a4',
-        ];
 
+        //dd($listIdUser);
         $status = 'waiting'; // status
         $group->setStatus($status);
 
-        $authors = 'Anthony';
+        $userById = $userRepository->findUserById($session->get('id'));
+
+        $authors = $userById->username;
         $group->setAuthors($authors);
 
         $creationGroup = date("Y-m-d"); // date de creation
         $group->setCreateGroup($creationGroup);
         $group->setReservationDate($creationGroup);
 
-        foreach($listId as $id){
+        foreach($listIdUser as $id){
+            $guest = new Guest();
             $guest->setGuest($userRepository->findUserById($id));
             $guest->setInvitation(false);
             $group->addGuest($guest);
+
         }
-            $groupRepository->save($group);
-            dd('good',$group);
+        $groupRepository->save($group);
+
+            return $this->redirectToRoute('app_home');
+    }
+
+    #[Route('/accept', name: 'accept_Invitation')]
+    public function acceptInvitation(GroupRepository $groupRepository, UserRepository $userRepository, SessionInterface $session): Response{
+
+        $group = new Group();
+
+        //recupere le document
+        $idSession = $session->get('id');
+        //dd(new ObjectId($idSession));
+
+        //appelle dans group ton id dans guest
+        $notifInvitation = ($groupRepository->findBy([
+            'status' => "waiting",
+            'guests.invitation' => false,
+            'guests.guest.$id' => new ObjectId($idSession),
+        ]));
+    
+        // $group = $notifInvitation;
+        
+        dd($notifInvitation[1]->guests);
+
+        foreach($notifInvitation as $invitation){
+            $guest = new Guest();
+
+            $guest->setGuest($userRepository->findUserById($invitation));
+            $guest->setInvitation(true);
+            $group->addGuest($guest);
+        }
+
+        // modifie le document
+
     }
 }
