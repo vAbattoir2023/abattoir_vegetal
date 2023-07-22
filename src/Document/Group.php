@@ -99,7 +99,7 @@ class Group
 
     //Jointure user
     
-    public function getGuests(): ?array
+    public function getGuests(): ?ArrayCollection
     {
         return $this->guests;
     }
@@ -131,8 +131,8 @@ class Guest
     public ?User $guest = null;
 
     // An example of a string type property
-    #[MongoDB\Field(type: "bool")]
-    public bool $invitation = false;
+    #[MongoDB\Field(type: "string")]
+    public string $invitation = '';
 
     // The getters and setters for each of our properties
     public function getGuest(): ?User
@@ -146,12 +146,12 @@ class Guest
         return $this;
     }
 
-    public function getInvitation(): bool
+    public function getInvitation(): string
     {
         return $this->invitation;
     }
 
-    public function setInvitation(bool $invitation): Guest
+    public function setInvitation(string $invitation): Guest
     {
         $this->invitation = $invitation;
         return $this;

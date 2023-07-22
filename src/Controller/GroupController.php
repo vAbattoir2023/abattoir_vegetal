@@ -123,7 +123,7 @@ class GroupController extends AbstractController
         foreach($listIdUser as $id){
             $guest = new Guest();
             $guest->setGuest($userRepository->findUserById($id));
-            $guest->setInvitation(false);
+            $guest->setInvitation('waiting');
             $group->addGuest($guest);
 
         }
@@ -133,32 +133,32 @@ class GroupController extends AbstractController
     }
 
     #[Route('/accept', name: 'accept_Invitation')]
-    public function acceptInvitation(GroupRepository $groupRepository, UserRepository $userRepository, SessionInterface $session): Response{
+    public function acceptInvitation(GroupRepository $groupRepository, UserRepository $userRepository, SessionInterface $session, DocumentManager $dm): Response{
 
-        // $group = new Group();
+        $idGroup = '64bc2f58a3635726850384d2';
 
-        // //recupere le document
-        // $idSession = $session->get('id');
-        // //dd(new ObjectId($idSession));
+        $group = $groupRepository->findOneBy(['id'=> $idGroup]);
 
-        // //appelle dans group ton id dans guest
-        // $notifInvitation = ($groupRepository->findBy([
-        //     'status' => "waiting",
-        //     'guests.invitation' => false,
-        //     'guests.guest.$id' => new ObjectId($idSession),
-        // ]));
-    
-        // // $group = $notifInvitation;
-        
-        // dd($notifInvitation[1]->guests);
+        $guest = $group->getGuests()->toArray();
 
-        // foreach($notifInvitation as $invitation){
-        //     $guest = new Guest();
+        // dd($guest);
 
-        //     $guest->setGuest($userRepository->findUserById($invitation));
-        //     $guest->setInvitation(true);
-        //     $group->addGuest($guest);
-        // }
+
+
+        $group = $dm->createQueryBuilder(Group::class)
+        // Find the job
+        ->findAndUpdate()
+        ->field('id')->equals($idGroup)
+
+        // Update found job
+        ->field('guest.invitation')->set('true')
+
+        ->getQuery()
+        ->execute();
+
+        dd($group);
+
+
     }
             // modifie le document
 
