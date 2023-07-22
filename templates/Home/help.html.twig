@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title  %} Comment ça marche ? {% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="{{asset('./assets/css/home.css')}}">{% endblock %}
+
+{% block body %}
+
+
+<body id="home" class=" container-fluid">
+    <header>
+        <nav class="d-flex justify-content-end navbar-home">
+            <div class="d-flex flex-column">
+                <a href="#">
+                    <img class="bouton-gmaf" src="assets/img/boutons/abattoir-vegetal-gimme-friend-off.svg" alt="">
+                </a>
+                <a>
+                    <img class="bouton-cec" src="assets/img/boutons/abattoir-vegetal-click-collect-off.svg" alt="">
+                </a>
+                <a>
+                    <img class="bouton-gmat" src="assets/img/boutons/abattoir-vegetal-gimme-table-off.svg" alt="">
+                </a>
+            </div>
+        </nav>
+    </header>
+    <main>
+            <div class="container"> <!-- MARGES -->
+
+                <div class="row">
+
+                    <a href="#">
+                        <img class="logo-home" src="assets/img/logo/abattoir-vegetal-logo-big-dark.svg" alt="logo">
+                    </a>
+                    <div class="slogan-home">
+                        <p>VEGAN CONCEPTUAL HEALTHY RESTAURANT</p>*
+
+                    </div>
+                    <a href="#" data-toggle="modal" data-target="#popupModal">👉 Comment ça marche ?</a>
+                </div>
+            </div>
+
+        <div class="modal fade" id="popupModal" tabindex="-1" role="dialog" aria-labelledby="popupcomment" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="popupcomment">
+                            comment ça marche ?
+                        </h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row text-center d-flex flex-wrap">
+                            <article class="cardinscris col-3 margin1 mt-3">
+                                <p class="numeros numero1">1</p>
+                                <div class="border1">
+                                    <img src="Assets/icones/legumes/carotte.svg" alt="" class="mt-4 mb-4">
+                                    <h2 class="mt-3">je m'inscris</h2>
+                                    <p class="psmallest mt-4 mb-3">
+                                        Crée toi un compte chez nous pour suivre tes demandes et réservations!
+                                    </p>
+                                </div>
+                            </article>
+                            <article class="cardinscris col-3 margin2 align-items-center mt-3">
+                                <p class="numeros numero2">2</p>
+                                <div class="border2">
+                                    <img src="Assets/icones/legumes/radis.svg" alt="" class="mt-4 mb-5">
+                                    <h2 class="">je me décris</h2>
+                                    <p class="psmallest mt-4 mb-3">
+                                        Remplis ton profil afin que les autres puissent savoir qui tu es pour apâter le chalan
+                                    </p>
+                                </div>
+                            </article>
+                            <article class="cardinscris col-3 margin2 align-items-center mt-3">
+                                <p class="numeros numero3">3</p>
+                                <div class="border3">
+                                    <img src="Assets/icones/legumes/pois.svg" alt="" class="mt-4 mb-5">
+                                    <h2 class="mb-4">je choisis</h2>
+                                    <p class="psmallest mb-3">
+                                        Choisis avec qui tu veux manger en fonction de ce qu’ils ont remplis dans leur profil
+                                    </p>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+{% endblock %}
+

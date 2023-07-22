@@ -19,6 +19,8 @@ return [
         '/group/getAllUsers' => [[['_route' => 'getAllUsers_app', '_controller' => 'App\\Controller\\GroupController::getAllUsers'], null, null, null, false, false, null]],
         '/group/users-list' => [[['_route' => 'app_get_users_list_without_filters', '_controller' => 'App\\Controller\\GroupController::showUsersListFull'], null, null, null, true, false, null]],
         '/' => [[['_route' => 'app_home', '_controller' => 'App\\Controller\\HomeController::index'], null, null, null, false, false, null]],
+        '/home' => [[['_route' => 'app_home_index', '_controller' => 'App\\Controller\\HomeController::home'], null, null, null, false, false, null]],
+        '/help' => [[['_route' => 'app_home_help', '_controller' => 'App\\Controller\\HomeController::help'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\LoginController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\LoginController::logout'], null, null, null, false, false, null]],
         '/register/add' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegisterController::index'], null, null, null, false, false, null]],

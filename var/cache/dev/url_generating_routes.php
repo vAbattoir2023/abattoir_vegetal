@@ -26,6 +26,8 @@ return [
     'app_get_users_list_from_filters' => [['filters'], ['_controller' => 'App\\Controller\\GroupController::showUsersList'], [], [['variable', '/', '[^/]++', 'filters', true], ['text', '/group/users-list']], [], [], []],
     'app_get_users_list_without_filters' => [[], ['_controller' => 'App\\Controller\\GroupController::showUsersListFull'], [], [['text', '/group/users-list/']], [], [], []],
     'app_home' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/']], [], [], []],
+    'app_home_index' => [[], ['_controller' => 'App\\Controller\\HomeController::home'], [], [['text', '/home']], [], [], []],
+    'app_home_help' => [[], ['_controller' => 'App\\Controller\\HomeController::help'], [], [['text', '/help']], [], [], []],
     'app_login' => [[], ['_controller' => 'App\\Controller\\LoginController::login'], [], [['text', '/login']], [], [], []],
     'app_logout' => [[], ['_controller' => 'App\\Controller\\LoginController::logout'], [], [['text', '/logout']], [], [], []],
     'app_register' => [[], ['_controller' => 'App\\Controller\\RegisterController::index'], [], [['text', '/register/add']], [], [], []],

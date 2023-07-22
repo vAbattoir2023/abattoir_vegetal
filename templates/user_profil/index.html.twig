@@ -190,10 +190,7 @@
 
         {# Fin de j'aime partie 2  #}
 
-    <fieldset style="display: none;">
-
-        {# je veux Etape 3 #}
-        <div class="container" >
+  
 
    <fieldset class="mt-5" style="display: none;">
    <div class="container" >
@@ -321,14 +318,14 @@
                     
         <button type="button" class="btn btn-primary" onclick="previousStep()">Retour</button>
                        
+        {{ form_widget(UserForm.submit) }}
                     </div>
-                </div>
-              </div>     
+         
+                
 
             </div>
         </section>
         {# Fin de je veux Etape 3   #}
-        {{ form_widget(UserForm.submit) }}
         </div>
 </fieldset>
         {# Fin de je veux Etape 3   #}
