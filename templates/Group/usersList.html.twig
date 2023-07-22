@@ -1,9 +1,9 @@
   
     {% for user in users %}
   <!-- User Card -->
-      <div class="offset-2 col-12 col-md-4">
+      <li class="col-2" style="margin-right : 135px;">
 
-     <div class="card mt-5 mb-5 card-user" style="width: 25rem;">
+     <div class="card mt-5 mb-5 card-user" style="width: 15rem; ">
         <img class="card-img-top" src="{{ user.image }}" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">{{ user.username }}</h5>
@@ -27,16 +27,16 @@
             </div>
 
             <!-- Accordion -->
-            <div class="accordion mb-4" id="accordionExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                           <h4>  +  DE DETAILS </h4> 
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                 <h4>  +  DE DETAILS </h4> 
                         </button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <div class="row">
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                                  <div class="row">
                                 <p class="pbold mt-4">J'aime...</p>
                                 <div class="col d-flex align-items-start">
                                     <!-- Display user's interests -->
@@ -62,7 +62,7 @@
             <a href="#" class="ms-2 bouton-small-transparent reduire">gimme this friend</a>
         </div>
       </div>
-    </div>
+    </li>
     <!-- End User Card -->
      {% endfor %}
  
