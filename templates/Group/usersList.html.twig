@@ -1,7 +1,9 @@
   
     {% for user in users %}
   <!-- User Card -->
-    <div class="card mt-5 mb-5 card-user" style="width: 25rem;">
+      <div class="offset-2 col-12 col-md-4">
+
+     <div class="card mt-5 mb-5 card-user" style="width: 25rem;">
         <img class="card-img-top" src="{{ user.image }}" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">{{ user.username }}</h5>
@@ -59,6 +61,7 @@
             <!-- End Accordion -->
             <a href="#" class="ms-2 bouton-small-transparent reduire">gimme this friend</a>
         </div>
+      </div>
     </div>
     <!-- End User Card -->
      {% endfor %}

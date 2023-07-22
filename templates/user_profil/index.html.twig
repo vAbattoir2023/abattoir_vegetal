@@ -6,10 +6,11 @@
 {% block body %}
 {# <h1>INSCRIPTION PROFIL </h1> #}
 
-
+ {{ include('_header.html.twig') }}
+ <section id="profil">
 {# CARD JE SUIS 1 #}
     <fieldset class="active">
-    <div id="jesuis" class="container ">
+    <div id="jesuis" class="container  mt-5">
    <div class=" row">
         <div class="">
           <article class="psmall border-card">
@@ -134,8 +135,8 @@
 
 
 {# J'aime partie 2 #}
-    <fieldset class="mt-5" style="display: none;">
-<div class="container" id="jaime">
+    <fieldset  style="display: none; margin-top:100px;">
+<div class="container " id="jaime">
           
                     <div class="cardjaime ">
                         
@@ -178,8 +179,8 @@
                 </div>
 
                 <div class="row g0">
-                    <div class="offset-md-3 col-md-9 d-flex justify-content-between jaimebouton">
-                        <a class="bouton-smallest-transparent" onclick="previousStep()">Retour</a>
+                    <div class="offset-md-3 col-md-9 d-flex jaimebouton">
+                        <a class="bouton-smallest-transparent me-5" onclick="previousStep()">Retour</a>
                         <a class="bouton-smallest-transparent" onclick="nextStep()">Suivant</a>
                     </div>
               
@@ -226,7 +227,7 @@
                                             id="btn-check-outlined-1" autocomplete="off">
                                         <label class="btn btn-outline-primary jeveuxchoice  w-100 h-100" for="btn-check-outlined-1">
                                             <img class="iconchoice"
-                                                src="Assets/icones/selection/selection-teteatete-off.svg" alt="">
+                                                src="../assets/img/icones/selection/selection-teteatete-off.svg" alt="">
                                             <br>Avec 1 personne</label>
                                     </div>
 
@@ -236,7 +237,7 @@
                                         <label class="btn btn-outline-primary jeveuxchoice w-100 h-100 pt-3"
                                             for="btn-check-outlined-2">
                                             <img class="iconchoice"
-                                                src="Assets/icones/selection/selection-groupe-off.svg" alt=""> <br>
+                                                src="../assets/img/icones/selection/selection-groupe-off.svg" alt=""> <br>
                                             En groupe</label>
                                     </div>
 
@@ -249,7 +250,7 @@
                                             id="btn-check-outlined-3" autocomplete="off">
                                         <label class="btn btn-outline-primary jeveuxchoice  w-100 h-100" for="btn-check-outlined-3">
                                             <img class="iconchoice"
-                                                src="Assets/icones/selection/selection-female-off.svg" alt="">
+                                                src="../assets/img/icones/selection/selection-female-off.svg" alt="">
                                             <br>La gente<br>féminine</label>
                                     </div>
 
@@ -257,7 +258,7 @@
                                         <input type="radio" name="genre" value="homme" class="btn-check"
                                             id="btn-check-outlined-4" autocomplete="off">
                                         <label class="btn btn-outline-primary jeveuxchoice  w-100 h-100" for="btn-check-outlined-4">
-                                            <img class="iconchoice" src="Assets/icones/selection/selection-male-off.svg"
+                                            <img class="iconchoice" src="../assets/img/icones/selection/selection-male-off.svg"
                                                 alt=""> <br>La gente masculine</label>
                                     </div>
 
@@ -267,7 +268,7 @@
                                         <label class="btn btn-outline-primary jeveuxchoice w-100 h-100 py-3"
                                             for="btn-check-outlined-5">
                                             <img class="iconchoice"
-                                                src="Assets/icones/selection/selection-malefemale-off.svg" alt="">
+                                                src="../assets/img/icones/selection/selection-malefemale-off.svg" alt="">
                                             <br>Les deux</label>
                                     </div>
 
@@ -296,7 +297,7 @@
                                 </div>
 
                                 <p>Je veux une limite d'âge</p>
-                                <img src="Assets/icones/jauge.svg" alt="">
+                                <img src="../assets/img/icones/jauge.svg" alt="">
 
                             </div>
                         </div>
@@ -306,7 +307,7 @@
                                 <p>J'ai des critères rédhibitoires sur ces sujets...</p>
                                 <div class="tag-menthe-small d-inline-block">
                                     <p class="tag-menthe-small psmall tag">Politique <img
-                                            src="Assets/icones/croix/croix-noire-small.svg" alt=""></p>
+                                            src="../assets/img/icones/croix/croix-noire-small.svg" alt=""></p>
                                 </div>
                             </div>
                         </div>
@@ -316,9 +317,9 @@
                 <div class="row g-0">
                     <div class=" col-md-9 d-flex justify-content-between jaimebouton">
                     
-        <button type="button" class="btn btn-primary" onclick="previousStep()">Retour</button>
+        <button type="button" class="bouton-smallest-transparent me-5" onclick="previousStep()">Retour</button>
                        
-        {{ form_widget(UserForm.submit) }}
+        {{ form_widget(UserForm.submit, {'attr': {'class': 'bouton-smallest-transparent '}}) }}
                     </div>
          
                 
@@ -332,7 +333,7 @@
 
 
 {{ form_end(UserForm) }}
-
+    </section>
 
 
 

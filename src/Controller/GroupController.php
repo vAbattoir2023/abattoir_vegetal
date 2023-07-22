@@ -102,4 +102,20 @@ class GroupController extends AbstractController
             'users' => $users
         ]);
     }
+    #[Route('/resa', name: 'app_get_resa')]
+    public function resa(DocumentManager $dm): Response{
+        
+
+        return $this->render('Group/resa.html.twig',[
+
+        ]);
+    }
+    #[Route('/resa/date', name: 'app_resa_date')]
+    public function resaDate(DocumentManager $dm): Response{
+        
+
+        return $this->render('Group/date.html.twig',[
+
+        ]);
+    }
 }

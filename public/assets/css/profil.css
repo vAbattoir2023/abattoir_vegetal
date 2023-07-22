@@ -46,7 +46,7 @@ a.link-jaime.active h2::after{
     background: var(--choux-fleur, #FBFAF4);
     /* style card je suis */
     box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14);
-    width: 750px;
+    width: 100%;
     margin-top: 60px;
     padding: 30px 0;   
     /* background-image: url("../img/background/registerBackground.png");
@@ -175,7 +175,7 @@ a.link-jaime.active h2::after{
     /* style card je suis */
     box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14);
     font-size: 20px;
-    width: 950px;
+    width: 100%;
     margin-top: 60px;
     margin-bottom: 40px;
     padding: 30px 80px; 
@@ -355,3 +355,53 @@ input[type="radio"].btn-check:checked + label {
 .jeveuxbouton {
     margin-bottom: 50px;
 }
+
+
+/* CSS MON PROFIL */
+
+#profil{
+    position: relative;
+ }
+ 
+
+ #profil .titre-card-profil{
+    margin-bottom: -50px;
+ }
+ 
+ #profil .mes-informations{
+    margin-top: 100px;
+    margin-bottom: 65px;
+ }
+ 
+ #profil .infoprofil{
+    display:flex;
+    justify-content: space-evenly;
+    width: 1300px;
+    height: 90px;
+    font-family: 'Work Sans';
+    background: var(--choux-fleur, #FBFAF4);
+    box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14);
+    padding: 25px 39px;
+ }
+ 
+ #profil .vertical-line{
+    border-left: 1.5px solid #000;
+    display: inline-block;
+    height: 40px;
+    margin: 0 20px;
+  }
+ 
+  #profil .algue-verte-profil{
+    margin-top: -500px;
+    padding-left: 1200px;
+  }
+ 
+  #profil .icone-modifier{
+    width: 30px;
+    height: 30px;
+  }
+ 
+  #profil .lien-modifier{
+    color: var(--foret-noire);
+  }
+ /* FIN DU CSS MON PROFIL */
