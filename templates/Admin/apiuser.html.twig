@@ -3,12 +3,14 @@
 {% block title %}Api index{% endblock %}
 
 {% block body %}
+<section class="container">
+
     <h1>Gestion administrateur</h1>
     <h2>API User </h2>
 
      <a href="{{ path('app_admin_index')}}" class="btn btn-primary">Liste des utilisateurs</a>
      <a href="{{ path('app_api_user')}}" class="btn btn-warning">Api</a>
-
+     <a href="{{ path('app_home_index') }}" class="btn btn-success">Accueil</a>
 
 
     <hr>
@@ -36,5 +38,6 @@
     <button class="btn btn-primary mt-2" type="submit">Enregistrer</button>
     {{ form_end(form) }}
     </div>
+</section>
 
 {% endblock %}

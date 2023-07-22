@@ -15,7 +15,6 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use MongoDB\BSON\ObjectId;
 
-
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
@@ -59,6 +58,24 @@ class HomeController extends AbstractController
             'message' => 'Welcome to your new controller!',
             'idSession' => $idSession,
             // 'notifications' => $notifInvitation
+        ]);
+        
+    }
+    #[Route('/home', name: 'app_home_index')]
+    public function home(SessionInterface $sessionInterface): Response
+    {
+
+        return $this->render('Home/index.html.twig',[
+          
+        ]);
+        
+    }
+    #[Route('/help', name: 'app_home_help')]
+    public function help(SessionInterface $sessionInterface): Response
+    {
+
+        return $this->render('Home/help.html.twig',[
+          
         ]);
         
     }

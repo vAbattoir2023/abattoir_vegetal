@@ -79,20 +79,32 @@ class UserType extends AbstractType
                 'expanded' => true
             ])
 
-            ->add('language', TextType::class,[
-                'label' => 'Je parle ...',
+            ->add('language', ChoiceType::class, [
+                'label' => 'Je parle ....',
+                'choices' => [
+                    'Anglais' => 'GB',
+                    'Français' => 'FR',
+                    'Espagnol' => 'ES',
+                    'Italien' => 'IT',
+                    'Néerlandais' => 'NL',
+                    'Bresilien' => 'BR',
+                    'Chinois ' => 'CN',
+                    'Algerien ' => 'DZ',
+                    
+                ],
                 'attr' => [
                     'class' => 'form-control',
-                ]
+                ],
+                'multiple' => true,
+                'expanded' => true,
             ])
 
-
-            // ->add('image', FileType::class, [
-            //     'label' => 'Mon image',
-            //     'attr' => [
-            //         'class' => 'form-control'
-            //     ],
-            // ])
+            ->add('image', TextType::class, [
+                'label' => 'Mon image',
+                'attr' => [
+                    'placeholder' => 'image = link url',
+                ],
+            ])
 
             ->add('job', TextType::class,[
                 'label' => 'Je boss dans ...',

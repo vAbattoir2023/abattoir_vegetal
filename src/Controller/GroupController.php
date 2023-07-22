@@ -97,7 +97,6 @@ class GroupController extends AbstractController
             'users' => $users
         ]);
     }
-
     #[Route('/add/{idUsers}', name: 'app_add_group')]
     public function addGroup(GroupRepository $groupRepository, UserRepository $userRepository, string $idUsers, SessionInterface $session): Response{
 
@@ -136,32 +135,47 @@ class GroupController extends AbstractController
     #[Route('/accept', name: 'accept_Invitation')]
     public function acceptInvitation(GroupRepository $groupRepository, UserRepository $userRepository, SessionInterface $session): Response{
 
-        $group = new Group();
+        // $group = new Group();
 
-        //recupere le document
-        $idSession = $session->get('id');
-        //dd(new ObjectId($idSession));
+        // //recupere le document
+        // $idSession = $session->get('id');
+        // //dd(new ObjectId($idSession));
 
-        //appelle dans group ton id dans guest
-        $notifInvitation = ($groupRepository->findBy([
-            'status' => "waiting",
-            'guests.invitation' => false,
-            'guests.guest.$id' => new ObjectId($idSession),
-        ]));
+        // //appelle dans group ton id dans guest
+        // $notifInvitation = ($groupRepository->findBy([
+        //     'status' => "waiting",
+        //     'guests.invitation' => false,
+        //     'guests.guest.$id' => new ObjectId($idSession),
+        // ]));
     
-        // $group = $notifInvitation;
+        // // $group = $notifInvitation;
         
-        dd($notifInvitation[1]->guests);
+        // dd($notifInvitation[1]->guests);
 
-        foreach($notifInvitation as $invitation){
-            $guest = new Guest();
+        // foreach($notifInvitation as $invitation){
+        //     $guest = new Guest();
 
-            $guest->setGuest($userRepository->findUserById($invitation));
-            $guest->setInvitation(true);
-            $group->addGuest($guest);
-        }
+        //     $guest->setGuest($userRepository->findUserById($invitation));
+        //     $guest->setInvitation(true);
+        //     $group->addGuest($guest);
+        // }
+    }
+            // modifie le document
 
-        // modifie le document
+    #[Route('/resa', name: 'app_get_resa')]
+    public function resa(DocumentManager $dm): Response{
+        
 
+        return $this->render('Group/resa.html.twig',[
+
+        ]);
+    }
+    #[Route('/resaDate', name: 'app_resa_date')]
+    public function resaDate(DocumentManager $dm): Response{
+        
+
+        return $this->render('Group/date.html.twig',[
+
+        ]);
     }
 }

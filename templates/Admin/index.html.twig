@@ -3,12 +3,17 @@
 {% block title %}User index{% endblock %}
 
 {% block body %}
+<section class="container">
+
+
     <h1>Gestion administrateur</h1>
 
      <a href="{{ path('app_admin_reservation')}}" class="btn btn-primary">Liste des Résérvation</a>
      <a href="{{ path('app_api_user')}}" class="btn btn-warning">Api</a>
+          <a href="{{ path('app_home_index') }}" class="btn btn-success">Accueil</a>
+
     <h4>Liste des utilisateurs </h4>
-    <table class="table bg-light">
+    <table class="table bg-light ">
         <thead>
             <tr>
                 <th>Email</th>
@@ -21,9 +26,9 @@
             <tr>
                 <td>{{ user.email }}</td>
                 <td>{{ user.username }}</td>
-                <td>
-                       <a href="{{ path('app_admin_show', {'id': user.id}) }}" class="btn btn-primary fa fa-eye"></a>
-                         <a href="{{ path('app_admin_edit', {'id': user.id}) }}" class="btn btn-primary fa fa-edit"></a> 
+                <td class="d-flex ">
+                       <a href="{{ path('app_admin_show', {'id': user.id}) }}" class="btn btn-primary fa fa-eye "></a>
+                         <a href="{{ path('app_admin_edit', {'id': user.id}) }}" class="btn btn-primary fa fa-edit me-3 ms-3"></a> 
             {{ include('admin/_delete_form.html.twig') }}
                 </td>
             </tr>
@@ -34,5 +39,5 @@
         {% endfor %}
         </tbody>
     </table>
-
+</section>
 {% endblock %}

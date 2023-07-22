@@ -8,12 +8,16 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 // use Doctrine\ODM\MongoDB\Mapping\Annotations\EmbedOne;
 use Symfony\Component\Validator\Constraints\Date;
 
-
+// A secondary class that is embedded in an array in our primary class
+// #[MongoDB\EmbeddedDocument]
 #[MongoDB\Document]
 class User
 {
     #[MongoDB\Id]
     public string $id;
+
+    #[MongoDB\Field(type: 'bool')]
+    protected $termsAccepted;
 
     #[MongoDB\Field(type: 'string')]
     public ?string $username = '';
@@ -31,12 +35,20 @@ class User
     #[MongoDB\Field(type: 'int')]
     public ?int $age = null;
 
+
+    // #[MongoDB\Field(type: 'date')]
+    // protected ?Date $dateOfBirth = null;
+
+
     #[MongoDB\Field(type: 'string')]
     public ?string $gender = null;
 
-    #[MongoDB\Field(type: 'string')]
-    public ?string $language = null;
+    #[MongoDB\Field(type: 'collection')]
+    protected ?array $language = null;
 
+    #[MongoDB\Field(type: 'collection')]
+    protected ?array $flagIconUrl = null;
+    
     #[MongoDB\Field(type: 'string')]
     public ?string $image = null;
 
@@ -56,19 +68,38 @@ class User
     #[MongoDB\Field(type: 'collection')]
     public array $centerOfInterest = [];
 
-    #[MongoDB\Field(type: 'int')]
-    public ?string $groupNbr = null;
+    #[MongoDB\Field(type: 'collection')]
+    public array $roles = [];
+    
+    
+    #[MongoDB\Field(type: 'string')]
+    public ?string $postalCode = null;
 
+    // #[MongoDB\Field(type: 'int')]
+    // public ?string $groupNbr = null;
+    
     // #[MongoDB\Field(type: 'array')]
     // public array $Allergy;
 
     // #[MongoDB\Field(type: 'string')]
     // protected string $birthdate;
 
-    // #[MongoDB\Field(type: 'string')]
-    // private string $role;
-
+ 
+    // ...
+    
+    
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+ 
+    public function getTermsAccepted()
+    {
+        return $this->termsAccepted;
+    }
+
+    public function setTermsAccepted($termsAccepted)
+    {
+        $this->termsAccepted = (bool) $termsAccepted;
+    }
 
     public function getId(): string
     {
@@ -116,19 +147,14 @@ class User
     }
 
     //BIRTHDAY
-    // public function getBirthday(): DateTime
+    // public function getDateOfBirth(): ?DateTime
     // {
-        
-    //     return DateTime::createFromFormat('Y-m-d', $this->birthdate);
+    //     return $this->dateOfBirth;
     // }
 
-    
-    // public function setBirthday(DateTime  $birthdate): User
+    // public function setDateOfBirth(?DateTime $dateOfBirth): User
     // {
-    //     if ($birthdate !== null) {
-    //         $this->birthdate = $birthdate->format('Y-m-d');
-    //     }
-
+    //     $this->dateOfBirth = $dateOfBirth;
     //     return $this;
     // }
 
@@ -146,14 +172,15 @@ class User
         return $this;
     }
 
-    public function getLanguage(): string
+    public function getLanguage(): ?array
     {
         
         return $this->language;
     }
 
-    public function setLanguage(string $language): User
+    public function setLanguage(?array $language): User
     {
+        // var_dump($language);
         $this->language = $language;
 
         return $this;
@@ -270,215 +297,62 @@ class User
         
         return $this->password;
     }
-
+    
     
     public function setPassword(string $password): User
     {
         $this->password = $password;
+        
+        return $this;
+    }
+    
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles); 
+       }
+
+    
+    public function setRoles(array $roles): User
+    {
+        $this->roles = $roles;
 
         return $this;
     }
 
-    // //AGE
-    // public function getAge(): int
-    // {
+
+    // FLAG 
+    public function getFlagIconUrl(): ?array
+    {
         
-    //     return $this->age;
-    // }
+        return $this->flagIconUrl;
+    }
 
-    
-    // public function setAge(int $age): User
-    // {
-    //     $this->age = $age;
+    public function setFlagIconUrl(?array $flagIconUrl): User
+    {
+        $this->flagIconUrl = $flagIconUrl;
 
-    //     return $this;
-    // }
+        return $this;
+    }
 
-    // //GENDER
-    // public function getGender(): string
-    // {
-        
-    //     return $this->gender;
-    // }
+    //POSTAL CODE 
+    public function getPostalCode(): ?string
+    {
+        return $this->postalCode;
+    }
 
-    
-    // public function setGender(string $gender): User
-    // {
-    //     $this->gender = $gender;
+    public function setPostalCode(?string $postalCode): User
+    {
+        $this->postalCode = $postalCode;
+        return $this;
+    }
 
-    //     return $this;
-    // }
-
-    // //ROLE
-    // public function getRole(): string
-    // {
-        
-    //     return $this->role;
-    // }
-
-    
-    // public function setRole(string $role): User
-    // {
-    //     $this->role = $role;
-
-    //     return $this;
-    // }
-
-    // //IMAGE
-    // public function getImage(): string
-    // {
-        
-    //     return $this->image;
-    // }
-
-    
-    // public function setImage(string $image): User
-    // {
-    //     $this->image = $image;
-
-    //     return $this;
-    // }
-
-    // //BIRTHDAY
-    // public function getBirthday(): date
-    // {
-        
-    //     return $this->birthdate;
-    // }
-
-    
-    // public function setBirthday(date $birthdate): User
-    // {
-    //     $this->birthdate = $birthdate;
-
-    //     return $this;
-    // }
-
-    // //JOB
-    // public function getJob(): string
-    // {
-        
-    //     return $this->job;
-    // }
-
-    
-    // public function setJob(string $job): User
-    // {
-    //     $this->job = $job;
-
-    //     return $this;
-    // }
-
-    // //DESCRIPTION
-    // public function getDescription(): string
-    // {
-        
-    //     return $this->description;
-    // }
-
-    
-    // public function setDescription(string $description): User
-    // {
-    //     $this->description = $description;
-
-    //     return $this;
-    // }
-
-    // //CITY
-    // public function getCity(): string
-    // {
-        
-    //     return $this->city;
-    // }
-
-    
-    // public function setCity(string $city): User
-    // {
-    //     $this->city = $city;
-
-    //     return $this;
-    // }
-
-    // //  //LANGUAGE
-    // //  public function getLanguage(): array
-    // //  {
-         
-    // //      return $this->language;
-    // //  }
-
-    // //  public function setLanguage(array $language): User
-    // // {
-    // //     $this->language = $language;
-
-    // //     return $this;
-    // // }
- 
-    // //DIET
-    // public function getDiet(): string
-    // {
-        
-    //     return $this->diet;
-    // }
-
-    //  public function setDiet(string $diet): User
-    //  {
-    //      $this->diet = $diet;
- 
-    //      return $this;
-    //  }
-
-    // //GROUPENBR
-    // public function getGroupNbr(): int
-    // {
-        
-    //     return $this->groupNbr;
-    // }
-
-    // public function setGroupNbr(int $groupNbr): User
-    // {
-    //     $this->groupNbr = $groupNbr;
-
-    //     return $this;
-    // }
-    // //ALLERGY
-    // public function getAllergy(): array
-    // {
-        
-    //     return $this->Allergy;
-    // }
-
-    // public function setAllergy(array $Allergy): User
-    // {
-    //     $this->Allergy = $Allergy;
-
-    //     return $this;
-    // }
-
-    // //CENTEROFINTEREST-PERSO
-    // public function getCenterOfInterestPerso(): string
-    // {
-        
-    //     return $this->centerOfInterestPerso;
-    // }
-
-    // public function setCenterOfInterestPerso(string $centerOfInterestPerso): User
-    // {
-    //     $this->centerOfInterestPerso = $centerOfInterestPerso;
-
-    //     return $this;
-    // }
-
-    // //CENTEROFINTEREST-PERSO
-    // public function getCenterOfInterest(): array
-    // {
-        
-    //     return $this->centerOfInterest;
-    // }
-
-    // public function setCenterOfInterest(array $centerOfInterest): User
-    // {
-    //     $this->centerOfInterest = $centerOfInterest;
-
-    //     return $this;
-    // }
 }
+   

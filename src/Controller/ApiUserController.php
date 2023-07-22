@@ -4,20 +4,15 @@ namespace App\Controller;
 
 use App\Document\User;
 use App\Form\ApiUserType;
-use App\Form\UserType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpClient\HttpClient;
-use Symfony\Component\Form\FormError;
-
 
 class ApiUserController extends AbstractController
 {
-    //REGEX du code de département, expression régulière
-    public const REGEX_DEPARTEMENT_CODE = '/^(?:0[1-9]|[1-8]\d|9[0-8])\d{3}$/';
 
     #[Route('/api_user', name: 'app_api_user', methods: ['GET', 'POST'])]
     public function new(Request $request, UserRepository $userRepository): Response
@@ -30,20 +25,28 @@ class ApiUserController extends AbstractController
         $form->handleRequest($request);
         // Cette conditionpermet de savoir SI le formulaire a été saisi et SI de plus les règles de validations sont vérifiées
         if ($form->isSubmitted() && $form->isValid()) {
+            $selectedLanguages = $form->get('language')->getData();
+            $flagIconUrl = [];
+            if (is_array($selectedLanguages)) {
+                // Définir la valeur de la propriété "language"
+                $apiuser->setLanguage($selectedLanguages);
+                // URL de base vers l'API des icônes des drapeaux
+                $flagIconsBaseUrl = 'https://www.countryflagicons.com/SHINY/16/';
 
-            // // Récupérer le code postal à partir du formulaire
-            // $codePostal = $apiuser->getPostalCode();
-
-            // // Valider le code postal avec la regex
-            // $isValidCodePostal = preg_match(self::REGEX_DEPARTEMENT_CODE, $codePostal);
-
-            // if (!$isValidCodePostal) {
-            //     // Ajouter une erreur de validation au champ "postalCode"
-            //     $form->get('postalCode')->addError(new FormError('Le code postal n\'est pas valide.'));
-            // } else {
-            //     echo 'Le code postal est valide';
-            // }
-
+                foreach ($selectedLanguages as $languageCode) {
+                    $languageCodeUpper = strtoupper($languageCode);
+                    // SI le drapeau correspondant existe dans le tableau $languageFlags
+                    if (isset($languageCodeUpper)) {
+                        $flagIconUrl[] = $flagIconsBaseUrl . $languageCodeUpper . '.png';
+                    } else {
+                        // SINON le drapeau pour une langue n'est pas disponible, vous pouvez définir une URL générique ou une URL par défaut
+                        echo'  le drapeau pour une langue n\'est pas disponible  ';
+                    }
+                }
+                $apiuser->setFlagIconUrl($flagIconUrl);
+            } else {
+                echo '  vide  ';
+            }
             // URL de l'API
             $apiUrl = 'https://randomuser.me/api/';
 
@@ -75,23 +78,14 @@ class ApiUserController extends AbstractController
                 $results = $data['results'][0];
                     
                 // Vérifier SI les données sont présentes dans la réponse de l'API
-                if (isset($results['gender'], $results['email'], $results['picture'], $results['login']['username'], $results['nat'], $results['dob']['age'])) {
+                if (isset($results['gender'], $results['email'], $results['picture'], $results['login']['username'], $results['dob']['age'])) {
+    
                     // Récupérer les valeurs depuis le tableau $results
                     $gender = $results['gender'];
                     $email = $results['email'];
                     $age = $results['dob']['age'];
                     $image = $results['picture']['large'];
                     $username = $results['login']['username'];
-                    $language = $results['nat'];
-
-                // URL de base vers l'API des icônes des drapeaux
-                $flagIconsBaseUrl = 'https://www.countryflagicons.com/SHINY/32/';
-
-                // Nom du fichier d'icône basé sur la valeur de $language en MAJUSCULE 
-                $flagIconFileName = strtoupper($language) . '.png';
-
-                // URL complète vers l'icône du drapeau
-                $flagIconUrl = $flagIconsBaseUrl . $flagIconFileName;
 
                     // Attribuer les valeurs au document USER
                     $apiuser->setGender($gender);
@@ -99,8 +93,6 @@ class ApiUserController extends AbstractController
                     $apiuser->setAge($age);
                     $apiuser->setImage($image);
                     $apiuser->setUserName($username);
-                    $apiuser->setLanguage($language);
-                    $apiuser->setFlagIconUrl($flagIconUrl);
                 }
                 
                 // Récupérer le code postal à partir du formulaire
@@ -131,7 +123,7 @@ class ApiUserController extends AbstractController
             }
         }
         // Retourne le rendu du formulaire (apiuser.html.twig) au format HTML
-// avec les données de ApiUser de la variable $apiuser et les valeurs attribuer à $form
+        // avec les données de ApiUser de la variable $apiuser et les valeurs attribuer à $form
         return $this->renderform('Admin/apiuser.html.twig', [
             'apiuser' => $apiuser,
             'form' => $form,
