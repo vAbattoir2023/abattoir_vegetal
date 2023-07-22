@@ -1,7 +1,7 @@
   
     {% for user in users %}
   <!-- User Card -->
-      <li class="col-2" style="margin-right : 135px;">
+      <li class="col-2" style="margin-right : 135px;list-style-type: none;">
 
      <div class="card mt-5 mb-5 card-user" style="width: 15rem; ">
         <img class="card-img-top" src="{{ user.image }}" alt="Card image cap">
@@ -36,9 +36,9 @@
                     </h2>
                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
-                                  <div class="row">
-                                <p class="pbold mt-4">J'aime...</p>
-                                <div class="col d-flex align-items-start">
+                                  <div class="d-flex row">
+                                <p class="pbold mt-4">J'aime...</p> <br>
+                                <div class="col d-flex align-items-start flex-wrap">
                                     <!-- Display user's interests -->
                                     {% for interest in user.centerOfInterest %}
                                         <p class="border ms-3 p-3 border-danger">{{ interest }}</p>
@@ -49,10 +49,10 @@
                                 <p class="col-12 citation">« {{ user.description }} »</p>
                             </p>
                             <p class="pbold mt-4">Je refuse...</p>
-                            <div class="col d-flex align-items-start">
-                                <p class="tag-jaune-small psmall tag me-3">Racistes</p>
-                                <p class="tag-jaune-small psmall tag me-3">Vegans</p>
-                                <p class="tag-jaune-small psmall tag me-3">Jeux d'argent</p>
+                            <div class="col d-flex align-items-start flex-wrap">
+                                <p class="tag-jaune-small psmall   mb-1.25">Racistes</p>
+                                <p class="tag-jaune-small psmall    mb-1.25">Vegans</p>
+                                <p class="tag-jaune-small psmall  ">Jeux d'argent</p>
                             </div>
                         </div>
                     </div>

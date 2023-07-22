@@ -110,7 +110,7 @@ class GroupController extends AbstractController
 
         ]);
     }
-    #[Route('/resa/date', name: 'app_resa_date')]
+    #[Route('/resaDate', name: 'app_resa_date')]
     public function resaDate(DocumentManager $dm): Response{
         
 
