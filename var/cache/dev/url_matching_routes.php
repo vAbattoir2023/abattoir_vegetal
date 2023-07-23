@@ -13,7 +13,7 @@ return [
         '/_profiler/search_bar' => [[['_route' => '_profiler_search_bar', '_controller' => 'web_profiler.controller.profiler::searchBarAction'], null, null, null, false, false, null]],
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
-        '/admin' => [[['_route' => 'app_admin_index', '_controller' => 'App\\Controller\\AdminController::index'], null, null, null, true, false, null]],
+        '/admin' => [[['_route' => 'app_admin_index', '_controller' => 'App\\Controller\\AdminGroupController::index'], null, null, null, true, false, null]],
         '/api_user' => [[['_route' => 'app_api_user', '_controller' => 'App\\Controller\\ApiUserController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/group/select_group' => [[['_route' => 'app_select_group', '_controller' => 'App\\Controller\\GroupController::select_group'], null, null, null, false, false, null]],
         '/group/users-list' => [[['_route' => 'app_get_users_list_without_filters', '_controller' => 'App\\Controller\\GroupController::showUsersListFull'], null, null, null, true, false, null]],
@@ -47,14 +47,13 @@ return [
                     .')'
                 .')'
                 .'|/admin/(?'
-                    .'|([^/]++)(*:187)'
-                    .'|edit/([^/]++)(*:208)'
+                    .'|edit/([^/]++)(*:192)'
+                    .'|([^/]++)(*:208)'
                     .'|delete/([^/]++)(*:231)'
-                    .'|reservation(*:250)'
                 .')'
                 .'|/group/(?'
-                    .'|users\\-list/([^/]++)(*:289)'
-                    .'|add/([^/]++)(*:309)'
+                    .'|users\\-list/([^/]++)(*:270)'
+                    .'|add/([^/]++)(*:290)'
                 .')'
             .')/?$}sDu',
     ],
@@ -66,12 +65,11 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        187 => [[['_route' => 'app_admin_show', '_controller' => 'App\\Controller\\AdminController::show'], ['id'], null, null, false, true, null]],
-        208 => [[['_route' => 'app_admin_edit', '_controller' => 'App\\Controller\\AdminController::edit'], ['id'], null, null, false, true, null]],
-        231 => [[['_route' => 'app_admin_delete', '_controller' => 'App\\Controller\\AdminController::delete'], ['id'], null, null, false, true, null]],
-        250 => [[['_route' => 'app_admin_reservation', '_controller' => 'App\\Controller\\AdminController::reservation'], [], ['POST' => 0], null, false, false, null]],
-        289 => [[['_route' => 'app_get_users_list_from_filters', '_controller' => 'App\\Controller\\GroupController::showUsersList'], ['filters'], null, null, false, true, null]],
-        309 => [
+        192 => [[['_route' => 'app_admin_edit', '_controller' => 'App\\Controller\\AdminController::edit'], ['id'], null, null, false, true, null]],
+        208 => [[['_route' => 'app_admin_show', '_controller' => 'App\\Controller\\AdminGroupController::show'], ['id'], null, null, false, true, null]],
+        231 => [[['_route' => 'app_admin_delete', '_controller' => 'App\\Controller\\AdminGroupController::delete'], ['id'], null, null, false, true, null]],
+        270 => [[['_route' => 'app_get_users_list_from_filters', '_controller' => 'App\\Controller\\GroupController::showUsersList'], ['filters'], null, null, false, true, null]],
+        290 => [
             [['_route' => 'app_add_group', '_controller' => 'App\\Controller\\GroupController::addGroup'], ['idUsers'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

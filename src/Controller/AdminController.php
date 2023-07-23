@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Document\User;
+use App\Document\Group;
 use App\Form\UserType;
+use App\Repository\GroupRepository;
 use App\Repository\UserRepository;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,7 +29,7 @@ class AdminController extends AbstractController
           if (!$admins) {
             return $this->redirectToRoute('app_register');
         } 
-        return $this->render('admin/index.html.twig', [
+        return $this->render('Admin/index.html.twig', [
             //on recupere la liste des administrateur en fonction du ROLE_ADMIN
             'users' => $userRepository->findAllFromBdd(),
         ]);
@@ -93,15 +95,7 @@ public function delete(Request $request, UserRepository $userRepository, $id): R
     ]);
 }
 
-#[Route('/reservation', name: 'app_admin_reservation', methods: ['POST'])]
-public function reservation(): Response
-{
 
-
-    return $this->render('admin/reservation.html.twig', [
-    
-    ]);
-}
 
 
 }

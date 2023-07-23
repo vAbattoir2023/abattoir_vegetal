@@ -105,16 +105,104 @@ class __TwigTemplate_d3ad4f3185d189551a8edb53564fe7a4e0488731068783ecda9bf5a2d17
     <table class=\"table bg-light\">
         <thead>
             <tr>
+                <th>status</th>
                 <th>Autheur</th>
-                <th>Email</th>
-                <th>Date</th>
-                <th>Groupe</th>
+                <th>créée le</th>
                 <th>actions</th>
+                <th>Groupe</th>
             </tr>
         </thead>
         <tbody>
-      
-        </tbody>
+        ";
+        // line 25
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable($context["groups"]);
+        $context['_iterated'] = false;
+        $context['loop'] = [
+          'parent' => $context['_parent'],
+          'index0' => 0,
+          'index'  => 1,
+          'first'  => true,
+        ];
+        if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof \Countable)) {
+            $length = count($context['_seq']);
+            $context['loop']['revindex0'] = $length - 1;
+            $context['loop']['revindex'] = $length;
+            $context['loop']['length'] = $length;
+            $context['loop']['last'] = 1 === $length;
+        }
+        foreach ($context['_seq'] as $context["_key"] => $context["groups"]) {
+            // line 26
+            echo "            <tr>
+                <td>";
+            // line 27
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["groups"], "status", [], "any", false, false, false, 27), "html", null, true);
+            echo "</td>
+                <td>";
+            // line 28
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["groups"], "authors", [], "any", false, false, false, 28), "html", null, true);
+            echo "</td>
+                 <td>";
+            // line 29
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["groups"], "createdAt", [], "any", false, false, false, 29), "Y-m-d H:i:s"), "html", null, true);
+            echo "</td>
+            <td>
+                <ul>
+                    ";
+            // line 32
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["groups"], "guests", [], "any", false, false, false, 32));
+            foreach ($context['_seq'] as $context["_key"] => $context["guest"]) {
+                // line 33
+                echo "                        <li>
+                            Guest: ";
+                // line 34
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["guest"], "guest", [], "any", false, false, false, 34), "username", [], "any", false, false, false, 34), "html", null, true);
+                echo "
+                            Invitation: ";
+                // line 35
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["guest"], "invitation", [], "any", false, false, false, 35), "html", null, true);
+                echo "
+                        </li>
+                    ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['guest'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 38
+            echo "                </ul>
+            </td>
+                <td >
+                       ";
+            // line 43
+            echo "            ";
+            echo twig_include($this->env, $context, "admin/_grpdelete_form.html.twig");
+            echo "
+                </td>
+            </tr>
+        ";
+            $context['_iterated'] = true;
+            ++$context['loop']['index0'];
+            ++$context['loop']['index'];
+            $context['loop']['first'] = false;
+            if (isset($context['loop']['length'])) {
+                --$context['loop']['revindex0'];
+                --$context['loop']['revindex'];
+                $context['loop']['last'] = 0 === $context['loop']['revindex0'];
+            }
+        }
+        if (!$context['_iterated']) {
+            // line 47
+            echo "            <tr>
+                <td colspan=\"7\">no records found</td>
+            </tr>
+        ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['groups'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 51
+        echo "        </tbody>
     </table>
 
 ";
@@ -138,7 +226,7 @@ class __TwigTemplate_d3ad4f3185d189551a8edb53564fe7a4e0488731068783ecda9bf5a2d17
 
     public function getDebugInfo()
     {
-        return array (  100 => 10,  96 => 9,  92 => 8,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  205 => 51,  196 => 47,  178 => 43,  173 => 38,  164 => 35,  160 => 34,  157 => 33,  153 => 32,  147 => 29,  143 => 28,  139 => 27,  136 => 26,  118 => 25,  100 => 10,  96 => 9,  92 => 8,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -159,18 +247,43 @@ class __TwigTemplate_d3ad4f3185d189551a8edb53564fe7a4e0488731068783ecda9bf5a2d17
     <table class=\"table bg-light\">
         <thead>
             <tr>
+                <th>status</th>
                 <th>Autheur</th>
-                <th>Email</th>
-                <th>Date</th>
-                <th>Groupe</th>
+                <th>créée le</th>
                 <th>actions</th>
+                <th>Groupe</th>
             </tr>
         </thead>
         <tbody>
-      
+        {% for groups in groups %}
+            <tr>
+                <td>{{ groups.status }}</td>
+                <td>{{ groups.authors }}</td>
+                 <td>{{ groups.createdAt|date('Y-m-d H:i:s') }}</td>
+            <td>
+                <ul>
+                    {% for guest in groups.guests %}
+                        <li>
+                            Guest: {{ guest.guest.username }}
+                            Invitation: {{ guest.invitation }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </td>
+                <td >
+                       {# <a href=\"{{ path('app_admin_show', {'id': groups.id}) }}\" class=\"btn btn-primary fa fa-eye \"></a>
+                         <a href=\"{{ path('app_admin_edit', {'id': user.id}) }}\" class=\"btn btn-primary fa fa-edit me-3 ms-3\"></a>  #}
+            {{ include('admin/_grpdelete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan=\"7\">no records found</td>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
 
-{% endblock %}", "Admin/reservation.html.twig", "C:\\wamp64\\www\\projet\\Symfony\\abattoir_vegetal-Eze\\templates\\Admin\\reservation.html.twig");
+{% endblock %}", "Admin/reservation.html.twig", "C:\\wamp64\\www\\projet\\php\\Nouveau dossier\\abattoir_vegetal\\templates\\Admin\\reservation.html.twig");
     }
 }

@@ -31,4 +31,14 @@ class GroupRepository extends ServiceDocumentRepository
 
 
     }
+    public function findAllGrpFromBdd() : array 
+    {
+        return $this->findAll();
+    }
+
+    public function removeByDocument(object $group) : void
+    {
+        $this->getDocumentManager()->remove($group);
+        $this->getDocumentManager()->flush();
+    }
 }

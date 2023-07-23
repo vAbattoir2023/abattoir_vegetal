@@ -352,6 +352,6 @@ class __TwigTemplate_f80f8a2502d371494f0f139c3b18f9644121060e15fc8f49a97bab86c97
 
 {% endblock %}
 
-{% block javascripts %}<script src=\"{{ asset('./assets/js/createGroup.js')}}\"></script> {% endblock %}", "Group/index.html.twig", "C:\\wamp64\\www\\projet\\Symfony\\abattoir_vegetal-Eze\\templates\\Group\\index.html.twig");
+{% block javascripts %}<script src=\"{{ asset('./assets/js/createGroup.js')}}\"></script> {% endblock %}", "Group/index.html.twig", "C:\\wamp64\\www\\projet\\php\\Nouveau dossier\\abattoir_vegetal\\templates\\Group\\index.html.twig");
     }
 }

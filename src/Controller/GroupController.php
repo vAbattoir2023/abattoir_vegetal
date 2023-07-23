@@ -162,7 +162,7 @@ class GroupController extends AbstractController
         $guestUserId = $guest->getGuest()->getId();
 
         if ($guestUserId === $currentUserId) {
-            $guest->setInvitation('waiting accepted');
+            $guest->setInvitation('waiting succes sa marche ');
             break; // Stop iterating after updating the matching guest
         }
     }

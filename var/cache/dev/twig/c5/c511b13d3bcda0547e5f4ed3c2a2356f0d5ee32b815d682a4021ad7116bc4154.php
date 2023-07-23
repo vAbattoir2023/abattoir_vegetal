@@ -48,15 +48,14 @@ class __TwigTemplate_7d18fb78d4f568b2c9b9672b932d65800902bc6276f841af702e3f8c71a
         $context['_seq'] = twig_ensure_traversable((isset($context["users"]) || array_key_exists("users", $context) ? $context["users"] : (function () { throw new RuntimeError('Variable "users" does not exist.', 3, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["user"]) {
             // line 4
-            echo "              <li id=\"allIdUser\" class=\"col-2\" style=\"margin-right : 135px;list-style-type: none;\">
-
+            echo "        <li id=\"allIdUser\">
             <p>";
-            // line 6
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "username", [], "any", false, false, false, 6), "html", null, true);
+            // line 5
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "username", [], "any", false, false, false, 5), "html", null, true);
             echo "</p>
             <button id=\"idUser\" value=\"";
-            // line 7
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 7), "html", null, true);
+            // line 6
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 6), "html", null, true);
             echo "\">aa</button>
         </li>
     ";
@@ -64,7 +63,7 @@ class __TwigTemplate_7d18fb78d4f568b2c9b9672b932d65800902bc6276f841af702e3f8c71a
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['user'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 10
+        // line 9
         echo "</ul>
 ";
         
@@ -87,7 +86,7 @@ class __TwigTemplate_7d18fb78d4f568b2c9b9672b932d65800902bc6276f841af702e3f8c71a
 
     public function getDebugInfo()
     {
-        return array (  68 => 10,  59 => 7,  55 => 6,  51 => 4,  47 => 3,  43 => 1,);
+        return array (  67 => 9,  58 => 6,  54 => 5,  51 => 4,  47 => 3,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -95,8 +94,7 @@ class __TwigTemplate_7d18fb78d4f568b2c9b9672b932d65800902bc6276f841af702e3f8c71a
         return new Source("<ul>
     <button type='submit' id=\"addGroup\">add group</button>
     {% for user in users %}
-              <li id=\"allIdUser\" class=\"col-2\" style=\"margin-right : 135px;list-style-type: none;\">
-
+        <li id=\"allIdUser\">
             <p>{{user.username}}</p>
             <button id=\"idUser\" value=\"{{user.id}}\">aa</button>
         </li>
@@ -171,6 +169,6 @@ class __TwigTemplate_7d18fb78d4f568b2c9b9672b932d65800902bc6276f841af702e3f8c71a
      {% endfor %}
  
   #}
-", "Group/usersList.html.twig", "C:\\wamp64\\www\\projet\\Symfony\\abattoir_vegetal-Eze\\templates\\Group\\usersList.html.twig");
+", "Group/usersList.html.twig", "C:\\wamp64\\www\\projet\\php\\Nouveau dossier\\abattoir_vegetal\\templates\\Group\\usersList.html.twig");
     }
 }
