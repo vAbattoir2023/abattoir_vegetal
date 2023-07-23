@@ -10,7 +10,7 @@
     <header>
         <nav class="d-flex justify-content-end navbar-home">
             <div class="d-flex flex-column">
-              		         {{ include('_nav.html.twig') }} 
+              		         {{ include('_nav.html.twig', { 'app': app }) }}
                 <a href="{{ path('app_register') }}">
                     <img class="bouton-gmaf" src="../assets/img/boutons/abattoir-vegetal-gimme-friend-off.svg" alt="">
                 </a>
@@ -90,6 +90,5 @@
         </div>  </div>
 </div>
 </body>
-
 
 {% endblock %}

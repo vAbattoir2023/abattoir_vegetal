@@ -69,11 +69,11 @@ class User
     public array $centerOfInterest = [];
 
     #[MongoDB\Field(type: 'collection')]
-    private array $roles = [];
+    public array $roles = [];
     
     
     #[MongoDB\Field(type: 'string')]
-    protected ?string $postalCode = null;
+    public ?string $postalCode = null;
 
     // #[MongoDB\Field(type: 'int')]
     // public ?string $groupNbr = null;

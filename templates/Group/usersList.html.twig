@@ -1,4 +1,13 @@
-  
+<ul>
+    <button type='submit' id="addGroup">add group</button>
+    {% for user in users %}
+        <li id="allIdUser">
+            <p>{{user.username}}</p>
+            <button id="idUser" value="{{user.id}}">aa</button>
+        </li>
+    {% endfor %}
+</ul>
+{#   
     {% for user in users %}
   <!-- User Card -->
       <li class="col-2" style="margin-right : 135px;list-style-type: none;">
@@ -66,4 +75,4 @@
     <!-- End User Card -->
      {% endfor %}
  
- 
+  #}
