@@ -142,10 +142,10 @@ class GroupController extends AbstractController
     }
 
     #[Route('/accept', name: 'accept_Invitation')]
-    public function acceptInvitation(GroupRepository $groupRepository, UserRepository $userRepository, SessionInterface $session, DocumentManager $dm): Response{
-
+    public function acceptInvitation($id,GroupRepository $groupRepository, UserRepository $userRepository, SessionInterface $session, DocumentManager $dm): Response{
         
-        $idGroup = '64bc6cef03431fac6d0010a0';
+        
+        $idGroup = $groupRepository->findGroupsById($id); // Replace $groupId with the ID you want to find
 
       // Get the currently logged-in user ID from the session
     $currentUserId = $session->get('id');

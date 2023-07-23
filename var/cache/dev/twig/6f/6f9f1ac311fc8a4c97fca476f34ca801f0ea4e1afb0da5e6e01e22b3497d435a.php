@@ -96,8 +96,8 @@ class __TwigTemplate_d9a14a1f8821397f6863eb1b1dd38b940d7898f03d045b05c1fa3da928d
         echo "\" class=\"btn btn-primary\">Liste des utilisateurs</a>
      <a href=\"";
         // line 12
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_api_user");
-        echo "\" class=\"btn btn-warning\">Api</a>
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_admin_grpindex");
+        echo "\" class=\"btn btn-primary\">Liste des Résérvation</a>
      <a href=\"";
         // line 13
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home");
@@ -177,7 +177,7 @@ class __TwigTemplate_d9a14a1f8821397f6863eb1b1dd38b940d7898f03d045b05c1fa3da928d
     <h2>API User </h2>
 
      <a href=\"{{ path('app_admin_index')}}\" class=\"btn btn-primary\">Liste des utilisateurs</a>
-     <a href=\"{{ path('app_api_user')}}\" class=\"btn btn-warning\">Api</a>
+     <a href=\"{{ path('app_admin_grpindex')}}\" class=\"btn btn-primary\">Liste des Résérvation</a>
      <a href=\"{{ path('app_home') }}\" class=\"btn btn-success\">Accueil</a>
 
 

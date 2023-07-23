@@ -187,9 +187,9 @@ class __TwigTemplate_0b2e5bb05ecbf86c7a272530a1c0703d5b37f3d0e2ba37b665b615a76b8
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 33
         echo "\t\t";
-        $this->loadTemplate("Home/index.html.twig", "base.html.twig", 33)->display($context);
-        // line 34
+        echo twig_include($this->env, $context, "Home/index.html.twig");
         echo "
+
 \t";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -229,7 +229,7 @@ class __TwigTemplate_0b2e5bb05ecbf86c7a272530a1c0703d5b37f3d0e2ba37b665b615a76b8
 
     public function getDebugInfo()
     {
-        return array (  203 => 44,  192 => 34,  189 => 33,  179 => 29,  175 => 28,  171 => 27,  167 => 26,  163 => 24,  158 => 23,  148 => 22,  130 => 18,  110 => 6,  99 => 45,  97 => 44,  91 => 41,  85 => 38,  81 => 36,  79 => 22,  74 => 19,  72 => 18,  65 => 14,  61 => 12,  56 => 8,  54 => 6,  47 => 1,);
+        return array (  203 => 44,  189 => 33,  179 => 29,  175 => 28,  171 => 27,  167 => 26,  163 => 24,  158 => 23,  148 => 22,  130 => 18,  110 => 6,  99 => 45,  97 => 44,  91 => 41,  85 => 38,  81 => 36,  79 => 22,  74 => 19,  72 => 18,  65 => 14,  61 => 12,  56 => 8,  54 => 6,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -266,7 +266,7 @@ class __TwigTemplate_0b2e5bb05ecbf86c7a272530a1c0703d5b37f3d0e2ba37b665b615a76b8
 \t\t\t</div>
 \t\t</div>
 \t{% endfor %}
-\t\t{% include('Home/index.html.twig') %}
+\t\t{{  include('Home/index.html.twig') }}
 
 \t{% endblock %}
 

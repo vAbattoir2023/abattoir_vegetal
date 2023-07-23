@@ -15,10 +15,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 
 
-#[Route('/admin')]
+#[Route('/adminGrp')]
 class AdminGroupController extends AbstractController
 {
-    #[Route('/', name: 'app_admin_index')]
+    #[Route('/', name: 'app_admin_grpindex')]
     public function index(GroupRepository $groupeRepository, sessionInterface $sessionInterface): Response    {
 
         
@@ -28,23 +28,23 @@ class AdminGroupController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_admin_show')]
-    public function show(Group $group, $id, GroupRepository  $groupRepository): Response
-    {
-   // get id user from session
-   $groupFromBdd = $groupRepository->findGroupsById($id);
+//     #[Route('/{id}', name: 'app_admin_grpshow')]
+//     public function show(Group $group, $id, GroupRepository  $groupRepository): Response
+//     {
+//    // get id user from session
+//    $groupFromBdd = $groupRepository->findGroupsById($id);
 
 
-   if(!$groupFromBdd){
-       return $this->redirectToRoute('app_home');
-   }
+//    if(!$groupFromBdd){
+//        return $this->redirectToRoute('app_home');
+//    }
 
-   // get document user from database
+//    // get document user from database
         
-        return $this->render('user_profil/profil.html.twig', [
-            'group' => $groupFromBdd,
-        ]);
-    }
+//         return $this->render('user_profil/profil.html.twig', [
+//             'group' => $groupFromBdd,
+//         ]);
+//     }
 
 
 //     #[Route('/edit/{id}', name: 'app_admin_edit')]
@@ -74,16 +74,16 @@ class AdminGroupController extends AbstractController
 //     ]);
 // }
 
-#[Route('/delete/{id}', name: 'app_admin_delete')]
+#[Route('/deleteGrp/{id}', name: 'app_grpadmin_delete')]
 public function delete(Request $request, GroupRepository  $groupRepository, $id): Response
 {
-    $groupFromBdd = $groupRepository->findGroupsById($id);
+    $groupFromBdd = $groupRepository->find($id);
 
     if ($this->isCsrfTokenValid('delete'. $groupFromBdd->getId(), $request->request->get('_token'))) {
         $groupRepository->removeByDocument($groupFromBdd, true);
     }
 
-    return $this->redirectToRoute('app_admin_reservation', [], Response::HTTP_SEE_OTHER, [
+    return $this->redirectToRoute('Admin/app_admin_reservation', [], Response::HTTP_SEE_OTHER, [
         'groups' => $groupFromBdd,
     ]);
 }

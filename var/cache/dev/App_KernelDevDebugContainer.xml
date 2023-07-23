@@ -447,6 +447,9 @@
     </service>
     <service id="App\Document\Group" class="App\Document\Group" autowire="true" autoconfigure="true"/>
     <service id="App\Document\User" class="App\Document\User" autowire="true" autoconfigure="true"/>
+    <service id="App\Form\ApiUserType" class="App\Form\ApiUserType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\LoginType" class="App\Form\LoginType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -1242,6 +1245,7 @@
         <argument>Doctrine\Bundle\MongoDBBundle\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\ApiUserType</argument>
         <argument>App\Form\LoginType</argument>
         <argument>App\Form\RegisterType</argument>
         <argument>App\Form\UserType</argument>
@@ -3270,7 +3274,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.zdeUyFq"/>
+      <argument type="service" id=".service_locator.9ilz5tM"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -6234,6 +6238,8 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\UserProfilController" class="App\Controller\UserProfilController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\UserProfilController" class="App\Controller\UserProfilController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\UserProfilController" class="App\Controller\UserProfilController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ApiUserType" class="App\Form\ApiUserType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ApiUserType" class="App\Form\ApiUserType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\LoginType" class="App\Form\LoginType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\LoginType" class="App\Form\LoginType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegisterType" class="App\Form\RegisterType" autowire="true" abstract="true"/>
@@ -6646,10 +6652,9 @@
         <argument key="groupeRepository" type="service_closure" id="App\Repository\GroupRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.GG.dTGT" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.Rze8UIU" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="group" type="service_closure" id="App\Document\Group"/>
         <argument key="groupRepository" type="service_closure" id="App\Repository\GroupRepository"/>
       </argument>
     </service>
@@ -6681,16 +6686,15 @@
         <argument key="groupRepository" type="service_closure" id="App\Repository\GroupRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.dvAXOAR" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.e52Q9SO" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::delete" type="service_closure" id=".service_locator..Ae5NXw"/>
         <argument key="App\Controller\AdminController::edit" type="service_closure" id=".service_locator.sVvhi.g"/>
         <argument key="App\Controller\AdminController::index" type="service_closure" id=".service_locator..Ae5NXw"/>
         <argument key="App\Controller\AdminController::show" type="service_closure" id=".service_locator.xawkWJg"/>
-        <argument key="App\Controller\AdminGroupController::delete" type="service_closure" id=".service_locator..Ae5NXw"/>
+        <argument key="App\Controller\AdminGroupController::delete" type="service_closure" id=".service_locator.Rze8UIU"/>
         <argument key="App\Controller\AdminGroupController::index" type="service_closure" id=".service_locator.J4f2S60"/>
-        <argument key="App\Controller\AdminGroupController::show" type="service_closure" id=".service_locator.GG.dTGT"/>
         <argument key="App\Controller\ApiUserController::new" type="service_closure" id=".service_locator..Ae5NXw"/>
         <argument key="App\Controller\GroupController::acceptInvitation" type="service_closure" id=".service_locator.EPAoNd7"/>
         <argument key="App\Controller\GroupController::addGroup" type="service_closure" id=".service_locator.Jm9VFiV"/>
@@ -6713,9 +6717,8 @@
         <argument key="App\Controller\AdminController:edit" type="service_closure" id=".service_locator.sVvhi.g"/>
         <argument key="App\Controller\AdminController:index" type="service_closure" id=".service_locator..Ae5NXw"/>
         <argument key="App\Controller\AdminController:show" type="service_closure" id=".service_locator.xawkWJg"/>
-        <argument key="App\Controller\AdminGroupController:delete" type="service_closure" id=".service_locator..Ae5NXw"/>
+        <argument key="App\Controller\AdminGroupController:delete" type="service_closure" id=".service_locator.Rze8UIU"/>
         <argument key="App\Controller\AdminGroupController:index" type="service_closure" id=".service_locator.J4f2S60"/>
-        <argument key="App\Controller\AdminGroupController:show" type="service_closure" id=".service_locator.GG.dTGT"/>
         <argument key="App\Controller\ApiUserController:new" type="service_closure" id=".service_locator..Ae5NXw"/>
         <argument key="App\Controller\GroupController:acceptInvitation" type="service_closure" id=".service_locator.EPAoNd7"/>
         <argument key="App\Controller\GroupController:addGroup" type="service_closure" id=".service_locator.Jm9VFiV"/>
@@ -6794,9 +6797,10 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.zdeUyFq" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.9ilz5tM" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\ApiUserType" type="service_closure" id="App\Form\ApiUserType"/>
         <argument key="App\Form\LoginType" type="service_closure" id="App\Form\LoginType"/>
         <argument key="App\Form\RegisterType" type="service_closure" id="App\Form\RegisterType"/>
         <argument key="App\Form\UserType" type="service_closure" id="App\Form\UserType"/>
@@ -7382,12 +7386,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.dvAXOAR"/>
+      <argument type="service" id=".service_locator.e52Q9SO"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.dvAXOAR"/>
+      <argument type="service" id=".service_locator.e52Q9SO"/>
     </service>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
       <argument type="iterator">
@@ -8346,7 +8350,7 @@
     <service id="doctrine_mongodb.odm.event_manager" alias="doctrine_mongodb.odm.default_connection.event_manager"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.dvAXOAR"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.e52Q9SO"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -8370,9 +8374,9 @@
     <service id=".service_locator.eCQHskl" alias=".service_locator.sVvhi.g"/>
     <service id=".service_locator.ukGDiSN" alias=".service_locator.EPAoNd7"/>
     <service id=".service_locator.RkX5Abn" alias=".service_locator.uyc9nKE"/>
-    <service id=".service_locator.l4PMhlg" alias=".service_locator.dvAXOAR"/>
+    <service id=".service_locator.Bu9xPq4" alias=".service_locator.e52Q9SO"/>
     <service id=".service_locator.Naiw5mr" alias=".service_locator.HuqLxd2"/>
-    <service id=".service_locator.CEjrhlZ" alias=".service_locator.zdeUyFq"/>
+    <service id=".service_locator.WJO9UR3" alias=".service_locator.9ilz5tM"/>
     <service id=".service_locator.XW18Svm" alias=".service_locator.TcKhdzh"/>
     <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
     <service id=".service_locator.jkb6XQV" alias=".service_locator.l1ae.Qz"/>
@@ -8402,7 +8406,7 @@
     <service id=".service_locator.jRd4ptM" alias=".service_locator.xawkWJg"/>
     <service id=".service_locator.KHmCNTa" alias=".service_locator.sVvhi.g"/>
     <service id=".service_locator.kNvSlVq" alias=".service_locator.J4f2S60"/>
-    <service id=".service_locator.apXqZL5" alias=".service_locator.GG.dTGT"/>
+    <service id=".service_locator.EAS9a6Y" alias=".service_locator.Rze8UIU"/>
     <service id=".service_locator.HU5Jgek" alias=".service_locator.kQ3e.Yt"/>
     <service id=".service_locator.FJGQ_em" alias=".service_locator.Jm9VFiV"/>
     <service id=".service_locator.tLoe_aM" alias=".service_locator.EPAoNd7"/>

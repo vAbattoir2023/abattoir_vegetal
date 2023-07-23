@@ -12,7 +12,7 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* admin/index.html.twig */
+/* Admin/index.html.twig */
 class __TwigTemplate_17b3ac1bd4cea4d310db55bb650ccc9a7e1bc367e5823e19e2e1335d2988a7e7 extends Template
 {
     private $source;
@@ -40,12 +40,12 @@ class __TwigTemplate_17b3ac1bd4cea4d310db55bb650ccc9a7e1bc367e5823e19e2e1335d298
     {
         $macros = $this->macros;
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "admin/index.html.twig"));
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "Admin/index.html.twig"));
 
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "admin/index.html.twig"));
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "Admin/index.html.twig"));
 
-        $this->parent = $this->loadTemplate("base.html.twig", "admin/index.html.twig", 1);
+        $this->parent = $this->loadTemplate("base.html.twig", "Admin/index.html.twig", 1);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
@@ -92,7 +92,7 @@ class __TwigTemplate_17b3ac1bd4cea4d310db55bb650ccc9a7e1bc367e5823e19e2e1335d298
 
      <a href=\"";
         // line 11
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_admin_reservation");
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_admin_grpindex");
         echo "\" class=\"btn btn-primary\">Liste des Résérvation</a>
      <a href=\"";
         // line 12
@@ -118,19 +118,6 @@ class __TwigTemplate_17b3ac1bd4cea4d310db55bb650ccc9a7e1bc367e5823e19e2e1335d298
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["users"]) || array_key_exists("users", $context) ? $context["users"] : (function () { throw new RuntimeError('Variable "users" does not exist.', 25, $this->source); })()));
         $context['_iterated'] = false;
-        $context['loop'] = [
-          'parent' => $context['_parent'],
-          'index0' => 0,
-          'index'  => 1,
-          'first'  => true,
-        ];
-        if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof \Countable)) {
-            $length = count($context['_seq']);
-            $context['loop']['revindex0'] = $length - 1;
-            $context['loop']['revindex'] = $length;
-            $context['loop']['length'] = $length;
-            $context['loop']['last'] = 1 === $length;
-        }
         foreach ($context['_seq'] as $context["_key"] => $context["user"]) {
             // line 26
             echo "            <tr>
@@ -151,25 +138,23 @@ class __TwigTemplate_17b3ac1bd4cea4d310db55bb650ccc9a7e1bc367e5823e19e2e1335d298
             // line 31
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_admin_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 31)]), "html", null, true);
             echo "\" class=\"btn btn-primary fa fa-edit me-3 ms-3\"></a> 
-            ";
+<form method=\"post\" action=\"";
             // line 32
-            echo twig_include($this->env, $context, "admin/_delete_form.html.twig");
-            echo "
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_admin_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 32)]), "html", null, true);
+            echo "\" onsubmit=\"return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?');\">
+    <input type=\"hidden\" name=\"_token\" value=\"";
+            // line 33
+            echo twig_escape_filter($this->env, $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 33))), "html", null, true);
+            echo "\">
+    <button class=\"btn btn-danger mt-1\">Delete</button>
+</form>
                 </td>
             </tr>
         ";
             $context['_iterated'] = true;
-            ++$context['loop']['index0'];
-            ++$context['loop']['index'];
-            $context['loop']['first'] = false;
-            if (isset($context['loop']['length'])) {
-                --$context['loop']['revindex0'];
-                --$context['loop']['revindex'];
-                $context['loop']['last'] = 0 === $context['loop']['revindex0'];
-            }
         }
         if (!$context['_iterated']) {
-            // line 36
+            // line 39
             echo "            <tr>
                 <td colspan=\"7\">no records found</td>
             </tr>
@@ -178,7 +163,7 @@ class __TwigTemplate_17b3ac1bd4cea4d310db55bb650ccc9a7e1bc367e5823e19e2e1335d298
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['user'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 40
+        // line 43
         echo "        </tbody>
     </table>
 </section>
@@ -193,7 +178,7 @@ class __TwigTemplate_17b3ac1bd4cea4d310db55bb650ccc9a7e1bc367e5823e19e2e1335d298
 
     public function getTemplateName()
     {
-        return "admin/index.html.twig";
+        return "Admin/index.html.twig";
     }
 
     public function isTraitable()
@@ -203,7 +188,7 @@ class __TwigTemplate_17b3ac1bd4cea4d310db55bb650ccc9a7e1bc367e5823e19e2e1335d298
 
     public function getDebugInfo()
     {
-        return array (  182 => 40,  173 => 36,  156 => 32,  152 => 31,  148 => 30,  143 => 28,  139 => 27,  136 => 26,  118 => 25,  103 => 13,  99 => 12,  95 => 11,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  167 => 43,  158 => 39,  147 => 33,  143 => 32,  139 => 31,  135 => 30,  130 => 28,  126 => 27,  123 => 26,  118 => 25,  103 => 13,  99 => 12,  95 => 11,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -218,7 +203,7 @@ class __TwigTemplate_17b3ac1bd4cea4d310db55bb650ccc9a7e1bc367e5823e19e2e1335d298
 
     <h1>Gestion administrateur</h1>
 
-     <a href=\"{{ path('app_admin_reservation')}}\" class=\"btn btn-primary\">Liste des Résérvation</a>
+     <a href=\"{{ path('app_admin_grpindex')}}\" class=\"btn btn-primary\">Liste des Résérvation</a>
      <a href=\"{{ path('app_api_user')}}\" class=\"btn btn-warning\">Api</a>
           <a href=\"{{ path('app_home') }}\" class=\"btn btn-success\">Accueil</a>
 
@@ -239,7 +224,10 @@ class __TwigTemplate_17b3ac1bd4cea4d310db55bb650ccc9a7e1bc367e5823e19e2e1335d298
                 <td class=\"d-flex \">
                        <a href=\"{{ path('app_admin_show', {'id': user.id}) }}\" class=\"btn btn-primary fa fa-eye \"></a>
                          <a href=\"{{ path('app_admin_edit', {'id': user.id}) }}\" class=\"btn btn-primary fa fa-edit me-3 ms-3\"></a> 
-            {{ include('admin/_delete_form.html.twig') }}
+<form method=\"post\" action=\"{{ path('app_admin_delete', {'id': user.id}) }}\" onsubmit=\"return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?');\">
+    <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ user.id) }}\">
+    <button class=\"btn btn-danger mt-1\">Delete</button>
+</form>
                 </td>
             </tr>
         {% else %}
@@ -250,6 +238,6 @@ class __TwigTemplate_17b3ac1bd4cea4d310db55bb650ccc9a7e1bc367e5823e19e2e1335d298
         </tbody>
     </table>
 </section>
-{% endblock %}", "admin/index.html.twig", "C:\\wamp64\\www\\projet\\php\\Nouveau dossier\\abattoir_vegetal\\templates\\Admin\\index.html.twig");
+{% endblock %}", "Admin/index.html.twig", "C:\\wamp64\\www\\projet\\php\\Nouveau dossier\\abattoir_vegetal\\templates\\Admin\\index.html.twig");
     }
 }

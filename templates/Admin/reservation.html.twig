@@ -3,6 +3,8 @@
 {% block title %}User index{% endblock %}
 
 {% block body %}
+<section class="container">
+
     <h1>Gestion administrateur</h1>
 
      <a href="{{ path('app_admin_index')}}" class="btn btn-primary">Liste des utilisateurs</a>
@@ -31,7 +33,7 @@
                 <ul>
                     {% for guest in groups.guests %}
                         <li>
-                            Guest: {{ guest.guest.username }}
+                            {# Guest: {{ guest.username }} #}
                             Invitation: {{ guest.invitation }}
                         </li>
                     {% endfor %}
@@ -40,7 +42,7 @@
                 <td >
                        {# <a href="{{ path('app_admin_show', {'id': groups.id}) }}" class="btn btn-primary fa fa-eye "></a>
                          <a href="{{ path('app_admin_edit', {'id': user.id}) }}" class="btn btn-primary fa fa-edit me-3 ms-3"></a>  #}
-            {{ include('admin/_grpdelete_form.html.twig') }}
+            {{ include('Admin/_grpdelete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
@@ -50,5 +52,5 @@
         {% endfor %}
         </tbody>
     </table>
-
+</section>
 {% endblock %}
