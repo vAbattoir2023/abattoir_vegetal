@@ -22,7 +22,7 @@ class Group
     public ?string $authors = null;
     
     #[MongoDB\Field(type: "date")]
-    public ?\DateTime $createdAt = null;
+    public ?\DateTimeInterface $createdAt = null;
     
     #[MongoDB\Field(type: "date")]
     public ?\DateTime $reservationDate = null;
@@ -75,14 +75,16 @@ class Group
         return $this;
     }
 
-    public function getCreateGroup(): ?string
+
+    public function getCreateGroup(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
 
-    public function setCreateGroup(?string $createdAt): Group
+    public function setCreateGroup(\DateTimeInterface $createdAt): Group
     {
-        $this->createdAt = \DateTime::createFromFormat('Y-m-d', $createdAt);
+        $this->createdAt = $createdAt;
+
         return $this;
     }
 

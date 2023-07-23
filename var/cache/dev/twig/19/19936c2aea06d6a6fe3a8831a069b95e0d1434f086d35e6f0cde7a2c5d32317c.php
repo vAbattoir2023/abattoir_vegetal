@@ -77,25 +77,25 @@ class __TwigTemplate_0b2e5bb05ecbf86c7a272530a1c0703d5b37f3d0e2ba37b665b615a76b8
 \t\t\t\t";
         // line 22
         $this->displayBlock('body', $context, $blocks);
-        // line 35
+        // line 36
         echo "
 \t\t</body>
        ";
-        // line 37
+        // line 38
         echo twig_include($this->env, $context, "_footer.html.twig");
         echo "
 \t
 \t</html>
 \t<script src=\"";
-        // line 40
+        // line 41
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./assets/js/form.js"), "html", null, true);
         echo "\"></script>
 
 
 \t";
-        // line 43
-        $this->displayBlock('javascripts', $context, $blocks);
         // line 44
+        $this->displayBlock('javascripts', $context, $blocks);
+        // line 45
         echo "
 ";
         
@@ -162,16 +162,20 @@ class __TwigTemplate_0b2e5bb05ecbf86c7a272530a1c0703d5b37f3d0e2ba37b665b615a76b8
             // line 24
             echo "\t\t<div class=\"container bg-success bg-gradient col-6 mb-5 p-3\">
 \t\t\t<div class='d-flex flex-column'>
-\t\t\t\t<span class='border border-white'>";
+\t\t\t\t<span class='border border-white'>Invitation du ";
             // line 26
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["notif"], "authors", [], "any", false, false, false, 26), "html", null, true);
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["notif"], "createdAt", [], "any", false, false, false, 26), "Y-m-d H:i:s"), "html", null, true);
+            echo " </span><br>
+\t\t\t\t<span class='border border-white'>";
+            // line 27
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["notif"], "authors", [], "any", false, false, false, 27), "html", null, true);
             echo " t'as invité à manger</span>
 \t\t\t\t<a href=\"";
-            // line 27
+            // line 28
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("accept_Invitation");
             echo "\"><button class='col-12'>accepter</button></a>
 \t\t\t\t<a href=\"";
-            // line 28
+            // line 29
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("accept_Invitation");
             echo "\"><button class='col-12'>refuser</button></a>
 \t\t\t</div>
@@ -181,10 +185,10 @@ class __TwigTemplate_0b2e5bb05ecbf86c7a272530a1c0703d5b37f3d0e2ba37b665b615a76b8
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['notif'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 32
-        echo "\t\t";
-        $this->loadTemplate("Home/index.html.twig", "base.html.twig", 32)->display($context);
         // line 33
+        echo "\t\t";
+        $this->loadTemplate("Home/index.html.twig", "base.html.twig", 33)->display($context);
+        // line 34
         echo "
 \t";
         
@@ -195,7 +199,7 @@ class __TwigTemplate_0b2e5bb05ecbf86c7a272530a1c0703d5b37f3d0e2ba37b665b615a76b8
 
     }
 
-    // line 43
+    // line 44
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -225,7 +229,7 @@ class __TwigTemplate_0b2e5bb05ecbf86c7a272530a1c0703d5b37f3d0e2ba37b665b615a76b8
 
     public function getDebugInfo()
     {
-        return array (  199 => 43,  188 => 33,  185 => 32,  175 => 28,  171 => 27,  167 => 26,  163 => 24,  158 => 23,  148 => 22,  130 => 18,  110 => 6,  99 => 44,  97 => 43,  91 => 40,  85 => 37,  81 => 35,  79 => 22,  74 => 19,  72 => 18,  65 => 14,  61 => 12,  56 => 8,  54 => 6,  47 => 1,);
+        return array (  203 => 44,  192 => 34,  189 => 33,  179 => 29,  175 => 28,  171 => 27,  167 => 26,  163 => 24,  158 => 23,  148 => 22,  130 => 18,  110 => 6,  99 => 45,  97 => 44,  91 => 41,  85 => 38,  81 => 36,  79 => 22,  74 => 19,  72 => 18,  65 => 14,  61 => 12,  56 => 8,  54 => 6,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -255,6 +259,7 @@ class __TwigTemplate_0b2e5bb05ecbf86c7a272530a1c0703d5b37f3d0e2ba37b665b615a76b8
 \t{% for notif in notifications %}
 \t\t<div class=\"container bg-success bg-gradient col-6 mb-5 p-3\">
 \t\t\t<div class='d-flex flex-column'>
+\t\t\t\t<span class='border border-white'>Invitation du {{notif.createdAt|date('Y-m-d H:i:s') }} </span><br>
 \t\t\t\t<span class='border border-white'>{{notif.authors}} t'as invité à manger</span>
 \t\t\t\t<a href=\"{{ path('accept_Invitation') }}\"><button class='col-12'>accepter</button></a>
 \t\t\t\t<a href=\"{{ path('accept_Invitation') }}\"><button class='col-12'>refuser</button></a>

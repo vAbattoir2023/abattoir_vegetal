@@ -9,6 +9,7 @@ use App\Document\User;
 use App\Document\UserInvitation;
 use App\Repository\GroupRepository;
 use App\Repository\UserRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use stdClass;
@@ -104,7 +105,8 @@ class GroupController extends AbstractController
         ]);
     }
     #[Route('/add/{idUsers}', name: 'app_add_group')]
-    public function addGroup(GroupRepository $groupRepository, UserRepository $userRepository, string $idUsers, SessionInterface $session): Response{
+    public function addGroup(GroupRepository $groupRepository, UserRepository $userRepository, string $idUsers, SessionInterface $session): Response
+    {
 
 
         $group = new Group();
@@ -122,9 +124,10 @@ class GroupController extends AbstractController
         $authors = $userById->username;
         $group->setAuthors($authors);
 
-        $creationGroup = date("Y-m-d"); // date de creation
+        $creationGroup = new DateTime(); // date de creation
+        
         $group->setCreateGroup($creationGroup);
-        $group->setReservationDate($creationGroup);
+        // $group->setReservationDate($creationGroup);
 
         foreach($listIdUser as $id){
             $guest = new Guest();
