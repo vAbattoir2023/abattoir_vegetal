@@ -131,10 +131,11 @@ class GroupController extends AbstractController
 
         foreach($listIdUser as $id){
             $guest = new Guest();
-            $guest->setGuest($userRepository->findUserById($id));
+            $user = $userRepository->findUserById($id);
+            $guest->setGuest($user);
+            $guest->setUsername($user->getUsername()); // Set the username for the guest
             $guest->setInvitation('waiting');
             $group->addGuest($guest);
-
         }
         $groupRepository->save($group);
 

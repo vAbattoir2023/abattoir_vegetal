@@ -156,12 +156,12 @@ class __TwigTemplate_d3ad4f3185d189551a8edb53564fe7a4e0488731068783ecda9bf5a2d17
             $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["groups"], "guests", [], "any", false, false, false, 34));
             foreach ($context['_seq'] as $context["_key"] => $context["guest"]) {
                 // line 35
-                echo "                        <li>
-                            Guest: ";
+                echo "                        <li class=\"bg-secondary text-light mb-2 p-3\">
+                            <strong>Guest:</strong> ";
                 // line 36
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["guest"], "username", [], "any", false, false, false, 36), "html", null, true);
-                echo "
-                            Invitation: ";
+                echo "<br>
+                             Invitation:  ";
                 // line 37
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["guest"], "invitation", [], "any", false, false, false, 37), "html", null, true);
                 echo "
@@ -267,9 +267,9 @@ class __TwigTemplate_d3ad4f3185d189551a8edb53564fe7a4e0488731068783ecda9bf5a2d17
             <td>
                 <ul>
                     {% for guest in groups.guests %}
-                        <li>
-                            Guest: {{ guest.username }}
-                            Invitation: {{ guest.invitation }}
+                        <li class=\"bg-secondary text-light mb-2 p-3\">
+                            <strong>Guest:</strong> {{ guest.username }}<br>
+                             Invitation:  {{ guest.invitation }}
                         </li>
                     {% endfor %}
                 </ul>

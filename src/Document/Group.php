@@ -27,8 +27,6 @@ class Group
     #[MongoDB\Field(type: "date")]
     public ?\DateTime $reservationDate = null;
   
-    #[MongoDB\Field(type: 'string')]
-    public string $username;
 
     #[MongoDB\EmbedMany(targetDocument: Guest::class)]
     public ArrayCollection $guests;
@@ -136,6 +134,9 @@ class Guest
     #[MongoDB\Field(type: "string")]
     public string $invitation = '';
 
+    #[MongoDB\Field(type: 'string')]
+    public string $username = '';
+
     // The getters and setters for each of our properties
     public function getGuest(): ?User
     {
@@ -156,6 +157,16 @@ class Guest
     public function setInvitation(string $invitation): Guest
     {
         $this->invitation = $invitation;
+        return $this;
+    }
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
+    public function setUsername(string $username): Guest
+    {
+        $this->username = $username;
+
         return $this;
     }
 }

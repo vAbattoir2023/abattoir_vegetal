@@ -60,6 +60,19 @@ class AppDocumentGuestHydrator implements HydratorInterface
             $this->class->reflFields['invitation']->setValue($document, $return);
             $hydratedData['invitation'] = $return;
         }
+
+        /** @Field(type="string") */
+        if (isset($data['username']) || (! empty($this->class->fieldMappings['username']['nullable']) && array_key_exists('username', $data))) {
+            $value = $data['username'];
+            if ($value !== null) {
+                $typeIdentifier = $this->class->fieldMappings['username']['type'];
+                $return = (string) $value;
+            } else {
+                $return = null;
+            }
+            $this->class->reflFields['username']->setValue($document, $return);
+            $hydratedData['username'] = $return;
+        }
         return $hydratedData;
     }
 }

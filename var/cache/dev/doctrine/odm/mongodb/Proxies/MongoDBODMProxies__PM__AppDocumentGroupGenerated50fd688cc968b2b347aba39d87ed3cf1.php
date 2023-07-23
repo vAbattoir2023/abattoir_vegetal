@@ -22,7 +22,6 @@ class Generated50fd688cc968b2b347aba39d87ed3cf1 extends \App\Document\Group impl
         'authors' => true,
         'createdAt' => true,
         'reservationDate' => true,
-        'username' => true,
         'guests' => true,
     ];
 
@@ -67,7 +66,6 @@ class Generated50fd688cc968b2b347aba39d87ed3cf1 extends \App\Document\Group impl
 
 
         $nonReferenceableProperties = new class() {
-            public ?string $username;
             public ?\Doctrine\Common\Collections\ArrayCollection $guests;
         };
         $properties = [
@@ -75,14 +73,12 @@ class Generated50fd688cc968b2b347aba39d87ed3cf1 extends \App\Document\Group impl
             'authors' => & $this->authors,
             'createdAt' => & $this->createdAt,
             'reservationDate' => & $this->reservationDate,
-            'username' => & $nonReferenceableProperties->username,
             'guests' => & $nonReferenceableProperties->guests,
         ];
 
 
 
         $result = $this->initializer483af->__invoke($this, $methodName, $parameters, $this->initializer483af, $properties);
-        isset($nonReferenceableProperties->username) && $this->username = $nonReferenceableProperties->username;
         isset($nonReferenceableProperties->guests) && $this->guests = $nonReferenceableProperties->guests;
         $this->initializationTracker4e988 = false;
 
@@ -101,7 +97,7 @@ class Generated50fd688cc968b2b347aba39d87ed3cf1 extends \App\Document\Group impl
         $reflection = $reflection ?? new \ReflectionClass(__CLASS__);
         $instance   = $reflection->newInstanceWithoutConstructor();
 
-        unset($instance->status, $instance->authors, $instance->createdAt, $instance->reservationDate, $instance->username, $instance->guests);
+        unset($instance->status, $instance->authors, $instance->createdAt, $instance->reservationDate, $instance->guests);
 
         $instance->initializer483af = $initializer;
 

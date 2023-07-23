@@ -32,9 +32,9 @@
             <td>
                 <ul>
                     {% for guest in groups.guests %}
-                        <li>
-                            {# Guest: {{ guest.username }} #}
-                            Invitation: {{ guest.invitation }}
+                        <li class="bg-secondary text-light mb-2 p-3">
+                            <strong>Guest:</strong> {{ guest.username }}<br>
+                             Invitation:  {{ guest.invitation }}
                         </li>
                     {% endfor %}
                 </ul>
