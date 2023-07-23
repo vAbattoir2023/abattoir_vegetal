@@ -135,7 +135,7 @@ class GroupController extends AbstractController
     #[Route('/accept', name: 'accept_Invitation')]
     public function acceptInvitation(GroupRepository $groupRepository, UserRepository $userRepository, SessionInterface $session, DocumentManager $dm): Response{
 
-        $idGroup = '64bc2f58a3635726850384d2';
+        $idGroup = '64bc55cf03431fac6d001096';
 
         $group = $groupRepository->findOneBy(['id'=> $idGroup]);
 
