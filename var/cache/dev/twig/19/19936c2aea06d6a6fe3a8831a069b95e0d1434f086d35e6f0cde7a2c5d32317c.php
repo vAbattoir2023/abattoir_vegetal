@@ -172,13 +172,11 @@ class __TwigTemplate_0b2e5bb05ecbf86c7a272530a1c0703d5b37f3d0e2ba37b665b615a76b8
             echo " t'as invité à manger</span>
 \t\t\t\t<a href=\"";
             // line 28
-            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("accept_Invitation");
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("accept_Invitation", ["id" => twig_get_attribute($this->env, $this->source, $context["notif"], "id", [], "any", false, false, false, 28)]), "html", null, true);
             echo "\"><button class='col-12'>accepter</button></a>
-\t\t\t\t<a href=\"";
-            // line 29
-            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("accept_Invitation");
-            echo "\"><button class='col-12'>refuser</button></a>
-\t\t\t</div>
+\t\t\t\t";
+            // line 30
+            echo "\t\t\t</div>
 \t\t</div>
 \t";
         }
@@ -229,7 +227,7 @@ class __TwigTemplate_0b2e5bb05ecbf86c7a272530a1c0703d5b37f3d0e2ba37b665b615a76b8
 
     public function getDebugInfo()
     {
-        return array (  203 => 44,  189 => 33,  179 => 29,  175 => 28,  171 => 27,  167 => 26,  163 => 24,  158 => 23,  148 => 22,  130 => 18,  110 => 6,  99 => 45,  97 => 44,  91 => 41,  85 => 38,  81 => 36,  79 => 22,  74 => 19,  72 => 18,  65 => 14,  61 => 12,  56 => 8,  54 => 6,  47 => 1,);
+        return array (  201 => 44,  187 => 33,  179 => 30,  175 => 28,  171 => 27,  167 => 26,  163 => 24,  158 => 23,  148 => 22,  130 => 18,  110 => 6,  99 => 45,  97 => 44,  91 => 41,  85 => 38,  81 => 36,  79 => 22,  74 => 19,  72 => 18,  65 => 14,  61 => 12,  56 => 8,  54 => 6,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -261,8 +259,8 @@ class __TwigTemplate_0b2e5bb05ecbf86c7a272530a1c0703d5b37f3d0e2ba37b665b615a76b8
 \t\t\t<div class='d-flex flex-column'>
 \t\t\t\t<span class='border border-white'>Invitation du {{notif.createdAt|date('Y-m-d H:i:s') }} </span><br>
 \t\t\t\t<span class='border border-white'>{{notif.authors}} t'as invité à manger</span>
-\t\t\t\t<a href=\"{{ path('accept_Invitation') }}\"><button class='col-12'>accepter</button></a>
-\t\t\t\t<a href=\"{{ path('accept_Invitation') }}\"><button class='col-12'>refuser</button></a>
+\t\t\t\t<a href=\"{{ path('accept_Invitation', {'id': notif.id}) }}\"><button class='col-12'>accepter</button></a>
+\t\t\t\t{# <a href=\"{{ path('accept_Invitation') }}\"><button class='col-12'>refuser</button></a> #}
 \t\t\t</div>
 \t\t</div>
 \t{% endfor %}

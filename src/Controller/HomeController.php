@@ -29,7 +29,7 @@ class HomeController extends AbstractController
         $notifInvitation = ($groupRepository->findBy([
             'status' => "waiting",
             'guests.invitation' => "waiting",
-            'guests.guest.$id' => new ObjectId($idSession),
+            'guests.guest' => new ObjectId($idSession),
         ]));
 
 

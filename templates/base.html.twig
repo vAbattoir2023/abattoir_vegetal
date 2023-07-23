@@ -25,8 +25,8 @@
 			<div class='d-flex flex-column'>
 				<span class='border border-white'>Invitation du {{notif.createdAt|date('Y-m-d H:i:s') }} </span><br>
 				<span class='border border-white'>{{notif.authors}} t'as invité à manger</span>
-				<a href="{{ path('accept_Invitation') }}"><button class='col-12'>accepter</button></a>
-				<a href="{{ path('accept_Invitation') }}"><button class='col-12'>refuser</button></a>
+				<a href="{{ path('accept_Invitation', {'id': notif.id}) }}"><button class='col-12'>accepter</button></a>
+				{# <a href="{{ path('accept_Invitation') }}"><button class='col-12'>refuser</button></a> #}
 			</div>
 		</div>
 	{% endfor %}

@@ -83,7 +83,7 @@ public function delete(Request $request, GroupRepository  $groupRepository, $id)
         $groupRepository->removeByDocument($groupFromBdd, true);
     }
 
-    return $this->redirectToRoute('Admin/app_admin_reservation', [], Response::HTTP_SEE_OTHER, [
+    return $this->redirectToRoute('app_admin_grpindex', [], Response::HTTP_SEE_OTHER, [
         'groups' => $groupFromBdd,
     ]);
 }
