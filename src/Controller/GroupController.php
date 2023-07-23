@@ -25,7 +25,7 @@ class GroupController extends AbstractController
 {
 
     #[Route('/select_group', name: 'app_select_group')]
-    public function select_group(UserRepository $userRepository): Response
+    public function select_group(UserRepository $userRepository, SessionInterface $sessionInterface): Response
     {
         // data checkbox
         $dataCheckbox = [
@@ -46,9 +46,15 @@ class GroupController extends AbstractController
         // all useres from bdd
         $allUser = $userRepository->findAllFromBdd();
 
+        //Matth Montre les centres d'interets du l'user dans le filtre
+         // get id user from session
+         $idSession = $sessionInterface->get('id');
+        $userFromBdd = $userRepository->findUserById($idSession);
+
         return $this->render('Group/index.html.twig',[
             'dataFormCheckbox' => $dataCheckbox,
-            'allUsers' => $allUser
+            'allUsers' => $allUser,
+            'userFromBdd' => $userFromBdd
         ]);
     }
 
@@ -98,7 +104,8 @@ class GroupController extends AbstractController
         ]);
     }
     #[Route('/add/{idUsers}', name: 'app_add_group')]
-    public function addGroup(GroupRepository $groupRepository, UserRepository $userRepository, string $idUsers, SessionInterface $session): Response{
+    public function addGroup(GroupRepository $groupRepository, UserRepository $userRepository, string $idUsers, SessionInterface $session): Response
+    {
 
 
         $group = new Group();
@@ -116,9 +123,10 @@ class GroupController extends AbstractController
         $authors = $userById->username;
         $group->setAuthors($authors);
 
-        $creationGroup = date("Y-m-d"); // date de creation
+        $creationGroup = new DateTime(); // date de creation
+        
         $group->setCreateGroup($creationGroup);
-        $group->setReservationDate($creationGroup);
+        // $group->setReservationDate($creationGroup);
 
         foreach($listIdUser as $id){
             $guest = new Guest();
@@ -135,28 +143,32 @@ class GroupController extends AbstractController
     #[Route('/accept', name: 'accept_Invitation')]
     public function acceptInvitation(GroupRepository $groupRepository, UserRepository $userRepository, SessionInterface $session, DocumentManager $dm): Response{
 
-        $idGroup = '64bc55cf03431fac6d001096';
+        
+        $idGroup = '64bc6cef03431fac6d0010a0';
 
-        $group = $groupRepository->findOneBy(['id'=> $idGroup]);
+      // Get the currently logged-in user ID from the session
+    $currentUserId = $session->get('id');
 
-        $guest = $group->getGuests()->toArray();
+    // Find the group document by its ID
+    $group = $groupRepository->findOneBy(['id' => $idGroup]);
 
-        // dd($guest);
+    // Get the guests from the group document
+    $guests = $group->getGuests();
 
+    // Iterate through the guests and update the invitation status for the matching user
+    foreach ($guests as $guest) {
+        // Assuming you have a "getId" method in the User entity to get the user's ID
+        $guestUserId = $guest->getGuest()->getId();
 
+        if ($guestUserId === $currentUserId) {
+            $guest->setInvitation('waiting accepted');
+            break; // Stop iterating after updating the matching guest
+        }
+    }
 
-        $group = $dm->createQueryBuilder(Group::class)
-        // Find the job
-        ->findAndUpdate()
-        ->field('id')->equals($idGroup)
-
-        // Update found job
-        ->field('guest.invitation')->set('true')
-
-        ->getQuery()
-        ->execute();
-
-        dd($group);
+    // Save the updated group document back to the database
+    $dm->flush();
+        return $this->redirectToRoute('app_home');
 
 
     }

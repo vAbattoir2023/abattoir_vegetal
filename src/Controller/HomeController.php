@@ -32,6 +32,28 @@ class HomeController extends AbstractController
             'guests.guest.$id' => new ObjectId($idSession),
         ]));
 
+        //appelle dans group ton id dans guest
+        $notifInvitation = ($groupRepository->findBy([
+            'status' => "waiting",
+            'guests.invitation' => "waiting",
+            'guests.guest.$id' => new ObjectId($idSession),
+        ]));
+
+
+        // dd($notifInvitation);
+
+        // dd($notifInvitation[0]->guests->toArray()[0]->guest->id);
+
+        // if(!$sessionInterface->get('notifications')){
+        //     $sessionInterface->set('notifications', $notifInvitation);
+        // }
+        // dd($sessionInterface->get('notifications'));
+
+        // $sessionInterface->remove('notifications');
+
+        // dd($sessionInterface->get('notifications'));
+
+        // dd($sessionInterface->get('notifications'));
 
         // dd($notifInvitation);
 
@@ -54,6 +76,8 @@ class HomeController extends AbstractController
 
         // dd($notifInvitation);
 
+        // dd($notifInvitation);
+
         return $this->render('base.html.twig',[
             'message' => 'Welcome to your new controller!',
             'idSession' => $idSession,
@@ -67,14 +91,20 @@ class HomeController extends AbstractController
 
 
     // #[Route('/home', name: 'app_home_index')]
-    // public function home(SessionInterface $sessionInterface): Response
+    // public function home( UserRepository $userRepository,SessionInterface $sessionInterface): Response
     // {
-
+    //     // get id user from session
+    //     $idSession = $sessionInterface->get('id');
+    //     dd($idSession );
+    //     // get document user from database
+    //     $userFromBdd = $userRepository->findUserById($idSession);
     //     return $this->render('Home/index.html.twig',[
-          
+    //         'user' => $userFromBdd,
+
     //     ]);
         
     // }
+
     #[Route('/help', name: 'app_home_help')]
     public function help(SessionInterface $sessionInterface): Response
     {

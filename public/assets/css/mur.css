@@ -35,6 +35,37 @@
         z-index: -1;
     } */
     
+.badge {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-radius: 3px;
+    color: #fff;
+}
+
+/* Define background colors for each center of interest */
+.badge.text-bg-success {
+    background-color: #28a745;
+}
+
+/* Add more styles for different backgrounds if needed */
+.badge.text-bg-info {
+    background-color: #17a2b8;
+}
+
+.badge.text-bg-warning {
+    background-color: #ffc107;
+}
+
+.badge.text-bg-danger {
+    background-color: #dc3545;
+}
+
     /* ********
     CSS CARD BIG 
     *********** */

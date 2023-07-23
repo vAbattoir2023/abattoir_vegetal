@@ -1,19 +1,22 @@
 {# 
 			<div class="container">
 				<nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto"> #}
-                {# {% if app.user  %}
-				    {% if 'ROLE_ADMIN' in app.user %} #}
+				{# {% if is_granted('IS_AUTHENTICATED_FULLY') %} #}
+
+                								{# {% if 'ROLE_ADMIN' in app.user.roles %} #}
+
                     <a class=" bg-light me-3 py-2 link-body-emphasis text-decoration-none" href="{{ path('app_admin_index') }}">Admin</a>
-                    {# {% endif %} #}
 					<a class=" bg-light me-3 py-2 link-body-emphasis text-decoration-none" href="{{ path('app_register') }}">Inscription</a>
 					<a class=" bg-light me-3 py-2 link-body-emphasis text-decoration-none" href="{{ path('app_login') }}">Connexion</a>
-                    {# {% else %} #}
 				    <a class=" bg-light me-3 py-2 link-body-emphasis text-decoration-none" href="{{ path('app_logout') }}">Déconnexion</a>
                     <a class=" bg-light me-3 py-2 link-body-emphasis text-decoration-none" href="{{ path('app_user_profil') }}">EditProfil</a>
                     <a class=" bg-light me-3 py-2 link-body-emphasis text-decoration-none" href="{{ path('app_user_profil_success') }}">Profil</a>
 					<a class=" bg-light me-3 py-2 link-body-emphasis text-decoration-none" href="{{ path('app_select_group') }}">Groupe</a>
 					<a class=" bg-light me-3 py-2 link-body-emphasis text-decoration-none" href="{{ path('app_get_resa') }}">Réservation</a>
 					<a class=" bg-light me-3 py-2 link-body-emphasis text-decoration-none" href="{{ path('app_home') }}">Home</a>
-				    {# {% endif %} #}
+				    								{# {% endif %} #}
+													{# {% endif %} #}
+
+
 				{# </nav>
 			</div> #}

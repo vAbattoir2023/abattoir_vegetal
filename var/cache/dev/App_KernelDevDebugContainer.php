@@ -16,6 +16,6 @@ if (!\class_exists(App_KernelDevDebugContainer::class, false)) {
 
 return new \ContainerJxryC1H\App_KernelDevDebugContainer([
     'container.build_hash' => 'JxryC1H',
-    'container.build_id' => '380831ea',
-    'container.build_time' => 1690056990,
+    'container.build_id' => 'f0723e21',
+    'container.build_time' => 1690110936,
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerJxryC1H');

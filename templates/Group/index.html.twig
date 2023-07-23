@@ -22,6 +22,17 @@
                                         <div class="form-filtres">
                                             <div class="d-flex"> 
 											<fieldset>
+                                            {# Matth retour des centres d'interest de l'user CSS modifier #}
+											<h4 class="me-auto"> Mes choix </h4>
+                                            {% for interest in userFromBdd.centerOfInterest %}
+												<div>
+                                                  <p class="badge text-bg-success">
+                                                   {{ interest }}  
+                                                  </p>               
+                                                </div>
+                                            {# Fin du retour des centres d'interest de l'user  #}
+
+											{% endfor %}
 											<h4 class="me-auto">centre d'intérêts -</h4>
 											{% for formData in dataFormCheckbox %}
 												<div>
