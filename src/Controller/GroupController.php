@@ -7,26 +7,42 @@ use App\Document\Guest;
 use App\Document\Reservation;
 use App\Document\User;
 use App\Document\UserInvitation;
+use App\Form\DateType;
 use App\Repository\GroupRepository;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\DBAL\Types\TimeType as TypesTimeType;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use stdClass;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use MongoDB\BSON\ObjectId;
-
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 #[Route('/group')]
 class GroupController extends AbstractController
 {
 
     #[Route('/select_group', name: 'app_select_group')]
-    public function select_group(UserRepository $userRepository, SessionInterface $sessionInterface): Response
+    public function select_group(UserRepository $userRepository, SessionInterface $sessionInterface,  Request $request , DocumentManager $dm ): Response
     {
+    //     $group = new Group();
+
+     
+    //     $form = $this->createForm(TimeType,  DateType::class, $group); // create form for document user
+    //     $form->handleRequest($request); // get form data
+
+    // $form->handleRequest($request);
+
+
+
+        // if($form->isSubmitted() && $form->isValid() ){
+        //     $dm->flush();
+
+        // }
         // data checkbox
         $dataCheckbox = [
             'Animaux',
@@ -37,7 +53,7 @@ class GroupController extends AbstractController
             'Musique',
             'Danse',
             'Sciences',
-            'Bien-être',
+            'Bien-etre',
             'Food',
             'Activités sociales',
             'Jeux vidéos',
@@ -54,7 +70,9 @@ class GroupController extends AbstractController
         return $this->render('Group/index.html.twig',[
             'dataFormCheckbox' => $dataCheckbox,
             'allUsers' => $allUser,
-            'userFromBdd' => $userFromBdd
+            'userFromBdd' => $userFromBdd,
+            // 'DateRegister' => $form->createView(), //send the form
+
         ]);
     }
 
@@ -104,13 +122,14 @@ class GroupController extends AbstractController
         ]);
     }
     #[Route('/add/{idUsers}', name: 'app_add_group')]
-    public function addGroup(GroupRepository $groupRepository, UserRepository $userRepository, string $idUsers, SessionInterface $session): Response
+    public function addGroup(GroupRepository $groupRepository,  UserRepository $userRepository, string $idUsers, SessionInterface $session): Response
     {
 
 
         $group = new Group();
         $user = new User();
 
+   
         $listIdUser = explode(',', $idUsers); // get center of interest from url
 
 
@@ -142,6 +161,7 @@ class GroupController extends AbstractController
             $guest->setInvitation('waiting');
             $group->addGuest($guest);
         }
+
         $groupRepository->save($group);
 
             return $this->redirectToRoute('app_home');
@@ -206,12 +226,12 @@ class GroupController extends AbstractController
 
 
 
-    #[Route('/resaDate', name: 'app_resa_date')]
-    public function resaDate(DocumentManager $dm): Response{
+    // #[Route('/resaDate', name: 'app_resa_date')]
+    // public function resaDate(DocumentManager $dm): Response{
         
 
-        return $this->render('Group/date.html.twig',[
+    //     return $this->render('Group/date.html.twig',[
 
-        ]);
-    }
+    //     ]);
+    // }
 }

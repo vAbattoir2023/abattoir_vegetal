@@ -93,7 +93,7 @@ class Group
 
     public function setReservationDate(?string $reservationDate): Group
     {
-        $this->reservationDate = \DateTime::createFromFormat('Y-m-d', $reservationDate);
+        $this->reservationDate = \DateTime::createFromFormat('Y-m-d H:i:s', $reservationDate);
         return $this;
     }
 
