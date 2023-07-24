@@ -37,7 +37,7 @@ class GroupController extends AbstractController
             'Musique',
             'Danse',
             'Sciences',
-            'Bien-être',
+            'Bien-etre',
             'Food',
             'Activités sociales',
             'Jeux vidéos',
@@ -63,11 +63,11 @@ class GroupController extends AbstractController
     public function showUsersList(string $filters, DocumentManager $dm): Response{
 
         $users = []; // initialise array user
-        $filters = explode(',', $filters); // get center of interest from url
+        $filters = explode('#', $filters); // get center of interest from url
         
         $iter = $dm->createQueryBuilder() // create requête sql 
             ->find(User::class) // find all document from collection user
-            ->field('centerOfInterest')->in($filters)  // filter centerOfInterest same $filters
+            ->field('centerOfInterest')->in($filters) // filter centerOfInterest same $filters
             ->getQuery() // prepare request
             ->execute(); // execute request
 
@@ -123,7 +123,13 @@ class GroupController extends AbstractController
         $authors = $userById->username;
         $group->setAuthors($authors);
 
-        $creationGroup = new DateTime(); // date de creation
+        // Get the current timestamp
+        $timestamp = time();
+
+        // Convert to a string with a specific format
+        $dateString = strftime('%Y-%m-%d %H:%M:%S', $timestamp);
+
+        $creationGroup = $dateString; // date de creation
         
         $group->setCreateGroup($creationGroup);
         // $group->setReservationDate($creationGroup);
@@ -141,11 +147,10 @@ class GroupController extends AbstractController
             return $this->redirectToRoute('app_home');
     }
 
-    #[Route('/accept', name: 'accept_Invitation')]
+    #[Route('/accept/{id}', name: 'accept_Invitation')]
     public function acceptInvitation($id,GroupRepository $groupRepository, UserRepository $userRepository, SessionInterface $session, DocumentManager $dm): Response{
         
-        
-        $idGroup = $groupRepository->findGroupsById($id); // Replace $groupId with the ID you want to find
+    $idGroup = $id; // Replace $groupId with the ID you want to find
 
       // Get the currently logged-in user ID from the session
     $currentUserId = $session->get('id');
@@ -162,7 +167,7 @@ class GroupController extends AbstractController
         $guestUserId = $guest->getGuest()->getId();
 
         if ($guestUserId === $currentUserId) {
-            $guest->setInvitation('waiting succes sa marche ');
+            $guest->setInvitation('succes sa marche ');
             break; // Stop iterating after updating the matching guest
         }
     }
@@ -176,13 +181,31 @@ class GroupController extends AbstractController
             // modifie le document
 
     #[Route('/resa', name: 'app_get_resa')]
-    public function resa(DocumentManager $dm): Response{
+    public function resa( GroupRepository $groupRepository ,DocumentManager $dm, SessionInterface $sessionInterface): Response{
         
+        $idSession = $sessionInterface->get('id');
 
-        return $this->render('Group/resa.html.twig',[
+       //appelle dans group ton id dans guest
+       $notifInvitation = ($groupRepository->findBy([
+        'guests.guest.$id' => new ObjectId($idSession),
+    ]));
 
-        ]);
+    $arrayFilter = [];
+
+    //dd($notifInvitation[0]->guests->toArray());
+
+    foreach($notifInvitation[0]->guests->toArray() as $userInvitate){
+            $arrayFilter[] = $userInvitate;
     }
+     
+        return $this->render('Group/resa.html.twig',[
+            'idSession' => $idSession,
+            'notifications' => $notifInvitation,
+                ]);
+    }
+
+
+
     #[Route('/resaDate', name: 'app_resa_date')]
     public function resaDate(DocumentManager $dm): Response{
         

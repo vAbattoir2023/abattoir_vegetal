@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Document\User;
-use Doctrine\ODM\MongoDB\Mapping\Annotations\File\Length;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -19,12 +18,10 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Regex;
 
 class UserType extends AbstractType
 {
-    const REGEX_DEPARTEMENT_CODE = '/^(?:0[1-9]|[1-8]\d|9[0-8])\d{3}$/';
-
+    
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
@@ -51,13 +48,6 @@ class UserType extends AbstractType
                     'class' => 'form-control',
                     'placeholder' => 'Entrez un code postal',
                 ],
-                // 'constraints' => [
-                //     new Length([
-                //         'min' => 5,
-                //         'max' => 5,
-                //         'exactMessage' => 'Le code postal doit comporter 5 chiffres.',
-                //     ]),
-                // ],
             ])
             // ->add('city', TextType::class,[
             //     'label' => 'J\'habite ...',

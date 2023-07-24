@@ -18,25 +18,18 @@
 		<link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Work+Sans:ital,wght@0,300;0,400;0,600;0,800;1,400;1,600&display=swap" rel="stylesheet"> {% block stylesheets %}{% endblock %}
 		</head>
 		<body>
-			
+
+
+
 				{% block body %}
-	{% for notif in notifications %}
-		<div class="container bg-success bg-gradient col-6 mb-5 p-3">
-			<div class='d-flex flex-column'>
-				<span class='border border-white'>Invitation du {{notif.createdAt|date('Y-m-d H:i:s') }} </span><br>
-				<span class='border border-white'>{{notif.authors}} t'as invité à manger</span>
-				<a href="{{ path('accept_Invitation', {'id': notif.id}) }}"><button class='col-12'>accepter</button></a>
-				{# <a href="{{ path('accept_Invitation') }}"><button class='col-12'>refuser</button></a> #}
-			</div>
-		</div>
-	{% endfor %}
-		{{  include('Home/index.html.twig') }}
+	
+
 
 	{% endblock %}
 
 		</body>
-       {{ include('_footer.html.twig') }}
-	
+	       {{ include('_footer.html.twig') }}
+
 	</html>
 	<script src="{{ asset('./assets/js/form.js')}}"></script>
 

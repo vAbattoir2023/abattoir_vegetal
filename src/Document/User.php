@@ -81,7 +81,6 @@ class User
     #[MongoDB\Field(type: 'string')]
     public ?string $region = null;
 
-
     // #[MongoDB\Field(type: 'int')]
     // public ?string $groupNbr = null;
     

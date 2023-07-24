@@ -21,6 +21,7 @@ class HomeController extends AbstractController
     public function index(SessionInterface $sessionInterface, GroupRepository $groupRepository, DocumentManager $dm): Response
     {
 
+        $group = new Group();
         $email = $sessionInterface->get('email');
         $idSession = $sessionInterface->get('id');
         //dd(new ObjectId($idSession));
@@ -29,8 +30,24 @@ class HomeController extends AbstractController
         $notifInvitation = ($groupRepository->findBy([
             'status' => "waiting",
             'guests.invitation' => "waiting",
-            'guests.guest' => new ObjectId($idSession),
+            'guests.guest.$id' => new ObjectId($idSession),
         ]));
+
+        $arrayFilter = [];
+
+        //dd($notifInvitation[0]->guests->toArray());
+
+        if(!empty($notifInvitation[0])){
+            foreach($notifInvitation[0]->guests->toArray() as $userInvitate){
+
+                if($userInvitate->invitation == 'waiting'){
+                    $arrayFilter[] = $userInvitate;
+                }
+
+            }
+        // dd($notifInvitation);
+        }
+
 
         // dd($notifInvitation);
 
@@ -66,14 +83,11 @@ class HomeController extends AbstractController
         //     echo $email;
         // }
 
-        // dd($notifInvitation);
-
-        // dd($notifInvitation);
-
-        return $this->render('base.html.twig',[
+        return $this->render('home/index.html.twig',[
             'message' => 'Welcome to your new controller!',
             'idSession' => $idSession,
-            'notifications' => $notifInvitation
+            'notifications' => $notifInvitation,
+            'filterInvitation' => $arrayFilter,
         ]);
         
     }
