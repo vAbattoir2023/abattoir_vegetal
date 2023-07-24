@@ -59,9 +59,16 @@
                           </div>
                           <p class="stroke-input mb-3">	{{ user.username }}</p>
                           <div>
-                            <label>J'habite ...</label>
-                          <p class="stroke-input mb-3">	{{ user.city }}</p>
-                          </div>
+                            {# <label>J'habite ...</label>
+                          <p class="stroke-input mb-3">	{{ user.city }}   ({{ user.region }}) </p>
+                          </div> #}
+                          {# Si $postalCode a une valeur, afficher la ville et la région #}
+                          {% if user.postalCode is not empty %}
+                              <label>J'habite ...</label>
+                              <p class="stroke-input mb-3">
+                                  {{ user.city }} ({{ user.region }})
+                              </p>
+                          {% endif %}
                         </div>
                       </div>
                       {# <div class="mb-1 align-text"> <!-- je suis né inputx3-->

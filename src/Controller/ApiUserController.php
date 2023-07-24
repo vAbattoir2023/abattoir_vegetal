@@ -103,12 +103,12 @@ class ApiUserController extends AbstractController
             if (!empty($data)) {
                 // Mettre à jour la valeur de city en fonction de la commune trouvée
                 $city = $data[0]['nom'];
-                // Attribuer les valeurs au document USER
-                
+                // Attribuer les valeurs au document USER                
                 $apiuser->setCity($city);
                 $apiuser->setPostalCode($codePostal);
-                // Récupérer le code du département à partir des données de la commune
+                // Récupérer le code du département à partir des données du codeDepartement de l'API
                 $codeDepartement = $data[0]['codeDepartement'];
+                // Attribuer les valeurs au document USER
                 $apiuser->setCodeDepartement($codeDepartement);
                
             }
@@ -125,11 +125,9 @@ class ApiUserController extends AbstractController
             if (!empty($data)) {
                 // Récupérer le nom du département à partir de la réponse de l'API
                 // dd($data);
-                // $codeDepartement = $data['nom'];
                 $codeRegion = $data['codeRegion'];
                 // Utiliser le nom du département pour récupérer le nom de la région
                 $apiUrl = "https://geo.api.gouv.fr/regions/" . $codeRegion;
-
                 // Effectuer une requête HTTP GET vers l'API en utilisant l'URL construite
                 $response = $httpClient->request('GET', $apiUrl);
                 $data = $response->toArray();
@@ -137,16 +135,14 @@ class ApiUserController extends AbstractController
                 if (!empty($data)) {
                     // Mettre à jour la valeur de region en fonction du nom de la région trouvée
                     $region = $data['nom'];
-
                     // Attribuer la valeur au document USER
                     $apiuser->setRegion($region);
                 }
             }
-
             // A DECOMMENTER POUR ENREGISTRER EN BDD !!
             // Sauvegarder l'entité User mise à jour dans la base de données
             // $userRepository->save($apiuser, true);
-dd($apiuser);
+// dd($apiuser);
             // Rediriger vers la route 'app_api_user' après la sauvegarde
             return $this->redirectToRoute('app_api_user', [], Response::HTTP_SEE_OTHER);
         }
