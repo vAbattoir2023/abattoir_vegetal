@@ -7,7 +7,7 @@ use App\Document\Guest;
 use App\Document\Reservation;
 use App\Document\User;
 use App\Document\UserInvitation;
-use App\Form\DateType;
+use App\Form\ResaType;
 use App\Repository\GroupRepository;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -27,22 +27,20 @@ class GroupController extends AbstractController
 {
 
     #[Route('/select_group', name: 'app_select_group')]
-    public function select_group(UserRepository $userRepository, SessionInterface $sessionInterface,  Request $request , DocumentManager $dm ): Response
+    public function select_group(GroupRepository $groupRepository,UserRepository $userRepository, SessionInterface $sessionInterface,  Request $request , DocumentManager $dm ): Response
     {
-    //     $group = new Group();
 
-     
-    //     $form = $this->createForm(TimeType,  DateType::class, $group); // create form for document user
-    //     $form->handleRequest($request); // get form data
+        $group = new Group();
 
-    // $form->handleRequest($request);
+        $form = $this->createForm(ResaType::class, $group); // create form for document user
+        $form->handleRequest($request); // get form data
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Persist the group data to the database
+            $groupRepository->save($group);
 
-
-        // if($form->isSubmitted() && $form->isValid() ){
-        //     $dm->flush();
-
-        // }
+            // Redirect or show a success message
+        }
         // data checkbox
         $dataCheckbox = [
             'Animaux',
@@ -71,7 +69,7 @@ class GroupController extends AbstractController
             'dataFormCheckbox' => $dataCheckbox,
             'allUsers' => $allUser,
             'userFromBdd' => $userFromBdd,
-            // 'DateRegister' => $form->createView(), //send the form
+            'DateRegister' => $form->createView(), //send the form
 
         ]);
     }
@@ -81,11 +79,11 @@ class GroupController extends AbstractController
     public function showUsersList(string $filters, DocumentManager $dm): Response{
 
         $users = []; // initialise array user
-        $filters = explode('#', $filters); // get center of interest from url
+        $filters = explode(',', $filters); // get center of interest from url
         
         $iter = $dm->createQueryBuilder() // create requête sql 
             ->find(User::class) // find all document from collection user
-            ->field('centerOfInterest')->all($filters) // filter centerOfInterest same $filters
+            ->field('centerOfInterest')->in($filters) // filter centerOfInterest same $filters
             ->getQuery() // prepare request
             ->execute(); // execute request
 
@@ -103,7 +101,7 @@ class GroupController extends AbstractController
     }
 
     #[Route('/users-list/', name: 'app_get_users_list_without_filters')]
-    public function showUsersListFull(DocumentManager $dm): Response{
+    public function showUsersListFull(Request $request ,DocumentManager $dm): Response{
         $users = [];
         
         $iter = $dm->createQueryBuilder()
@@ -116,9 +114,12 @@ class GroupController extends AbstractController
             $users[] = $iter->current();
             $iter->next();
         }
-
+      
+  
         return $this->render('Group/usersList.html.twig',[
-            'users' => $users
+            'users' => $users,
+           
+
         ]);
     }
     #[Route('/add/{idUsers}', name: 'app_add_group')]
@@ -128,8 +129,8 @@ class GroupController extends AbstractController
 
         $group = new Group();
         $user = new User();
-
-   
+     
+     
         $listIdUser = explode(',', $idUsers); // get center of interest from url
 
 
@@ -146,7 +147,11 @@ class GroupController extends AbstractController
         $timestamp = time();
 
         // Convert to a string with a specific format
-        $dateString = strftime('%Y-%m-%d %H:%M:%S', $timestamp);
+        $dateString = date('Y-m-d\TH:i', $timestamp);
+
+         // Set the reservationDate property with the current timestamp
+        //  dump($dateString); // Log the $dateString value
+        // $group->setReservationDate($dateString);
 
         $creationGroup = $dateString; // date de creation
         
@@ -161,10 +166,12 @@ class GroupController extends AbstractController
             $guest->setInvitation('waiting');
             $group->addGuest($guest);
         }
-
+       
         $groupRepository->save($group);
 
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_get_resa',[
+
+            ]);
     }
 
     #[Route('/accept/{id}', name: 'accept_Invitation')]
@@ -194,7 +201,7 @@ class GroupController extends AbstractController
 
     // Save the updated group document back to the database
     $dm->flush();
-        return $this->redirectToRoute('app_home');
+        return $this->redirectToRoute('app_get_resa');
 
 
     }
