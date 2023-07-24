@@ -130,10 +130,11 @@ class GroupController extends AbstractController
 
         foreach($listIdUser as $id){
             $guest = new Guest();
-            $guest->setGuest($userRepository->findUserById($id));
+            $user = $userRepository->findUserById($id);
+            $guest->setGuest($user);
+            $guest->setUsername($user->getUsername()); // Set the username for the guest
             $guest->setInvitation('waiting');
             $group->addGuest($guest);
-
         }
         $groupRepository->save($group);
 
@@ -141,10 +142,10 @@ class GroupController extends AbstractController
     }
 
     #[Route('/accept', name: 'accept_Invitation')]
-    public function acceptInvitation(GroupRepository $groupRepository, UserRepository $userRepository, SessionInterface $session, DocumentManager $dm): Response{
-
+    public function acceptInvitation($id,GroupRepository $groupRepository, UserRepository $userRepository, SessionInterface $session, DocumentManager $dm): Response{
         
-        $idGroup = '64bc6cef03431fac6d0010a0';
+        
+        $idGroup = $groupRepository->findGroupsById($id); // Replace $groupId with the ID you want to find
 
       // Get the currently logged-in user ID from the session
     $currentUserId = $session->get('id');
@@ -161,7 +162,7 @@ class GroupController extends AbstractController
         $guestUserId = $guest->getGuest()->getId();
 
         if ($guestUserId === $currentUserId) {
-            $guest->setInvitation('waiting accepted');
+            $guest->setInvitation('waiting succes sa marche ');
             break; // Stop iterating after updating the matching guest
         }
     }

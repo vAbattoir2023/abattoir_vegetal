@@ -1,0 +1,14 @@
+18859e,127.0.0.1,GET,http://127.0.0.1:8000/,1690186145,,200
+14bcc2,127.0.0.1,GET,http://127.0.0.1:8000/login,1690186150,,200
+7a0020,127.0.0.1,POST,http://127.0.0.1:8000/login,1690186152,,302
+e1781a,127.0.0.1,GET,http://127.0.0.1:8000/user_profil/profil,1690186153,,200
+55ce86,127.0.0.1,GET,http://127.0.0.1:8000/assets/img/happy-girl.jpg,1690186153,903312,404
+dfe728,127.0.0.1,GET,http://127.0.0.1:8000/assets/img/happy-man2.jpg,1690186153,81cac6,404
+903312,127.0.0.1,GET,http://127.0.0.1:8000/assets/img/happy-girl.jpg,1690186153,,404
+81cac6,127.0.0.1,GET,http://127.0.0.1:8000/assets/img/happy-man2.jpg,1690186153,,404
+21304e,127.0.0.1,GET,http://127.0.0.1:8000/assets/img/happy-man.jpg,1690186153,671cad,404
+671cad,127.0.0.1,GET,http://127.0.0.1:8000/assets/img/happy-man.jpg,1690186153,,404
+547e76,127.0.0.1,GET,http://127.0.0.1:8000/user_profil/assets/formes/feuille-small-sapin-endroit.svg,1690186153,03f76a,404
+03f76a,127.0.0.1,GET,http://127.0.0.1:8000/user_profil/assets/formes/feuille-small-sapin-endroit.svg,1690186153,,404
+ed4682,127.0.0.1,GET,http://127.0.0.1:8000/assets/img/icones/jauge.svg,1690186153,685023,404
+685023,127.0.0.1,GET,http://127.0.0.1:8000/assets/img/icones/jauge.svg,1690186153,,404

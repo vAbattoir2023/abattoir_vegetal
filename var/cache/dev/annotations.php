@@ -64,8 +64,12 @@ return [[
 '[C]App%5CController%5CAdminController%23edit' => 1,
 'App%5CController%5CAdminController%23delete' => 0,
 '[C]App%5CController%5CAdminController%23delete' => 1,
-'App%5CController%5CAdminController%23reservation' => 0,
-'[C]App%5CController%5CAdminController%23reservation' => 1,
+'App%5CController%5CAdminGroupController' => 0,
+'[C]App%5CController%5CAdminGroupController' => 1,
+'App%5CController%5CAdminGroupController%23index' => 0,
+'[C]App%5CController%5CAdminGroupController%23index' => 1,
+'App%5CController%5CAdminGroupController%23delete' => 0,
+'[C]App%5CController%5CAdminGroupController%23delete' => 1,
 'App%5CController%5CApiUserController' => 0,
 '[C]App%5CController%5CApiUserController' => 1,
 'App%5CController%5CApiUserController%23new' => 0,
@@ -658,6 +662,6 @@ return [[
 ], [
 
 0 => [],
-1 => 1690110937,
+1 => 1690186131,
 
 ]];

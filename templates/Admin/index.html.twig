@@ -8,7 +8,7 @@
 
     <h1>Gestion administrateur</h1>
 
-     <a href="{{ path('app_admin_reservation')}}" class="btn btn-primary">Liste des Résérvation</a>
+     <a href="{{ path('app_admin_grpindex')}}" class="btn btn-primary">Liste des Résérvation</a>
      <a href="{{ path('app_api_user')}}" class="btn btn-warning">Api</a>
           <a href="{{ path('app_home') }}" class="btn btn-success">Accueil</a>
 
@@ -29,7 +29,10 @@
                 <td class="d-flex ">
                        <a href="{{ path('app_admin_show', {'id': user.id}) }}" class="btn btn-primary fa fa-eye "></a>
                          <a href="{{ path('app_admin_edit', {'id': user.id}) }}" class="btn btn-primary fa fa-edit me-3 ms-3"></a> 
-            {{ include('admin/_delete_form.html.twig') }}
+<form method="post" action="{{ path('app_admin_delete', {'id': user.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+    <button class="btn btn-danger mt-1">Delete</button>
+</form>
                 </td>
             </tr>
         {% else %}

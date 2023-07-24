@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Controller\\AdminController' => $baseDir . '/src/Controller/AdminController.php',
+    'App\\Controller\\AdminGroupController' => $baseDir . '/src/Controller/AdminGroupController.php',
     'App\\Controller\\ApiUserController' => $baseDir . '/src/Controller/ApiUserController.php',
     'App\\Controller\\GroupController' => $baseDir . '/src/Controller/GroupController.php',
     'App\\Controller\\HomeController' => $baseDir . '/src/Controller/HomeController.php',
@@ -16,6 +17,7 @@ return array(
     'App\\Controller\\UserProfilController' => $baseDir . '/src/Controller/UserProfilController.php',
     'App\\Document\\Group' => $baseDir . '/src/Document/Group.php',
     'App\\Document\\User' => $baseDir . '/src/Document/User.php',
+    'App\\Form\\ApiUserType' => $baseDir . '/src/Form/ApiUserType.php',
     'App\\Form\\LoginType' => $baseDir . '/src/Form/LoginType.php',
     'App\\Form\\RegisterType' => $baseDir . '/src/Form/RegisterType.php',
     'App\\Form\\UserType' => $baseDir . '/src/Form/UserType.php',

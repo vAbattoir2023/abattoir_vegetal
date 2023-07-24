@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit4366694a9bdfa8df7da44b74fccf60c0
+class ComposerStaticInit082c2cd991766a7aabf23df2537b9629
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -587,6 +587,7 @@ class ComposerStaticInit4366694a9bdfa8df7da44b74fccf60c0
 
     public static $classMap = array (
         'App\\Controller\\AdminController' => __DIR__ . '/../..' . '/src/Controller/AdminController.php',
+        'App\\Controller\\AdminGroupController' => __DIR__ . '/../..' . '/src/Controller/AdminGroupController.php',
         'App\\Controller\\ApiUserController' => __DIR__ . '/../..' . '/src/Controller/ApiUserController.php',
         'App\\Controller\\GroupController' => __DIR__ . '/../..' . '/src/Controller/GroupController.php',
         'App\\Controller\\HomeController' => __DIR__ . '/../..' . '/src/Controller/HomeController.php',
@@ -596,6 +597,7 @@ class ComposerStaticInit4366694a9bdfa8df7da44b74fccf60c0
         'App\\Controller\\UserProfilController' => __DIR__ . '/../..' . '/src/Controller/UserProfilController.php',
         'App\\Document\\Group' => __DIR__ . '/../..' . '/src/Document/Group.php',
         'App\\Document\\User' => __DIR__ . '/../..' . '/src/Document/User.php',
+        'App\\Form\\ApiUserType' => __DIR__ . '/../..' . '/src/Form/ApiUserType.php',
         'App\\Form\\LoginType' => __DIR__ . '/../..' . '/src/Form/LoginType.php',
         'App\\Form\\RegisterType' => __DIR__ . '/../..' . '/src/Form/RegisterType.php',
         'App\\Form\\UserType' => __DIR__ . '/../..' . '/src/Form/UserType.php',
@@ -6713,9 +6715,9 @@ class ComposerStaticInit4366694a9bdfa8df7da44b74fccf60c0
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit4366694a9bdfa8df7da44b74fccf60c0::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit4366694a9bdfa8df7da44b74fccf60c0::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit4366694a9bdfa8df7da44b74fccf60c0::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit082c2cd991766a7aabf23df2537b9629::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit082c2cd991766a7aabf23df2537b9629::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit082c2cd991766a7aabf23df2537b9629::$classMap;
 
         }, null, ClassLoader::class);
     }

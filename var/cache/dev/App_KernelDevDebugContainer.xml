@@ -389,6 +389,13 @@
         <argument type="service" id=".service_locator.jIxfAsi.App\Controller\AdminController"/>
       </call>
     </service>
+    <service id="App\Controller\AdminGroupController" class="App\Controller\AdminGroupController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.jIxfAsi.App\Controller\AdminGroupController"/>
+      </call>
+    </service>
     <service id="App\Controller\ApiUserController" class="App\Controller\ApiUserController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -440,6 +447,9 @@
     </service>
     <service id="App\Document\Group" class="App\Document\Group" autowire="true" autoconfigure="true"/>
     <service id="App\Document\User" class="App\Document\User" autowire="true" autoconfigure="true"/>
+    <service id="App\Form\ApiUserType" class="App\Form\ApiUserType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\LoginType" class="App\Form\LoginType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -1235,6 +1245,7 @@
         <argument>Doctrine\Bundle\MongoDBBundle\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\ApiUserType</argument>
         <argument>App\Form\LoginType</argument>
         <argument>App\Form\RegisterType</argument>
         <argument>App\Form\UserType</argument>
@@ -3283,7 +3294,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.zdeUyFq"/>
+      <argument type="service" id=".service_locator.9ilz5tM"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -6223,6 +6234,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminGroupController" class="App\Controller\AdminGroupController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminGroupController" class="App\Controller\AdminGroupController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\AdminGroupController" class="App\Controller\AdminGroupController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ApiUserController" class="App\Controller\ApiUserController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ApiUserController" class="App\Controller\ApiUserController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ApiUserController" class="App\Controller\ApiUserController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6244,6 +6258,8 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\UserProfilController" class="App\Controller\UserProfilController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\UserProfilController" class="App\Controller\UserProfilController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\UserProfilController" class="App\Controller\UserProfilController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ApiUserType" class="App\Form\ApiUserType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ApiUserType" class="App\Form\ApiUserType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\LoginType" class="App\Form\LoginType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\LoginType" class="App\Form\LoginType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegisterType" class="App\Form\RegisterType" autowire="true" abstract="true"/>
@@ -6650,6 +6666,18 @@
         <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.tO_7buB" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="groupeRepository" type="service_closure" id="App\Repository\GroupRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.5RqRLaq" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="groupRepository" type="service_closure" id="App\Repository\GroupRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.wVIg2DJ" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6678,13 +6706,15 @@
         <argument key="groupRepository" type="service_closure" id="App\Repository\GroupRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.O43EkO6" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.WJXGipM" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::delete" type="service_closure" id=".service_locator.Q1F27w5"/>
         <argument key="App\Controller\AdminController::edit" type="service_closure" id=".service_locator.thcXORb"/>
         <argument key="App\Controller\AdminController::index" type="service_closure" id=".service_locator.Q1F27w5"/>
         <argument key="App\Controller\AdminController::show" type="service_closure" id=".service_locator.XtNjBZW"/>
+        <argument key="App\Controller\AdminGroupController::delete" type="service_closure" id=".service_locator.5RqRLaq"/>
+        <argument key="App\Controller\AdminGroupController::index" type="service_closure" id=".service_locator.tO_7buB"/>
         <argument key="App\Controller\ApiUserController::new" type="service_closure" id=".service_locator.Q1F27w5"/>
         <argument key="App\Controller\GroupController::acceptInvitation" type="service_closure" id=".service_locator.mB7Aevp"/>
         <argument key="App\Controller\GroupController::addGroup" type="service_closure" id=".service_locator.Dm5GxFr"/>
@@ -6707,6 +6737,8 @@
         <argument key="App\Controller\AdminController:edit" type="service_closure" id=".service_locator.thcXORb"/>
         <argument key="App\Controller\AdminController:index" type="service_closure" id=".service_locator.Q1F27w5"/>
         <argument key="App\Controller\AdminController:show" type="service_closure" id=".service_locator.XtNjBZW"/>
+        <argument key="App\Controller\AdminGroupController:delete" type="service_closure" id=".service_locator.5RqRLaq"/>
+        <argument key="App\Controller\AdminGroupController:index" type="service_closure" id=".service_locator.tO_7buB"/>
         <argument key="App\Controller\ApiUserController:new" type="service_closure" id=".service_locator.Q1F27w5"/>
         <argument key="App\Controller\GroupController:acceptInvitation" type="service_closure" id=".service_locator.mB7Aevp"/>
         <argument key="App\Controller\GroupController:addGroup" type="service_closure" id=".service_locator.Dm5GxFr"/>
@@ -6785,9 +6817,10 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.zdeUyFq" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.9ilz5tM" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\ApiUserType" type="service_closure" id="App\Form\ApiUserType"/>
         <argument key="App\Form\LoginType" type="service_closure" id="App\Form\LoginType"/>
         <argument key="App\Form\RegisterType" type="service_closure" id="App\Form\RegisterType"/>
         <argument key="App\Form\UserType" type="service_closure" id="App\Form\UserType"/>
@@ -7157,6 +7190,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.jIxfAsi" method="withContext"/>
     </service>
+    <service id=".service_locator.jIxfAsi.App\Controller\AdminGroupController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\AdminGroupController"/>
+      <argument>App\Controller\AdminGroupController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.jIxfAsi" method="withContext"/>
+    </service>
     <service id=".service_locator.jIxfAsi.App\Controller\ApiUserController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\ApiUserController"/>
       <argument>App\Controller\ApiUserController</argument>
@@ -7367,12 +7406,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.O43EkO6"/>
+      <argument type="service" id=".service_locator.WJXGipM"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.O43EkO6"/>
+      <argument type="service" id=".service_locator.WJXGipM"/>
     </service>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
       <argument type="iterator">
@@ -8331,7 +8370,7 @@
     <service id="doctrine_mongodb.odm.event_manager" alias="doctrine_mongodb.odm.default_connection.event_manager"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.O43EkO6"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.WJXGipM"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -8355,9 +8394,9 @@
     <service id=".service_locator.ug1LklU" alias=".service_locator.thcXORb"/>
     <service id=".service_locator.LJnYiyc" alias=".service_locator.mB7Aevp"/>
     <service id=".service_locator.9JaK8Ej" alias=".service_locator.ELyYSaO"/>
-    <service id=".service_locator.am.WBU." alias=".service_locator.O43EkO6"/>
+    <service id=".service_locator.PPShsK_" alias=".service_locator.WJXGipM"/>
     <service id=".service_locator.Naiw5mr" alias=".service_locator.HuqLxd2"/>
-    <service id=".service_locator.CEjrhlZ" alias=".service_locator.zdeUyFq"/>
+    <service id=".service_locator.WJO9UR3" alias=".service_locator.9ilz5tM"/>
     <service id=".service_locator.XW18Svm" alias=".service_locator.TcKhdzh"/>
     <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
     <service id=".service_locator._eRAkJb" alias=".service_locator.jIxfAsi"/>
@@ -8386,6 +8425,8 @@
     <service id=".service_locator.HO7.gFw" alias=".service_locator.Q1F27w5"/>
     <service id=".service_locator.qXA5G5c" alias=".service_locator.XtNjBZW"/>
     <service id=".service_locator.R3Enu0p" alias=".service_locator.thcXORb"/>
+    <service id=".service_locator.KmDMm7N" alias=".service_locator.tO_7buB"/>
+    <service id=".service_locator.hwoUjmv" alias=".service_locator.5RqRLaq"/>
     <service id=".service_locator.htxjSaJ" alias=".service_locator.wVIg2DJ"/>
     <service id=".service_locator.ambWInq" alias=".service_locator.Dm5GxFr"/>
     <service id=".service_locator.WjqMMaJ" alias=".service_locator.mB7Aevp"/>
