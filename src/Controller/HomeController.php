@@ -32,14 +32,6 @@ class HomeController extends AbstractController
             'guests.guest.$id' => new ObjectId($idSession),
         ]));
 
-        //appelle dans group ton id dans guest
-        $notifInvitation = ($groupRepository->findBy([
-            'status' => "waiting",
-            'guests.invitation' => "waiting",
-            'guests.guest.$id' => new ObjectId($idSession),
-        ]));
-
-
         // dd($notifInvitation);
 
         // dd($notifInvitation[0]->guests->toArray()[0]->guest->id);
@@ -85,9 +77,6 @@ class HomeController extends AbstractController
         ]);
         
     }
-
-
-
 
 
     // #[Route('/home', name: 'app_home_index')]
