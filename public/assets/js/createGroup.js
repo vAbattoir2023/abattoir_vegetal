@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
           idUser.forEach(function (element) {
             element.addEventListener("click", function(event) {
             let btnClick = event.currentTarget;
+            
 
             console.log(btnClick.value); //log id
 
@@ -83,6 +84,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         let groupeUsers = ''; // initilise groupUsers
         idUsers.forEach(id => {
           let idUsername = id;
+          
           groupeUsers += (groupeUsers == '') ? idUsername : ',' + idUsername;
         });
         urlGroup += groupeUsers;

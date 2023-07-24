@@ -32,10 +32,11 @@
 	{% endfor %}
 		{{  include('Home/index.html.twig') }}
 
-	{% endblock %}
-
+	
+		{{ include('_footer.html.twig') }}
+		{% endblock %}
 		</body>
-       {{ include('_footer.html.twig') }}
+       
 	
 	</html>
 	<script src="{{ asset('./assets/js/form.js')}}"></script>

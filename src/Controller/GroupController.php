@@ -31,13 +31,13 @@ class GroupController extends AbstractController
         $dataCheckbox = [
             'Animaux',
             'Environnement',
-            'Art et culture',
+            'Art et Culture',
             'Sport',
-            'Voyages',
+            'Voyage',
             'Musique',
             'Danse',
             'Sciences',
-            'Bien-être',
+            'Bien-etre',
             'Food',
             'Activités sociales',
             'Jeux vidéos',
@@ -63,11 +63,11 @@ class GroupController extends AbstractController
     public function showUsersList(string $filters, DocumentManager $dm): Response{
 
         $users = []; // initialise array user
-        $filters = explode('#', $filters); // get center of interest from url
+        $filters = explode(',', $filters); // get center of interest from url
         
         $iter = $dm->createQueryBuilder() // create requête sql 
             ->find(User::class) // find all document from collection user
-            ->field('centerOfInterest')->all($filters) // filter centerOfInterest same $filters
+            ->field('centerOfInterest')->in($filters) // filter centerOfInterest same $filters
             ->getQuery() // prepare request
             ->execute(); // execute request
 

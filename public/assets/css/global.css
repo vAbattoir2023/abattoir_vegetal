@@ -68,6 +68,7 @@ COMMUN
         font-family: 'Work Sans', sans-serif;
         color: var(--foret-noire);
         overflow-x: hidden;
+       
     }
         
         
@@ -426,7 +427,7 @@ footer .lien {
 footer p {
    color: var(--choux-fleur);
    font-size: 1rem;
-   margin-bottom : 0px;
+   margin-bottom : 0;
 }
  footer .form-label {
     color: var(--choux-fleur);

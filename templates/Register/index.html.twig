@@ -4,6 +4,7 @@
 {% block stylesheets %}<link rel="stylesheet" href="{{asset('./assets/css/auth.css')}}">{% endblock %}
 
 {% block body %}
+    {{ include('_header.html.twig') }}
     {% if alert|length >1  %}
         <div class='alert alert-danger'>{{ alert }}</div>
     {% endif  %}

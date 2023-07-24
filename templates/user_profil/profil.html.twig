@@ -167,9 +167,9 @@
                              <label >Mes centres d'interets</label>
                             </div>
     
-                               <div class="d-flex column">
+                               <div class="row">
 							{% for interest in user.centerOfInterest %}
-									<p class="border ms-3 p-3 border-danger">{{ interest }}</p>
+									<p class="border ms-3 p-3 border-danger col-2 text-center">{{ interest }}</p>
 								{% endfor %}                         
 								</div>
                                
@@ -334,7 +334,7 @@
 </fieldset>
         {# Fin de je veux Etape 3   #}
 
-                    <div class="infoprofil position-relative z-2">
+                    <div class="infoprofil position-relative ">
                 <p>{{ user.username }}</p>
                 <span class="vertical-line"></span>
                 <p class="tag">{{ user.email }}</p>
