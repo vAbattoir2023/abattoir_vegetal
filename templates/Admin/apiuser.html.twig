@@ -1,20 +1,30 @@
 {% extends 'base.html.twig' %}
 
-
 {% block title %}Api index{% endblock %}
 
 {% block body %}
+<section class="container">
+
     <h1>Gestion administrateur</h1>
     <h2>API User </h2>
 
      <a href="{{ path('app_admin_index')}}" class="btn btn-primary">Liste des utilisateurs</a>
-     <a href="{{ path('app_api_user')}}" class="btn btn-warning">Api</a>
-
+     <a href="{{ path('app_admin_grpindex')}}" class="btn btn-primary">Liste des Résérvation</a>
+     <a href="{{ path('app_home') }}" class="btn btn-success">Accueil</a>
 
 
     <hr>
     <h4>Création de User en base de donnée</h4>
 
+{# 
+       <div  class="bg-light">
+                <div >{{ apiuser.job }}</div>
+                 <div>{{ apiuser.postalCode }}</div>
+                 <div >{{ apiuser.diet }}</div>
+                {# <td>{{ user.allergy }}</td> 
+                 <div >{{ apiuser.description }}</div> 
+                <div >{{ apiuser.centerOfInterest|join(', ') }}</div>
+       </div> #}
  {% if form.vars.errors|length > 0 %}
         <div class="alert alert-danger">
             {# Afficher les messages d'erreur associés au champ "postalCode" #}
@@ -28,5 +38,6 @@
     <button class="btn btn-primary mt-2" type="submit">Enregistrer</button>
     {{ form_end(form) }}
     </div>
+</section>
 
 {% endblock %}

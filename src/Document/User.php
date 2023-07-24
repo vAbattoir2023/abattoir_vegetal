@@ -16,6 +16,9 @@ class User
     #[MongoDB\Id]
     public string $id;
 
+    #[MongoDB\Field(type: 'bool')]
+    protected $termsAccepted;
+
     #[MongoDB\Field(type: 'string')]
     public ?string $username = '';
 
@@ -66,11 +69,18 @@ class User
     public array $centerOfInterest = [];
 
     #[MongoDB\Field(type: 'collection')]
-    private array $roles = [];
+    public array $roles = [];
     
     
     #[MongoDB\Field(type: 'string')]
-    protected ?string $postalCode = null;
+    public ?string $postalCode = null;
+
+    #[MongoDB\Field(type: 'string')]
+    protected ?string $codeDepartement = null;
+
+    #[MongoDB\Field(type: 'string')]
+    public ?string $region = null;
+
 
     // #[MongoDB\Field(type: 'int')]
     // public ?string $groupNbr = null;
@@ -88,6 +98,16 @@ class User
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
  
+    public function getTermsAccepted()
+    {
+        return $this->termsAccepted;
+    }
+
+    public function setTermsAccepted($termsAccepted)
+    {
+        $this->termsAccepted = (bool) $termsAccepted;
+    }
+
     public function getId(): string
     {
         return $this->id;
@@ -341,193 +361,31 @@ class User
         return $this;
     }
 
-
-    // //AGE
-    // public function getAge(): int
-    // {
+    public function getCodeDepartement(): ?string
+    {
         
-        //     return $this->age;
-    // }
+        return $this->codeDepartement;
+    }
 
-    
-    // public function setAge(int $age): User
-    // {
-    //     $this->age = $age;
+    public function setCodeDepartement(?string $codeDepartement): User
+    {
+        $this->codeDepartement = $codeDepartement;
 
-    //     return $this;
-    // }
+        return $this;
+    }
 
-    // //GENDER
-    // public function getGender(): string
-    // {
+    public function getRegion(): string
+    {
         
-    //     return $this->gender;
-    // }
+        return $this->region;
+    }
 
-    
-    // public function setGender(string $gender): User
-    // {
-    //     $this->gender = $gender;
+    public function setRegion(string $region): User
+    {
+        $this->region = $region;
 
-    //     return $this;
-    // }
+        return $this;
+    }
 
-
-    // //IMAGE
-    // public function getImage(): string
-    // {
-        
-    //     return $this->image;
-    // }
-
-    
-    // public function setImage(string $image): User
-    // {
-    //     $this->image = $image;
-
-    //     return $this;
-    // }
-
-    // //BIRTHDAY
-    // public function getBirthday(): date
-    // {
-        
-    //     return $this->birthdate;
-    // }
-
-    
-    // public function setBirthday(date $birthdate): User
-    // {
-    //     $this->birthdate = $birthdate;
-
-    //     return $this;
-    // }
-
-    // //JOB
-    // public function getJob(): string
-    // {
-        
-    //     return $this->job;
-    // }
-
-    
-    // public function setJob(string $job): User
-    // {
-    //     $this->job = $job;
-
-    //     return $this;
-    // }
-
-    // //DESCRIPTION
-    // public function getDescription(): string
-    // {
-        
-    //     return $this->description;
-    // }
-
-    
-    // public function setDescription(string $description): User
-    // {
-    //     $this->description = $description;
-
-    //     return $this;
-    // }
-
-    // //CITY
-    // public function getCity(): string
-    // {
-        
-    //     return $this->city;
-    // }
-
-    
-    // public function setCity(string $city): User
-    // {
-    //     $this->city = $city;
-
-    //     return $this;
-    // }
-
-    // //  //LANGUAGE
-    // //  public function getLanguage(): array
-    // //  {
-         
-    // //      return $this->language;
-    // //  }
-
-    // //  public function setLanguage(array $language): User
-    // // {
-    // //     $this->language = $language;
-
-    // //     return $this;
-    // // }
- 
-    // //DIET
-    // public function getDiet(): string
-    // {
-        
-    //     return $this->diet;
-    // }
-
-    //  public function setDiet(string $diet): User
-    //  {
-    //      $this->diet = $diet;
- 
-    //      return $this;
-    //  }
-
-    // //GROUPENBR
-    // public function getGroupNbr(): int
-    // {
-        
-    //     return $this->groupNbr;
-    // }
-
-    // public function setGroupNbr(int $groupNbr): User
-    // {
-    //     $this->groupNbr = $groupNbr;
-
-    //     return $this;
-    // }
-    // //ALLERGY
-    // public function getAllergy(): array
-    // {
-        
-    //     return $this->Allergy;
-    // }
-
-    // public function setAllergy(array $Allergy): User
-    // {
-    //     $this->Allergy = $Allergy;
-
-    //     return $this;
-    // }
-
-    // //CENTEROFINTEREST-PERSO
-    // public function getCenterOfInterestPerso(): string
-    // {
-        
-    //     return $this->centerOfInterestPerso;
-    // }
-
-    // public function setCenterOfInterestPerso(string $centerOfInterestPerso): User
-    // {
-    //     $this->centerOfInterestPerso = $centerOfInterestPerso;
-
-    //     return $this;
-    // }
-
-    // //CENTEROFINTEREST-PERSO
-    // public function getCenterOfInterest(): array
-    // {
-        
-    //     return $this->centerOfInterest;
-    // }
-
-    // public function setCenterOfInterest(array $centerOfInterest): User
-    // {
-    //     $this->centerOfInterest = $centerOfInterest;
-
-    //     return $this;
-    // }
 }
+   

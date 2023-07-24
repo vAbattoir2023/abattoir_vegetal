@@ -13,7 +13,6 @@ use Symfony\Component\HttpClient\HttpClient;
 
 class ApiUserController extends AbstractController
 {
-
     #[Route('/api_user', name: 'app_api_user', methods: ['GET', 'POST'])]
     public function new(Request $request, UserRepository $userRepository): Response
     {
@@ -31,7 +30,7 @@ class ApiUserController extends AbstractController
                 // Définir la valeur de la propriété "language"
                 $apiuser->setLanguage($selectedLanguages);
                 // URL de base vers l'API des icônes des drapeaux
-                $flagIconsBaseUrl = 'https://www.countryflagicons.com/SHINY/16/';
+                $flagIconsBaseUrl = 'https://www.countryflagicons.com/SHINY/32/';
 
                 foreach ($selectedLanguages as $languageCode) {
                     $languageCodeUpper = strtoupper($languageCode);
@@ -40,7 +39,7 @@ class ApiUserController extends AbstractController
                         $flagIconUrl[] = $flagIconsBaseUrl . $languageCodeUpper . '.png';
                     } else {
                         // SINON le drapeau pour une langue n'est pas disponible, vous pouvez définir une URL générique ou une URL par défaut
-                        echo'  le drapeau pour une langue n\'est pas disponible  ';
+                        echo '  le drapeau pour une langue n\'est pas disponible  ';
                     }
                 }
                 $apiuser->setFlagIconUrl($flagIconUrl);
@@ -50,42 +49,30 @@ class ApiUserController extends AbstractController
             // URL de l'API
             $apiUrl = 'https://randomuser.me/api/';
 
-            // Création d'une ressource cURL
-            $curl = curl_init();
+            // Création d'un client HTTP
+            $httpClient = HttpClient::create();
 
-            // Configuration de l'URL et d'autres options cURL
-            curl_setopt($curl, CURLOPT_URL, $apiUrl);
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-            // Exécution de la requête cURL
-            $response = curl_exec($curl);
-
-            // Vérification des erreurs cURL
-            if ($response === false) {
-                $error = curl_error($curl);
-                // Gérer l'erreur cURL appropriée
-                echo "Erreur cURL : " . $error;
-            }
-
-            // Fermeture de la session cURL
-            curl_close($curl);
+            // Effectuer une requête HTTP GET vers l'API
+            $response = $httpClient->request('GET', $apiUrl);
 
             // Traitement de la réponse JSON en un tableau associatif
-            $data = json_decode($response, true);
+            $data = $response->toArray();
+
             //SI la variable $data est définie et SI $data contient le tableau 'results'
             if ($data && isset($data['results'])) {
-                // ALORS intancie la variable $results au premier élément du tableau 'results'  
+                // ALORS instancie la variable $results au premier élément du tableau 'results'
                 $results = $data['results'][0];
-                    
+
                 // Vérifier SI les données sont présentes dans la réponse de l'API
                 if (isset($results['gender'], $results['email'], $results['picture'], $results['login']['username'], $results['dob']['age'])) {
-    
+
                     // Récupérer les valeurs depuis le tableau $results
                     $gender = $results['gender'];
                     $email = $results['email'];
                     $age = $results['dob']['age'];
                     $image = $results['picture']['large'];
                     $username = $results['login']['username'];
+
 
                     if ($gender === 'female') {
                         $gender = 'femme';
@@ -100,39 +87,75 @@ class ApiUserController extends AbstractController
                     $apiuser->setImage($image);
                     $apiuser->setUserName($username);
                 }
-                
-                // Récupérer le code postal à partir du formulaire
-                $codePostal = $apiuser->getPostalCode();
+            }
 
-                // URL de base vers l'API gouvernementale pour obtenir les informations de la commune à partir d'un code postal
-                $apiUrl = "https://geo.api.gouv.fr/communes?codePostal=" . $codePostal ;
-                // Création d'un client HTTP dans la variable $hyypClient à l'aide de HttpClient::create()
-                $httpClient = HttpClient::create();
-                // Effectuer une requête HTTP GET vers l'API en utilisant l'URL construite 
+            // Récupérer le code postal à partir du formulaire
+            $codePostal = $apiuser->getPostalCode();
+            $codeDepartement = $apiuser->getCodeDepartement();
+
+            // URL de base vers l'API gouvernementale pour obtenir les informations de la commune à partir d'un code postal
+            $apiUrl = "https://geo.api.gouv.fr/communes?codePostal=" . $codePostal;
+
+            // Effectuer une requête HTTP GET vers l'API en utilisant l'URL construite
+            $response = $httpClient->request('GET', $apiUrl);
+            $data = $response->toArray();
+
+            if (!empty($data)) {
+                // Mettre à jour la valeur de city en fonction de la commune trouvée
+                $city = $data[0]['nom'];
+                // Attribuer les valeurs au document USER
+                
+                $apiuser->setCity($city);
+                $apiuser->setPostalCode($codePostal);
+                // Récupérer le code du département à partir des données de la commune
+                $codeDepartement = $data[0]['codeDepartement'];
+                $apiuser->setCodeDepartement($codeDepartement);
+               
+            }
+            // Récupérer le code du département à partir des données de la commune
+            $codeDepartement = $apiuser->getCodeDepartement();
+
+            // URL de base vers l'API gouvernementale pour obtenir les informations du département à partir du code du département
+            $apiUrl = "https://geo.api.gouv.fr/departements/" . $codeDepartement;
+
+            // Effectuer une requête HTTP GET vers l'API en utilisant l'URL construite
+            $response = $httpClient->request('GET', $apiUrl);
+            $data = $response->toArray();
+
+            if (!empty($data)) {
+                // Récupérer le nom du département à partir de la réponse de l'API
+                // dd($data);
+                // $codeDepartement = $data['nom'];
+                $codeRegion = $data['codeRegion'];
+                // Utiliser le nom du département pour récupérer le nom de la région
+                $apiUrl = "https://geo.api.gouv.fr/regions/" . $codeRegion;
+
+                // Effectuer une requête HTTP GET vers l'API en utilisant l'URL construite
                 $response = $httpClient->request('GET', $apiUrl);
                 $data = $response->toArray();
 
                 if (!empty($data)) {
-                    // Mettre à jour la valeur de city en fonction de la commune trouvée
-                    $city = $data[0]['nom'];
-                    // Attribuer les valeurs au document USER
-                    $apiuser->setCity($city);
-                    $apiuser->setPostalCode($codePostal);
-                   
+                    // Mettre à jour la valeur de region en fonction du nom de la région trouvée
+                    $region = $data['nom'];
+
+                    // Attribuer la valeur au document USER
+                    $apiuser->setRegion($region);
                 }
-                // A DECOMMENTER POUR ENREGISTRER EN BDD !!
-                // Sauvegarder l'entité User mise à jour dans la base de données
-                $userRepository->save($apiuser, true);
-                
-                // Rediriger vers la route 'app_api_user' après la sauvegarde
-                return $this->redirectToRoute('app_api_user', [], Response::HTTP_SEE_OTHER);
             }
+
+            // A DECOMMENTER POUR ENREGISTRER EN BDD !!
+            // Sauvegarder l'entité User mise à jour dans la base de données
+            // $userRepository->save($apiuser, true);
+dd($apiuser);
+            // Rediriger vers la route 'app_api_user' après la sauvegarde
+            return $this->redirectToRoute('app_api_user', [], Response::HTTP_SEE_OTHER);
         }
+
         // Retourne le rendu du formulaire (apiuser.html.twig) au format HTML
-        // avec les données de ApiUser de la variable $apiuser et les valeurs attribuer à $form
-        return $this->renderform('Admin/apiuser.html.twig', [
+        // avec les données de ApiUser de la variable $apiuser et les valeurs attribuées à $form
+        return $this->render('Admin/apiuser.html.twig', [
             'apiuser' => $apiuser,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
 }

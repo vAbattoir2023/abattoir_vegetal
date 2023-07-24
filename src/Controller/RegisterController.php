@@ -33,7 +33,7 @@ class RegisterController extends AbstractController
         // if from is submitted and valid then save the forms values in database
         if($form->isSubmitted() && $form->isValid() ){
             //je force le role pour l'enregistrement
-             $user->setRoles(['ROLE_USER']);
+            //$user->setRoles(['ROLE_USER']);
 
             if($userRepository->checkUserRegister($user->getEmail())){
                 $messageAlert = 'cet email existe déjà';

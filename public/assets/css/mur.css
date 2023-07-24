@@ -11,7 +11,7 @@
         font-size: 2.9rem
     }
     
-    #mur .somanyfriends::after{
+    /* #mur .somanyfriends::after{
         content: "";
         display: block;
         width: 12.1875rem;
@@ -21,9 +21,9 @@
         right: -4rem;
         bottom: 47rem;
         z-index: -1;
-    }
+    } */
     
-    #mur .filtres::before{
+    /* #mur .filtres::before{
         content: "";
         display: block;
         width: 12.1875rem;
@@ -33,12 +33,44 @@
         top: 5.55rem;
         left: 27.25rem;
         z-index: -1;
-    }
+    } */
     
+.badge {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-radius: 3px;
+    color: #fff;
+}
+
+/* Define background colors for each center of interest */
+.badge.text-bg-success {
+    background-color: #28a745;
+}
+
+/* Add more styles for different backgrounds if needed */
+.badge.text-bg-info {
+    background-color: #17a2b8;
+}
+
+.badge.text-bg-warning {
+    background-color: #ffc107;
+}
+
+.badge.text-bg-danger {
+    background-color: #dc3545;
+}
+
     /* ********
     CSS CARD BIG 
     *********** */
     
+
     .card-user .entiere {
         box-shadow: 0px 0px 46px 0px rgba(0, 0, 0, 0.08);
     
@@ -46,9 +78,9 @@
     
     /* haut de la carte */
     .card-user .img-user {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
+        /* object-fit: cover; */
+        width: 150px;
+         height: 150px; 
     }
     
     /* dessous de la carte */
@@ -164,6 +196,7 @@
     #mur .filtres .lisere{
         border: solid 1.5px var(--framboise-ecrasee);
         padding: 16px;
+        background-color: var(--bouton-dor);
     }
     
     #mur .filtres h2{
@@ -183,11 +216,183 @@
         background-color: #ffffff10;
     }
     
+    #mur .label_checkbox{
+    font-size: 13px;
+    }
     /* FIN DE MUR DE PROFIL */
     
     
     
+    /* RESERVER */
+#reserver{
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+}
+
+#reserver .title-screen{
+    left: 4rem;
+    top: -2.5rem;
+    color: var(--framboise-ecrasee);
+}
+
+#reserver .numero-un{
+    top: -3rem;
+    left: -0.5rem; 
+}
+
+#reserver .numero-deux{
+    top: 10rem;
+    left: 5rem; 
+}
+
+#reserver .algue{
+    width: 11rem;
+    height: 31.25rem;
+    top: 20rem;
+    right: 74rem;
+    animation: move-algue-reserver ease-in-out 600ms;
+}
+
+#reserver .bande-orange{
+    height: 105rem;
+    width: 32rem;
+    background-color: var(--orange-sanguine);
+    top: -50rem;
+    left: 60rem;
+}
+
+/* Calendrier */
+
+#reserver .fond-calendar{
+    padding: 1rem;
+    background-color: var(--choux-fleur);
+    box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14);
+}
+
+#reserver .lisere-calendar{
+    border: 2px solid var(--orange-sanguine);
+    padding: 2rem;
+}
+
+#reserver .numeros{
+    top: -3rem;
+    left: -0.5rem;
+}
+
+#reserver .calendar{
+    margin: auto;
+    width: 350px;
+}
+
+#reserver .header-calendar{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#reserver .day{
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+    margin-bottom: 0;
+}
+
+#reserver .liste-dates{
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#reserver .grille{
+    border-bottom: solid 2px var(--foret-noire)!;
+}
+
+#reserver .dates{
+    background-color: var(--choux-fleur);
+    border-top: 2px solid var(--foret-noire);
+    border-left: 2px solid var(--foret-noire);
+    border-right: 0;
+    border-bottom: 0;
+    border-radius: 0px;
+    color: var(--foret-noire);
+    font-size: 15px;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+}
+
+#reserver .border-right{
+    border-right: 2px solid var(--foret-noire);
+}
+
+#reserver .border-bottom{
+    border-bottom: 2px solid var(--foret-noire) !important;
+}
+
+#reserver .dates:hover{
+    background-color: var(--menthe-givree-clair);
+}
+
+#reserver .dates:active{
+    background-color: var(--menthe-givree);
+}
+
+/* HORAIRES */
+
+#reserver .fond-horaires{
+    background-color: var(--choux-fleur);
+    padding: 1rem;
+    box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14);
+}
+
+#reserver .lisere-horaires{
+    border: solid 2px var(--menthe-givree);
+    padding: 2rem 2rem;
+}
+
+#reserver .title-card{
+    margin-bottom: 3rem;
+}
+
+#reserver .title-hour{
+    margin-bottom: 0.81rem;
+}
+
+#reserver .tag-horaire-vert{
+    cursor: pointer;
+    width: 6rem;
+    padding: 10px 20px;
+    border: solid 1px var(--menthe-givree);
+}
+
+#reserver .tag-horaire-rose{
+    display: inline-block;
+    padding: 10px 20px;
+    border: solid 1.5px var(--framboise-ecrasee);
+}
+
+#reserver .tag-horaire-vert:active{
+    box-shadow:0px 0px 0px 3px var(--menthe-givree) inset;
+    font-weight: 600;
+}
+
+#reserver .btn-valider{
+    margin-top: 2rem;
+    color: var(--foret-noire);
+}
+
+/* animations */
+@keyframes move-algue-reserver {
+    0%{
+        top: 50rem;
+        right:74rem;
+    }
+
+    100%{
+        top: 20rem;
+        right: 74rem;
+    }
     
+}
     
     
     

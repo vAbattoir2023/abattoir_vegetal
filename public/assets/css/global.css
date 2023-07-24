@@ -286,3 +286,172 @@ COMMUN
         }
     
     /* FIN DU CSS COMMUN */
+
+    /* CSS HEADER */
+
+.header01 {
+    margin: 27px 174px;
+    background-color: white;
+    align-items: center;
+}
+
+.iconeheader {
+    background-color: var(--foret-noire);
+    padding: 8px;
+    border-radius: 100px;
+}
+
+
+.test {
+    padding-bottom: 0px;
+}
+
+.tag {
+    margin-bottom: 0 !important;
+}
+
+/* .iconeheader.active {
+    background-color: var(--menthe-givree);
+    padding: 8px;
+    border-radius: 100px;
+} */
+
+/* FIN DU CSS HEADER */
+
+
+
+/* recap de réservation */
+
+#modal-resa .modal-dialog{
+    width: 48rem;
+}
+
+#modal-resa .modal-content{
+    width: 48rem;
+
+    border-radius: 0 !important;
+    background-color: var(--choux-fleur);
+    border: 2px solid var(--foret-noire);
+}
+
+#modal-resa .modal-body{
+    padding: 20px;
+
+}
+#modal-resa .modal-header{
+    border-bottom: 0;
+}
+
+#modal-resa .modal-title{
+    color: var(--framboise-ecrasee);
+    padding: 0px 134px;
+}
+
+#modal-resa a{
+    text-decoration: underline !important;
+    color: var(--foret-noire);
+}
+
+#modal-resa .image-ami{
+    width: 3rem;
+    height: 3rem;
+}
+
+#modal-resa .liste-amis{
+    padding: 0rem 1.3rem 0.6rem 1.3em;
+    border: 1px solid var(--orange-sanguine);
+}
+
+#modal-resa iframe{
+    width: 15rem;
+    height: 10rem;
+    border-radius: 0;
+    border: 2px solid var(--foret-noire) !important;
+}
+
+#modal-resa .modal-resa-footer{
+    display: flex;
+    width:100% ;
+}
+
+#modal-resa .btn-sous{
+    width: 50% !important;
+    border-bottom:0;
+    border-right: 0;
+    border-left: 0; 
+}
+
+#modal-resa .btn-annuler{
+    color: var(--foret-noire);
+}
+
+#modal-resa .croix-close-modal-resa{
+    top: -2rem;
+    left: 36.7rem;
+    opacity: 100%;
+}
+
+#modal-resa .feuille-modal-resa{
+    top: 15rem;
+    left: -5rem;
+}
+
+
+/* fin  modale  */
+
+
+
+   /* CSS FOOTER */
+   footer {
+    background-color: var(--foret-noire);
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+footer .lienresto {
+    text-decoration: underline !important;
+    color: var(--choux-fleur);
+    font-size: 1rem;
+}
+
+footer h3 {
+    color: var(--choux-fleur);
+}
+footer .lien {
+    text-decoration: none !important;
+    color: var(--choux-fleur);
+    font-size: 1rem;
+}
+
+footer p {
+   color: var(--choux-fleur);
+   font-size: 1rem;
+   margin-bottom : 0px;
+}
+ footer .form-label {
+    color: var(--choux-fleur);
+ }
+
+ footer .form-control {
+    appearance: none!important;
+    border-bottom: solid 1px var(--choux-fleur)!important;
+    border-radius : 0px;
+    width: 400px;
+    margin-right: 15px;
+    background-color: transparent;
+    border : none;
+    color: var(--choux-fleur)!important;
+ }
+
+ footer .form-control:focus {
+    appearance: none!important;
+    border-bottom: solid 1px var(--menthe-givree)!important;
+    border-radius : 0px;
+    width: 400px;
+    margin-right: 15px;
+    background-color: transparent;
+    border : none;
+ }
+
+
+/* FIN DU CSS FOOTER */

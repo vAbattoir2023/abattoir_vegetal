@@ -11,27 +11,22 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Email;
-use Symfony\Component\Validator\Constraints\Regex;
 
 class LoginType extends AbstractType 
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('email', TextType::class, [
-            'constraints' => [
-                new Email([
-                    'message' => 'L\'adresse email n\'est pas valide.',
-                ]),
-                new Regex([
-                    'pattern' => '/^(?=.*[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})/',
-                    'message' => 'L\'adresse email n\'est pas valide.',
-                ]),
-            ],
-        ])
-            ->add('password', PasswordType::class)
-            ->add('submit', SubmitType::class);
+            ->add('email', EmailType::class, [
+                'label' => 'Email'
+            ])
+
+            ->add('password', PasswordType::class, [
+                'label' => 'Mot de passe '
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => 'Se connecter'
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

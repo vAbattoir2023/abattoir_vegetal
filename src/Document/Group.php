@@ -7,59 +7,37 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 use Symfony\Component\Validator\Constraints\Date;
 use Doctrine\Common\Collections\ArrayCollection;
 use App\Document\User;
-
+use Doctrine\Common\Collections\Collection;
 
 #[MongoDB\Document]
 class Group
 {
     #[MongoDB\Id]
-    protected string $id;
+    public string $id;
 
-    // #[MongoDB\Field(type: 'string')]
-    // protected ?string $status = null;
-
-    // #[MongoDB\Field(type: 'string')]
-    // protected ?string $authors = null;
-    
-    // An example of a date type property
-    // #[MongoDB\Field(type: "date")]
-    // private ?\DateTime $createdAt = null;
-    
-    // An example of a date type property
-    // #[MongoDB\Field(type: "date")]
-    // private ?\DateTime $reservationDate = null;
-        
-    // An exemple of an embedded collection
-    // #[MongoDB\EmbedMany(targetDocument: User::class)]
-    // private ?ArrayCollection $UserId = null;
-  
     #[MongoDB\Field(type: 'string')]
-    protected string $username;
+    public ?string $status = null;
 
-      // Jointure user
+    #[MongoDB\Field(type: 'string')]
+    public ?string $authors = null;
     
-    // public function getUserId(): ?ArrayCollection
-    // {
-    //     return $this->UserId;
-    // }
+    #[MongoDB\Field(type: "date")]
+    public ?\DateTimeInterface $createdAt = null;
+    
+    #[MongoDB\Field(type: "date")]
+    public ?\DateTime $reservationDate = null;
+  
 
-    // public function setUserId(?ArrayCollection $UserId): Group
-    // {
-    //     $this->UserId = $UserId;
-    //     return $this;
-    // }
+    #[MongoDB\EmbedMany(targetDocument: Guest::class)]
+    public ArrayCollection $guests;
 
-    // public function addUserId(?User $UserId): Group
-    // {
-    //     $this->UserId->add($UserId);
-    //     return $this;
-    // }
 
-    // public function removeUserId(?User $UserId): Group
-    // {
-    //     $this->UserId->removeElement($UserId);
-    //     return $this;
-    // }
+    public function __construct()
+    {
+        $this->guests = new ArrayCollection();
+    }
+    // #[MongoDB\ReferenceOne(targetDocument: User::class)]
+    // private ?User $user = null; // Référence à l'utilisateur
 
     
     //ID
@@ -68,68 +46,127 @@ class Group
         return $this->id;
     }
 
+    public function getStatus(): string
+    {
+        
+        return $this->status;
+    }
+
+    public function setStatus(string $status): Group
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
     //status
-    // public function getStatus(): string
-    // {
+    public function getAuthors(): string
+    {
         
-    //     return $this->status;
-    // }
+        return $this->authors;
+    }
 
-    // public function setStatus(string $status): Group
-    // {
-    //     $this->status = $status;
+    public function setAuthors(string $authors): Group
+    {
+        $this->authors = $authors;
 
-    //     return $this;
-    // }
+        return $this;
+    }
 
-    // //status
-    // public function getAuthors(): string
-    // {
-        
-    //     return $this->authors;
-    // }
 
-    // public function setAuthors(string $authors): Group
-    // {
-    //     $this->authors = $authors;
+    public function getCreateGroup(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
 
-    //     return $this;
-    // }
+    public function setCreateGroup(\DateTimeInterface $createdAt): Group
+    {
+        $this->createdAt = $createdAt;
 
-    // public function getCreatedAt(): ?\DateTime
-    // {
-    //     return $this->createdAt;
-    // }
+        return $this;
+    }
 
-    // public function setCreatedAt(?\DateTime $createdAt): Group
-    // {
-    //     $this->createdAt = $createdAt;
-    //     return $this;
-    // }
+    public function getReservationDate(): ?string
+    {
+        return $this->reservationDate;
+    }
 
-    // public function getReservationDate(): ?\DateTime
-    // {
-    //     return $this->reservationDate;
-    // }
+    public function setReservationDate(?string $reservationDate): Group
+    {
+        $this->reservationDate = \DateTime::createFromFormat('Y-m-d', $reservationDate);
+        return $this;
+    }
 
-    // public function setReservationDate(?\DateTime $reservationDate): Group
-    // {
-    //     $this->reservationDate = $reservationDate;
-    //     return $this;
-    // }
+    //Jointure user
+    
+    public function getGuests(): ?ArrayCollection
+    {
+        return $this->guests;
+    }
 
-      //USERNAME
-      public function getUserName(): string
-      {
-          
-          return $this->username;
-      }
+    public function setGuests(?ArrayCollection $guests): void
+    {
+        $this->guests = $guests;
+    }
+
+    public function addGuest(Guest $guest): Group
+    {
+        $this->guests->add($guest);
+        return $this;
+    }
+
+    public function removeGuest(Guest $guest): Group
+    {
+        $this->guests->removeElement($guest);
+        return $this;
+    }
   
-      public function setUserName(string $username): Group
-      {
-          $this->username = $username;
-  
-          return $this;
-      }
-  
+}
+
+#[MongoDB\EmbeddedDocument]
+class Guest
+{
+    // An example of a string type property
+    #[MongoDB\ReferenceOne(targetDocument: User::class)]
+    public ?User $guest = null;
+
+    // An example of a string type property
+    #[MongoDB\Field(type: "string")]
+    public string $invitation = '';
+
+    #[MongoDB\Field(type: 'string')]
+    public string $username = '';
+
+    // The getters and setters for each of our properties
+    public function getGuest(): ?User
+    {
+        return $this->guest;
+    }
+
+    public function setGuest(?User $guest): Guest
+    {
+        $this->guest = $guest;
+        return $this;
+    }
+
+    public function getInvitation(): string
+    {
+        return $this->invitation;
+    }
+
+    public function setInvitation(string $invitation): Guest
+    {
+        $this->invitation = $invitation;
+        return $this;
+    }
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
+    public function setUsername(string $username): Guest
+    {
+        $this->username = $username;
+
+        return $this;
+    }
 }

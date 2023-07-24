@@ -3,26 +3,54 @@
 {% block title %}User index{% endblock %}
 
 {% block body %}
+<section class="container">
+
     <h1>Gestion administrateur</h1>
 
      <a href="{{ path('app_admin_index')}}" class="btn btn-primary">Liste des utilisateurs</a>
      <a href="{{ path('app_api_user')}}" class="btn btn-warning">Api</a>
+     <a href="{{ path('app_home') }}" class="btn btn-success">Accueil</a>
 
 
     <h4>Liste des utilisateurs </h4>
     <table class="table bg-light">
         <thead>
             <tr>
+                <th>status</th>
                 <th>Autheur</th>
-                <th>Email</th>
-                <th>Date</th>
-                <th>Groupe</th>
+                <th>créée le</th>
                 <th>actions</th>
+                <th>Groupe</th>
             </tr>
         </thead>
         <tbody>
-      
+        {% for groups in groups %}
+            <tr>
+                <td>{{ groups.status }}</td>
+                <td>{{ groups.authors }}</td>
+                 <td>{{ groups.createdAt|date('Y-m-d H:i:s') }}</td>
+            <td>
+                <ul>
+                    {% for guest in groups.guests %}
+                        <li class="bg-secondary text-light mb-2 p-3">
+                            <strong>Guest:</strong> {{ guest.username }}<br>
+                             Invitation:  {{ guest.invitation }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </td>
+                <td >
+                       {# <a href="{{ path('app_admin_show', {'id': groups.id}) }}" class="btn btn-primary fa fa-eye "></a>
+                         <a href="{{ path('app_admin_edit', {'id': user.id}) }}" class="btn btn-primary fa fa-edit me-3 ms-3"></a>  #}
+            {{ include('Admin/_grpdelete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
-
+</section>
 {% endblock %}

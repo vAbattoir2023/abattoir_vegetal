@@ -64,7 +64,7 @@ class UserProfilController extends AbstractController
             } else {
                 echo 'false';
             }
-        
+
             //update the data to user in database
             $userRepository->save($userFromBdd, true);
             // Redirect to success page

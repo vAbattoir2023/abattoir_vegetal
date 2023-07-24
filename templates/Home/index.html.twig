@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title  %} Accueil {% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="{{asset('./assets/css/home.css')}}">{% endblock %}
+
+{% block body %}
+
+
+<body id="home" class=" container-fluid">
+    <header>
+        <nav class="d-flex justify-content-end navbar-home">
+            <div class="d-flex flex-column">
+              		         {{ include('_nav.html.twig', { 'app': app }) }}
+                <a href="{{ path('app_register') }}">
+                    <img class="bouton-gmaf" src="../assets/img/boutons/abattoir-vegetal-gimme-friend-off.svg" alt="">
+                </a>
+                <a>
+                    <img class="bouton-cec" src="../assets/img/boutons/abattoir-vegetal-click-collect-off.svg" alt="">
+                </a>
+                <a>
+                    <img class="bouton-gmat" src="../assets/img/boutons/abattoir-vegetal-gimme-table-off.svg" alt="">
+                </a>
+
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <div class="container"> <!-- MARGES -->
+
+                <div class="row">
+
+                    <a href="#">
+                        <img class="logo-home" src="../assets/img/logo/abattoir-vegetal-logo-big-dark.svg" alt="logo">
+                    </a>
+                    <div class="slogan-home">
+                        <p>VEGAN CONCEPTUAL HEALTHY RESTAURANT</p>
+
+                      <a   href="#popup1" >👉 Comment ça marche ?</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+ <!--popup1-->
+<div id="popup1" class="popup-container">
+  <div class="popup-content">
+    <a href="#" class="close">
+ <img src="../assets/img/icones/croix/croix-fleur-orange-big.svg" alt="" class="cross-popup"></a>
+<div class="container popupcard">
+            
+                    <div id="popupcomment" class="row text-center d-flex flex-wrap ">
+                        <h1 class="titre mt-5 mb-5">
+                            comment ça marche ?
+                        </h1>
+                        <article class="cardinscris col-3 margin1 mt-3">
+                            <p class="numeros numero1">1</p>
+                            <div class="border1">
+                                <img src="../assets/img/icones/legumes/carotte.svg" alt="" class="mt-4 mb-4">
+                                <h2 class="mt-3">je m'inscris</h2>
+                                <p class="psmallest mt-4 mb-3">
+                                    Crée toi un compte chez nous pour suivre tes demandes et réservations !
+                                </p>
+                            </div>
+                        </article>
+                        <article class=" cardinscris col-3 margin2 align-items-center mt-3">
+                            <p class="numeros numero2">2</p>
+                            <div class=" border2">
+                                <img src="../assets/img/icones/legumes/radis.svg" alt="" class="mt-4 mb-5">
+                                <h2 class="">je&nbsp;me&nbsp;décris</h2>
+                                <p class="psmallest mt-4 mb-3">
+                                    Remplis ton profil afin que les autres puissent savoir qui tu es pour apâter le chalan
+                                </p>
+                            </div>
+                        </article>
+                        <article class="cardinscris col-3 margin2 align-items-center mt-3">
+                            <p class="numeros numero3">3</p>
+                            <div class="border3">
+                                <img src="../assets/img/icones/legumes/pois.svg" alt="" class="mt-4 mb-5">
+                                <h2 class=" mb-4">je choisis</h2>
+                                <p class="psmallest mb-3">
+                                    Choisis avec qui tu veux manger en fonction de ce qu’ils ont remplis dans leur profil
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                </div>
+            </div>
+        </div>  </div>
+</div>
+</body>
+
+{% endblock %}
