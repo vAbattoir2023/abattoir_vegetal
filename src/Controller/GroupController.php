@@ -123,7 +123,13 @@ class GroupController extends AbstractController
         $authors = $userById->username;
         $group->setAuthors($authors);
 
-        $creationGroup = new DateTime(); // date de creation
+        // Get the current timestamp
+        $timestamp = time();
+
+        // Convert to a string with a specific format
+        $dateString = strftime('%Y-%m-%d %H:%M:%S', $timestamp);
+
+        $creationGroup = $dateString; // date de creation
         
         $group->setCreateGroup($creationGroup);
         // $group->setReservationDate($creationGroup);
@@ -141,11 +147,10 @@ class GroupController extends AbstractController
             return $this->redirectToRoute('app_home');
     }
 
-    #[Route('/accept', name: 'accept_Invitation')]
+    #[Route('/accept/{id}', name: 'accept_Invitation')]
     public function acceptInvitation($id,GroupRepository $groupRepository, UserRepository $userRepository, SessionInterface $session, DocumentManager $dm): Response{
         
-        
-        $idGroup = $groupRepository->findGroupsById($id); // Replace $groupId with the ID you want to find
+    $idGroup = $id; // Replace $groupId with the ID you want to find
 
       // Get the currently logged-in user ID from the session
     $currentUserId = $session->get('id');
@@ -162,7 +167,7 @@ class GroupController extends AbstractController
         $guestUserId = $guest->getGuest()->getId();
 
         if ($guestUserId === $currentUserId) {
-            $guest->setInvitation('waiting succes sa marche ');
+            $guest->setInvitation('succes sa marche ');
             break; // Stop iterating after updating the matching guest
         }
     }

@@ -26,7 +26,7 @@ return [
     'app_get_users_list_from_filters' => [['filters'], ['_controller' => 'App\\Controller\\GroupController::showUsersList'], [], [['variable', '/', '[^/]++', 'filters', true], ['text', '/group/users-list']], [], [], []],
     'app_get_users_list_without_filters' => [[], ['_controller' => 'App\\Controller\\GroupController::showUsersListFull'], [], [['text', '/group/users-list/']], [], [], []],
     'app_add_group' => [['idUsers'], ['_controller' => 'App\\Controller\\GroupController::addGroup'], [], [['variable', '/', '[^/]++', 'idUsers', true], ['text', '/group/add']], [], [], []],
-    'accept_Invitation' => [[], ['_controller' => 'App\\Controller\\GroupController::acceptInvitation'], [], [['text', '/group/accept']], [], [], []],
+    'accept_Invitation' => [['id'], ['_controller' => 'App\\Controller\\GroupController::acceptInvitation'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/group/accept']], [], [], []],
     'app_get_resa' => [[], ['_controller' => 'App\\Controller\\GroupController::resa'], [], [['text', '/group/resa']], [], [], []],
     'app_resa_date' => [[], ['_controller' => 'App\\Controller\\GroupController::resaDate'], [], [['text', '/group/resaDate']], [], [], []],
     'app_home' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/']], [], [], []],
