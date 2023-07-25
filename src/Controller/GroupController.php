@@ -84,25 +84,25 @@ class GroupController extends AbstractController
         ]);
     }
 
-    #[Route('/users-list/', name: 'app_get_users_list_without_filters')]
-    public function showUsersListFull(DocumentManager $dm): Response{
-        $users = [];
+    // #[Route('/users-list/', name: 'app_get_users_list_without_filters')]
+    // public function showUsersListFull(DocumentManager $dm): Response{
+    //     $users = [];
         
-        $iter = $dm->createQueryBuilder()
-            ->find(User::class)
-            ->getQuery()
-            ->execute();
+    //     $iter = $dm->createQueryBuilder()
+    //         ->find(User::class)
+    //         ->getQuery()
+    //         ->execute();
 
-        $users = [];
-        while($iter->valid()) {
-            $users[] = $iter->current();
-            $iter->next();
-        }
+    //     $users = [];
+    //     while($iter->valid()) {
+    //         $users[] = $iter->current();
+    //         $iter->next();
+    //     }
 
-        return $this->render('Group/usersList.html.twig',[
-            'users' => $users
-        ]);
-    }
+    //     return $this->render('Group/usersList.html.twig',[
+    //         'users' => $users
+    //     ]);
+    // }
     #[Route('/add/{idUsers}', name: 'app_add_group')]
     public function addGroup(GroupRepository $groupRepository, UserRepository $userRepository, string $idUsers, SessionInterface $session): Response
     {

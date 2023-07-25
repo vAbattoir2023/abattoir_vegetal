@@ -32,55 +32,41 @@ class HomeController extends AbstractController
             'guests.invitation' => "waiting",
             'guests.guest.$id' => new ObjectId($idSession),
         ]));
-
+        
         $arrayFilter = [];
 
+        $newArray = [];
+
         //dd($notifInvitation[0]->guests->toArray());
+        if(!empty($notifInvitation)){
+            foreach($notifInvitation[0]->guests->toArray() as $userInvitate){
 
-        foreach($notifInvitation[0]->guests->toArray() as $userInvitate){
-
-            if($userInvitate->invitation == 'waiting'){
-                $arrayFilter[] = $userInvitate;
+                if($userInvitate->invitation == 'waiting'){
+                    $arrayFilter[] = $userInvitate;
+                    
+                }
             }
-
+    
+            foreach($notifInvitation as $index => $notif){
+    
+                for($i=0; $i<count($arrayFilter); $i++){
+                    $newArray["$index"] = [
+                        'status'=>$notif->status, 
+                        'authors'=>$notif->authors, 
+                        'createdAt'=>$notif->createdAt,
+                        'guests'=>$arrayFilter
+                    ];
+                };
+                
+            }
         }
-        dd($notifInvitation);
+        
+        //dd($newArray);
 
-
-        // dd($notifInvitation);
-
-        // dd($notifInvitation[0]->guests->toArray()[0]->guest->id);
-
-        // if(!$sessionInterface->get('notifications')){
-        //     $sessionInterface->set('notifications', $notifInvitation);
-        // }
-        // dd($sessionInterface->get('notifications'));
-
-        // $sessionInterface->remove('notifications');
-
-        // dd($sessionInterface->get('notifications'));
-
-        // dd($sessionInterface->get('notifications'));
-
-        // dd($notifInvitation);
-
-        //dd($notifInvitation[0]->guests->toArray()[0]->guest->id);
-
-        // if(!$sessionInterface->get('notifications')){
-        //     $sessionInterface->set('notifications', $notifInvitation);
-        // }
-        // dd($sessionInterface->get('notifications'));
-
-        // $sessionInterface->remove('notifications');
-
-        // dd($sessionInterface->get('notifications'));
-
-        //dd($sessionInterface->get('notifications'));
-
-        // if(isset($email)){
-        //     echo $email;
-        // }
-
+        if(isset($email)){
+            echo $email;
+        }
+        
         return $this->render('base.html.twig',[
             'message' => 'Welcome to your new controller!',
             'idSession' => $idSession,
