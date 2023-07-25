@@ -393,6 +393,16 @@
     }
     
 }
+.card-user .bt-zoom {
+    width: 32px;
+    height: 32px;
+    background-image: url('../ICONES/zoom/zoom-retrecir.svg');
+    background-size: cover;
+}
+.card-user.card-small .bt-zoom {
+    background-image: url('../ICONES/zoom/zoom-agrandir.svg');
+    background-size: cover;
+}
     
     
     
