@@ -7,37 +7,53 @@ use App\Document\Guest;
 use App\Document\Reservation;
 use App\Document\User;
 use App\Document\UserInvitation;
+use App\Form\ResaType;
 use App\Repository\GroupRepository;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\DBAL\Types\TimeType as TypesTimeType;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use stdClass;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use MongoDB\BSON\ObjectId;
-
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 #[Route('/group')]
 class GroupController extends AbstractController
 {
 
     #[Route('/select_group', name: 'app_select_group')]
-    public function select_group(UserRepository $userRepository, SessionInterface $sessionInterface): Response
+    public function select_group(GroupRepository $groupRepository,UserRepository $userRepository, SessionInterface $sessionInterface,  Request $request , DocumentManager $dm ): Response
     {
+
+        $group = new Group();
+
+        $form = $this->createForm(ResaType::class, $group); // create form for document user
+        $form->handleRequest($request); // get form data
+
+        if(!empty($notifInvitation[0])){
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Persist the group data to the database
+            $groupRepository->save($group);
+
+            // Redirect or show a success message
+        }
         // data checkbox
+    }
         $dataCheckbox = [
             'Animaux',
             'Environnement',
-            'Art et culture',
+            'Art et Culture',
             'Sport',
-            'Voyages',
+            'Voyage',
             'Musique',
             'Danse',
             'Sciences',
-            'Bien-être',
+            'Bien-etre',
             'Food',
             'Activités sociales',
             'Jeux vidéos',
@@ -54,7 +70,9 @@ class GroupController extends AbstractController
         return $this->render('Group/index.html.twig',[
             'dataFormCheckbox' => $dataCheckbox,
             'allUsers' => $allUser,
-            'userFromBdd' => $userFromBdd
+            'userFromBdd' => $userFromBdd,
+            'DateRegister' => $form->createView(), //send the form
+
         ]);
     }
 
@@ -63,11 +81,11 @@ class GroupController extends AbstractController
     public function showUsersList(string $filters, DocumentManager $dm): Response{
 
         $users = []; // initialise array user
-        $filters = explode('#', $filters); // get center of interest from url
+        $filters = explode(',', $filters); // get center of interest from url
         
         $iter = $dm->createQueryBuilder() // create requête sql 
             ->find(User::class) // find all document from collection user
-            ->field('centerOfInterest')->all($filters) // filter centerOfInterest same $filters
+            ->field('centerOfInterest')->in($filters) // filter centerOfInterest same $filters
             ->getQuery() // prepare request
             ->execute(); // execute request
 
@@ -84,15 +102,22 @@ class GroupController extends AbstractController
         ]);
     }
 
+<<<<<<< HEAD
     // #[Route('/users-list/', name: 'app_get_users_list_without_filters')]
     // public function showUsersListFull(DocumentManager $dm): Response{
     //     $users = [];
+=======
+    #[Route('/users-list/', name: 'app_get_users_list_without_filters')]
+    public function showUsersListFull(Request $request ,DocumentManager $dm): Response{
+        $users = [];
+>>>>>>> 9f6d5e2a3494eacc4cbd84e050f742d0abdabf2d
         
     //     $iter = $dm->createQueryBuilder()
     //         ->find(User::class)
     //         ->getQuery()
     //         ->execute();
 
+<<<<<<< HEAD
     //     $users = [];
     //     while($iter->valid()) {
     //         $users[] = $iter->current();
@@ -103,14 +128,30 @@ class GroupController extends AbstractController
     //         'users' => $users
     //     ]);
     // }
+=======
+        $users = [];
+        while($iter->valid()) {
+            $users[] = $iter->current();
+            $iter->next();
+        }
+      
+  
+        return $this->render('Group/usersList.html.twig',[
+            'users' => $users,
+           
+
+        ]);
+    }
+>>>>>>> 9f6d5e2a3494eacc4cbd84e050f742d0abdabf2d
     #[Route('/add/{idUsers}', name: 'app_add_group')]
-    public function addGroup(GroupRepository $groupRepository, UserRepository $userRepository, string $idUsers, SessionInterface $session): Response
+    public function addGroup(GroupRepository $groupRepository,  UserRepository $userRepository, string $idUsers, SessionInterface $session): Response
     {
 
 
         $group = new Group();
         $user = new User();
-
+     
+     
         $listIdUser = explode(',', $idUsers); // get center of interest from url
 
 
@@ -127,7 +168,15 @@ class GroupController extends AbstractController
         $timestamp = time();
 
         // Convert to a string with a specific format
+<<<<<<< HEAD
         $dateString = strftime('%Y-%m-%d %H:%M:%S', $timestamp);
+=======
+        $dateString = date('Y-m-d\TH:i', $timestamp);
+
+         // Set the reservationDate property with the current timestamp
+        //  dump($dateString); // Log the $dateString value
+        // $group->setReservationDate($dateString);
+>>>>>>> 9f6d5e2a3494eacc4cbd84e050f742d0abdabf2d
 
         $creationGroup = $dateString; // date de creation
         
@@ -142,9 +191,12 @@ class GroupController extends AbstractController
             $guest->setInvitation('waiting');
             $group->addGuest($guest);
         }
+       
         $groupRepository->save($group);
 
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_home',[
+
+            ]);
     }
 
     #[Route('/accept/{id}', name: 'accept_Invitation')]
@@ -174,26 +226,45 @@ class GroupController extends AbstractController
 
     // Save the updated group document back to the database
     $dm->flush();
-        return $this->redirectToRoute('app_home');
+        return $this->redirectToRoute('app_get_resa');
 
 
     }
             // modifie le document
 
     #[Route('/resa', name: 'app_get_resa')]
-    public function resa(DocumentManager $dm): Response{
+    public function resa( GroupRepository $groupRepository ,DocumentManager $dm, SessionInterface $sessionInterface): Response{
         
+        $idSession = $sessionInterface->get('id');
 
+       //appelle dans group ton id dans guest
+       $notifInvitation = ($groupRepository->findBy([
+        'guests.guest.$id' => new ObjectId($idSession),
+    ]));
+
+    $arrayFilter = [];
+
+    //dd($notifInvitation[0]->guests->toArray());
+    if(!empty($notifInvitation[0])){
+    foreach($notifInvitation[0]->guests->toArray() as $userInvitate){
+            $arrayFilter[] = $userInvitate;
+        }
+    }
+     
         return $this->render('Group/resa.html.twig',[
-
-        ]);
+            'idSession' => $idSession,
+            'notifications' => $notifInvitation,
+                ]);
     }
-    #[Route('/resaDate', name: 'app_resa_date')]
-    public function resaDate(DocumentManager $dm): Response{
+
+
+
+    // #[Route('/resaDate', name: 'app_resa_date')]
+    // public function resaDate(DocumentManager $dm): Response{
         
 
-        return $this->render('Group/date.html.twig',[
+    //     return $this->render('Group/date.html.twig',[
 
-        ]);
-    }
+    //     ]);
+    // }
 }

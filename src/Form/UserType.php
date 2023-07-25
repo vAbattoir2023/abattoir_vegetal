@@ -44,13 +44,12 @@ class UserType extends AbstractType
                 ]
             ])
 
-            ->add('city', TextType::class,[
-                'label' => 'J\'habite ...',
+            ->add('postalCode', TextType::class, [
                 'attr' => [
-                    'class' => 'form-control'
-                ]
+                    'class' => 'form-control',
+                    'placeholder' => 'Entrez un code postal',
+                ],
             ])
-
             // ->add('birthdate', BirthdayType::class, [
             //     'widget' => 'single_text',
             //     'attr' => [

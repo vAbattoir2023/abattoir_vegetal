@@ -382,6 +382,8 @@ input[type="radio"].btn-check:checked + label {
     background: var(--choux-fleur, #FBFAF4);
     box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14);
     padding: 25px 39px;
+    margin-left: auto;
+    margin-right: auto;
  }
  
  #profil .vertical-line{

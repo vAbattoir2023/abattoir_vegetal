@@ -26,7 +26,7 @@ class AdminController extends AbstractController
            $admins = $sessionInterface->get('id');
            $userRepository->findUserByRoles('ROLE_ADMIN');
           // if not user then redirect to app_register
-          if (!$admins) {
+          if (!$userRepository) {
             return $this->redirectToRoute('app_register');
         } 
         return $this->render('Admin/index.html.twig', [
