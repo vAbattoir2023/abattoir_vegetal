@@ -1,16 +1,16 @@
-<ul>
-    <button type='submit' id="addGroup">add group</button>
+{# <ul>
     {% for user in users %}
         <li id="allIdUser">
             <p>{{user.username}}</p>
             <button id="idUser" value="{{user.id}}">aa</button>
         </li>
     {% endfor %}
-</ul>
-{#   
+</ul> #}
+
+    <button type='submit' id="addGroup" class="btn btn-outline-primary">add group</button>
     {% for user in users %}
   <!-- User Card -->
-      <li class="col-2" style="margin-right : 135px;list-style-type: none;">
+      <li id="allIdUser" class="col-2" style="margin-right : 135px;list-style-type: none;">
 
      <div class="card mt-5 mb-5 card-user" style="width: 15rem; ">
         <img class="card-img-top" src="{{ user.image }}" alt="Card image cap">
@@ -68,11 +68,12 @@
                 </div>
             </div>
             <!-- End Accordion -->
-            <a href="#" class="ms-2 bouton-small-transparent reduire">gimme this friend</a>
+            {# <a href="#" class="ms-2 bouton-small-transparent reduire">gimme this friend</a> #}
+                        <button id="idUser"  class="ms-2 bouton-small-transparent reduire" value="{{user.id}}">Gimmie this friend</button>
         </div>
       </div>
     </li>
     <!-- End User Card -->
      {% endfor %}
  
-  #}
+ 

@@ -36,6 +36,7 @@ class HomeController extends AbstractController
         $arrayFilter = [];
 
         //dd($notifInvitation[0]->guests->toArray());
+        if(!empty($notifInvitation[0])){
 
         foreach($notifInvitation[0]->guests->toArray() as $userInvitate){
 
@@ -45,6 +46,7 @@ class HomeController extends AbstractController
 
         }
        // dd($notifInvitation);
+        }
 
 
         // dd($notifInvitation);

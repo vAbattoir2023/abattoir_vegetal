@@ -169,7 +169,7 @@ class GroupController extends AbstractController
        
         $groupRepository->save($group);
 
-            return $this->redirectToRoute('app_get_resa',[
+            return $this->redirectToRoute('app_home',[
 
             ]);
     }
