@@ -75,6 +75,12 @@ class User
     #[MongoDB\Field(type: 'string')]
     public ?string $postalCode = null;
 
+    #[MongoDB\Field(type: 'string')]
+    protected ?string $codeDepartement = null;
+
+    #[MongoDB\Field(type: 'string')]
+    public ?string $region = null;
+
     // #[MongoDB\Field(type: 'int')]
     // public ?string $groupNbr = null;
     
@@ -351,6 +357,32 @@ class User
     public function setPostalCode(?string $postalCode): User
     {
         $this->postalCode = $postalCode;
+        return $this;
+    }
+
+    public function getCodeDepartement(): ?string
+    {
+        
+        return $this->codeDepartement;
+    }
+
+    public function setCodeDepartement(?string $codeDepartement): User
+    {
+        $this->codeDepartement = $codeDepartement;
+
+        return $this;
+    }
+
+    public function getRegion(): string
+    {
+        
+        return $this->region;
+    }
+
+    public function setRegion(string $region): User
+    {
+        $this->region = $region;
+
         return $this;
     }
 
