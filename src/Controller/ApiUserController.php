@@ -141,7 +141,7 @@ class ApiUserController extends AbstractController
             }
             // A DECOMMENTER POUR ENREGISTRER EN BDD !!
             // Sauvegarder l'entité User mise à jour dans la base de données
-            // $userRepository->save($apiuser, true);
+             $userRepository->save($apiuser, true);
 // dd($apiuser);
             // Rediriger vers la route 'app_api_user' après la sauvegarde
             return $this->redirectToRoute('app_api_user', [], Response::HTTP_SEE_OTHER);

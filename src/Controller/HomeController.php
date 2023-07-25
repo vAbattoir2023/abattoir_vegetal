@@ -36,7 +36,6 @@ class HomeController extends AbstractController
         $arrayFilter = [];
 
         //dd($notifInvitation[0]->guests->toArray());
-
         if(!empty($notifInvitation[0])){
             foreach($notifInvitation[0]->guests->toArray() as $userInvitate){
 
@@ -83,7 +82,7 @@ class HomeController extends AbstractController
         //     echo $email;
         // }
 
-        return $this->render('home/index.html.twig',[
+        return $this->render('Home/index.html.twig',[
             'message' => 'Welcome to your new controller!',
             'idSession' => $idSession,
             'notifications' => $notifInvitation,

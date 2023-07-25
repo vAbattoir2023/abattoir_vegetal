@@ -59,13 +59,14 @@
                           </div>
                           <p class="stroke-input mb-3">	{{ user.username }}</p>
                           <div>
+                            <label>J'habite ...</label>
                             {% if user.postalCode is not empty %}
                               <label>J'habite ...</label>
                               <p class="stroke-input mb-3">
                                   {{ user.city }} ({{ user.region }})
                               </p>
-                          {% endif %}
-                          </div>
+                          {% endif %}     
+                            </div>
                         </div>
                       </div>
                       {# <div class="mb-1 align-text"> <!-- je suis né inputx3-->
@@ -171,9 +172,9 @@
                              <label >Mes centres d'interets</label>
                             </div>
     
-                               <div class="d-flex column">
-							{% for interest in user.centerOfInterest %}
-									<p class="border ms-3 p-3 border-danger">{{ interest }}</p>
+                               <div class="row">
+                           {% for interest in user.centerOfInterest %}
+									<p class="border ms-3 p-3 border-danger col-2 text-center">{{ interest }}</p>
 								{% endfor %}                         
 								</div>
                                
@@ -338,7 +339,7 @@
 </fieldset>
         {# Fin de je veux Etape 3   #}
 
-                    <div class="infoprofil position-relative z-2">
+                    <div class="infoprofil position-relative ">
                 <p>{{ user.username }}</p>
                 <span class="vertical-line"></span>
                 <p class="tag">{{ user.email }}</p>

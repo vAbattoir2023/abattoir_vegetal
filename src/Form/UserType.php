@@ -43,19 +43,13 @@ class UserType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
+
             ->add('postalCode', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Entrez un code postal',
                 ],
             ])
-            // ->add('city', TextType::class,[
-            //     'label' => 'J\'habite ...',
-            //     'attr' => [
-            //         'class' => 'form-control'
-            //     ]
-            // ])
-
             // ->add('birthdate', BirthdayType::class, [
             //     'widget' => 'single_text',
             //     'attr' => [
