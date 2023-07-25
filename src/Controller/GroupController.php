@@ -35,6 +35,7 @@ class GroupController extends AbstractController
         $form = $this->createForm(ResaType::class, $group); // create form for document user
         $form->handleRequest($request); // get form data
 
+        if(!empty($notifInvitation[0])){
         if ($form->isSubmitted() && $form->isValid()) {
             // Persist the group data to the database
             $groupRepository->save($group);
@@ -42,6 +43,7 @@ class GroupController extends AbstractController
             // Redirect or show a success message
         }
         // data checkbox
+    }
         $dataCheckbox = [
             'Animaux',
             'Environnement',
@@ -220,9 +222,10 @@ class GroupController extends AbstractController
     $arrayFilter = [];
 
     //dd($notifInvitation[0]->guests->toArray());
-
+    if(!empty($notifInvitation[0])){
     foreach($notifInvitation[0]->guests->toArray() as $userInvitate){
             $arrayFilter[] = $userInvitate;
+        }
     }
      
         return $this->render('Group/resa.html.twig',[
