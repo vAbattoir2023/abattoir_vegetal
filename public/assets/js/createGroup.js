@@ -5,8 +5,9 @@ document.addEventListener('DOMContentLoaded', (e) => {
   const myCheckboxes = document.querySelectorAll(".filter-checkbox");
   const filters = [];
 
+
   /**
-   * Boucle sur toutes les chezck box des filtres
+   * Boucle sur toutes les checkx box des filtres
    */
   myCheckboxes.forEach(checkBox => {
     filters[checkBox.id] = checkBox.checked;
@@ -43,9 +44,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
     });
 
     url += filtersStr;
-    //console.log(url);
-
-
 
     const idUsers = [];
 
@@ -57,42 +55,71 @@ document.addEventListener('DOMContentLoaded', (e) => {
       .then(html => {
         document.getElementById('users_list').innerHTML = html;
         
-        let idUser = document.querySelectorAll('#idUser')
+        initEventsForZoom();
 
-          idUser.forEach(function (element) {
-            element.addEventListener("click", function(event) {
-            let btnClick = event.currentTarget;
+        // let idUser = document.querySelectorAll('#idUser')
 
-            console.log(btnClick.value); //log id
+        // idUser.forEach(function (element) {
+        //   element.addEventListener("click", function(event) {
+        //     let btnClick = event.currentTarget;
 
-            idUsers.push(btnClick.value); // push id in array idUsers
+        //     console.log(btnClick.value); //log id
 
-            //console.log(idUsers); // log array idUsers
+        //     idUsers.push(btnClick.value); // push id in array idUsers
 
-        });
-      });
+        //       //console.log(idUsers); // log array idUsers
+
+        //   });
+        // });
 
       
       const btnAddGroup = document.querySelector('#addGroup');
-      
+      if (btnAddGroup) {
       btnAddGroup.addEventListener('click',()=>{
-        /**
-        * get 
-        */
-        let urlGroup = '/group/add/';
-        let groupeUsers = ''; // initilise groupUsers
-        idUsers.forEach(id => {
-          let idUsername = id;
-          groupeUsers += (groupeUsers == '') ? idUsername : ',' + idUsername;
-        });
-        urlGroup += groupeUsers;
+          /**
+          * get 
+          */
+          let urlGroup = '/group/add/';
+          let groupeUsers = ''; // initilise groupUsers
+          idUsers.forEach(id => {
+            let idUsername = id;
+            groupeUsers += (groupeUsers == '') ? idUsername : ',' + idUsername;
+          });
+          urlGroup += groupeUsers;
 
-        console.log('brrr', urlGroup);
-        window.location.href = urlGroup;
+          console.log('brrr', urlGroup);
+          window.location.href = urlGroup;
 
-      }) 
+        }) 
+      }
     });
   }
+
+  /**
+   * Initialisation du click sur les boutons de zoom
+   */
+  function initEventsForZoom() {
+    let buttonUsers = document.querySelectorAll(".card-user .bt-zoom");
+    /** loop on all button and listen this event*/
+    buttonUsers.forEach(function (element) {
+      element.addEventListener("click", function (event) {
+
+        const idCard = event.target.dataset['card'];
+
+        const currentBigCard = document.querySelector('.card-user:not(.card-small)');
+        if(currentBigCard && idCard != currentBigCard.id) {
+          currentBigCard.classList.add('card-small')
+        }
+
+        const elCard = document.getElementById(idCard);
+        elCard.classList.toggle('card-small');
+
+
+      });
+    });
+  }
+
+
 });
 //RIEN LA
 

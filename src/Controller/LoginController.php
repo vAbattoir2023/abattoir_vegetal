@@ -38,6 +38,7 @@ class LoginController extends AbstractController
 
             // if the password hash and password from form is the same
             if(password_verify($password, $userFromBdd->password)){
+
                 
                 $sessionInterface->set('email', $userFromBdd->email); // add email to session
                 $sessionInterface->set('id', $userFromBdd->id); // add id to session

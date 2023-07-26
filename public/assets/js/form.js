@@ -1,7 +1,7 @@
 function nextStep() {
-  var fieldsets = document.getElementsByTagName('fieldset');
+  let fieldsets = document.getElementsByTagName('fieldset');
   
-  for (var i = 0; i < fieldsets.length; i++) {
+  for (let i = 0; i < fieldsets.length; i++) {
     if (fieldsets[i].classList.contains('active')) {
       fieldsets[i].classList.remove('active');
       fieldsets[i].style.display = 'none';
@@ -13,9 +13,9 @@ function nextStep() {
 }
 
 function previousStep() {
-  var fieldsets = document.getElementsByTagName('fieldset');
+  let fieldsets = document.getElementsByTagName('fieldset');
   
-  for (var i = 0; i < fieldsets.length; i++) {
+  for (let i = 0; i < fieldsets.length; i++) {
     if (fieldsets[i].classList.contains('active')) {
       fieldsets[i].classList.remove('active');
       fieldsets[i].style.display = 'none';

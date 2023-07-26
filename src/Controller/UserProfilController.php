@@ -123,7 +123,7 @@ class UserProfilController extends AbstractController
             return $this->redirectToRoute('app_user_profil_success');
         }
 
-       return $this->render('user_profil/index.html.twig', [
+       return $this->render('user_profil/edit.html.twig', [
             // send form for database
              'UserForm' => $form->createView(),
         ]); 

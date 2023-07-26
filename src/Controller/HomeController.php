@@ -87,6 +87,7 @@ class HomeController extends AbstractController
             'idSession' => $idSession,
             'notifications' => $notifInvitation,
             'filterInvitation' => $arrayFilter,
+            'idBody' => 'home'
         ]);
         
     }

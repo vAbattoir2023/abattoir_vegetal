@@ -3,166 +3,92 @@
 {% block title  %}
 	Green Meet
 {% endblock %}
-{% block stylesheets %}
-<link rel="stylesheet" href="{{asset('./assets/css/mur.css')}}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 
-{% endblock %}
 
 {% block body %}
+    
+    {{ include('_header.html.twig') }}
 
- {{ include('_header.html.twig') }}
-    <!-- Modal resa-->
-     <div class="modal fade"  id="modal-date" tabindex="-1" aria-labelledby="ModalDate" aria-hidden="true">
-        <div class="modal-dialog" >
-            <div class="modal-content justify-content-center d-flex " style="width:1000px">
+<main>
+        <div id="mur" class="container tout">
 
-                <div class="modal-header mx-auto position-relative">
-                    <h1 class="modal-title fs-5" id="ModalResaLabel">Choisi ta date de résérvation</h1>
-                    
-                    <!-- Je sais pas comment enlever la croix que bootstrap a mise -->
-                    <button type="button" class="btn-close position-absolute croix-close-modal-resa"
-                        data-bs-dismiss="modal" aria-label="Close"><img
-                            src="../assets/img/icones/croix/croix-fleur-orange-small.svg" alt=""></button>
-                </div>
-
-              <div id="reserver" class="container">
-            <div class="row position-relative">
-
-                <!-- calendrier -->
-                    <div class="position-relative">
-                        <div class="position-absolute title-screen">
-                            <h1>réserver</h1>
-                        </div>
-                        <form action="#" method="post">
-                            <div class="fond-calendar">
-                                <div class="lisere-calendar">
-                                    <div class="calendar d-flex flex-column">
-                                        <div class="header-calendar">
-                                            <div class="titre">
-                                                <h2>Choisis ton jour et ton Heure</h2>
-                                            </div>
-                                            <div class="d-flex justify-content-between  mt-5 mb-2">
-                  
-
-                                               </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div> 
-                </section>
-
-
-
-
-
-            </div>
-        </div>
-
-        </div>
-        </div>
-        </div> 
-        </div>
-        </div>
-
-
-            </div>
-
-        </div>
-
-    </div>
-   <div id="mur" class="container tout mt-5">
-
-                <div class="row">
-                    <div class="col-12 col-md-3 conteneur filtres">
+            <div class="row">
+                <div class="col-12 col-md-3 filtres">
+                    <div class="conteneur">
                         <article class="lisere">
+
+                            {# PANNEAU DES FILTRES A GAUCHE #}
                             <div class="row">
                                 <div class="col">
                                     <h2>filtres</h2>
                                     <form action="#" method="post">
                                         <div class="form-filtres">
-                                            <div class="d-flex"> 
-											<fieldset>
-                                            {# Matth retour des centres d'interest de l'user CSS modifier #}
-											<h4 class="me-auto"> Mes choix </h4>
-                                            {% for interest in userFromBdd.centerOfInterest %}
-												<div>
-                                                  <p class="badge text-bg-success">
-                                                   {{ interest }}  
-                                                  </p>               
-                                                </div>
-                                            {# Fin du retour des centres d'interest de l'user  #}
 
-											{% endfor %}
-											<h4 class="me-auto">centre d'intérêts -</h4>
-											{% for formData in dataFormCheckbox %}
-												<div>
-													{# <input class="form-check-input"  name="{{ formData }}" type="checkbox" id="checkbox_{{ formData }}" name="checkbox_{{ formData }}" data-filter="{{formData}}" class="filter-checkbox">
-													<label for="checkbox_{{ formData }}  class="form-check-label me-auto"">{{ formData }}</label> #}
-                                                    <input  name="{{ formData }}" type="checkbox" id="checkbox_{{ formData }}" name="checkbox_{{ formData }}" data-filter="{{formData}}" class="filter-checkbox">
-							                            <label  class="form-check-label me-auto label_checkbox" for="checkbox_{{ formData }}">{{ formData }}</label>
-												</div>
-											{% endfor %}
-											</fieldset>
+                                            <!-- Filtres composition -->
+                                            <div class="d-flex">
+                                                <h4 class="me-auto">Composition </h4><img src="Assets/ICONES/add/-.svg"
+                                                    alt="">
+                                            </div>
+                                            <div class="d-flex">
+                                                <label class="form-check-label me-auto" for="flexCheckDefault">
+                                                    <p class="tag">Groupe</p>
+                                                </label>
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="flexCheckDefault">
+                                            </div>
+                                        
+                                            <!-- Filtres alimentation -->
+                                            <div class="d-flex">
+                                                <h4 class="me-auto">Alimentation </h4><img src="Assets/ICONES/add/-.svg" alt="">
+                                            </div>
+                                            <div class="d-flex">
+                                                <label class="form-check-label me-auto" for="flexCheckDefault">
+                                                    <p class="tag">Végan</p>
+                                                </label>
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                            </div>
+
+                                            <!-- Filtres centres intérêt -->
+                                            <div class="d-flex">
+                                                <h4 class="me-auto">Centres d'intérêt </h4><img src="Assets/ICONES/add/-.svg"
+                                                    alt="">
+                                            </div>
+                                            {% for interest in interests %}
+                                                <div class="d-flex">
+                                                    <label class="form-check-label me-auto" for="checkbox_{{ interest }}">
+                                                        <p class="tag">{{ interest }}</p>
+                                                    </label>
+                                                    {# <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> #}
+                                                    <input type="checkbox" id="checkbox_{{ interest }}" name="checkbox_{{ interest }}" data-filter="{{interest}}" class="form-check-input filter-checkbox">
+                                                </div>
+                                            {% endfor %}
                                         </div>
                                     </form>
                                 </div>
                             </div>
-                            											<h4 class="me-auto">Ma date -</h4>
-                            <div class="d-flex justify-content-center">
-
-  {{ form_errors(DateRegister)}}
-        {{ form_start(DateRegister)}}
-     {{ form_widget(DateRegister.reservationDate) }}
-                                            {{ form_label(DateRegister.submit) }}
-                                            {{ form_widget(DateRegister.submit, {'attr': {'class': 'btn btn-outline-success'}}) }}
-        {{ form_end(DateRegister)}}
-                            </div>
                         </article>
                     </div>
+                </div>
 
-                    <div class="col-md-9 defile-card d-flex row g-0">
-                    <div class="container ms-5 ">
-                    
-                            <h1 class="somanyfriends ms-5 mt-5">so many friends...</h1>
-                      
-                       <div class="container">
-                                  {# <button type='submit' id="addGroup">add group</button> #}
-
-                         <ul class="d-flex row" id="users_list">
-
-                         </ul>
-                        </div>    
-
-
-                        </div>
-                        </div>
+                {# ZONE D'AFFICHAGE DES CANDIDATS #}
+                <div class="col-md-9">
+                    <div id="users_list">
 
                     </div>
-                </div> 
+                </div>
             </div>
+        </div>
+</main>
+
+    
+        
+        
+   
+
 
 
 {% endblock %}
 
 {% block javascripts %}
-
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="{{ asset('./assets/js/createGroup.js')}}"></script> 
-
-<script>
-    $(document).ready(function() {
-        // you may need to change this code if you are not using Bootstrap Datepicker
-        $('.js-datepicker').datepicker({
-                'format' => 'yyyy-MM-dd', // Optional: Define the format for the datetime-local input
-             todayHighlight: true,
-	 timeFormat: 'hh:mm tt',
-            hourMin: 10,
-            hourMax: 23
-        });
-    });
-</script>
+    <script src="{{ asset('./assets/js/createGroup.js')}}"></script> 
 {% endblock %}

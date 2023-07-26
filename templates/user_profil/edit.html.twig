@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title  %} Edition du profil utilisateur {% endblock %}
+{% block body %}
+    {{ include('_header.html.twig') }}
+ 
+      {{ form_errors(UserForm) }}
+      {{ form_start(UserForm) }}   
+
+        {# ICI PREMIERE PAGE #}
+        {{ form_label(UserForm.username) }}                    
+        {{ form_widget(UserForm.username, {'attr': {'class': 'stroke-input mb-3'}}) }}
+        {{ form_label(UserForm.postalCode) }}
+        {{ form_widget(UserForm.postalCode, {'attr': {'class': 'stroke-input mb-3'}}) }}
+        {{ form_label(UserForm.age) }} 
+        {{ form_widget(UserForm.age, {'attr': {'class': 'stroke-input mb-3'}}) }} 
+        {{ form_label(UserForm.gender) }}                                  
+        {{ form_widget(UserForm.gender, {'attr': {'class': 'stroke-input ', 'style': 'border: none;font-size:12px;'}}) }} 
+        {{ form_widget(UserForm.language, {'attr': {'class': 'stroke-input mb-3'}}) }}
+        {{ form_widget(UserForm.image, {'attr': {'class': 'bouton-smallest-hug size-btn mb-3'}}) }}
+        {{ form_label(UserForm.job) }}
+        {{ form_label(UserForm.description) }}
+        {{ form_widget(UserForm.description, {'attr': {'class': 'stroke-input mb-3'}}) }}
+        {{ form_label(UserForm.diet) }}
+        {{ form_widget(UserForm.diet) }}
+        
+        {# ICI DEUXIEME PAGE #}
+        {{ form_label(UserForm.centerOfInterest) }}
+        {{ form_widget(UserForm.centerOfInterest) }}
+        {{ form_label(UserForm.centerOfInterestPerso) }}
+        {{ form_widget(UserForm.centerOfInterestPerso, {'attr': {'class': 'stroke-input '}}) }}
+    
+        {# ICI TROISIEME PAGE #}
+
+
+                       
+        {{ form_widget(UserForm.submit, {'attr': {'class': 'bouton-smallest-transparent '}}) }}
+      {{ form_end(UserForm) }}
+
+{% endblock %}

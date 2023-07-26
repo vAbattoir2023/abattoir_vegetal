@@ -3,199 +3,23 @@
 {% block title  %}
 	Reservation
 {% endblock %}
-{% block stylesheets %}<link rel="stylesheet" href="{{asset('./assets/css/reservation.css')}}">
-<link rel="stylesheet" href="{{asset('./assets/css/global.css')}}">
-{% endblock %}
-
 
 {% block body %}
-    
-
-
-		        {{ include('_header.html.twig') }}
-
- <main style="margin-bottom: 150px;">
-
-        <div class="container"> <!-- MARGES -->
-            <div class=" d-flex justify-content-between align-items-center titreresa"> <!-- TITRE + BOUTON -->
-                <h1> Mes réservations </h1>
-                <a class="bouton-small d-flex boutonresa" href="{{ path('app_select_group') }}">GIMME A FRIEND</a>
-            </div>
-
-
-            <div class="row"> <!-- 12 COLONNES AU MILIEUUUU -->
-
-             
-        {% for groups in notifications %}
-                <div class="col-2  ticket" onclick="toggleDiv(this)"> <!-- CARD RESA PETITE 03-->
-
-                    <div class="mesresassmall mt-5 position-relative d-flex flex-column justify-content-between">
-
-                        <div class="d-flex justify-content-end">
-                            <img class="statut" src="../assets/img/icones/curseur/curseur-big-enattente.svg" alt="">
-                        </div>
-
-
-                        <div class="datebig">
-                            <p>{{ groups.createdAt|date('Y-m-d') }}</p>
-                            {# <p>{{ groups.createdAt|date('Y-m-d H:i:s') }}</p> #}
-                        </div>
-
-                    </div>
-                 </div>
-
-                 <div class="col-6 myDiv"  style="display:none;"> <!-- CARD RESA BIG -->
-                    <div class="mesresasbig mt-5 row g-0">
-                        <div class="offset-1 col-10"> <!-- INTERIEUR CARD RESA BIG -->
-                            <div class="d-flex justify-content-between align-items-center mb-5"> <!-- PARTIE 01 -->
-                                <div class="d-flex justify-content-between align-items-baseline">
-                                    <p class="datesmall me-3">{{ groups.createdAt|date('Y-m-d') }}</p>
-                                    {# <p class="mesresasheure me-5">{{ notifications.createdAt|date('H:i:s') }}</p> #}
-                                    <p class="statutbig">{{ groups.status }}</p>
-                                </div>
-                                <div class="close">
-                                    <img src="../assets/img/icones/croix/croix-noire-big.svg" alt="">
-                                </div>
-                            </div>
-
-                            <div class="d-flex justify-content-between align-items-center quimange mb-5">
-                                <!-- PARTIE 02 -->
-                                <div class="d-flex">
-                                    <div class="me-2">
-                                        <h4>Qui mange ?</h4>
-                                        <p class="psmallest">{{ groups.guests|length }} personnes</p>
-                                    </div>
-
-                                    <div>
-                                        {# <img class="m-2" src="../assets/img/Rectangle-188.jpg" alt="">
-                                        <img class="m-2" src="../assets/img/Rectangle-188.jpg" alt="">
-                                        <img src="../assets/img/Rectangle-188.jpg" alt=""> #}
-                                        {% for guest in groups.guests %}
-                                        <p>{{ guest.username}}</p>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-
-                                <a href="#"> <img class="add" src="../assets/img/icones/add/+.svg" alt=""></a>
-                            </div>
-                            <!-- PARTIE 03 -->
-                           <div class="d-flex justify-content-between align-items-center"> 
-                              <div class="d-flex invisible">
-                                     <div class="me-5 commentaires ">
-                                        <a href="">2 commentaires</a>
-                                        <p class="com"> <img src="../assets/img/icones/commentaire/foret-com.svg" alt="">
-                                            Commenter
-                                        </p>
-                                    </div>
-                                </div> 
-
-                                <div class="d-flex align-items-start flex-column mesresasboutons">
-                                    <a class="bouton-smallest-transparent d-flex mb-2" type="button" data-bs-toggle="modal" data-bs-target="#modal-resa">Confirmer</a>
-                                    <a class="bouton-smallest-transparent d-flex" href="#">Refuser</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                    {% endfor %}
-
-              <!-- Modal resa-->
-    <div class="modal fade" id="modal-resa" tabindex="-1" aria-labelledby="ModalResaLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content justify-content-center d-flex ">
-
-                <div class="modal-header mx-auto position-relative">
-                    <h1 class="modal-title fs-5" id="ModalResaLabel">Et voilà ta résa</h1>
-                    
-                    <!-- Je sais pas comment enlever la croix que bootstrap a mise -->
-                    <button type="button" class="btn-close position-absolute croix-close-modal-resa"
-                        data-bs-dismiss="modal" aria-label="Close"><img
-                            src="../assets/img/icones/croix/croix-fleur-orange-small.svg" alt=""></button>
-                </div>
-
-                <div class="container g-0">
-                    <div class="modal-body mx-auto row z-1">
-                        <div id="droite" class="offset-1 col col-md-4">
-                            <div class="mb-3">
-                            
-                                <h4 class="mb-1">12h00</h4>
-                                <p class="tag mb-1">Jeudi 13/07/2023</p>
-                                <a href="#" class="psmall">Changer ma résa</a>
-                            </div>
-                            <div class="liste-amis mb-3">
-                                <h4>Avec...</h4>
-                                <div class="d-flex"><img class="me-2 image-ami" src="../assets/img/happy-girl.jpg" alt="">
-                                    <p>Violette</p>
-                                </div>
-                                <div class="d-flex mt-2"><img class="me-2 image-ami" src="../assets/img/happy-man.jpg"
-                                        alt="">
-                                    <p>Alexis</p>
-                                </div>
-                                <div class="d-flex mt-2"><img class="me-2 image-ami" src="../assets/img/happy-man2.jpg"
-                                        alt="">
-                                    <p>Marc</p>
-                                </div>
-                            </div>
-                            🥜 <a href="#">J'ai des restrictions alimentaires</a>
-                        </div>
-                        <div id="gauche" class="col offset-1 col-md-5">
-                            <div class="iframe mb-3"><iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4362.6634304986555!2d2.331097211773408!3d48.85346635862052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671738178460b%3A0xeecc055bfcf89fea!2zQWJhdHRvaXIgdsOpZ8OpdGFs!5e0!3m2!1sen!2sfr!4v1689942015940!5m2!1sen!2sfr"
-                                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                                    referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-                            <div>
-                                <div class="d-flex align-items-center mb-3">
-                                    <img class="me-2 icons-contact" src="../assets/img/icones/infos-contact/localisation.svg"
-                                        alt="">
-                                    <p class="psmallest tag">9 rue Guisarde 75006 Paris</p>
-                                </div>
-
-                                <div class="d-flex align-items-center mb-3">
-                                    <img class="me-2 incons-contact" src="../assets/img/icones/infos-contact/telephone.svg"
-                                        alt="">
-                                    <p class="psmallest tag">09.83.54.56.76</p>
-                                </div>
-
-                                <div class="d-flex align-items-center">
-                                    <img class="me-2 icons-contact" src="../assets/img/icones/infos-contact/mail.svg" alt="">
-                                    <p class="psmallest tag">mail@abattoirvegetal.fr</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <img class="position-absolute feuille-modal-resa z-2"
-                        src="assets/formes/feuille-small-sapin-endroit.svg" alt="">
-                    <div class="modal-resa-footer position-relative z-3">
-
-                        <button type="button" class="btn btn-secondary bouton btn-annuler btn-sous"
-                            data-bs-dismiss="modal">Annuler</button>
-
-                        <button type="button" class="btn btn-secondary bouton-dark btn-sous"
-                            data-bs-dismiss="modal">Valider</button>
-
-                    </div>
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </div>
-            </div>
-
-
-
-
-        </div> <!-- FIN DES MARGES -->
-
-
-    </main>
-    
-		       
-    </div>
+    {{ include('_header.html.twig') }}
+        <ul>
+            {% for group in groups %}
+                <li>
+                    <p>{{ group.createdAt|date('Y-m-d') }}</p>
+                    <p>{{ group.status }}</p>
+                    <p>{{ group.guests|length }} personnes</p>
+                    <ul>
+                        {% for guest in group.guests %}
+                            <li>{{ guest.username}}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
 {% endblock %}
 
 {% block javascripts %}<script src="{{ asset('./assets/js/resa.js')}}"></script> {% endblock %}
