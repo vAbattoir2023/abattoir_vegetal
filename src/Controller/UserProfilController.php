@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpClient\HttpClient;
 
 #[Route('/user_profil')]
 class UserProfilController extends AbstractController
@@ -28,15 +29,15 @@ class UserProfilController extends AbstractController
             return $this->redirectToRoute('app_home');
         }
         // gey user by id session 
-        $userFromBdd = $userRepository->findUserById($idSession);
+        $user = $userRepository->findUserById($idSession);
         
         // if not user then redirect to app_register
-        if (!$userFromBdd) {
+        if (!$user) {
             return $this->redirectToRoute('app_register');
         }
         //  dd($userFromBdd);
         // create form for the database
-        $form = $this->createForm(UserType::class, $userFromBdd);
+        $form = $this->createForm(UserType::class, $user);
         // get the data from form
         $form->handleRequest($request);
 
@@ -64,14 +65,65 @@ class UserProfilController extends AbstractController
             } else {
                 echo 'false';
             }
+             // Récupérer le code postal à partir du formulaire
+             $codePostal = $user->getPostalCode();
+             $codeDepartement = $user->getCodeDepartement();
+ 
+             // URL de base vers l'API gouvernementale pour obtenir les informations de la commune à partir d'un code postal
+             $apiUrl = "https://geo.api.gouv.fr/communes?codePostal=" . $codePostal;
+            
+             $httpClient = HttpClient::create();
+             // Effectuer une requête HTTP GET vers l'API en utilisant l'URL construite
+             $response = $httpClient->request('GET', $apiUrl);
+             $data = $response->toArray();
+ 
+             if (!empty($data)) {
+                 // Mettre à jour la valeur de city en fonction de la commune trouvée
+                 $city = $data[0]['nom'];
+                 // Attribuer les valeurs au document USER                
+                 $user->setCity($city);
+                 $user->setPostalCode($codePostal);
+                 // Récupérer le code du département à partir des données du codeDepartement de l'API
+                 $codeDepartement = $data[0]['codeDepartement'];
+                 // Attribuer les valeurs au document USER
+                 $user->setCodeDepartement($codeDepartement);
+                
+             }
+             // Récupérer le code du département à partir des données de la commune
+             $codeDepartement = $user->getCodeDepartement();
+ 
+             // URL de base vers l'API gouvernementale pour obtenir les informations du département à partir du code du département
+             $apiUrl = "https://geo.api.gouv.fr/departements/" . $codeDepartement;
+ 
+             // Effectuer une requête HTTP GET vers l'API en utilisant l'URL construite
+             $response = $httpClient->request('GET', $apiUrl);
+             $data = $response->toArray();
+ 
+             if (!empty($data)) {
+                 // Récupérer le nom du département à partir de la réponse de l'API
+                
+                 $codeRegion = $data['codeRegion'];
+                  // Utiliser le nom du département pour récupérer le nom de la région
+                 $apiUrl = "https://geo.api.gouv.fr/regions/" . $codeRegion;
+                 // Effectuer une requête HTTP GET vers l'API en utilisant l'URL construite
+                 $response = $httpClient->request('GET', $apiUrl);
+                 $data = $response->toArray();
+ 
+                 if (!empty($data)) {
+                     // Mettre à jour la valeur de region en fonction du nom de la région trouvée
+                     $region = $data['nom'];
+                     // Attribuer la valeur au document USER
+                     $user->setRegion($region);
+                 }
+             }
 
             //update the data to user in database
-            $userRepository->save($userFromBdd, true);
+            $userRepository->save($user, true);
             // Redirect to success page
             return $this->redirectToRoute('app_user_profil_success');
         }
 
-       return $this->render('user_profil/index.html.twig', [
+       return $this->render('user_profil/edit.html.twig', [
             // send form for database
              'UserForm' => $form->createView(),
         ]); 

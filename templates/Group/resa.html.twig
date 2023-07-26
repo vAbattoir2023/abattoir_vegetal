@@ -3,204 +3,23 @@
 {% block title  %}
 	Reservation
 {% endblock %}
-{% block stylesheets %}<link rel="stylesheet" href="{{asset('./assets/css/reservation.css')}}">
-<link rel="stylesheet" href="{{asset('./assets/css/global.css')}}">
-{% endblock %}
-
 
 {% block body %}
-    
-
-
-		        {{ include('_header.html.twig') }}
-
- <main style="margin-bottom: 150px;">
-
-        <div class="container"> <!-- MARGES -->
-            <div class=" d-flex justify-content-between align-items-center titreresa"> <!-- TITRE + BOUTON -->
-                <h1> Mes réservations </h1>
-                <a class="bouton-small d-flex boutonresa" href="{{ path('app_select_group') }}">GIMME A FRIEND</a>
-            </div>
-
-
-            <div class="row"> <!-- 12 COLONNES AU MILIEUUUU -->
-
-                <div class="col-2"> <!-- CARD RESA PETITE -->
-
-                    <div
-                        class="mesresassmall mt-5 position-relative d-flex flex-column justify-content-between mx-auto">
-
-                        <div class="d-flex justify-content-end">
-                            <img class="statut" src="../assets/img/icones/curseur/curseur-big-confirme.svg" alt="">
-                        </div>
-
-
-                        <div class="datebig">
-                            <p>13/07/2023</p>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-2"> <!-- CARD RESA PETITE 02 -->
-
-                    <div class="mesresassmall mt-5 position-relative d-flex flex-column justify-content-between">
-
-                        <div class="d-flex justify-content-end">
-                            <img class="statut" src="../assets/img/icones/curseur/curseur-big-refuse.svg" alt="">
-                        </div>
-
-
-                        <div class="datebig">
-                            <p>22/07/2023</p>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-2"> <!-- CARD RESA PETITE 03-->
-
-                    <div class="mesresassmall mt-5 position-relative d-flex flex-column justify-content-between">
-
-                        <div class="d-flex justify-content-end">
-                            <img class="statut" src="../assets/img/icones/curseur/curseur-big-enattente.svg" alt="">
-                        </div>
-
-
-                        <div class="datebig">
-                            <p>25/07/2023</p>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-6"> <!-- CARD RESA BIG -->
-                    <div class="mesresasbig mt-5 row g-0">
-                        <div class="offset-1 col-10"> <!-- INTERIEUR CARD RESA BIG -->
-                            <div class="d-flex justify-content-between align-items-center mb-5"> <!-- PARTIE 01 -->
-                                <div class="d-flex justify-content-between align-items-baseline">
-                                    <p class="datesmall me-3">13/07/2023</p>
-                                    <p class="mesresasheure me-5">12h00</p>
-                                    <p class="statutbig">Validée</p>
-                                </div>
-                                <div class="close">
-                                    <img src="../assets/img/icones/croix/croix-noire-big.svg" alt="">
-                                </div>
-                            </div>
-
-                            <div class="d-flex justify-content-between align-items-center quimange mb-5">
-                                <!-- PARTIE 02 -->
-                                <div class="d-flex">
-                                    <div class="me-2">
-                                        <h4>Qui mange ?</h4>
-                                        <p class="psmallest">3 personnes</p>
-                                    </div>
-
-                                    <div>
-                                        <img class="m-2" src="../assets/img/Rectangle-188.jpg" alt="">
-                                        <img class="m-2" src="../assets/img/Rectangle-188.jpg" alt="">
-                                        <img src="../assets/img/Rectangle-188.jpg" alt="">
-                                    </div>
-                                </div>
-
-                                <a href="#"> <img class="add" src="../assets/img/icones/add/+.svg" alt=""></a>
-                            </div>
-<!-- PARTIE 03 -->
-                           <div class="d-flex justify-content-between align-items-center"> 
-                              <div class="d-flex invisible">
-                                     <div class="me-5 commentaires ">
-                                        <a href="">2 commentaires</a>
-                                        <p class="com"> <img src="../assets/img/icones/commentaire/foret-com.svg" alt="">
-                                            Commenter
-                                        </p>
-                                    </div>
-                                </div> 
-
-                                <div class="d-flex align-items-start flex-column mesresasboutons">
-                                    <a class="bouton-smallest-transparent d-flex mb-2" href="#">confirmer</a>
-                                    <a class="bouton-smallest-transparent d-flex" href="#">reserver</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 d-none"> <!-- CARD RESA BIG COMMENTAIRE -->
-                    <div class="mesresasbig commentaire row">
-                        <div class="offset-1 col-10"> <!-- INTERIEUR CARD RESA BIG COMMENTAIRE-->
-                            <div class="d-flex justify-content-between align-items-center mb-5"> <!-- PARTIE 01 -->
-                                <div class="d-flex justify-content-between align-items-baseline">
-                                    <p class="datesmall me-3">13/07/2023</p>
-                                    <p class="mesresasheure me-5">12h00</p>
-                                    <p class="statutbig">Validée</p>
-                                </div>
-                                <div class="close">
-                                    <img src="../assets/img/icones/croix/croix-noire-big.svg" alt="">
-                                </div>
-                            </div>
-
-                            <div class="d-flex justify-content-between align-items-center quimange mb-5">
-                                <!-- PARTIE 02 -->
-                                <div class="d-flex">
-                                    <div class="me-2">
-                                        <h4>Qui mange ?</h4>
-                                        <p class="psmallest">3 personnes</p>
-                                    </div>
-
-                                    <div>
-                                        <img class="m-2" src="../assets/img/Rectangle-188.jpg" alt="">
-                                        <img class="m-2" src="../assets/img/Rectangle-188.jpg" alt="">
-                                        <img src="../assets/img/Rectangle-188.jpg" alt="">
-                                    </div>
-                                </div>
-
-                                <a href="#"> <img class="add" src="../assets/img/icones/add/+.svg" alt=""></a>
-                            </div>
-
-                            <div class="d-flex justify-content-between align-items-center"> <!-- PARTIE 03 -->
-                                <!-- <div class="d-flex">
-                                    <div class="me-5 commentaires">
-                                        <a href="">2 commentaires</a>
-                                         <div class="d-flex align-items-center me-auto mb-3">
-                                            <img class="mt-2" src="Assets/img/Rectangle-191.jpg" alt="">
-                                            <p class="comecrit mb-0"> Je ne serais pas dispo avant 12h45...</p>
-                                        </div>
-
-                                        <div class="form-floating mt-3">
-                                            <textarea class="form-control" placeholder="commentez"
-                                                id="floatingTextarea2" style="height: 100px"></textarea>
-                                            <label for="floatingTextarea2"> <img
-                                                    src="Assets/icones/commentaire/foret-com.svg" alt="">
-                                                Commentez</label>
-                                        </div>
-
-                                        <div class="d-flex justify-content-between mesresasboutonscom mt-3">
-                                            <a class="bouton-smallest-transparent d-flex mb-2" href="#">annuler</a>
-                                            <a class="bouton-smallest-transparent d-flex" href="#">envoyer</a>
-                                        </div> 
-                                     </div>
-
-
-                                </div>--> 
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-
-        </div> <!-- FIN DES MARGES -->
-
-
-    </main>
-    
-		       
-    </div>
+    {{ include('_header.html.twig') }}
+        <ul>
+            {% for group in groups %}
+                <li>
+                    <p>{{ group.createdAt|date('Y-m-d') }}</p>
+                    <p>{{ group.status }}</p>
+                    <p>{{ group.guests|length }} personnes</p>
+                    <ul>
+                        {% for guest in group.guests %}
+                            <li>{{ guest.username}}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
 {% endblock %}
 
+{% block javascripts %}<script src="{{ asset('./assets/js/resa.js')}}"></script> {% endblock %}

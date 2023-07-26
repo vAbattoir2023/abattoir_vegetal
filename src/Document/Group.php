@@ -21,11 +21,11 @@ class Group
     #[MongoDB\Field(type: 'string')]
     public ?string $authors = null;
     
-    #[MongoDB\Field(type: "date")]
-    public ?\DateTimeInterface $createdAt = null;
+    #[MongoDB\Field(type: "string")]
+    public ?string $createdAt = null;
     
     #[MongoDB\Field(type: "date")]
-    public ?\DateTime $reservationDate = null;
+    public  ?\DateTimeInterface $reservationDate = null;
   
 
     #[MongoDB\EmbedMany(targetDocument: Guest::class)]
@@ -74,26 +74,26 @@ class Group
     }
 
 
-    public function getCreateGroup(): ?\DateTimeInterface
+    public function getCreateGroup(): ?string
     {
         return $this->createdAt;
     }
 
-    public function setCreateGroup(\DateTimeInterface $createdAt): Group
+    public function setCreateGroup(string $createdAt): Group
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getReservationDate(): ?string
+    public function getReservationDate():  ?\DateTimeInterface
     {
         return $this->reservationDate;
     }
 
-    public function setReservationDate(?string $reservationDate): Group
+    public function setReservationDate( ?\DateTimeInterface $reservationDate): Group
     {
-        $this->reservationDate = \DateTime::createFromFormat('Y-m-d', $reservationDate);
+        $this->reservationDate = $reservationDate;
         return $this;
     }
 

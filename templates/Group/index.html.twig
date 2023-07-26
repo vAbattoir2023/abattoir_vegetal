@@ -3,83 +3,92 @@
 {% block title  %}
 	Green Meet
 {% endblock %}
-{% block stylesheets %}
-	<link rel="stylesheet" href="{{asset('./assets/css/mur.css')}}">
-{% endblock %}
+
 
 {% block body %}
+    
+    {{ include('_header.html.twig') }}
 
-	{{ include('_header.html.twig') }}
-	<div id="mur" class="container tout mt-5">
+<main>
+        <div id="mur" class="container tout">
 
-		<div class="row">
-			<div class="col-12 col-md-3 conteneur filtres">
-				<article class="lisere">
-					<div class="row">
-						<div class="col">
-							<h2>filtres</h2>
-							<form action="#" method="post">
-								<div class="form-filtres">
-									<div class="d-flex">
-										<fieldset>
-											
-											<h4 class="me-auto">centre d'intérêts -</h4>
-											{% for formData in dataFormCheckbox %}
-												<div>
-													{# <input class="form-check-input"  name="{{ formData }}" type="checkbox" id="checkbox_{{ formData }}" name="checkbox_{{ formData }}" data-filter="{{formData}}" class="filter-checkbox">
-																										<label for="checkbox_{{ formData }}  class="form-check-label me-auto"">{{ formData }}</label> #}
-													<input name="{{ formData }}" type="checkbox" id="checkbox_{{ formData }}" name="checkbox_{{ formData }}" data-filter="{{formData}}" class="filter-checkbox">
-													<label class="form-check-label me-auto label_checkbox" for="checkbox_{{ formData }}">{{ formData }}</label>
-												</div>
-											{% endfor %}
-                                            {# Matth retour des centres d'interest de l'user CSS modifier #}
-											<h4 class="me-auto">
-												Mes choix
-											</h4>
-											{% for interest in userFromBdd.centerOfInterest %}
-												<div>
-													<p class="badge text-bg-success ">
-														{{ interest }}
-													</p>
-												</div>
-												{# Fin du retour des centres d'interest de l'user  #}
+            <div class="row">
+                <div class="col-12 col-md-3 filtres">
+                    <div class="conteneur">
+                        <article class="lisere">
 
-											{% endfor %}
-										</fieldset>
-									</div>
-								</form>
-							</div>
-						</div>
-						<div class="d-flex justify-content-center">
+                            {# PANNEAU DES FILTRES A GAUCHE #}
+                            <div class="row">
+                                <div class="col">
+                                    <h2>filtres</h2>
+                                    <form action="#" method="post">
+                                        <div class="form-filtres">
 
-							<a href="{{ path('app_resa_date') }}" class="ms-2 bouton-small-transparent reduire p-2 ">reserver</a>
-						</div>
-					</article>
-				</div>
+                                            <!-- Filtres composition -->
+                                            <div class="d-flex">
+                                                <h4 class="me-auto">Composition </h4><img src="Assets/ICONES/add/-.svg"
+                                                    alt="">
+                                            </div>
+                                            <div class="d-flex">
+                                                <label class="form-check-label me-auto" for="flexCheckDefault">
+                                                    <p class="tag">Groupe</p>
+                                                </label>
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="flexCheckDefault">
+                                            </div>
+                                        
+                                            <!-- Filtres alimentation -->
+                                            <div class="d-flex">
+                                                <h4 class="me-auto">Alimentation </h4><img src="Assets/ICONES/add/-.svg" alt="">
+                                            </div>
+                                            <div class="d-flex">
+                                                <label class="form-check-label me-auto" for="flexCheckDefault">
+                                                    <p class="tag">Végan</p>
+                                                </label>
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                            </div>
 
-				<div class="col-md-9 defile-card d-flex row g-0">
-					<div class="container ms-5 ">
+                                            <!-- Filtres centres intérêt -->
+                                            <div class="d-flex">
+                                                <h4 class="me-auto">Centres d'intérêt </h4><img src="Assets/ICONES/add/-.svg"
+                                                    alt="">
+                                            </div>
+                                            {% for interest in interests %}
+                                                <div class="d-flex">
+                                                    <label class="form-check-label me-auto" for="checkbox_{{ interest }}">
+                                                        <p class="tag">{{ interest }}</p>
+                                                    </label>
+                                                    {# <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> #}
+                                                    <input type="checkbox" id="checkbox_{{ interest }}" name="checkbox_{{ interest }}" data-filter="{{interest}}" class="form-check-input filter-checkbox">
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
 
-						<h1 class="somanyfriends ms-5 mt-5">so many friends...</h1>
+                {# ZONE D'AFFICHAGE DES CANDIDATS #}
+                <div class="col-md-9">
+                    <div id="users_list">
 
-						<div
-							class="container">
-							{# <button type='submit' id="addGroup">add group</button> #}
+                    </div>
+                </div>
+            </div>
+        </div>
+</main>
 
-							<ul class="d-flex row" id="users_list"></ul>
-						</div>
+    
+        
+        
+   
 
-
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
 
 
 {% endblock %}
 
 {% block javascripts %}
-	<script src="{{ asset('./assets/js/createGroup.js')}}"></script>
+    <script src="{{ asset('./assets/js/createGroup.js')}}"></script> 
 {% endblock %}
