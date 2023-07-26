@@ -22,6 +22,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use MongoDB\BSON\ObjectId;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
+
 #[Route('/group')]
 class GroupController extends AbstractController
 {
@@ -171,9 +172,7 @@ class GroupController extends AbstractController
        
         $groupRepository->save($group);
 
-            return $this->redirectToRoute('app_home',[
-
-            ]);
+            return $this->redirectToRoute('app_home');
     }
 
     #[Route('/accept/{id}', name: 'accept_Invitation')]

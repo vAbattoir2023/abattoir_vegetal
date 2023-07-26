@@ -69,10 +69,49 @@
             </div>
             <!-- End Accordion -->
             {# <a href="#" class="ms-2 bouton-small-transparent reduire">gimme this friend</a> #}
-                        <button id="idUser"  class="ms-2 bouton-small-transparent reduire" value="{{user.id}}">Gimmie this friend</button>
+                        <button  class="ms-2 bouton-small-transparent reduire"  type="button" data-bs-toggle="modal" data-bs-target="#modal-invit">Gimmie this friend</button>
         </div>
       </div>
     </li>
+
+      <!-- Modal resa-->
+    <div class="modal fade" id="modal-invit" tabindex="-1" aria-labelledby="ModalResaLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content justify-content-center d-flex ">
+
+                <div class="modal-header mx-auto position-relative">
+                    <h1 class="modal-title fs-5" id="ModalResaLabel">YAY !</h1>
+                    
+                    <!-- Je sais pas comment enlever la croix que bootstrap a mise -->
+                    <button type="button" class="btn-close position-absolute croix-close-modal-resa"
+                        data-bs-dismiss="modal" aria-label="Close"><img
+                            src="../assets/img/icones/croix/croix-fleur-orange-small.svg" alt=""></button>
+                </div>
+
+                <div class="container g-0">
+                <div class="text-center">
+                
+                  <p>Tu as choisi 1 personne. </p>
+                  <p>Souhaites-tu en ajouter d'autres à ta résa.</p>
+                </div>
+
+
+                    <div class="modal-resa-footer position-relative z-3">
+
+                        <button type="button" class="btn btn-secondary bouton btn-annuler btn-sous"
+                            data-bs-dismiss="modal">Annuler</button>
+
+                        <button id="idUser"  type="button" class="btn btn-secondary bouton-dark btn-sous" data-bs-dismiss="modal" value="{{user.id}}">Valider</button>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
     <!-- End User Card -->
      {% endfor %}
  
