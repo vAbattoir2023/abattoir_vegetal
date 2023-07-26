@@ -7,17 +7,17 @@ class Generatedb9195eb1ee348fbf02d2e9a6393f8caf extends \App\Document\User imple
     /**
      * @var \Closure|null initializer responsible for generating the wrapped object
      */
-    private $initializerc420a = null;
+    private $initializerb647e = null;
 
     /**
      * @var bool tracks initialization status - true while the object is initializing
      */
-    private $initializationTracker430d3 = false;
+    private $initializationTracker5f044 = false;
 
     /**
      * @var bool[] map of public properties of the parent class
      */
-    private static $publicPropertiesff283 = [
+    private static $publicPropertiesa17d9 = [
         'username' => true,
         'email' => true,
         'password' => true,
@@ -32,13 +32,14 @@ class Generatedb9195eb1ee348fbf02d2e9a6393f8caf extends \App\Document\User imple
         'centerOfInterest' => true,
         'roles' => true,
         'postalCode' => true,
+        'region' => true,
     ];
 
     /**
      * @var array[][] visibility and default value of defined properties, indexed by
      * property name and class name
      */
-    private static $privatePropertiesf0bc3 = [
+    private static $privatePropertiesd07cd = [
         
     ];
 
@@ -46,10 +47,11 @@ class Generatedb9195eb1ee348fbf02d2e9a6393f8caf extends \App\Document\User imple
      * @var string[][] declaring class name of defined protected properties, indexed by
      * property name
      */
-    private static $protectedProperties313ba = [
+    private static $protectedProperties5a395 = [
         'termsAccepted' => 'App\\Document\\User',
         'language' => 'App\\Document\\User',
         'flagIconUrl' => 'App\\Document\\User',
+        'codeDepartement' => 'App\\Document\\User',
     ];
 
     private static $signatureb9195eb1ee348fbf02d2e9a6393f8caf = 'YTo0OntzOjk6ImNsYXNzTmFtZSI7czoxNzoiQXBwXERvY3VtZW50XFVzZXIiO3M6NzoiZmFjdG9yeSI7czo0NDoiUHJveHlNYW5hZ2VyXEZhY3RvcnlcTGF6eUxvYWRpbmdHaG9zdEZhY3RvcnkiO3M6MTk6InByb3h5TWFuYWdlclZlcnNpb24iO3M6NDg6InYxLjAuMTZAZWNhZGJkYzkwNTJlNGFkMDhjNjBjOGEwMjI2ODcxMmU1MDQyN2Y3YyI7czoxMjoicHJveHlPcHRpb25zIjthOjE6e3M6MTc6InNraXBwZWRQcm9wZXJ0aWVzIjthOjE6e2k6MDtzOjI6ImlkIjt9fX0=';
@@ -62,13 +64,13 @@ class Generatedb9195eb1ee348fbf02d2e9a6393f8caf extends \App\Document\User imple
      *
      * @return mixed
      */
-    private function callInitializerbdc7a($methodName, array $parameters)
+    private function callInitializeree45d($methodName, array $parameters)
     {
-        if ($this->initializationTracker430d3 || ! $this->initializerc420a) {
+        if ($this->initializationTracker5f044 || ! $this->initializerb647e) {
             return;
         }
 
-        $this->initializationTracker430d3 = true;
+        $this->initializationTracker5f044 = true;
 
         $this->username = '';
         $this->city = null;
@@ -82,9 +84,11 @@ class Generatedb9195eb1ee348fbf02d2e9a6393f8caf extends \App\Document\User imple
         $this->centerOfInterest = [];
         $this->roles = [];
         $this->postalCode = null;
+        $this->region = null;
         $this->termsAccepted = null;
         $this->language = null;
         $this->flagIconUrl = null;
+        $this->codeDepartement = null;
 
 
         $nonReferenceableProperties = new class() {
@@ -104,19 +108,21 @@ class Generatedb9195eb1ee348fbf02d2e9a6393f8caf extends \App\Document\User imple
             'centerOfInterest' => & $this->centerOfInterest,
             'roles' => & $this->roles,
             'postalCode' => & $this->postalCode,
+            'region' => & $this->region,
             '' . "\0" . '*' . "\0" . 'termsAccepted' => & $this->termsAccepted,
             '' . "\0" . '*' . "\0" . 'language' => & $this->language,
             '' . "\0" . '*' . "\0" . 'flagIconUrl' => & $this->flagIconUrl,
+            '' . "\0" . '*' . "\0" . 'codeDepartement' => & $this->codeDepartement,
             'email' => & $nonReferenceableProperties->email,
             'password' => & $nonReferenceableProperties->password,
         ];
 
 
 
-        $result = $this->initializerc420a->__invoke($this, $methodName, $parameters, $this->initializerc420a, $properties);
+        $result = $this->initializerb647e->__invoke($this, $methodName, $parameters, $this->initializerb647e, $properties);
         isset($nonReferenceableProperties->email) && $this->email = $nonReferenceableProperties->email;
         isset($nonReferenceableProperties->password) && $this->password = $nonReferenceableProperties->password;
-        $this->initializationTracker430d3 = false;
+        $this->initializationTracker5f044 = false;
 
         return $result;
     }
@@ -133,23 +139,23 @@ class Generatedb9195eb1ee348fbf02d2e9a6393f8caf extends \App\Document\User imple
         $reflection = $reflection ?? new \ReflectionClass(__CLASS__);
         $instance   = $reflection->newInstanceWithoutConstructor();
 
-        unset($instance->username, $instance->email, $instance->password, $instance->city, $instance->age, $instance->gender, $instance->image, $instance->job, $instance->description, $instance->diet, $instance->centerOfInterestPerso, $instance->centerOfInterest, $instance->roles, $instance->postalCode, $instance->termsAccepted, $instance->language, $instance->flagIconUrl);
+        unset($instance->username, $instance->email, $instance->password, $instance->city, $instance->age, $instance->gender, $instance->image, $instance->job, $instance->description, $instance->diet, $instance->centerOfInterestPerso, $instance->centerOfInterest, $instance->roles, $instance->postalCode, $instance->region, $instance->termsAccepted, $instance->language, $instance->flagIconUrl, $instance->codeDepartement);
 
-        $instance->initializerc420a = $initializer;
+        $instance->initializerb647e = $initializer;
 
         return $instance;
     }
 
     public function & __get($name)
     {
-        $this->initializerc420a && ! $this->initializationTracker430d3 && $this->callInitializerbdc7a('__get', array('name' => $name));
+        $this->initializerb647e && ! $this->initializationTracker5f044 && $this->callInitializeree45d('__get', array('name' => $name));
 
-        if (isset(self::$publicPropertiesff283[$name])) {
+        if (isset(self::$publicPropertiesa17d9[$name])) {
             return $this->$name;
         }
 
-        if (isset(self::$protectedProperties313ba[$name])) {
-            if ($this->initializationTracker430d3) {
+        if (isset(self::$protectedProperties5a395[$name])) {
+            if ($this->initializationTracker5f044) {
                 return $this->$name;
             }
 
@@ -157,7 +163,7 @@ class Generatedb9195eb1ee348fbf02d2e9a6393f8caf extends \App\Document\User imple
             $callers      = debug_backtrace(\DEBUG_BACKTRACE_PROVIDE_OBJECT, 2);
             $caller       = isset($callers[1]) ? $callers[1] : [];
             $object       = isset($caller['object']) ? $caller['object'] : '';
-            $expectedType = self::$protectedProperties313ba[$name];
+            $expectedType = self::$protectedProperties5a395[$name];
 
             if ($object instanceof $expectedType) {
                 return $this->$name;
@@ -168,7 +174,7 @@ class Generatedb9195eb1ee348fbf02d2e9a6393f8caf extends \App\Document\User imple
             if ($class === $expectedType || is_subclass_of($class, $expectedType) || $class === 'ReflectionProperty') {
                 return $this->$name;
             }
-        } elseif (isset(self::$privatePropertiesf0bc3[$name])) {
+        } elseif (isset(self::$privatePropertiesd07cd[$name])) {
             // check private property access via same class
             $callers = debug_backtrace(\DEBUG_BACKTRACE_PROVIDE_OBJECT, 2);
             $caller  = isset($callers[1]) ? $callers[1] : [];
@@ -176,7 +182,7 @@ class Generatedb9195eb1ee348fbf02d2e9a6393f8caf extends \App\Document\User imple
 
             static $accessorCache = [];
 
-            if (isset(self::$privatePropertiesf0bc3[$name][$class])) {
+            if (isset(self::$privatePropertiesd07cd[$name][$class])) {
                 $cacheKey = $class . '#' . $name;
                 $accessor = isset($accessorCache[$cacheKey])
                     ? $accessorCache[$cacheKey]
@@ -187,8 +193,8 @@ class Generatedb9195eb1ee348fbf02d2e9a6393f8caf extends \App\Document\User imple
                 return $accessor($this);
             }
 
-            if ($this->initializationTracker430d3 || 'ReflectionProperty' === $class) {
-                $tmpClass = key(self::$privatePropertiesf0bc3[$name]);
+            if ($this->initializationTracker5f044 || 'ReflectionProperty' === $class) {
+                $tmpClass = key(self::$privatePropertiesd07cd[$name]);
                 $cacheKey = $tmpClass . '#' . $name;
                 $accessor = isset($accessorCache[$cacheKey])
                     ? $accessorCache[$cacheKey]
@@ -233,18 +239,18 @@ class Generatedb9195eb1ee348fbf02d2e9a6393f8caf extends \App\Document\User imple
 
     public function __set($name, $value)
     {
-        $this->initializerc420a && $this->callInitializerbdc7a('__set', array('name' => $name, 'value' => $value));
+        $this->initializerb647e && $this->callInitializeree45d('__set', array('name' => $name, 'value' => $value));
 
-        if (isset(self::$publicPropertiesff283[$name])) {
+        if (isset(self::$publicPropertiesa17d9[$name])) {
             return ($this->$name = $value);
         }
 
-        if (isset(self::$protectedProperties313ba[$name])) {
+        if (isset(self::$protectedProperties5a395[$name])) {
             // check protected property access via compatible class
             $callers      = debug_backtrace(\DEBUG_BACKTRACE_PROVIDE_OBJECT, 2);
             $caller       = isset($callers[1]) ? $callers[1] : [];
             $object       = isset($caller['object']) ? $caller['object'] : '';
-            $expectedType = self::$protectedProperties313ba[$name];
+            $expectedType = self::$protectedProperties5a395[$name];
 
             if ($object instanceof $expectedType) {
                 return ($this->$name = $value);
@@ -255,7 +261,7 @@ class Generatedb9195eb1ee348fbf02d2e9a6393f8caf extends \App\Document\User imple
             if ($class === $expectedType || is_subclass_of($class, $expectedType) || $class === 'ReflectionProperty') {
                 return ($this->$name = $value);
             }
-        } elseif (isset(self::$privatePropertiesf0bc3[$name])) {
+        } elseif (isset(self::$privatePropertiesd07cd[$name])) {
             // check private property access via same class
             $callers = debug_backtrace(\DEBUG_BACKTRACE_PROVIDE_OBJECT, 2);
             $caller  = isset($callers[1]) ? $callers[1] : [];
@@ -263,7 +269,7 @@ class Generatedb9195eb1ee348fbf02d2e9a6393f8caf extends \App\Document\User imple
 
             static $accessorCache = [];
 
-            if (isset(self::$privatePropertiesf0bc3[$name][$class])) {
+            if (isset(self::$privatePropertiesd07cd[$name][$class])) {
                 $cacheKey = $class . '#' . $name;
                 $accessor = isset($accessorCache[$cacheKey])
                     ? $accessorCache[$cacheKey]
@@ -275,7 +281,7 @@ class Generatedb9195eb1ee348fbf02d2e9a6393f8caf extends \App\Document\User imple
             }
 
             if ('ReflectionProperty' === $class) {
-                $tmpClass = key(self::$privatePropertiesf0bc3[$name]);
+                $tmpClass = key(self::$privatePropertiesd07cd[$name]);
                 $cacheKey = $tmpClass . '#' . $name;
                 $accessor = isset($accessorCache[$cacheKey])
                     ? $accessorCache[$cacheKey]
@@ -313,18 +319,18 @@ class Generatedb9195eb1ee348fbf02d2e9a6393f8caf extends \App\Document\User imple
 
     public function __isset($name)
     {
-        $this->initializerc420a && $this->callInitializerbdc7a('__isset', array('name' => $name));
+        $this->initializerb647e && $this->callInitializeree45d('__isset', array('name' => $name));
 
-        if (isset(self::$publicPropertiesff283[$name])) {
+        if (isset(self::$publicPropertiesa17d9[$name])) {
             return isset($this->$name);
         }
 
-        if (isset(self::$protectedProperties313ba[$name])) {
+        if (isset(self::$protectedProperties5a395[$name])) {
             // check protected property access via compatible class
             $callers      = debug_backtrace(\DEBUG_BACKTRACE_PROVIDE_OBJECT, 2);
             $caller       = isset($callers[1]) ? $callers[1] : [];
             $object       = isset($caller['object']) ? $caller['object'] : '';
-            $expectedType = self::$protectedProperties313ba[$name];
+            $expectedType = self::$protectedProperties5a395[$name];
 
             if ($object instanceof $expectedType) {
                 return isset($this->$name);
@@ -343,7 +349,7 @@ class Generatedb9195eb1ee348fbf02d2e9a6393f8caf extends \App\Document\User imple
 
             static $accessorCache = [];
 
-            if (isset(self::$privatePropertiesf0bc3[$name][$class])) {
+            if (isset(self::$privatePropertiesd07cd[$name][$class])) {
                 $cacheKey = $class . '#' . $name;
                 $accessor = isset($accessorCache[$cacheKey])
                     ? $accessorCache[$cacheKey]
@@ -355,7 +361,7 @@ class Generatedb9195eb1ee348fbf02d2e9a6393f8caf extends \App\Document\User imple
             }
 
             if ('ReflectionProperty' === $class) {
-                $tmpClass = key(self::$privatePropertiesf0bc3[$name]);
+                $tmpClass = key(self::$privatePropertiesd07cd[$name]);
                 $cacheKey = $tmpClass . '#' . $name;
                 $accessor = isset($accessorCache[$cacheKey])
                     ? $accessorCache[$cacheKey]
@@ -389,20 +395,20 @@ class Generatedb9195eb1ee348fbf02d2e9a6393f8caf extends \App\Document\User imple
 
     public function __unset($name)
     {
-        $this->initializerc420a && $this->callInitializerbdc7a('__unset', array('name' => $name));
+        $this->initializerb647e && $this->callInitializeree45d('__unset', array('name' => $name));
 
-        if (isset(self::$publicPropertiesff283[$name])) {
+        if (isset(self::$publicPropertiesa17d9[$name])) {
             unset($this->$name);
 
             return;
         }
 
-        if (isset(self::$protectedProperties313ba[$name])) {
+        if (isset(self::$protectedProperties5a395[$name])) {
             // check protected property access via compatible class
             $callers      = debug_backtrace(\DEBUG_BACKTRACE_PROVIDE_OBJECT, 2);
             $caller       = isset($callers[1]) ? $callers[1] : [];
             $object       = isset($caller['object']) ? $caller['object'] : '';
-            $expectedType = self::$protectedProperties313ba[$name];
+            $expectedType = self::$protectedProperties5a395[$name];
 
             if ($object instanceof $expectedType) {
                 unset($this->$name);
@@ -417,7 +423,7 @@ class Generatedb9195eb1ee348fbf02d2e9a6393f8caf extends \App\Document\User imple
 
                 return;
             }
-        } elseif (isset(self::$privatePropertiesf0bc3[$name])) {
+        } elseif (isset(self::$privatePropertiesd07cd[$name])) {
             // check private property access via same class
             $callers = debug_backtrace(\DEBUG_BACKTRACE_PROVIDE_OBJECT, 2);
             $caller  = isset($callers[1]) ? $callers[1] : [];
@@ -425,7 +431,7 @@ class Generatedb9195eb1ee348fbf02d2e9a6393f8caf extends \App\Document\User imple
 
             static $accessorCache = [];
 
-            if (isset(self::$privatePropertiesf0bc3[$name][$class])) {
+            if (isset(self::$privatePropertiesd07cd[$name][$class])) {
                 $cacheKey = $class . '#' . $name;
                 $accessor = isset($accessorCache[$cacheKey])
                     ? $accessorCache[$cacheKey]
@@ -437,7 +443,7 @@ class Generatedb9195eb1ee348fbf02d2e9a6393f8caf extends \App\Document\User imple
             }
 
             if ('ReflectionProperty' === $class) {
-                $tmpClass = key(self::$privatePropertiesf0bc3[$name]);
+                $tmpClass = key(self::$privatePropertiesd07cd[$name]);
                 $cacheKey = $tmpClass . '#' . $name;
                 $accessor = isset($accessorCache[$cacheKey])
                     ? $accessorCache[$cacheKey]
@@ -473,33 +479,33 @@ class Generatedb9195eb1ee348fbf02d2e9a6393f8caf extends \App\Document\User imple
 
     public function __clone()
     {
-        $this->initializerc420a && $this->callInitializerbdc7a('__clone', []);
+        $this->initializerb647e && $this->callInitializeree45d('__clone', []);
     }
 
     public function __sleep()
     {
-        $this->initializerc420a && $this->callInitializerbdc7a('__sleep', []);
+        $this->initializerb647e && $this->callInitializeree45d('__sleep', []);
 
         return array_keys((array) $this);
     }
 
     public function setProxyInitializer(\Closure $initializer = null) : void
     {
-        $this->initializerc420a = $initializer;
+        $this->initializerb647e = $initializer;
     }
 
     public function getProxyInitializer() : ?\Closure
     {
-        return $this->initializerc420a;
+        return $this->initializerb647e;
     }
 
     public function initializeProxy() : bool
     {
-        return $this->initializerc420a && $this->callInitializerbdc7a('initializeProxy', []);
+        return $this->initializerb647e && $this->callInitializeree45d('initializeProxy', []);
     }
 
     public function isProxyInitialized() : bool
     {
-        return ! $this->initializerc420a;
+        return ! $this->initializerb647e;
     }
 }

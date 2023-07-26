@@ -24,10 +24,10 @@ class Group
     #[MongoDB\Field(type: "string")]
     public ?string $createdAt = null;
     
-    #[MongoDB\Field(type: "string")]
-    public ?string $reservationDate = null;
-    // #[MongoDB\Field(type: "date")]
-    // public  ?\DateTimeInterface $reservationDate = null;
+    // #[MongoDB\Field(type: "string")]
+    // public ?string $reservationDate = null;
+    #[MongoDB\Field(type: "date")]
+    public  ?\DateTimeInterface $reservationDate = null;
   
 
     #[MongoDB\EmbedMany(targetDocument: Guest::class)]

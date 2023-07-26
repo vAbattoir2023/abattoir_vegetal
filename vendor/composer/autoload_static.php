@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit082c2cd991766a7aabf23df2537b9629
+class ComposerStaticInit4291eb557aa8a2735da3e2a439ae86b4
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -600,6 +600,7 @@ class ComposerStaticInit082c2cd991766a7aabf23df2537b9629
         'App\\Form\\ApiUserType' => __DIR__ . '/../..' . '/src/Form/ApiUserType.php',
         'App\\Form\\LoginType' => __DIR__ . '/../..' . '/src/Form/LoginType.php',
         'App\\Form\\RegisterType' => __DIR__ . '/../..' . '/src/Form/RegisterType.php',
+        'App\\Form\\ResaType' => __DIR__ . '/../..' . '/src/Form/ResaType.php',
         'App\\Form\\UserType' => __DIR__ . '/../..' . '/src/Form/UserType.php',
         'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
         'App\\Repository\\ApiRepository' => __DIR__ . '/../..' . '/src/Repository/ApiRepository.php',
@@ -6715,9 +6716,9 @@ class ComposerStaticInit082c2cd991766a7aabf23df2537b9629
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit082c2cd991766a7aabf23df2537b9629::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit082c2cd991766a7aabf23df2537b9629::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit082c2cd991766a7aabf23df2537b9629::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit4291eb557aa8a2735da3e2a439ae86b4::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit4291eb557aa8a2735da3e2a439ae86b4::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit4291eb557aa8a2735da3e2a439ae86b4::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -20,6 +20,7 @@ return array(
     'App\\Form\\ApiUserType' => $baseDir . '/src/Form/ApiUserType.php',
     'App\\Form\\LoginType' => $baseDir . '/src/Form/LoginType.php',
     'App\\Form\\RegisterType' => $baseDir . '/src/Form/RegisterType.php',
+    'App\\Form\\ResaType' => $baseDir . '/src/Form/ResaType.php',
     'App\\Form\\UserType' => $baseDir . '/src/Form/UserType.php',
     'App\\Kernel' => $baseDir . '/src/Kernel.php',
     'App\\Repository\\ApiRepository' => $baseDir . '/src/Repository/ApiRepository.php',
