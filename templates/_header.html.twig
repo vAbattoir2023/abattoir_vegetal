@@ -1,18 +1,45 @@
 {% if app.user %}
+
     <header>
-    </header>
-{% else %}
-    <header>
+    <nav class="d-flex justify-content-between header01">
+            <div class="d-flex"> <!-- MENU BURGER -->
+                <a href="#"><img src="../assets/img/icones/menuburger/menu-burger-dark.svg" alt=""></a>
+            </div>
+
+            <a id="logo" href="#"> <!-- LOGO -->
+                <img src="Assets/logo/abattoir-vegetal-logo-medium-dark.svg" alt="Logo yogasaloon">
+            </a>
+
+            <div class="d-flex"> 
+                <a class="iconeheader me-2" href="#"><img class="test" src="../assets/img/icones/profil/profil-small-light.svg" alt=""></a>
+                <a class="iconeheader me-2" href="#"><img src="../assets/img/icones/notifications/notification-small-light.svg" alt=""></a>
+                <a class="iconeheader" href="#"><img src="../assets/img/icones/reservation/reservation-small-light.svg" alt=""></a>
+            </div>
+ 
+          
+
+        </nav>
+
+    
+   
+        {% else %}
+   
+           <div class="d-flex justify-content-start m-5"> <!-- MENU BURGER -->
+                <a href="#"><img src="../assets/img/icones/menuburger/menu-burger-dark.svg" alt=""></a>
+            </div>
+    
         <nav class="d-flex justify-content-end navbar-home">
+        
+        
             <div class="d-flex flex-column">
                 <a href="#">
-                    <img class="bouton-gmaf img-fluid" src="./assets/img/boutons/abattoir-vegetal-gimme-friend-off.svg" alt="">
+                    <img class="bouton-gmaf img-fluid" src="../assets/img/boutons/abattoir-vegetal-gimme-friend-off.svg" alt="">
                 </a>
                 <a>
-                    <img class="bouton-cec img-fluid" src="./assets/img/boutons/abattoir-vegetal-click-collect-off.svg" alt="">
+                    <img class="bouton-cec img-fluid" src="../assets/img/boutons/abattoir-vegetal-click-collect-off.svg" alt="">
                 </a>
                 <a>
-                    <img class="bouton-gmat img-fluid" src="./assets/img/boutons/abattoir-vegetal-gimme-table-off.svg" alt="">
+                    <img class="bouton-gmat img-fluid" src="../assets/img/boutons/abattoir-vegetal-gimme-table-off.svg" alt="">
                 </a>
             </div>
         </nav>
