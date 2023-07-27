@@ -1191,6 +1191,13 @@ input[type="radio"].btn-check:checked+label {
     text-transform: initial;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    background: none;
+}
+
 #card-connexion .MDP-center {
     display: block;
     text-align: center;

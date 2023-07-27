@@ -3,12 +3,64 @@
 {% block title  %} Connexion {% endblock %}
 
 {% block body %}
-    {{ form_errors(Form)}}
+ <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <article id="card-connexion" class="card-connexion offset-6 ">
+                        
+                        <div class="card-liseret">
+                            <img src="assets/img/formes/monstera-big-jaune-horizontal.svg" alt="" class="z-n1 position-absolute monstera-ptn">
+                            <img src="assets/img/formes/leaf.svg" alt="" class="z-n1 position-absolute leaf-ptn">
+                            <div>
+                                <div class="input-mt">
+                                    <h1 class="titre-connexion">se&nbsp;connecter</h1>
+                                    {{ form_errors(Form)}}
+                                    {{ form_start(Form)}}
+                                    {# <label for="username"></label>
+                                    <input type="text" value="" placeholder="Votre adresse mail" id="username"
+                                        class="bouton-small-transparent size-connexion"> #}
+                                    
+                                    {{ form_widget(Form.email, {'attr': {'class': 'bouton-small-transparent size-connexion mb-3'}}) }}
+                                    {# <label for="password"></label>
+                                    <input type="password" value="" placeholder="Mot de passe" id="password"
+                                        class="bouton-small-transparent size-connexion mt-4"> #}
+                                    
+                                    {{ form_widget(Form.password, {'attr': {'class': 'bouton-small-transparent size-connexion'}}) }}
+                                    <a href="#" class="MDP-center psmallest mt-4">
+                                        Mot de passe oublié ?
+                                    </a>
+                                    {{ form_widget(Form.submit, {'attr': {'class': 'bouton-small-transparent size-bouton mt-5'}}) }}
+                                    {{ form_end(Form)}}
+                                </div>
+                                <div>
+                                    <a href="#" class="bouton-small-transparent size-bouton mt-5">
+                                        JE ME CONNECTE
+                                    </a>
+                                    <a href="#" class="bouton-small-transparent size-bouton mt-4 mb-3">
+                                        JE ME CONNECTE AVEC GOOGLE
+                                    </a>
+                                    <a href="#" class="MDP-center mt-4 psmallest">
+                                        S'inscrire
+                                    </a>
+                                </div>
+                            </div>      
+                        </div>
+                            <a href="" class="comment">
+                                <img src="assets/img/icones/emojidoigt.svg" alt="">Comment ça marche ?
+                            </a>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+{% endblock %}
+ {# {{ form_errors(Form)}}
     {{ form_start(Form)}}
     {{ form_label(Form.email) }}
     {{ form_widget(Form.email, {'attr': {'class': 'bouton-small-transparent size-connexion'}}) }}
     {{ form_label(Form.password) }}
     {{ form_widget(Form.password, {'attr': {'class': 'bouton-small-transparent size-connexion'}}) }}
     {{ form_widget(Form.submit) }}
-    {{ form_end(Form)}}
-{% endblock %}
+    {{ form_end(Form)}} #}
