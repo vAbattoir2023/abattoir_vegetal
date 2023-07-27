@@ -25,14 +25,23 @@ class RegisterType extends AbstractType
             ])
 
             ->add('password', RepeatedType::class,[
-                'label' => 'mot de passe',
-                'first_name' => 'password',
-                'second_name' => 'confirm',
+                'first_name' => 'Password',
+                'second_name' => 'Confirm',
+                'first_options'  => ['attr' => 
+                    [
+                        'class' => 'bouton-small-transparent size-connexion mt-2'
+                    ]
+                ],
+                'second_options' => ['attr' => 
+                    [
+                        'class' => 'bouton-small-transparent size-connexion mt-2'
+                    ]
+                ],
                 'attr' => [
                     'placeholder' => 'Mot de passe',
                 ],
                 'type' => PasswordType::class,
-                ])
+            ])
 
         ->add('terms', CheckboxType::class, [
             'label' => 'J\'ai lu et j\'accepte les conditions générales',

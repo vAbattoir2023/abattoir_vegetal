@@ -3,19 +3,86 @@
 
 {% block body %}
 
+
+<section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <article id="card-inscription" class="card-inscription offset-6 ">
+                        <h1 class="titre-inscription">
+                            s'inscrire
+                        </h1>
+                            <div class="card-liseret">
+                            <img src="../assets/img/formes/feuille-medium-sapin-endroit.svg" alt=""
+                                class="position-absolute algue-ptn">
+                                <img src="../assets/img/formes/monstera-medium-menthe-vertical.svg" alt=""
+                                class="position-absolute monstera-ptn">
+                            <div>
+                                    <div class="input-mt">
+
+                                        {{ form_errors(FormRegister)}}
+                                        {{ form_start(FormRegister)}}    
+                                                            
+                                        {{ form_label(FormRegister.email) }}
+                                        {{ form_widget(FormRegister.email, {'attr': {'class': 'bouton-small-transparent size-connexion'}}) }}
+
+                                    
+                                        {{ form_row(FormRegister.password, {'attr': {'class': 'bouton-small-transparent size-connexion mt-2'}}) }}
+
+                                        
+                                        <p class="MDP-center psmallest  mt-4">
+                                        {{ form_label(FormRegister.terms) }}
+                                        {{ form_widget(FormRegister.terms) }}
+                                        
+                                        
+
+                                        </p>
+                                    </div>
+                                
+                                    <div>
+
+                                    
+                                
+                                        <a href="#" class="bouton-small-transparent size-bouton mt-4">
+                                            {{ form_widget(FormRegister.submit) }}
+                                        </a>
+
+                                    
+                                        <a href="#" class="bouton-small-transparent size-bouton mt-4 mb-3">
+                                            JE ME CONNECTE AVEC GOOGLE
+                                        </a>
+                                        <a href="#" class="MDP-center underline mt-4 psmallest">
+                                            Se connecter
+                                        </a>
+                                    
+                                    </div>
+                                
+                             </div>
+                             
+                        </div>
+                    {{ form_end(FormRegister, {render_rest: false})}}
+    
+                                 <a href="" class="comment">
+                                 <img src="../assets/img/icones/emojidoigt.svg" alt="">Comment ça marche ?
+                                </a>
+                    </article>
+                 </div>
+             </div>
+        </div>
+    </section>
+
     {% if alert|length >1  %}
         <div>{{ alert }}</div>
     {% endif  %}
 
 
-    {{ form_errors(FormRegister)}}
-    {{ form_start(FormRegister)}}
-        {{ form_label(FormRegister.email) }}
-        {{ form_widget(FormRegister.email, {'attr': {'class': 'bouton-small-transparent size-connexion'}}) }}
-        {{ form_row(FormRegister.password, {'attr': {'class': 'bouton-small-transparent size-connexion mt-2'}}) }}
-        {{ form_widget(FormRegister.terms) }}
-        {{ form_label(FormRegister.terms) }}
-        {{ form_widget(FormRegister.submit) }}
-    {{ form_end(FormRegister)}}
+    
+    
+        
+   {#    
+        
+    {{ form_widget(FormRegister.submit) }}
+    {{ form_end(FormRegister, {render_rest: false})}}
+    #} 
 
 {% endblock %}
