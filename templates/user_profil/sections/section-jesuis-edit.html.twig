@@ -1,120 +1,122 @@
-<section class="row" id="jesuis">
-    <div class="align-top maDiv col-4 offset-1"> <!-- 1ère partie card -->
-
-        <div class="mb-3"> <!-- je m'appelle et j'habite input -->
-            <div>
-            Je m'apelle...
-            </div>
-            {# {{ form_label(UserForm.username) }}  #}
-            {# <input type="text" aria-label="Je m'appelle" class="stroke-input mb-3"> #}
-            {{ form_widget(UserForm.username, {'attr': {'class': 'stroke-input mb-3'}}) }}
-
-            <div>
-            J'habite...
-            </div>
-            {# {{ form_label(UserForm.postalCode) }} #}
-            {# <input type="text" aria-label="J'habite" class="stroke-input mb-3"> #}
-            {{ form_widget(UserForm.postalCode, {'attr': {'class': 'stroke-input mb-3'}}) }}
-        </div>
-
-        <div class="mb-1 align-text"> <!-- je suis né inputx3-->
-            <label for="jesuisné" class="date-wrap"> Je suis né(e) le ...</label>
-            {# {{ form_label(UserForm.age) }}  #}
-            <div class="date-wrap">
-            <input type="text" class="stroke">
-            <p>&nbsp;/&nbsp;</p>
-            <input type="text" class="stroke">
-            <p>&nbsp;/&nbsp;</p>
-            <input type="text" class="stroke-year">
-            {# {{ form_widget(UserForm.age, {'attr': {'class': 'stroke-input mb-3'}}) }} #}
-            </div>
-        </div>
-
-        <div class="mb-4  align-text"> <!-- je suis bouton radio -->
-            <div>
-            Je suis ...
-            </div>
-
-            <div class="flex-end">
-            {# {{ form_label(UserForm.gender) }}  #}
-            <input type="radio" name="inlineRadioOptions" value="Femme" class="form-check-input">
-            <label>F</label>
-            <input type="radio" name="inlineRadioOptions" value="Homme" class="form-check-input">
-            <label>H</label>
-            <input type="radio" name="inlineRadioOptions" value="Non-Binaire" class="form-check-input">
-            <label class="form-check-label">Non-Binaire
-            </label>
-            {# {{ form_widget(UserForm.gender, {'attr': {'class': 'stroke-input form-check-input','style': 'border: none;font-size:18px;'}}) }} #}
-            </div>
-
-            <div> <!-- Je parle input -->
-            <div>
-                Je parle...
-            </div>
-            <input type="text" aria-label="Je parle" class="stroke-input">
-            {# <div class="language">
-                {{ form_widget(UserForm.language, {'attr': {'class': 'stroke-input mb-3'}}) }}
-            </div> #}
-            </div>
-        </div>
-        </div>
-
-        <div class="align-top maDiv col-4 offset-2"> <!-- 2ème partie card -->
-        <div class="wrap-bouton mb-1"> <!-- img + btn -->
-            <div>
-            <img src="assets/img/icones/profil/profil-big.svg" alt="" class="largeur">
-            </div>
-            <div class="position-bouton">
-            {{ form_widget(UserForm.image, {'attr': {'class': 'bouton-smallest-hug size-btn mb-3'}}) }}
-            {# <button class="bouton-smallest-hug size-btn mb-3">
-                télécharger une photo
-            </button> #}
-            <button class="bouton-smallest-hug size-btn mb-3">
-                choisir un avatar
-            </button>
-            </div>
-        </div>
-        <div class="mb-3"> <!-- input 2ème partie card -->
-            <div class="mt-3">
-                Je bosse dans...
-            </div>
-                {# {{ form_label(UserForm.job) }} #}
-                <input type="text" aria-label="Je bosse dans" class="stroke-input mb-3"> 
-                
-            <div class="mt-3">
-                {{ form_label(UserForm.description) }}
-                {{ form_widget(UserForm.description, {'attr': {'class': 'stroke-input mb-3'}}) }}
-                {# <div>Je me décris en quelques mots...</div>
-                <input type="text" aria-label="Je me décris" class="stroke-input mb-3"> #}
-                {# <br>
-                <input type="text" aria-label="Je me décris" class="stroke-input"> #}
-            </div>
-        </div>
-    </div>
-
+<section class="profil-section" id="jesuis" data-next="jaime" data-prev="">
     <div class="row">
-        <div class="offset-1 col-10"> <!-- 3ème partie card -->
-        <div> <!-- texte 3ème partie card -->
-            <p class="psmall mt-4">Mon régime alimentaire ...</p>
+        <div class="align-top maDiv col-4 offset-1"> <!-- 1ère partie card -->
+
+            <div class="mb-3"> <!-- je m'appelle et j'habite input -->
+                <div>
+                Je m'apelle...
+                </div>
+                {# {{ form_label(UserForm.username) }}  #}
+                {# <input type="text" aria-label="Je m'appelle" class="stroke-input mb-3"> #}
+                {{ form_widget(UserForm.username, {'attr': {'class': 'stroke-input mb-3'}}) }}
+
+                <div>
+                J'habite...
+                </div>
+                {# {{ form_label(UserForm.postalCode) }} #}
+                {# <input type="text" aria-label="J'habite" class="stroke-input mb-3"> #}
+                {{ form_widget(UserForm.postalCode, {'attr': {'class': 'stroke-input mb-3'}}) }}
+            </div>
+
+            <div class="mb-1 align-text"> <!-- je suis né inputx3-->
+                <label for="jesuisné" class="date-wrap"> Je suis né(e) le ...</label>
+                {# {{ form_label(UserForm.age) }}  #}
+                <div class="date-wrap">
+                <input type="text" class="stroke">
+                <p>&nbsp;/&nbsp;</p>
+                <input type="text" class="stroke">
+                <p>&nbsp;/&nbsp;</p>
+                <input type="text" class="stroke-year">
+                {# {{ form_widget(UserForm.age, {'attr': {'class': 'stroke-input mb-3'}}) }} #}
+                </div>
+            </div>
+
+            <div class="mb-4  align-text"> <!-- je suis bouton radio -->
+                <div>
+                Je suis ...
+                </div>
+
+                <div class="flex-end">
+                {# {{ form_label(UserForm.gender) }}  #}
+                <input type="radio" name="inlineRadioOptions" value="Femme" class="form-check-input">
+                <label>F</label>
+                <input type="radio" name="inlineRadioOptions" value="Homme" class="form-check-input">
+                <label>H</label>
+                <input type="radio" name="inlineRadioOptions" value="Non-Binaire" class="form-check-input">
+                <label class="form-check-label">Non-Binaire
+                </label>
+                {# {{ form_widget(UserForm.gender, {'attr': {'class': 'stroke-input form-check-input','style': 'border: none;font-size:18px;'}}) }} #}
+                </div>
+
+                <div> <!-- Je parle input -->
+                <div>
+                    Je parle...
+                </div>
+                <input type="text" aria-label="Je parle" class="stroke-input">
+                {# <div class="language">
+                    {{ form_widget(UserForm.language, {'attr': {'class': 'stroke-input mb-3'}}) }}
+                </div> #}
+                </div>
+            </div>
+            </div>
+
+            <div class="align-top maDiv col-4 offset-2"> <!-- 2ème partie card -->
+            <div class="wrap-bouton mb-1"> <!-- img + btn -->
+                <div>
+                <img src="assets/img/icones/profil/profil-big.svg" alt="" class="largeur">
+                </div>
+                <div class="position-bouton">
+                {{ form_widget(UserForm.image, {'attr': {'class': 'bouton-smallest-hug size-btn mb-3'}}) }}
+                {# <button class="bouton-smallest-hug size-btn mb-3">
+                    télécharger une photo
+                </button> #}
+                <button class="bouton-smallest-hug size-btn mb-3">
+                    choisir un avatar
+                </button>
+                </div>
+            </div>
+            <div class="mb-3"> <!-- input 2ème partie card -->
+                <div class="mt-3">
+                    Je bosse dans...
+                </div>
+                    {# {{ form_label(UserForm.job) }} #}
+                    <input type="text" aria-label="Je bosse dans" class="stroke-input mb-3"> 
+                    
+                <div class="mt-3">
+                    {{ form_label(UserForm.description) }}
+                    {{ form_widget(UserForm.description, {'attr': {'class': 'stroke-input mb-3'}}) }}
+                    {# <div>Je me décris en quelques mots...</div>
+                    <input type="text" aria-label="Je me décris" class="stroke-input mb-3"> #}
+                    {# <br>
+                    <input type="text" aria-label="Je me décris" class="stroke-input"> #}
+                </div>
+            </div>
         </div>
-        <div> <!-- btn radio -->
-            <div class="flex-pref mt-4">
-            
-            {# {{ form_widget(UserForm.diet) }}
-            {{ form_label(UserForm.diet) }} #}
-            
-            <input type="radio" id="ProfilChoice1" name="choice" value="vegan"
-                class="preferences demo2 demoyes">
-            <label for="ProfilChoice1">Végan(e)</label>
-            <input type="radio" id="ProfilChoice2" name="choice" value="curieux"
-                class="preferences demo2 demoyes margin-radio">
-            <label for="ProfilChoice2">Curieu(x/se)</label>
-            <input type="radio" id="ProfilChoice3" name="choice" value="vegetarien"
-                class="preferences demo2 demoyes margin-radio">
-            <label for="ProfilChoice3">Végétarien(ne)</label>
-            <input type="radio" id="ProfilChoice4" name="choice" value="flexitarien"
-                class="preferences demo2 demoyes margin-radio">
-            <label for="ProfilChoice4">Flexitarien(ne)</label>
+
+        <div class="row">
+            <div class="offset-1 col-10"> <!-- 3ème partie card -->
+            <div> <!-- texte 3ème partie card -->
+                <p class="psmall mt-4">Mon régime alimentaire ...</p>
+            </div>
+            <div> <!-- btn radio -->
+                <div class="flex-pref mt-4">
+                
+                {# {{ form_widget(UserForm.diet) }}
+                {{ form_label(UserForm.diet) }} #}
+                
+                <input type="radio" id="ProfilChoice1" name="choice" value="vegan"
+                    class="preferences demo2 demoyes">
+                <label for="ProfilChoice1">Végan(e)</label>
+                <input type="radio" id="ProfilChoice2" name="choice" value="curieux"
+                    class="preferences demo2 demoyes margin-radio">
+                <label for="ProfilChoice2">Curieu(x/se)</label>
+                <input type="radio" id="ProfilChoice3" name="choice" value="vegetarien"
+                    class="preferences demo2 demoyes margin-radio">
+                <label for="ProfilChoice3">Végétarien(ne)</label>
+                <input type="radio" id="ProfilChoice4" name="choice" value="flexitarien"
+                    class="preferences demo2 demoyes margin-radio">
+                <label for="ProfilChoice4">Flexitarien(ne)</label>
+                </div>
             </div>
         </div>
     </div>

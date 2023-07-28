@@ -12,96 +12,70 @@
 
     <div class="container"> <!-- MARGES -->
         <div class="row">
-                    <div class="col-12 z-2 ">
-                        <div class="mes-informations d-flex justify-content-between align-items-center">
-                            
-                            
-                            <h1>Mes informations</h1>
-                            <a href="{{ path('app_user_profil') }}" class="lien-modifier">
-                                <img class="icone-modifier" src="../assets/img/icones/modifier.svg" alt="icone crayon"> Modifier
-                            </a>
-                        </div>
-                    </div>
-                <div class="col-4 ">
-
-                    <div class="row">
-
-                        <div class="col-9 "> <!-- CARD-ALICE -->
-                            <article class="card-user card-small position-relative z-2">
-                                <div class="entiere">
-                                    <div>
-                                        <img class="img-user" src="{{ user.image }}"
-                                            alt="">
-                                    </div>
-
-                                    <div class="description">
+            <div class="col-12 z-2 ">
+                <div class="mes-informations d-flex justify-content-between align-items-center">
+                    <h1>Mes informations</h1>
+                    <a href="{{ path('app_user_profil') }}" class="lien-modifier">
+                        <img class="icone-modifier" src="../assets/img/icones/modifier.svg" alt="icone crayon"> Modifier
+                    </a>
+                </div>
+            </div>
+            <div class="col-4 ">
+                <div class="row">
+                    <div class="col-9 "> <!-- CARD-ALICE -->
+                        <article class="card-user card-small position-relative z-2">
+                            <div class="entiere">
+                                <div>
+                                    <img class="img-user" src="{{ user.image }}" alt="">
+                                </div>
+                            <div class="description">
 
                                         <!-- LIGNE NOM ET DRAPEAUX -->
-                                        <div class="row">
-                                            <div class="col-8">
-                                                <p class="pbold tag"> {{ user.username }} <img src="../assets/img/icones/zodiac/zodiac-capricorne.svg" alt=""></p>
-                                            </div>
-                                            <div class="col-4 d-flex justify-content-end">
-
-                          
-                                                {% for languageCode in user.language %}
-                                                  <p>{{languageCode}}</p>
-                                                {% endfor %}
-            
-                                                  
-                                        </div>
-
-                                        <div class="row">
-
-                                            <div class="col-8 infos-contact">
-                                                <p class="tag mt-3"><img src="../assets/img/icones/infos-contact/localisation.svg" alt=""> 
-                                                                                               
-                                                {% if user.postalCode is not empty %}
-                                                {{ user.city }} ({{ user.region }})        
-                                                {% endif %}
-                                                </p>
-
-                                                <p class="tag mt-2"><img src="../assets/img/icones/infos-contact/anniversaire.svg" alt=""> {{ user.age }} </p>
-            
-                                                <p class="tag mt-2"><img src="../assets/img/icones/selection/selection-genre-off.svg" alt=""> {{ user.gender }}</p>
-                                            </div>
-                                         
-                                        </div>
-                                               
-
-                                        <p class="col-12 citation"> {{ user.description }} </p>
-                                               
-
-
-                                    </div>
+                            <div class="row">
+                                <div class="col-8">
+                                    <p class="pbold tag"> {{ user.username }} <img src="../assets/img/icones/zodiac/zodiac-capricorne.svg" alt=""></p>
                                 </div>
-                            </article>
-                        </div>
+                            <div class="col-4 d-flex justify-content-end">
 
-                    </div>
-
-                </div> <!--fin col - 4-->
-
-                <div class="col-8">
-                    <div class="z-2">
-                        <article id="jesuisprofil" class="psmall border-card">
-
-                            <div class="row"> <!-- TITRE CARD FORMULAIRE -->
-                                <div class="col-11 ">
-                                    <div  class="d-flex justify-content-end titrecard z-3 position-relative align-items-baseline">
-                                        <a class="me-4 link-jesuis active" href="#">
-                                            <h2>JE SUIS</h2>
-                                        </a>
-                                        <a class="me-4 link-jaime" href="#">
-                                            <h2>J'AIME</h2>
-                                        </a>
-                                        <a href="#" class="link-jeveux">
-                                            <h2>JE VEUX</h2>
-                                        </a>
-                                    </div>
-                                </div>
-
+                                {% for languageCode in user.language %}
+                                    <p>{{languageCode}}</p>
+                                {% endfor %}
                             </div>
+                            <div class="row">
+                                <div class="col-8 infos-contact">
+                                    <p class="tag mt-3"><img src="../assets/img/icones/infos-contact/localisation.svg" alt="">                                                                                               
+                                        {% if user.postalCode is not empty %}
+                                        {{ user.city }} ({{ user.region }})        
+                                        {% endif %}
+                                    </p>
+                                    <p class="tag mt-2"><img src="../assets/img/icones/infos-contact/anniversaire.svg" alt=""> {{ user.age }} </p>
+                                    <p class="tag mt-2"><img src="../assets/img/icones/selection/selection-genre-off.svg" alt=""> {{ user.gender }}</p>
+                                </div>
+                            </div>
+                            <p class="col-12 citation"> {{ user.description }} </p>                       
+                        </article>
+                    </div>
+                </div>
+            </div> <!--fin col - 4-->
+
+            <div class="col-8">
+                <div class="z-2">
+                    <article id="jesuisprofil" class="psmall "><!-- class enlever border-card -->
+                        <div class="row"> <!-- TITRE CARD FORMULAIRE -->
+                            <div class="col-11 ">
+                                <div  class="d-flex justify-content-end titrecard z-3 position-relative align-items-baseline">
+                                    <a class="me-4 link-jesuis active" href="#">
+                                        <h2>JE SUIS</h2>
+                                    </a>
+                                    <a class="me-4 link-jaime" href="#">
+                                        <h2>J'AIME</h2>
+                                    </a>
+                                    <a href="#" class="link-jeveux">
+                                        <h2>JE VEUX</h2>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-12 ">
@@ -109,44 +83,46 @@
                                             <div>
                                                 <div class="mb-3"> <!-- je m'appelle et j'habite input -->
                                                     <div>
-                                                        <div>Je m'apelle...</div>
+                                                        <div>
+                                                            Je m'apelle...
+                                                        </div>
                                                         {#
                                                          <input type="text" aria-label="Je m'appelle" class="stroke-input mb-3" >
                                                          #}
-                                                         <p class="stroke-input mb-3">{{ user.username }}</p>
+                                                            <p class="stroke-input mb-3">{{ user.username }}</p>
                                                         <div>
-                                                            <div>J'habite...</div>
+                                                            <div>
+                                                                J'habite...
+                                                            </div>
                                                             {#
                                                             <input type="text" aria-label="J'habite"  class="stroke-input mb-3" >
                                                             #}
                                                             <p  class="stroke-input mb-3" > 
-                                                             {% if user.postalCode is not empty %}
-                                                             {{ user.city }} ({{ user.region }})        
-                                                              {% endif %}
+                                                                {% if user.postalCode is not empty %}
+                                                                {{ user.city }} ({{ user.region }})        
+                                                                {% endif %}
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="mb-1 align-text"> <!-- je suis né inputx3-->
-                                                    <label for="jesuisné" class="date-wrap"> Je suis né(e) le
-                                                        ...</label>
-                                                    <div class="date-wrap">
-                                                        
-                                                        <p> {{ user.age }}</p>
-                                                       
+                                                    <label for="jesuisné" class="date-wrap"> Je suis né(e) le...</label>
+                                                    <div class="date-wrap">    
+                                                        <p> {{ user.age }}</p>           
                                                     </div>
                                                 </div>
                                                 <div class="mb-4 date-wrap align-text"> <!-- je suis bouton radio -->
-                                                    <div>Je suis ...</div>
+                                                    <div>
+                                                        Je suis ...
+                                                    </div>
                                                     <div class="flex-end">
-
-                                                    <p> {{ user.gender }}</p>
-                                                       
+                                                        <p> {{ user.gender }}</p>                                                       
                                                     </div>
                                                 </div>
                                                 <div> <!-- Je parle input -->
-                                                    <div>Je parle...</div>
-                                                   
+                                                    <div>
+                                                        Je parle...
+                                                    </div>
                                                            {% for languageCode in user.language %}
                                                           <p>{{languageCode}}</p>
                                                            {% endfor %}
@@ -190,8 +166,7 @@
 
                             </div>
 
-                        </article>
-                    </div>
+                    </article>                    
                 </div> 
             </div><!-- fin col-8-->
 
@@ -207,32 +182,6 @@
              <div>
                 <img class="algue-verte-profil position-relative z-2" src="../assets/img/formes/algue-big-sapin-endroit.svg" alt="">
             </div>
-
-
-
-                
-
-
-                
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -42,7 +42,7 @@
         </section>
  
       {{ form_errors(UserForm) }}
-      {{ form_start(UserForm) }}   
+      {{ form_start(UserForm, {'attr': {'id': 'user-fom'}}) }}   
 
         {# ICI PREMIERE PAGE #}
 
@@ -55,18 +55,17 @@
 
                       <div class="row">
                         <div class="col-11 d-flex justify-content-end titrecard z-3 position-relative align-items-baseline">
-                          <a class="me-4 link-jesuis active" href="#"><!--lien vers page -->
+                          <a id='link-profil-jesuis' class="me-4 link-jesuis active" href="#"><!--lien vers page -->
                               <h2>JE SUIS</h2>
                           </a>
-                          <a class="me-4 link-jaime" href="#"> <!--lien vers page -->
+                          <a id='link-profil-jaime' class="me-4 link-jaime" href="#"><!--lien vers page -->
                               <h2>J'AIME</h2>
                           </a>
-                          <a href="#" class="link-jeveux"><!--lien vers page -->
+                          <a id='link-profil-jeveuxV2' href="#" class="link-jeveux"><!--lien vers page -->
                               <h2>JE VEUX</h2>
                           </a>
                         </div>
                       </div>
-
 
                       {# PREMIERE CARD #}
                       {{ include('user_profil/sections/section-jesuis-edit.html.twig') }}
@@ -75,21 +74,25 @@
                       {# TROISIEME CARD #}
                       {{ include('user_profil/sections/section-jeveux-edit.html.twig') }}
 
+
+                      <div class="row mt-3 ">
+                        <div class="col-12 d-flex justify-content-end ">
+                          {{ form_widget(UserForm.submit, {'attr': {'class': 'bouton-smallest-transparent me-4'}}) }}
+                        </div>
+                      </div>
+
+                    <!-- ICI -->
                   </article>
+                    <!-- LA -->
                 </div>
 
             </div>
          </div>
 
-
-
     </section>
 
     
-
-    {{ form_widget(UserForm.submit, {'attr': {'class': 'bouton-smallest-transparent '}}) }}
     {{ form_end(UserForm) }}
-
 {% endblock %}
 
 

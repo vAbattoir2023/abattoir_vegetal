@@ -11,12 +11,13 @@
             </a>
 
             <div class="d-flex"> 
-                <a class="iconeheader me-2" href="#"><img class="test" src="../assets/img/icones/profil/profil-small-light.svg" alt=""></a>
+                <a class="iconeheader me-2" href="{{ path('app_user_profil_success') }}"><img class="test" src="../assets/img/icones/profil/profil-small-light.svg" alt=""></a>
                 <a class="iconeheader me-2" href="#"><img src="../assets/img/icones/notifications/notification-small-light.svg" alt=""></a>
-                <a class="iconeheader" href="#"><img src="../assets/img/icones/reservation/reservation-small-light.svg" alt=""></a>
+                <a class="iconeheader" href="{{ path('app_resa') }}"><img src="../assets/img/icones/reservation/reservation-small-light.svg" alt=""></a>
             </div>
  
         </nav>
+
     </header>
    
 {% else %}
