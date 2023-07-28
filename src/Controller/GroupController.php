@@ -153,15 +153,21 @@ class GroupController extends AbstractController
 
 
     #[Route('/resa', name: 'app_resa')]
-    public function resa(): Response
+    public function resa(SessionInterface $sessionInterface, UserRepository $userRepository): Response
     {
-        return $this->render('Group/resa.html.twig');
+        // vérifier que le user est bien connecté (et le récupère)
+        if(!$sessionInterface->get('id')) return $this->redirectToRoute('app_login');
+        $user = $userRepository->findUserById($sessionInterface->get('id'));
+
+        return $this->render('Group/resa.html.twig',[
+            'user' => $user,
+        ]);
     }
 
     #[Route('/date', name: 'app_date')]
     public function date(): Response
     {
-        return $this->render('Group/date.todo.html.twig');
+        return $this->render('Group/date.todo.html.twig');  
     }
 
     /**
