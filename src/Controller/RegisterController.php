@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/register')]
 class RegisterController extends AbstractController
 {
-    #[Route('/add', name: 'app_register')]
+    #[Route('/', name: 'app_register')]
     public function index(Request $request, UserRepository $userRepository, DocumentManager $documentManager, SessionInterface $sessionInterface): Response
     {
 
@@ -46,10 +46,6 @@ class RegisterController extends AbstractController
         }
 
         $email = $sessionInterface->get('email');
-
-        if(isset($email)){
-            echo $email;
-        }
 
         // return to Register/index.html.twig page
         return $this->render('Register/index.html.twig',[

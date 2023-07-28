@@ -1,4 +1,4 @@
-{% if app.user %}
+{% if user is defined %}
 
     <header>
     <nav class="d-flex justify-content-between header01">
@@ -16,20 +16,23 @@
                 <a class="iconeheader" href="#"><img src="../assets/img/icones/reservation/reservation-small-light.svg" alt=""></a>
             </div>
  
-          
-
         </nav>
-
     </header>
    
-        {% else %}
-    <header>
+{% else %}
+    <header class="mt-3 mb-5 d-flex justify-content-between">
+
            <div class="d-flex justify-content-start m-5"> <!-- MENU BURGER -->
                 <a href="#"><img src="../assets/img/icones/menuburger/menu-burger-dark.svg" alt=""></a>
             </div>
     
+            <a id="logo" href="#" class="mt-1"> <!-- LOGO -->
+                <img src="../assets/img/logo/abattoir-vegetal-logo-medium-dark.svg" alt="Logo yogasaloon">
+            </a>
+
         <nav class="d-flex justify-content-end navbar-home">
         
+
         
             <div class="d-flex flex-column">
                 <a href="#">

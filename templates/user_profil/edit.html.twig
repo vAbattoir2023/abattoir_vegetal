@@ -4,228 +4,88 @@
 {% block title  %} Edition du profil utilisateur {% endblock %}
 {% block body %}
     {# {{ include('_header.html.twig') }} #}
+    {# PAGE DE PRESENTATION #}
+
+        <section>
+          <div class="container">
+            <div id="commentcamarche" class="row text-center d-flex flex-wrap">
+              <h1 class="titre mt-5 mb-5">comment ça marche ?</h1>
+              <article class="cardinscris col-3">
+                <p class="numeros numero1">1</p>
+                <img src="/assets/img/formes/monstera-small-menthe-vertical.svg" alt="" class="z-n1 position-absolute feuille-ptn1">
+                <div class="border1">
+                  <img src="/assets/img/icones/legumes/carotte.svg" alt="" class="mt-4 mb-4">
+                  <h2 class="mt-3">je m'inscris</h2>
+                  <p class="psmallest mt-4 mb-3">Crée toi un compte chez nous pour suivre tes demandes et réservations !</p>
+                </div>
+              </article>
+              <article class=" cardinscris col-3 margin2 align-items-center">
+                <p class="numeros numero2">2</p>
+                <img src="/assets/img/formes/feuille-big-framboise-envers.svg" alt="" class="z-n1 position-absolute feuille-ptn2 feuille-taille">
+                <div class=" border2">
+                  <img src="/assets/img/icones/legumes/radis.svg" alt="" class="mt-4 mb-5">
+                  <h2 class="">je&nbsp;me&nbsp;décris</h2>
+                  <p class="psmallest mt-4 mb-3">Remplis ton profil afin que les autres puissent savoir qui tu es pour apâter le chalan</p>
+                </div>
+              </article>
+              <article class="cardinscris col-3 margin2 align-items-center">
+                <p class="numeros numero3">3</p>
+                <img src="/assets/img/formes/marguerite-orange.svg" alt="" class="z-n1 position-absolute feuille-ptn3">
+                <div class="border3">
+                  <img src="/assets/img/icones/legumes/pois.svg" alt="" class="mt-4 mb-5">
+                  <h2 class=" mb-4">je choisis</h2>
+                  <p class="psmallest mb-3">Choisis avec qui tu veux manger en fonction de ce qu’ils ont remplis dans leur profil</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
  
       {{ form_errors(UserForm) }}
       {{ form_start(UserForm) }}   
 
         {# ICI PREMIERE PAGE #}
-        <section>
-         <div id="jesuis" class="container">
-            <div class="row">
-                <div class="col-md-12"> </div><!--             a quoi a qui???                     -->
-                    <div class="col-9 offset-3">
-                        <article class="psmall border-card">
-                            <div class="row"> <!-- TITRE CARD FORMULAIRE -->
-                                <div class="col-11 d-flex justify-content-end titrecard z-3 position-relative align-items-baseline">
-                                <a class="me-4 link-jesuis active" href="#"><!--lien vers page -->
-                                    <h2>JE SUIS</h2>
-                                </a>
-                                <a class="me-4 link-jaime" href="#"> <!--lien vers page -->
-                                    <h2>J'AIME</h2>
-                                </a>
-                                <a href="#" class="link-jeveux"><!--lien vers page -->
-                                    <h2>JE VEUX</h2>
-                                </a>
-                                </div>
-                            </div>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-12 ">
-                                        <div class="align-top maDiv col-4 offset-1"> <!-- 1ère partie card -->
-                                            <div>
-                                                <div class="mb-3"> <!-- je m'appelle et j'habite input -->
-                                                    <div>
-                                                        <div>Je m'apelle...</div>
-                                                        {# {{ form_label(UserForm.username) }}  #}
-                                                        {# <input type="text" aria-label="Je m'appelle" class="stroke-input mb-3"> #}
-                                                        {{ form_widget(UserForm.username, {'attr': {'class': 'stroke-input mb-3'}}) }}
-                                                        <div>
-                                                        <div>J'habite...</div>
-                                                         {# {{ form_label(UserForm.postalCode) }} #}
-                                                        {# <input type="text" aria-label="J'habite" class="stroke-input mb-3"> #}
-                                                        {{ form_widget(UserForm.postalCode, {'attr': {'class': 'stroke-input mb-3'}}) }}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="mb-1 align-text"> <!-- je suis né inputx3-->
-                                                  <label for="jesuisné" class="date-wrap"> Je suis né(e) le ...</label>
-                                                  {# {{ form_label(UserForm.age) }}  #}
-                                                  <div class="date-wrap">
-                                                    <input type="text" class="stroke">
-                                                    <p>&nbsp;/&nbsp;</p>
-                                                    <input type="text" class="stroke">
-                                                    <p>&nbsp;/&nbsp;</p>
-                                                    <input type="text" class="stroke-year">
-                                                    {# {{ form_widget(UserForm.age, {'attr': {'class': 'stroke-input mb-3'}}) }} #}
-                                                  </div>
-                                                </div>
-                                                <div class="mb-4  align-text"> <!-- je suis bouton radio -->
-                                                  <div>Je suis ...</div>
-                                                  <div class="flex-end">
-                                                    {# {{ form_label(UserForm.gender) }}  #}
-                                                    <input type="radio" name="inlineRadioOptions" value="Femme" class="form-check-input">
-                                                    <label>F</label>
-                                                    <input type="radio" name="inlineRadioOptions" value="Homme" class="form-check-input">
-                                                    <label>H</label>
-                                                    <input type="radio" name="inlineRadioOptions" value="Non-Binaire" class="form-check-input">
-                                                    <label class="form-check-label">Non-Binaire
-                                                    </label>
-                                                    {# {{ form_widget(UserForm.gender, {'attr': {'class': 'stroke-input form-check-input','style': 'border: none;font-size:18px;'}}) }} #}
-                                                  </div>
-                                                  <div> <!-- Je parle input -->
-                                                    <div>Je parle...</div>
-                                                      <input type="text" aria-label="Je parle" class="stroke-input">
-                                                      {# <div class="language">
-                                                        {{ form_widget(UserForm.language, {'attr': {'class': 'stroke-input mb-3'}}) }}
-                                                      </div> #}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="align-top maDiv col-4 offset-2"> <!-- 2ème partie card -->
-                                          <div class="wrap-bouton mb-1"> <!-- img + btn -->
-                                            <div>
-                                              <img src="assets/img/icones/profil/profil-big.svg" alt="" class="largeur">
-                                            </div>
-                                            <div class="position-bouton">
-                                              {{ form_widget(UserForm.image, {'attr': {'class': 'bouton-smallest-hug size-btn mb-3'}}) }}
-                                              {# <button class="bouton-smallest-hug size-btn mb-3">
-                                                télécharger une photo
-                                              </button> #}
-                                              <button class="bouton-smallest-hug size-btn mb-3">
-                                                choisir un avatar
-                                              </button>
-                                            </div>
-                                          </div>
-                                          <div class="mb-3"> <!-- input 2ème partie card -->
-                                            <div>
-                                              <div class="mt-3">Je bosse dans...</div>
-                                                {# {{ form_label(UserForm.job) }} #}
-                                                <input type="text" aria-label="Je bosse dans" class="stroke-input mb-3"> 
-                                                
-                                              <div class="mt-3">
-                                                {{ form_label(UserForm.description) }}
-                                                {{ form_widget(UserForm.description, {'attr': {'class': 'stroke-input mb-3'}}) }}
-                                                {# <div>Je me décris en quelques mots...</div>
-                                                <input type="text" aria-label="Je me décris" class="stroke-input mb-3"> #}
-                                                {# <br>
-                                                <input type="text" aria-label="Je me décris" class="stroke-input"> #}
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                        <div class="offset-1"> <!-- 3ème partie card -->
-                                          <div> <!-- texte 3ème partie card -->
-                                            <p class="psmall mt-4">Mon régime alimentaire ...</p>
-                                          </div>
-                                          <div> <!-- btn radio -->
-                                            <div class="flex-pref mt-4">
-                                              
-                                              {# {{ form_widget(UserForm.diet) }}
-                                              {{ form_label(UserForm.diet) }} #}
-                                              
-                                              <input type="radio" id="ProfilChoice1" name="choice" value="vegan"
-                                                class="preferences demo2 demoyes">
-                                              <label for="ProfilChoice1">Végan(e)</label>
-                                              <input type="radio" id="ProfilChoice2" name="choice" value="curieux"
-                                                class="preferences demo2 demoyes margin-radio">
-                                              <label for="ProfilChoice2">Curieu(x/se)</label>
-                                              <input type="radio" id="ProfilChoice3" name="choice" value="vegetarien"
-                                                class="preferences demo2 demoyes margin-radio">
-                                              <label for="ProfilChoice3">Végétarien(ne)</label>
-                                              <input type="radio" id="ProfilChoice4" name="choice" value="flexitarien"
-                                                class="preferences demo2 demoyes margin-radio">
-                                              <label for="ProfilChoice4">Flexitarien(ne)</label>
-                                            </div>
-                                          </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </article>
-                    <div class="row">
-                      <div class="jesuisbouton">
-                        <button href="#" class="bouton-smallest-transparent">
-                          suivant
-                        </button>
-                      </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    {# ICI DEUXIEME PAGE #}
+
     <section>
-      <div class="container" id="jaime">
-        <div class="row">
-          <div class="col-12 col-md-3"></div><!--             a quoi a qui???                     -->
-          <div class="colcardjaime col-12 col-md-9">
-            <img src="assets/img/formes/marguerite-framboise.svg" alt="" class="marguerite-profil ">
-            <div class="row"> <!-- TITRE CARD FORMULAIRE -->
-                <div class="col-11 d-flex justify-content-end titrecard z-3 position-relative align-items-baseline">
-                  <a class="me-4 link-jesuis" href="#">
-                    <h2>JE SUIS</h2>
-                  </a>
-                  <a class="me-4 link-jaime active" href="#">
-                    <h2>J'AIME</h2>
-                  </a>
-                  <a href="#" class="link-jeveux">
-                    <h2>JE VEUX</h2>
-                  </a>
+         <div class="container">
+            <div class="row">
+                <div class="col-9 offset-3">
+
+                    <article class="psmall border-card">
+
+                      <div class="row">
+                        <div class="col-11 d-flex justify-content-end titrecard z-3 position-relative align-items-baseline">
+                          <a class="me-4 link-jesuis active" href="#"><!--lien vers page -->
+                              <h2>JE SUIS</h2>
+                          </a>
+                          <a class="me-4 link-jaime" href="#"> <!--lien vers page -->
+                              <h2>J'AIME</h2>
+                          </a>
+                          <a href="#" class="link-jeveux"><!--lien vers page -->
+                              <h2>JE VEUX</h2>
+                          </a>
+                        </div>
+                      </div>
+
+
+                      {# PREMIERE CARD #}
+                      {{ include('user_profil/sections/section-jesuis-edit.html.twig') }}
+                      {# DEUXIEME CARD #}
+                      {{ include('user_profil/sections/section-jaime-edit.html.twig') }}
+                      {# TROISIEME CARD #}
+                      {{ include('user_profil/sections/section-jeveux-edit.html.twig') }}
+
+                  </article>
                 </div>
-                {# <form action="#" method="post"> #}
-                  <div class="row">
-                    <span>Mes centres d'intérêts</span>
-                    <div class="choice col-12 col-md-2"></div><!--             a quoi a qui???                     -->
-                    <div class="col-12 col-md-2 gouts">
-                      <input type="checkbox" class="btn-check" id="btn-check-outlined-1" autocomplete="off">
-                      <label class="btn btn-outline-primary jaimechoice mb-4" for="btn-check-outlined-1">Animaux</label>
-                      <input type="checkbox" class="btn-check" id="btn-check-outlined-2" autocomplete="off">
-                      <label class="btn btn-outline-primary jaimechoice mb-4" for="btn-check-outlined-2">Art et culture</label>
-                      <input type="checkbox" class="btn-check" id="btn-check-outlined-3" autocomplete="off">
-                      <label class="btn btn-outline-primary jaimechoice mb-4" for="btn-check-outlined-3">Musique</label>
-                      <input type="checkbox" class="btn-check" id="btn-check-outlined-4" autocomplete="off">
-                      <label class="btn btn-outline-primary jaimechoice mb-4" for="btn-check-outlined-4">Bien-être</label>
-                      {# {{ form_label(UserForm.centerOfInterest) }}
-                      {{ form_widget(UserForm.centerOfInterest, {'attr': {'class': 'btn btn-outline-primary jaimechoice mb-4'}}) }} #}
-                    </div>
-                    <div class="col-12 col-md-2 gouts">
-                      <input type="checkbox" class="btn-check" id="btn-check-outlined-5" autocomplete="off">
-                      <label class="btn btn-outline-primary jaimechoice mb-4" for="btn-check-outlined-5">Environnement</label>
-                      <input type="checkbox" class="btn-check" id="btn-check-outlined-6" autocomplete="off">
-                      <label class="btn btn-outline-primary jaimechoice mb-4" for="btn-check-outlined-6">Sport</label>
-                      <input type="checkbox" class="btn-check" id="btn-check-outlined-7" autocomplete="off">
-                      <label class="btn btn-outline-primary jaimechoice mb-4" for="btn-check-outlined-7">Danse</label>
-                      <input type="checkbox" class="btn-check" id="btn-check-outlined-8" autocomplete="off">
-                      <label class="btn btn-outline-primary jaimechoice mb-4" for="btn-check-outlined-8">Food</label>
-                      </div>
-                      <div class="col-12 col-md-2 gouts">
-                        <input type="checkbox" class="btn-check" id="btn-check-outlined-9" autocomplete="off">
-                        <label class="btn btn-outline-primary jaimechoice mb-4" for="btn-check-outlined-9">Jeux vidéos</label>
-                        <input type="checkbox" class="btn-check" id="btn-check-outlined-10" autocomplete="off">
-                        <label class="btn btn-outline-primary jaimechoice mb-4" for="btn-check-outlined-10">Voyage</label>
-                        <input type="checkbox" class="btn-check" id="btn-check-outlined-11" autocomplete="off">
-                        <label class="btn btn-outline-primary jaimechoice mb-4" for="btn-check-outlined-11">Sciences</label>
-                        <input type="checkbox" class="btn-check" id="btn-check-outlined-12" autocomplete="off">
-                        <label class="btn btn-outline-primary jaimechoice mb-4" for="btn-check-outlined-12">Activités sociales</label>
-                      </div>
-                      <span>J'en ai d'autres ...</span>
-                      {# {{ form_label(UserForm.centerOfInterestPerso) }} #}
-                      {{ form_widget(UserForm.centerOfInterestPerso, {'attr': {'class': 'stroke-input '}}) }}
-                    {# <input type="text" aria-label="jenaidautres" class="stroke-input"> #}
-                  </div> 
-                {# </form> #}
+
             </div>
-          </div>
-          <div class="row g0">
-            <div class="offset-md-3 col-md-9 d-flex justify-content-between jaimebouton">
-              <a class="bouton-smallest-transparent" href="#">Retour</a>
-              <a class="bouton-smallest-transparent" href="#">Suivant</a>
-            </div>
-          </div>
-        </div>
-      </div>
+         </div>
+
+
+
     </section>
+
+    {
 
     {{ form_widget(UserForm.submit, {'attr': {'class': 'bouton-smallest-transparent '}}) }}
     {{ form_end(UserForm) }}

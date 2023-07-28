@@ -34,11 +34,9 @@ class GroupController extends AbstractController
     #[Route('/select_group', name: 'app_select_group')]
     public function select_group(GroupRepository $groupRepository,UserRepository $userRepository, SessionInterface $sessionInterface,  Request $request , DocumentManager $dm ): Response
     {
-
-        // vérifier que le user est bien connecté
-        if(!$sessionInterface->get('id')){
-            return $this->redirectToRoute('app_login');
-        }
+        // vérifier que le user est bien connecté (et le récupère)
+        if(!$sessionInterface->get('id')) return $this->redirectToRoute('app_login');
+        $user = $userRepository->findUserById($sessionInterface->get('id'));
 
         $group = new Group();
 
@@ -75,13 +73,12 @@ class GroupController extends AbstractController
 
         //Matth Montre les centres d'interets du l'user dans le filtre
         // get id user from session
-        $idSession = $sessionInterface->get('id');
-        $userFromBdd = $userRepository->findUserById($idSession);
+
 
         return $this->render('Group/index.html.twig',[
             'interests' => $interests,
             'allUsers' => $allUser,
-            'userFromBdd' => $userFromBdd,
+            'user' => $user,
             'DateRegister' => $form->createView(), //send the form
 
         ]);
@@ -152,12 +149,19 @@ class GroupController extends AbstractController
     }
 
 
-   
+    // route pour tester
+
 
     #[Route('/resa', name: 'app_resa')]
     public function resa(): Response
     {
         return $this->render('Group/resa.html.twig');
+    }
+
+    #[Route('/date', name: 'app_date')]
+    public function date(): Response
+    {
+        return $this->render('Group/date.todo.html.twig');
     }
 
     /**

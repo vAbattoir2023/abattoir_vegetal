@@ -375,7 +375,7 @@ a.link-jaime.active::after {
 }
 
 /* JE SUIS */
-#jesuis .border-card {
+.border-card {
     background: var(--choux-fleur, #FBFAF4);
     /* style card je suis */
     box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14);
@@ -605,10 +605,10 @@ a.link-jaime.active::after {
 /* JEVEUX */
 
 #jeveuxV2 {
-    background-color: var(--choux-fleur);
-    box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14);
+    /* background-color: var(--choux-fleur);
+    box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14); */
     margin-top: 150px;
-    margin-bottom: 45px;
+    margin-bottom: 135px;
     padding-top: 71px;
     padding-bottom: 71px;
 }
@@ -1157,6 +1157,7 @@ input[type="radio"].btn-check:checked+label {
 /* JE ME CONNECTE */
 
 .card-connexion {
+    position: relative;
     display: flex;
     background: var(--choux-fleur, #FBFAF4);
     box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14);
@@ -1166,19 +1167,20 @@ input[type="radio"].btn-check:checked+label {
 }
 
 #card-connexion .monstera-ptn{
-    top: 250px;
-    right: 875px;
+    bottom: -300px;
+    left: -470px;
 }
 
 #card-connexion .leaf-ptn{
-    top: 175px;
-    right: 310px;
+    top: -20px;
+    
+    right: -300px;
 }
 
 #card-connexion .titre-connexion {
     position: absolute;
-    top: 119px;
-    right: 935px;
+    top: -35px;
+    left: -200px;
 }
 
 #card-connexion .card-liseret {
@@ -1226,12 +1228,17 @@ input:-webkit-autofill:active{
     margin: auto;
     color: var(--foret-noire)
 }
-
-
+#card-connexion .bouton-small-transparent {
+    align-items: center;
+}
+#card-connexion .bouton-small-transparent img {
+    width: 32px;
+    margin-right: 1rem;
+}
 #card-connexion .comment {
     position: absolute;
-    right: 300px;
-    top: 760px;
+    right: -300px;
+    bottom: 0;
     color: var(--foret-noire, #12231A);
     text-decoration: underline !important;
 }
@@ -1265,9 +1272,9 @@ input:-webkit-autofill:active{
 
 }
 
-#card-inscription .monstera-ptn{
-    top: 100px;
-    right: -755px;
+section#inscription .monstera-ptn{
+    top: calc(50%);
+    right: -100px;
 } 
 
 #card-inscription .algue-ptn{

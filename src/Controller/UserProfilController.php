@@ -16,6 +16,42 @@ use Symfony\Component\HttpClient\HttpClient;
 #[Route('/user_profil')]
 class UserProfilController extends AbstractController
 {
+
+    /**
+     * Route vers le profil utilisateur
+     *
+     * @param UserRepository $userRepository
+     * @param SessionInterface $sessionInterface
+     * @return Response
+     */
+    #[Route('/', name: 'app_user_profil_success')]
+    public function success( UserRepository $userRepository, SessionInterface $sessionInterface): Response
+    {
+        // get id user from session
+        $idSession = $sessionInterface->get('id');
+
+        if(!$idSession){
+            return $this->redirectToRoute('app_home');
+        }
+
+        // get document user from database
+        $userFromBdd = $userRepository->findUserById($idSession);
+
+        return $this->render('user_profil/profil.html.twig', [
+            // send data user from database
+            'user' => $userFromBdd,
+        ]);
+    }
+    
+    /**
+     * Route vers le profil utilisateur (en mode edition)
+     *
+     * @param Request $request
+     * @param UserRepository $userRepository
+     * @param DocumentManager $documentManager
+     * @param SessionInterface $sessionInterface
+     * @return Response
+     */
     #[Route('/edit', name: 'app_user_profil')]
     public function index(Request $request, UserRepository $userRepository, DocumentManager $documentManager, SessionInterface $sessionInterface): Response
     {
@@ -130,22 +166,5 @@ class UserProfilController extends AbstractController
         return new Response('test');
     }
 
-    #[Route('/profil', name: 'app_user_profil_success')]
-    public function success( UserRepository $userRepository, SessionInterface $sessionInterface): Response
-    {
-        // get id user from session
-        $idSession = $sessionInterface->get('id');
 
-        if(!$idSession){
-            return $this->redirectToRoute('app_home');
-        }
-
-        // get document user from database
-        $userFromBdd = $userRepository->findUserById($idSession);
-
-        return $this->render('user_profil/profil.html.twig', [
-            // send data user from database
-            'user' => $userFromBdd,
-        ]);
-    }
 }
