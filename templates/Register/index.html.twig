@@ -24,7 +24,7 @@
                                         {{ form_errors(FormRegister)}}
                                         {{ form_start(FormRegister)}}    
                                                             
-                                        {{ form_label(FormRegister.email) }}
+                                       
                                         {{ form_widget(FormRegister.email, {'attr': {'class': 'bouton-small-transparent size-connexion'}}) }}
 
                                     
@@ -32,8 +32,9 @@
 
                                         
                                         <p class="MDP-center psmallest  mt-4">
-                                        {{ form_label(FormRegister.terms) }}
+                                       
                                         {{ form_widget(FormRegister.terms) }}
+                                         {{ form_label(FormRegister.terms) }}
                                         
                                         
 
@@ -44,7 +45,7 @@
 
                                     
                                 
-                                        <a href="#" class="bouton-small-transparent size-bouton mt-4">
+                                        <a >
                                             {{ form_widget(FormRegister.submit) }}
                                         </a>
 
