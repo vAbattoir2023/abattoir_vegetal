@@ -25,17 +25,25 @@ class RegisterType extends AbstractType
             ])
 
             ->add('password', RepeatedType::class,[
+            
+             
                 'first_name' => 'Password',
                 'second_name' => 'Confirm',
+
                 'first_options'  => ['attr' => 
                     [
-                        'class' => 'bouton-small-transparent size-connexion mt-2'
-                    ]
+                        'class' => 'bouton-small-transparent size-connexion mt-2',
+                        'placeholder' => 'Mot de passe',
+                    ],
+
+                    'label' => false,
                 ],
                 'second_options' => ['attr' => 
                     [
-                        'class' => 'bouton-small-transparent size-connexion mt-2'
-                    ]
+                        'class' => 'bouton-small-transparent size-connexion mt-2',
+                        'placeholder' => 'Confirmez votre mot de passe',
+                    ],
+                    'label' => false,
                 ],
                 'attr' => [
                     'placeholder' => 'Mot de passe',
@@ -48,7 +56,8 @@ class RegisterType extends AbstractType
             'property_path' => 'termsAccepted'])
 
                    ->add('submit', SubmitType::class, [
-                    'label' => 'S\'enregistrer'
+                    'label' => 'S\'inscrire'                    ,
+                      'attr' => ['class' => 'bouton-small-transparent size-bouton mt-4'],
                 ]);
     }
 

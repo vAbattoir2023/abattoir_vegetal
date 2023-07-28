@@ -484,6 +484,11 @@ a.link-jaime.active::after {
     padding-bottom: 7%;
     margin-bottom: 52px;
   }
+ 
+  #jesuisprofil .maDiv {
+    vertical-align: top;
+    display: inline-block;
+  }  
 
 
 

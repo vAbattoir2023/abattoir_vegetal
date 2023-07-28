@@ -65,50 +65,12 @@
             
                                                 <p class="tag mt-2"><img src="../assets/img/icones/selection/selection-genre-off.svg" alt=""> {{ user.gender }}</p>
                                             </div>
-                                          {#
-                                            <div class="col-4 tag-prefs">
-                                                <div class="tag-menthe d-flex flex-column align-items-end mt-3">
-                                                    <p class="tag-menthe-small psmall tag">Curieux</p>
-                                                    <p class="tag-menthe-small psmall tag">Groupe</p>
-                                                </div>
-                                            </div>
-                                            #}
+                                         
                                         </div>
-                                               {#
-                                                <div class="row">
-
-                                                    <div class="col jm">
-
-                                                        <p class="pbold mt-4">J'aime...</p>
-                                                        <div class="col d-flex align-items-start">
-                                                            <p class="tag-jaune-small psmall tag me-auto">Animaux</p>
-                                                            <p class="tag-jaune-small psmall tag me-auto">Art</p>
-                                                            <p class="tag-jaune-small psmall tag me-auto">Danse</p>
-                                                            <p class="tag-jaune-small psmall tag">Activités sociales</p>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                                #}
+                                               
 
                                         <p class="col-12 citation"> {{ user.description }} </p>
-                                                {#
-                                                <div class="row">
-
-                                                    <div class="col jerfuse">
-
-                                                        <p class="pbold mt-4">Je refuse...</p>
-                                                        <div class="col d-flex align-items-start">
-                                                            <p class="tag-jaune-small psmall tag me-3">Racistes</p>
-                                                            <p class="tag-jaune-small psmall tag me-3">Vegans</p>
-                                                            <p class="tag-jaune-small psmall tag me-3">Jeux d'argent</p>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                                #}
+                                               
 
 
                                     </div>
@@ -120,7 +82,7 @@
 
                 </div> <!--fin col - 4-->
 
-                 <div class="col-8">
+                <div class="col-8">
                     <div class="z-2">
                         <article id="jesuisprofil" class="psmall border-card">
 
@@ -171,12 +133,7 @@
                                                     <div class="date-wrap">
                                                         
                                                         <p> {{ user.age }}</p>
-                                                        {#
-                                                        <input type="text" class="stroke">
-                                                        <input type="text" class="stroke">
-                                                        <p>&nbsp;/&nbsp;</p>
-                                                        <input type="text" class="stroke-year">
-                                                        #}
+                                                       
                                                     </div>
                                                 </div>
                                                 <div class="mb-4 date-wrap align-text"> <!-- je suis bouton radio -->
@@ -184,18 +141,7 @@
                                                     <div class="flex-end">
 
                                                     <p> {{ user.gender }}</p>
-                                                       {#
-                                                        <input type="radio" name="inlineRadioOptions" value="Femme"
-                                                            class="form-check-input">
-                                                        <label>F</label>
-                                                        <input type="radio" name="inlineRadioOptions" value="Homme"
-                                                            class="form-check-input">
-                                                        <label>H</label>
-                                                        <input type="radio" name="inlineRadioOptions"
-                                                            value="Non-Binaire" class="form-check-input">
-                                                        <label class="form-check-label">Non-Binaire
-                                                        </label>
-                                                        #}
+                                                       
                                                     </div>
                                                 </div>
                                                 <div> <!-- Je parle input -->
@@ -211,71 +157,31 @@
                                             </div>
                                         </div>
                                         <div class="align-top maDiv col-4 offset-2"> <!-- 2ème partie card -->
-                                            {#
-                                            <div class="wrap-bouton mb-1"> <!-- img + btn -->
-                                                <div>
-                                                    <img src="Assets/ICONES/profil/profil-big.svg" alt=""
-                                                        class="largeur">
-                                                </div>
-                                                <div class="position-bouton">
-                                                    <button class="bouton-smallest-hug size-btn mb-3">
-                                                        télécharger une photo
-                                                    </button>
-                                                    <button class="bouton-smallest-hug size-btn mb-3">
-                                                        choisir un avatar
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            #}   
-                                            <div class="mb-3"> <!-- input 2ème partie card -->
-                                                <div>
-                                                    <div class="mt-3">Je bosse dans...</div>
+                                              
+                                                <div class="mb-3"> <!-- input 2ème partie card -->
+                                                    <div>
+                                                        <div class="mt-3">Je bosse dans...</div>
 
-                                                    <p>{{ user.job }}</p>
+                                                        <p>{{ user.job }}</p>
 
-                                                    {#
-                                                    <input type="text" aria-label="Je bosse dans" class="stroke-input mb-3">
-                                                    #}
-                                                    <div class="mt-3">
-                                                        <div>Je me décris en quelques mots...</div>
-                                                        <p> {{ user.description }}</p>
                                                         {#
-                                                        <input type="text" aria-label="Je me décris"
-                                                            class="stroke-input mb-3">
-                                                        <br>
-                                                        <input type="text" aria-label="Je me décris"
-                                                            class="stroke-input">
-                                                        #}    
+                                                        <input type="text" aria-label="Je bosse dans" class="stroke-input mb-3">
+                                                        #}
+                                                        <div class="mt-3">
+                                                            <div>Je me décris en quelques mots...</div>
+                                                            <p> {{ user.description }}</p>
+                                                           
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                         </div>
+
                                         <div class="offset-1"> <!-- 3ème partie card -->
                                             <div>Mon régime alimentaire ...</div>
                                             <div> 
                                                 <p class="psmall mt-4">{{ user.diet }}</p>
                                             </div>
 
-                                            {#
-                                            <div> <!-- btn radio -->
-                                                <div class="flex-pref mt-4">
-                                                    <input type="radio" id="ProfilChoice1" name="choice" value="vegan"
-                                                        class="preferences demo2 demoyes">
-                                                    <label for="ProfilChoice1">Végan(e)</label>
-                                                    <input type="radio" id="ProfilChoice2" name="choice" value="curieux"
-                                                        class="preferences demo2 demoyes margin-radio">
-                                                    <label for="ProfilChoice2">Curieu(x/se)</label>
-                                                    <input type="radio" id="ProfilChoice3" name="choice"
-                                                        value="vegetarien"
-                                                        class="preferences demo2 demoyes margin-radio">
-                                                    <label for="ProfilChoice3">Végétarien(ne)</label>
-                                                    <input type="radio" id="ProfilChoice4" name="choice"
-                                                        value="flexitarien"
-                                                        class="preferences demo2 demoyes margin-radio">
-                                                    <label for="ProfilChoice4">Flexitarien(ne)</label>
-                                                </div>
-                                            </div>
-                                            #}
                                         </div>
                                         
                                     </div>
