@@ -5,8 +5,117 @@
 {% endblock %}
 
 {% block body %}
-    {{ include('_header.html.twig') }}
-        <ul>
+    {# {{ include('_header.html.twig') }} #}
+    <main style="margin-bottom: 150px;">
+        <div class="container"> <!-- MARGES -->
+            <div class=" d-flex justify-content-between align-items-center titreresa"> <!-- TITRE + BOUTON -->
+                <h1> Mes réservations </h1>
+                <a class="bouton-small d-flex boutonresa" href="#">GIMME A FRIEND</a>
+            </div>
+            <div class="row"></div><!--                le revoila                  -->
+            <div class="row"> <!-- 12 COLONNES AU MILIEUUUU -->
+                <!-- debut de la boucle pour injecter les groupe-->
+                 {# {% for group in groups %} #}
+                <div class="col-2"> <!-- CARD RESA PETITE -->
+                    <div class="mesresassmall mt-5 position-relative d-flex flex-column justify-content-between mx-auto">
+                        <div class="d-flex justify-content-end">
+                            <img class="statut" src="../assets/img/icones/curseur/curseur-big-confirme.svg" alt="">
+                        </div>
+                        <div class="datebig">
+                            <p>
+                            1987/11/03
+                            {# {{ group.createdAt|date('Y-m-d') }} #}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2"> <!-- CARD RESA PETITE 02 -->
+
+                    <div class="mesresassmall mt-5 position-relative d-flex flex-column justify-content-between">
+                        <div class="d-flex justify-content-end">
+                            <img class="statut" src="../assets/img/icones/curseur/curseur-big-refuse.svg" alt="">
+                        </div>
+                        <div class="datebig">
+                            <p>22/07/2023</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2"> <!-- CARD RESA PETITE 03-->
+                    <div class="mesresassmall mt-5 position-relative d-flex flex-column justify-content-between">
+                        <div class="d-flex justify-content-end">
+                            <img class="statut" src="../assets/img/icones/curseur/curseur-big-enattente.svg" alt="">
+                        </div>
+                        <div class="datebig">
+                            <p>25/07/2023</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6"> <!-- CARD RESA BIG -->
+                    <div class="mesresasbig mt-5 row g-0">
+                        <div class="offset-1 col-10"> <!-- INTERIEUR CARD RESA BIG -->
+                            <div class="d-flex justify-content-between align-items-center mb-5"> <!-- PARTIE 01 -->
+                                <div class="d-flex justify-content-between align-items-baseline">
+                                    <p class="datesmall me-3">
+                                    {# {{ group.createdAt|date('Y-m-d') }} #}
+                                    1987/11/03
+                                    </p>
+                                    <p class="mesresasheure me-5">12h00</p><!--   en brut     -->
+                                    <p class="statutbig">
+                                    {# {{ group.status }} #}
+                                    </p>
+                                </div>
+                                <div class="close">
+                                    <img src="assets/img/icones/croix/croix-noire-big.svg" alt="">
+                                </div>   
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center quimange mb-5">
+                                <!-- PARTIE 02 -->
+                                <div class="d-flex">
+                                    <div class="me-2">
+                                        <h4>Qui mange ?</h4>
+                                        <p class="psmallest">
+                                        {# {{ group.guests|length }} #}
+                                         personnes</p>
+                                    </div>
+                                    <div>
+                                        {# {% for guest in group.guests %} #}
+                                            {# <img class="m-2" src="{{ guest.image}}" alt="{{ guest.username}}"> #}
+                                            <img class="m-2" src="../assets/img/Rectangle-188.jpg"  alt="">
+                                            <img class="m-2" src="../assets/img/Rectangle-188.jpg" alt="">
+                                            <img src="../assets/img/Rectangle-188.jpg" alt="">
+                                        {# {% endfor %} #}
+                                    </div>
+                                </div>
+                                <a href="#"> <img class="add" src="assets/img/icones/add/+.svg" alt=""></a>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center"> <!-- PARTIE 03 -->
+                                <div class="d-flex">
+                                    <div class="me-5 commentaires">
+                                        <a href="">2 commentaires</a>
+                                        <p class="com"> 
+                                        <img src="assets/img/icones/commentaire/foret-com.svg" alt="">
+                                        Commenter
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-start flex-column mesresasboutons">
+                                    <a class="bouton-smallest-transparent d-flex mb-2" href="#">confirmer</a>
+                                    <a class="bouton-smallest-transparent d-flex" href="#">reserver</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {# {% endfor %} #}
+            </div>
+        </div>
+    </main>
+    {{ include('_footer.html.twig') }}
+
+
+
+
+        {# <ul>
             {% for group in groups %}
                 <li>
                     <p>{{ group.createdAt|date('Y-m-d') }}</p>
@@ -14,12 +123,12 @@
                     <p>{{ group.guests|length }} personnes</p>
                     <ul>
                         {% for guest in group.guests %}
-                            <li>{{ guest.username}}</li>
+                            <li>{{ guest.username}}</li>{{ user.image }}
                         {% endfor %}
                     </ul>
                 </li>
             {% endfor %}
-        </ul>
+        </ul> #}
 {% endblock %}
 
 {% block javascripts %}<script src="{{ asset('./assets/js/resa.js')}}"></script> {% endblock %}

@@ -1756,5 +1756,9 @@ input:-webkit-autofill:active{
         border : none;
      }
 
+     .langage {
+        flex-wrap: wrap;
+        width: 50%;
+     }
     
     /* FIN DU CSS FOOTER */

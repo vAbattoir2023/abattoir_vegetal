@@ -70,8 +70,8 @@ class UserType extends AbstractType
                     'class' => 'form-control'
                 ],
                 'choices'  => [
-                    'Homme' => 'Homme',
-                    'Femme' => 'Femme',
+                    'H' => 'H',
+                    'F' => 'F',
                     'Non-binaire' => 'Non-binaire'
                 ],
                 'multiple' => false,

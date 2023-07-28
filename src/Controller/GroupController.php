@@ -152,6 +152,14 @@ class GroupController extends AbstractController
     }
 
 
+   
+
+    #[Route('/resa', name: 'app_resa')]
+    public function resa(): Response
+    {
+        return $this->render('Group/resa.html.twig');
+    }
+
     /**
      * Route d'ajout d'une personne à un group d'amis
      *
@@ -280,4 +288,6 @@ class GroupController extends AbstractController
 
     //     ]);
     // }
+
+
 }

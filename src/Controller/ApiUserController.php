@@ -75,9 +75,9 @@ class ApiUserController extends AbstractController
 
 
                     if ($gender === 'female') {
-                        $gender = 'femme';
+                        $gender = 'f';
                     } elseif ($gender === 'male') {
-                        $gender = 'homme';
+                        $gender = 'h';
                     }
 
                     // Attribuer les valeurs au document USER
