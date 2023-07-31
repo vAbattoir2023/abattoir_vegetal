@@ -130,10 +130,10 @@ class UserType extends AbstractType
                     'Fléxitarien(ne)' => 'Fléxitarien(ne)'
                 ],
                 'choice_attr' => [
-                    'Végan(ne)' => ['class' => 'btn btn-outline-danger'],
-                    'Curieu(x/se)' => ['class' => 'btn btn-outline-danger'],
-                    'Végétarien(ne)' => ['class' => 'btn btn-outline-danger'],
-                    'Fléxitarien(ne)' => ['class' => 'btn btn-outline-danger'],
+                    'Végan(ne)' => ['class' => 'preferences demo2 demoyes margin-radio'],
+                    'Curieu(x/se)' => ['class' => 'preferences demo2 demoyes margin-radio'],
+                    'Végétarien(ne)' => ['class' => 'preferences demo2 demoyes margin-radio'],
+                    'Fléxitarien(ne)' => ['class' => 'preferences demo2 demoyes margin-radio'],
                 ],
                 'multiple' => false,
                 'expanded' => true
