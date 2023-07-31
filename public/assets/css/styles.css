@@ -612,10 +612,12 @@ a.link-jaime.active::after {
 #jeveuxV2 {
     /* background-color: var(--choux-fleur);
     box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14); */
-    margin-top: 150px;
-    margin-bottom: 135px;
+    margin-top: 20px;
+    margin-bottom: 66px;
     padding-top: 71px;
     padding-bottom: 71px;
+
+    
 }
 
 #jeveuxV2 .jeveuxchoice {
