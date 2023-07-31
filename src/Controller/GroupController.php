@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use MongoDB\BSON\ObjectId;
+use SessionIdInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -165,9 +166,18 @@ class GroupController extends AbstractController
     }
 
     #[Route('/date', name: 'app_date')]
-    public function date(): Response
+    public function date(SessionInterface $sessionInterface, UserRepository $userRepository): Response
     {
-        return $this->render('Group/date.todo.html.twig');  
+         // vérifier que le user est bien connecté (et le récupère)
+         if(!$sessionInterface->get('id')) return $this->redirectToRoute('app_login');
+         $user = $userRepository->findUserById($sessionInterface->get('id'));
+
+        return $this->render('Group/date.todo.html.twig',[
+            
+            'user' => $user,
+            
+
+        ]);  
     }
 
     /**

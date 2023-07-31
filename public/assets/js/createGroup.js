@@ -46,15 +46,21 @@ document.addEventListener('DOMContentLoaded', (e) => {
     url += filtersStr;
 
     const idUsers = [];
-
+    /**
+     * envoie les filtre des check box coter back via url et
+     * appel les utilisateur via la bdd a chaque checkbox activer ou pas
+     */
     fetch(url)
       .then(response => {
-        //console.log(response);
+        
         return response.text();
       })
       .then(html => {
         document.getElementById('users_list').innerHTML = html;
-        
+        /**
+         * rapel la fonction d'initialisation des bouton de zoom
+         *  a chaque rechargement de la page et des profil
+         */
         initEventsForZoom();
 
         // let idUser = document.querySelectorAll('#idUser')

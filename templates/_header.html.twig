@@ -2,9 +2,25 @@
 
     <header>
     <nav class="d-flex justify-content-between header01">
-            <div class="d-flex"> <!-- MENU BURGER -->
+           {#} <div class="d-flex"> <!-- MENU BURGER -->
                 <a href="#"><img src="../assets/img/icones/menuburger/menu-burger-dark.svg" alt=""></a>
+            </div>#}
+
+            <div class="nav-item dropdown d-flex justify-content-start m-5 mb-0">
+                <a  class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="../assets/img/icones/menuburger/menu-burger-dark.svg" alt="">
+                </a>
+                <div class="dropdown-menu">
+                    <div><a class="dropdown-item" href="{{ path('app_select_group') }}">gimme a friend</a></div>
+                    <div><a class="dropdown-item" href="{{ path('app_date') }}">date</a></div>
+                    <div><a class="dropdown-item" href="{{ path('app_home') }}">home</a></div>
+                    <div><a class="dropdown-item" href="{{ path('app_logout') }}">deconnexion</a></div>
+                    
+
+                </div>
             </div>
+
+
 
             <a id="logo" href="#"> <!-- LOGO -->
                 <img src="../assets/img/logo/abattoir-vegetal-logo-medium-dark.svg" alt="Logo yogasaloon">
@@ -23,9 +39,25 @@
 {% else %}
     <header class="mt-3 mb-5 d-flex justify-content-between">
 
-           <div class="d-flex justify-content-start m-5"> <!-- MENU BURGER -->
+           {#<div class="d-flex justify-content-start m-5"> <!-- MENU BURGER -->
                 <a href="#"><img src="../assets/img/icones/menuburger/menu-burger-dark.svg" alt=""></a>
+            </div>#}
+
+            <div class="nav-item dropdown d-flex justify-content-start m-5 mb-0">
+                <a  class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="../assets/img/icones/menuburger/menu-burger-dark.svg" alt="">
+                </a>
+                <div class="dropdown-menu">
+                    <div><a class="dropdown-item" href="{{ path('app_resa') }}">gimme a friend</a></div>
+                    <div><a class="dropdown-item" href="{{ path('app_date') }}">date</a></div>
+                    <div><a class="dropdown-item" href="{{ path('app_home') }}">home</a></div>
+                    <div><a class="dropdown-item" href="{{ path('app_logout') }}">deconnexion</a></div>
+                    
+
+                </div>
             </div>
+
+
     
             <a id="logo" href="#" class="mt-1"> <!-- LOGO -->
                 <img src="../assets/img/logo/abattoir-vegetal-logo-medium-dark.svg" alt="Logo yogasaloon">
@@ -49,3 +81,9 @@
         </nav>
     </header>
  {% endif %}
+
+
+
+
+
+        

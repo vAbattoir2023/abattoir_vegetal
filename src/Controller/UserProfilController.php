@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Document\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use DateTime;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,6 +13,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\Validator\Constraints\Date;
+use Symfony\Component\VarDumper\Cloner\Data;
 
 #[Route('/user_profil')]
 class UserProfilController extends AbstractController
@@ -79,6 +82,12 @@ class UserProfilController extends AbstractController
 
         // if data from form is submitted and valid
         if ($form->isSubmitted() && $form->isValid()) {
+            $dateNaissance = date_create($request->get('annee').'-'.$request->get('mois').'-'.$request->get('jour'));
+            $d2 = new DateTime();
+            $diff = $dateNaissance->diff($d2);
+            $user->setAge($diff->y);
+
+            //dd($user);
 
             $selectedLanguages = $form->get('language')->getData();
             $flagIconUrl = [];

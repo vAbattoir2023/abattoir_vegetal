@@ -38,6 +38,7 @@ class RegisterController extends AbstractController
             if($userRepository->checkUserRegister($user->getEmail())){
                 $messageAlert = 'cet email existe déjà';
             }else{
+               
                 $passwordHash = password_hash($user->getPassword(), PASSWORD_BCRYPT); // hash password from form 
                 $user->setPassword($passwordHash); // update password in User class
                 $userRepository->save($user); // Post user to database
