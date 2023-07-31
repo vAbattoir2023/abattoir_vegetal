@@ -1,14 +1,11 @@
- <article class="card-user card-small" id="card-{{user.id}}">
+ <article class="card-user card-small" id="card-{{user.id}}"><!-- CLASSE PERMETTANT DAGRANDIR LA CARTE -->
     <div class="entiere">
         <div>
             <img class="img-user"
                 src="{{ user.image }}" alt="">
         </div>
-
         <div class="description">
-
-            <!-- LIGNE NOM ET DRAPEAUX -->
-            <div class="row">
+            <div class="row"> <!-- NOM DRAPEAU DE LANGAGE PARLER -->
                 <div class="col-8">
                     <p class="pbold tag">{{ user.username }}
                     <img src="../assets/img/icones/zodiac/zodiac-capricorne.svg" alt=""></p>
@@ -19,9 +16,7 @@
                     {% endfor %}                 
                 </div>
             </div>
-
-            <div class="row">
-
+            <div class="row"><!--  REGION/AGE/GENRE   -->
                 <div class="col-8 infos-contact">
                     <p class="tag mt-3">
                         <img src="../assets/img/icones/infos-contact/localisation.svg" alt=""> {{ user.city }}
@@ -33,30 +28,17 @@
                         <img src="../assets/img/icones/selection/selection-genre-off.svg" alt="">{{ user.gender }}
                     </p>
                 </div>
-
-                {# <div class="col-4 tag-prefs">
-                    <div class="tag-menthe d-flex flex-column align-items-end mt-3">
-                        <p class="tag-menthe-small psmall tag">{{ user.centerOfInterestPerso }}</p>
-                        
-                    </div>
-                </div> #}
             </div>
 
-            <div class="row">
-
+            <div class="row"><!-- CENTRE DINTERRET  -->
                 <div class="col jm">
-
                     <p class="pbold mt-4">J'aime...</p>
                     <div class="col d-flex flex-wrap align-items-start">
                         {% for interest in user.centerOfInterest %}  
                             <p class="tag-jaune-small psmall tag me-auto">{{ interest }}</p>
                         {% endfor %}
-                        
-                        {# <p class="tag-jaune-small psmall tag">Activités sociales</p> #}
                     </div>
-
                 </div>
-
             </div>
 
             <p class="col-12 citation">«{{ user.description }}»</p>
@@ -77,9 +59,7 @@
             </div>
 
             <div class="col-12 boutons d-flex mt-5">
-                {# <img class="me-auto a-cacher" src="../assets/img/icones/zoom/zoom-retrecir.svg" alt=""> #}
-
-                <div class="bt-zoom me-3" data-card="card-{{user.id}}"></div>
+                <div class="bt-zoom me-3" data-card="card-{{user.id}}"></div><!-- BOUTON DE ZOOM DE CARTE AVEC LA DATA CARD APELLER COTER J.S -->
                    
                 <a href="#" class="bouton-small-transparent reduire">gimme this friend</a>
             </div>
