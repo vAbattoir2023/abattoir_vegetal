@@ -1347,6 +1347,7 @@ section#inscription .monstera-ptn{
     box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14);
     background-color: var(--choux-fleur, #FBFAF4);
     padding: 16px;
+    position: relative;
 }
 
 #commentcamarche .border1 {
@@ -1358,8 +1359,8 @@ section#inscription .monstera-ptn{
 #commentcamarche .numero1 {
     position: absolute;
     color: var(--orange-sanguine);
-    top: 450px;
-    right: 1598px;
+    top: -15px;
+    left: -15px;
 }
 
 #commentcamarche .feuille-ptn1 {
@@ -1375,8 +1376,8 @@ section#inscription .monstera-ptn{
 #commentcamarche .numero2 {
     position: absolute;
     color: var(--menthe-givree);
-    top: 450px;
-    right: 1105px;
+    top: -15px;
+    left: -15px;
 
 }
 
@@ -1395,8 +1396,8 @@ section#inscription .monstera-ptn{
 #commentcamarche .numero3 {
     position: absolute;
     color: var(--framboise-ecrasee);
-    top:450px;
-    right: 610px;
+    top: -15px;
+    left: -15px;
 }
 
 #commentcamarche .feuille-ptn3 {
