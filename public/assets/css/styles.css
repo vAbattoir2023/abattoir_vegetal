@@ -1,3 +1,7 @@
+
+
+
+
 /* *************
 COMMUN
 ************** */
@@ -908,7 +912,9 @@ input[type="radio"].btn-check:checked+label {
 
 /* RESERVER */
 #reserver{
-    margin-top: 6rem;
+    margin-top: 4rem;
+    margin-bottom:4rem ;
+    z-index: -1;
 }   ²
 
 #reserver .title-screen{
@@ -928,32 +934,42 @@ input[type="radio"].btn-check:checked+label {
 }
 
 #reserver .algue{
-    width: 11rem;
-    height: 31.25rem;
-    top: 20rem;
-    right: 74rem;
-    animation: move-algue-reserver ease-in-out 600ms;
+    display: flex;
+    width: 173.283px;
+    height: 499.977px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 231px;
+    margin-left: -65px;
+   
+    
 }
 
 #reserver .bande-orange{
-    height: 105rem;
+    height:742px;
     width: 32rem;
     background-color: var(--orange-sanguine);
-    top: -50rem;
+    top: -3rem;
     left: 60rem;
+    
+  
 }
 
 /* Calendrier */
 
 #reserver .fond-calendar{
     padding: 1rem;
-    background-color: var(--choux-fleur);
     box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14);
+    
+    
+   
 }
 
 #reserver .lisere-calendar{
     border: 2px solid var(--orange-sanguine);
     padding: 2rem;
+   
 }
 
 #reserver .numeros{
@@ -964,6 +980,7 @@ input[type="radio"].btn-check:checked+label {
 #reserver .calendar{
     margin: auto;
     width: 350px;
+    z-index: -100;
 }
 
 #reserver .header-calendar{
@@ -1724,6 +1741,7 @@ section#inscription .monstera-ptn{
         background-color: var(--foret-noire);
         padding-top: 60px;
         padding-bottom: 60px;
+        
     }
 
     footer .lienresto {

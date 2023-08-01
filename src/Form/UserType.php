@@ -59,6 +59,7 @@ class UserType extends AbstractType
             // ])
 
             ->add('age', IntegerType::class, [
+                'mapped' => false,
                 'attr' => [
                     'class' => 'form-control'
                 ]
