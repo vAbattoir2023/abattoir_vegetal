@@ -4,7 +4,7 @@
 {% block body %}
 
 
-<section id="inscription" style="margin-top: -200px;">
+<section id="inscription">
     <img src="../assets/img/formes/monstera-medium-menthe-horizontal.svg" alt=""
                                 class="position-absolute monstera-ptn">
         <div class="container">
@@ -51,10 +51,9 @@
 
                                     
                                         <a href="#" class="bouton-small-transparent size-bouton mt-4 mb-3">
-                                        <img src="./assets/img/logo/logo-google.svg" alt="" class="logo-google">
-                                        INSCRIPTION VIA GOOGLE
-                                    </a>
-                                        <a href="#" class="MDP-center underline mt-4 psmallest">
+                                            JE ME CONNECTE AVEC GOOGLE
+                                        </a>
+                                        <a href="{{ path('app_login') }}" class="MDP-center underline mt-4 psmallest">
                                             Se connecter
                                         </a>
                                     
@@ -65,7 +64,7 @@
                         </div>
                     {{ form_end(FormRegister, {render_rest: false})}}
     
-                                 <a href="" class="comment">
+                                 <a href="#" class="comment" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                  <img src="../assets/img/icones/emojidoigt.svg" alt="">Comment ça marche ?
                                 </a>
                     </article>
@@ -78,6 +77,52 @@
         <div>{{ alert }}</div>
     {% endif  %}
 
+    <!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="container">
+                    <div class="d-flex justify-content-end">
+                        <img src="./assets/img/icones/croix/croix-fleur-orange-big.svg" alt="" class="cross-popup"  data-bs-dismiss="modal" aria-label="Close">
+                    </div>
+                    <div id="commentcamarche" class="row text-center d-flex flex-wrap">
+                        <h1 class="titre mt-5 mb-5">comment ça marche ?</h1>
+                        <article class="cardinscris col-3">
+                            <p class="numeros numero1">1</p>
+                            <img src="/assets/img/formes/monstera-small-menthe-vertical.svg" alt="" class="z-n1 position-absolute feuille-ptn1">
+                            <div class="border1">
+                                <img src="/assets/img/icones/legumes/carotte.svg" alt="" class="mt-4 mb-4">
+                                <h2 class="mt-3">je m'inscris</h2>
+                                <p class="psmallest mt-4 mb-3">Crée toi un compte chez nous pour suivre tes demandes et réservations !</p>
+                            </div>
+                        </article>
+                        <article class=" cardinscris col-3 margin2 align-items-center">
+                            <p class="numeros numero2">2</p>
+                            <img src="/assets/img/formes/feuille-big-framboise-envers.svg" alt="" class="z-n1 position-absolute feuille-ptn2 feuille-taille">
+                            <div class=" border2">
+                                <img src="/assets/img/icones/legumes/radis.svg" alt="" class="mt-4 mb-5">
+                                <h2 class="">je&nbsp;me&nbsp;décris</h2>
+                                <p class="psmallest mt-4 mb-3">Remplis ton profil afin que les autres puissent savoir qui tu es pour apâter le chalan</p>
+                            </div>
+                        </article>
+                        <article class="cardinscris col-3 margin2 align-items-center">
+                            <p class="numeros numero3">3</p>
+                            <img src="/assets/img/formes/marguerite-orange.svg" alt="" class="z-n1 position-absolute feuille-ptn3">
+                            <div class="border3">
+                                <img src="/assets/img/icones/legumes/pois.svg" alt="" class="mt-4 mb-5">
+                                <h2 class=" mb-4">je choisis</h2>
+                                <p class="psmallest mb-3">Choisis avec qui tu veux manger en fonction de ce qu’ils ont remplis dans leur profil</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</div>
+
 
     
     
@@ -89,3 +134,7 @@
     #} 
 
 {% endblock %}
+
+
+
+

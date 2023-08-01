@@ -7,7 +7,7 @@
             
 <section id="profil">
     
-    <div class="rectangle"></div>
+    <div class="rectangle z-n1"></div>
 
 
     <div class="container"> <!-- MARGES -->
@@ -38,7 +38,7 @@
                             <div class="col-4 d-flex justify-content-end">
 
                                 {% for languageCode in user.language %}
-                                    <p>{{languageCode}}</p>
+                                    <p class="drapeau tag "><img src="https://www.countryflagicons.com/SHINY/32/{{ languageCode }}.png" alt="{{ languageCode }}"></p>
                                 {% endfor %}
                             </div>
                             <div class="row">
@@ -123,9 +123,11 @@
                                                     <div>
                                                         Je parle...
                                                     </div>
-                                                           {% for languageCode in user.language %}
-                                                          <p>{{languageCode}}</p>
-                                                           {% endfor %}
+                                                        <div class="d-flex">
+                                                            {% for languageCode in user.language %}
+                                                                <p class="drapeau tag "><img src="https://www.countryflagicons.com/SHINY/32/{{ languageCode }}.png" alt="{{ languageCode }}"></p>
+                                                            {% endfor %}
+                                                        </div>
                                                    {# 
                                                     <input type="text" aria-label="Je parle" class="stroke-input">
                                                     #}
