@@ -101,8 +101,8 @@
             <div> <!-- btn radio -->
                 <div class="flex-pref mt-4">
                 
-                {# {{ form_widget(UserForm.diet) }}
-                {{ form_label(UserForm.diet) }} #}
+                {{ form_widget(UserForm.diet) }}
+               {#} {{ form_label(UserForm.diet) }} 
                 
                 <input type="radio" id="ProfilChoice1" name="choice" value="vegan"
                     class="preferences demo2 demoyes">
@@ -116,6 +116,7 @@
                 <input type="radio" id="ProfilChoice4" name="choice" value="flexitarien"
                     class="preferences demo2 demoyes margin-radio">
                 <label for="ProfilChoice4">Flexitarien(ne)</label>
+                {#}
                 </div>
             </div>
         </div>
