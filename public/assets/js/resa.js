@@ -1,3 +1,5 @@
+/*
+
 function toggleDiv(ticket) {
     let div = ticket.nextElementSibling;
     if (div.style.display === 'none') {
@@ -6,3 +8,4 @@ function toggleDiv(ticket) {
         div.style.display = 'none';
     }
 }
+*/

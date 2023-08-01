@@ -564,7 +564,7 @@ a.link-jaime.active::after {
     color: var(--foret-noire);
     font-size: 18px;
     width: 175px;
-    margin-top: 25px;
+    margin-top: 5px;
     margin-bottom: 49px;
     padding-left: 32px;
 }
@@ -587,7 +587,7 @@ a.link-jaime.active::after {
     border-bottom: 1.5px solid var(--foret-noire, #12231A);
     width: 838px;
     background-color: transparent;
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 
@@ -1278,7 +1278,7 @@ input:-webkit-autofill:active{
     box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14);
     width: 592px;
     height: 651px;
-    margin-top: 150px;
+    
 }
 
 #card-inscription .titre-inscription {
@@ -1302,8 +1302,8 @@ section#inscription .monstera-ptn{
 } 
 
 #card-inscription .algue-ptn{
-    top: 400px;
-    right: 425px;
+    top: 270px;
+    right: 470px;
 }
 
 #card-inscription .input-mt {
@@ -1376,8 +1376,8 @@ section#inscription .monstera-ptn{
 #commentcamarche .numero1 {
     position: absolute;
     color: var(--orange-sanguine);
-    top: 450px;
-    right: 1598px;
+    top: 352px;
+    right: 1597px;
 }
 
 #commentcamarche .feuille-ptn1 {
@@ -1393,8 +1393,8 @@ section#inscription .monstera-ptn{
 #commentcamarche .numero2 {
     position: absolute;
     color: var(--menthe-givree);
-    top: 450px;
-    right: 1105px;
+    top: 352px;
+    right: 1102px;
 
 }
 
@@ -1413,8 +1413,8 @@ section#inscription .monstera-ptn{
 #commentcamarche .numero3 {
     position: absolute;
     color: var(--framboise-ecrasee);
-    top:450px;
-    right: 610px;
+    top: 352px;
+    right: 607px;
 }
 
 #commentcamarche .feuille-ptn3 {
@@ -1518,7 +1518,7 @@ section#inscription .monstera-ptn{
     background-color:var(--bouton-dor);
     position: absolute;
     width: 708px;
-    height: 1000px;
+    height: 1020px;
     top: 56px;
     left: 0;
     z-index: 1;
@@ -1554,6 +1554,9 @@ section#inscription .monstera-ptn{
   #profil .algue-verte-profil{
     margin-top: -500px;
     padding-left: 1200px;
+    margin-bottom: -13px;
+  
+    
   }
  
   #profil .icone-modifier{
