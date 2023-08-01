@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', (e) => {
 
     // initialise les sections du profil

@@ -5,6 +5,7 @@ namespace App\Document;
 use DateTime;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+use phpDocumentor\Reflection\Types\Integer;
 // use Doctrine\ODM\MongoDB\Mapping\Annotations\EmbedOne;
 use Symfony\Component\Validator\Constraints\Date;
 
@@ -35,7 +36,7 @@ class User
     #[MongoDB\Field(type: 'int')]
     public ?int $age = null;
 
-
+    
     // #[MongoDB\Field(type: 'date')]
     // protected ?Date $dateOfBirth = null;
 
