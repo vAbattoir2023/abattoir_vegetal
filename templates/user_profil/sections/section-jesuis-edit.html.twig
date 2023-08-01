@@ -36,26 +36,17 @@
                 Je suis ...
                 </div>
 
-                <div class="flex-end">
-                {# {{ form_label(UserForm.gender) }}  #}
-                <input type="radio" name="inlineRadioOptions" value="Femme" class="form-check-input">
-                <label>F</label>
-                <input type="radio" name="inlineRadioOptions" value="Homme" class="form-check-input">
-                <label>H</label>
-                <input type="radio" name="inlineRadioOptions" value="Non-Binaire" class="form-check-input">
-                <label class="form-check-label">Non-Binaire
-                </label>
-                {# {{ form_widget(UserForm.gender, {'attr': {'class': 'stroke-input form-check-input','style': 'border: none;font-size:18px;'}}) }} #}
+                <div class="flex-end" id="gender">
+                
+                 {{ form_widget(UserForm.gender, {'attr': {'class': 'stroke-input form-check-input','style': 'border: none;font-size:18px;'}}) }} 
                 </div>
 
                 <div> <!-- Je parle input -->
-                <div>
+                <div class="mt-3">
                     Je parle...
                 </div>
                 <input type="text" aria-label="Je parle" class="stroke-input">
-                {# <div class="language">
-                    {{ form_widget(UserForm.language, {'attr': {'class': 'stroke-input mb-3'}}) }}
-                </div> #}
+                
                 </div>
             </div>
             </div>
@@ -63,13 +54,11 @@
             <div class="align-top maDiv col-4 offset-2"> <!-- 2ème partie card -->
             <div class="wrap-bouton mb-1"> <!-- img + btn -->
                 <div>
-                <img src="assets/img/icones/profil/profil-big.svg" alt="" class="largeur">
+                <img src="../assets/img/icones/profil/profil-big.svg" alt="" class="largeur">
                 </div>
                 <div class="position-bouton">
                 {{ form_widget(UserForm.image, {'attr': {'class': 'bouton-smallest-hug size-btn mb-3'}}) }}
-                {# <button class="bouton-smallest-hug size-btn mb-3">
-                    télécharger une photo
-                </button> #}
+                
                 <button class="bouton-smallest-hug size-btn mb-3">
                     choisir un avatar
                 </button>
@@ -79,16 +68,13 @@
                 <div class="mt-3">
                     Je bosse dans...
                 </div>
-                    {# {{ form_label(UserForm.job) }} #}
-                    <input type="text" aria-label="Je bosse dans" class="stroke-input mb-3"> 
+                     {{ form_widget(UserForm.job, {'attr': {'class': 'stroke-input mb-3'}}) }} 
+                    {#<input type="text" aria-label="Je bosse dans" class="stroke-input mb-3"> #}
                     
-                <div class="mt-3">
+                <div class="mt-3 description">
                     {{ form_label(UserForm.description) }}
                     {{ form_widget(UserForm.description, {'attr': {'class': 'stroke-input mb-3'}}) }}
-                    {# <div>Je me décris en quelques mots...</div>
-                    <input type="text" aria-label="Je me décris" class="stroke-input mb-3"> #}
-                    {# <br>
-                    <input type="text" aria-label="Je me décris" class="stroke-input"> #}
+                    
                 </div>
             </div>
         </div>
@@ -102,7 +88,32 @@
                 <div class="flex-pref mt-4">
                 
                 {{ form_widget(UserForm.diet) }}
-               {#} {{ form_label(UserForm.diet) }} 
+               
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+{# {{ form_label(UserForm.gender) }} 
+                <input type="radio" name="inlineRadioOptions" value="Femme" class="form-check-input">
+                <label>F</label>
+                <input type="radio" name="inlineRadioOptions" value="Homme" class="form-check-input">
+                <label>H</label>
+                <input type="radio" name="inlineRadioOptions" value="Non-Binaire" class="form-check-input">
+                <label class="form-check-label">Non-Binaire
+                </label> #}
+
+
+
+
+                {#} {{ form_label(UserForm.diet) }} 
                 
                 <input type="radio" id="ProfilChoice1" name="choice" value="vegan"
                     class="preferences demo2 demoyes">
@@ -117,8 +128,21 @@
                     class="preferences demo2 demoyes margin-radio">
                 <label for="ProfilChoice4">Flexitarien(ne)</label>
                 {#}
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
+
+                {# <div>Je me décris en quelques mots...</div>
+                    <input type="text" aria-label="Je me décris" class="stroke-input mb-3"> #}
+                    {# <br>
+                    <input type="text" aria-label="Je me décris" class="stroke-input"> #}
+
+
+                    {# <button class="bouton-smallest-hug size-btn mb-3">
+                    télécharger une photo
+                </button> #}
+
+
+
+
+                {# <div class="language">
+                    {{ form_widget(UserForm.language, {'attr': {'class': 'stroke-input mb-3'}}) }}
+                </div> #}

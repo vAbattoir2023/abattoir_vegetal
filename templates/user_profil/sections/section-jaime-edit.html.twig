@@ -7,8 +7,38 @@
             </span>
         </div>
 
-        <div class="col-12 col-md-2 gouts">
-           {# <input type="checkbox" class="btn-check" id="btn-check-outlined-1" autocomplete="off">
+        <div class="col-10  gouts">
+           
+            <div>
+            {{ form_widget(UserForm.centerOfInterest, {'attr': {'class': 'btn btn-outline-primary jaimechoice mb-4  '}}) }}
+            </div> 
+        
+        <div class=" col-10">
+            <span>
+            J'en ai d'autres ...
+            </span>
+        </div>        
+        <div class=" col-10">
+            {{ form_widget(UserForm.centerOfInterestPerso, {'attr': {'class': 'stroke-input '}}) }}
+        </div>
+    </div>
+</section> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{# <input type="checkbox" class="btn-check" id="btn-check-outlined-1" autocomplete="off">
             <label class="btn btn-outline-primary jaimechoice mb-4" for="btn-check-outlined-1">Animaux</label>
             <input type="checkbox" class="btn-check" id="btn-check-outlined-2" autocomplete="off">
             <label class="btn btn-outline-primary jaimechoice mb-4" for="btn-check-outlined-2">Art et culture</label>
@@ -16,9 +46,7 @@
             <label class="btn btn-outline-primary jaimechoice mb-4" for="btn-check-outlined-3">Musique</label>
             <input type="checkbox" class="btn-check" id="btn-check-outlined-4" autocomplete="off">
             <label class="btn btn-outline-primary jaimechoice mb-4" for="btn-check-outlined-4">Bien-être</label>#}
-            
-            {{ form_widget(UserForm.centerOfInterest, {'attr': {'class': 'btn btn-outline-primary jaimechoice mb-4'}}) }} 
-        {#</div>
+{#</div>
 
         <div class="col-12 col-md-2 gouts">
             <input type="checkbox" class="btn-check" id="btn-check-outlined-5" autocomplete="off">
@@ -41,15 +69,5 @@
             <input type="checkbox" class="btn-check" id="btn-check-outlined-12" autocomplete="off">
             <label class="btn btn-outline-primary jaimechoice mb-4" for="btn-check-outlined-12">Activités sociales</label>
         </div>#}
-        <div class="offset-1 col-10">
-            <span>
-            J'en ai d'autres ...
-            </span>
-        </div>        
-        <div class="offset-1 col-10">
-            {{ form_widget(UserForm.centerOfInterestPerso, {'attr': {'class': 'stroke-input '}}) }}
-        </div>
-    </div>
-</section> 
 
 

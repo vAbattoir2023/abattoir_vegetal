@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -112,10 +113,11 @@ class UserType extends AbstractType
                 ]
             ])
 
-            ->add('description', TextType::class,[
+            ->add('description', TextareaType::class,[
                 'label' => 'Je me décris en quelque mot ...',
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'rows'=> 5
                 ]
             ])
 
@@ -143,7 +145,7 @@ class UserType extends AbstractType
         ->add('centerOfInterest',  ChoiceType::class, [
             'label' => 'Mes centres d\'interets ...',
             'attr' => [
-                'class' => 'form-control'
+                'class' => 'btn btn-outline-primary jaimechoice mb-4 col-3'
             ],
             'choices'  => [
                 
@@ -162,18 +164,18 @@ class UserType extends AbstractType
                 'Activités sociales' => 'Activités sociales'
             ],
             'choice_attr' => [
-                'Animaux' => ['class' => 'btn btn-outline-danger'],
-                'Environnement' => ['class' => 'btn btn-outline-danger'],
-                'Jeux vidéos' => ['class' => 'btn btn-outline-danger'],
-                'Art et Culture' => ['class' => 'btn btn-outline-danger'],
-                'Sport' => ['class' => 'btn btn-outline-danger'],
-                'Voyage' => ['class' => 'btn btn-outline-danger'],
-                'Musique' => ['class' => 'btn btn-outline-danger'],
-                'Danse' => ['class' => 'btn btn-outline-danger'],
-                'Sciences' => ['class' => 'btn btn-outline-danger'],
-                'Bien-etre' => ['class' => 'btn btn-outline-danger'],
-                'Food' => ['class' => 'btn btn-outline-danger'],
-                'Activités sociales' => ['class' => 'btn btn-outline-danger'],           
+                'Animaux' => ['class' => 'btn-check ','id' =>'btn-check-outlined-4 '],
+                'Environnement' => ['class' => 'btn-check  ','id' =>'btn-check-outlined-4 '],
+                'Jeux vidéos' => ['class' => 'btn-check ','id' =>'btn-check-outlined-4 '],
+                'Art et Culture' => ['class' => 'btn-check ','id' =>'btn-check-outlined-4 '],
+                'Sport' => ['class' => 'btn-check ','id' =>'btn-check-outlined-4 '],
+                'Voyage' => ['class' => 'btn-check ','id' =>'btn-check-outlined-4 '],
+                'Musique' => ['class' => 'btn-check ','id' =>'btn-check-outlined-4 '],
+                'Danse' => ['class' => 'btn-check ','id' =>'btn-check-outlined-4 '],
+                'Sciences' => ['class' => 'btn-check ','id' =>'btn-check-outlined-4 '],
+                'Bien-etre' => ['class' => 'btn-check ','id' =>'btn-check-outlined-4 '],
+                'Food' => ['class' => 'btn-check ','id' =>'btn-check-outlined-4 '],
+                'Activités sociales' => ['class' => 'btn-check ','id' =>'btn-check-outlined-4 '],           
              ],
             'multiple' => true,
             'expanded' => true
