@@ -6712,7 +6712,7 @@
         <argument key="groupRepository" type="service_closure" id="App\Repository\GroupRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.xqXWdUV" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.V.wzLzg" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::delete" type="service_closure" id=".service_locator.Q1F27w5"/>
@@ -6724,11 +6724,11 @@
         <argument key="App\Controller\ApiUserController::new" type="service_closure" id=".service_locator.Q1F27w5"/>
         <argument key="App\Controller\GroupController::acceptInvitation" type="service_closure" id=".service_locator.mB7Aevp"/>
         <argument key="App\Controller\GroupController::addGroup" type="service_closure" id=".service_locator.Dm5GxFr"/>
-        <argument key="App\Controller\GroupController::resa" type="service_closure" id=".service_locator.ELyYSaO"/>
+        <argument key="App\Controller\GroupController::invitation" type="service_closure" id=".service_locator.ELyYSaO"/>
         <argument key="App\Controller\GroupController::select_group" type="service_closure" id=".service_locator.mB7Aevp"/>
         <argument key="App\Controller\GroupController::showUsersList" type="service_closure" id=".service_locator.wVIg2DJ"/>
         <argument key="App\Controller\GroupController::showUsersListFull" type="service_closure" id=".service_locator.wVIg2DJ"/>
-        <argument key="App\Controller\HomeController::index" type="service_closure" id=".service_locator.ELyYSaO"/>
+        <argument key="App\Controller\HomeController::home" type="service_closure" id=".service_locator.mB7Aevp"/>
         <argument key="App\Controller\LoginController::login" type="service_closure" id=".service_locator.Q1F27w5"/>
         <argument key="App\Controller\LoginController::logout" type="service_closure" id=".service_locator.Q1F27w5"/>
         <argument key="App\Controller\RegisterController::index" type="service_closure" id=".service_locator.thcXORb"/>
@@ -6747,11 +6747,11 @@
         <argument key="App\Controller\ApiUserController:new" type="service_closure" id=".service_locator.Q1F27w5"/>
         <argument key="App\Controller\GroupController:acceptInvitation" type="service_closure" id=".service_locator.mB7Aevp"/>
         <argument key="App\Controller\GroupController:addGroup" type="service_closure" id=".service_locator.Dm5GxFr"/>
-        <argument key="App\Controller\GroupController:resa" type="service_closure" id=".service_locator.ELyYSaO"/>
+        <argument key="App\Controller\GroupController:invitation" type="service_closure" id=".service_locator.ELyYSaO"/>
         <argument key="App\Controller\GroupController:select_group" type="service_closure" id=".service_locator.mB7Aevp"/>
         <argument key="App\Controller\GroupController:showUsersList" type="service_closure" id=".service_locator.wVIg2DJ"/>
         <argument key="App\Controller\GroupController:showUsersListFull" type="service_closure" id=".service_locator.wVIg2DJ"/>
-        <argument key="App\Controller\HomeController:index" type="service_closure" id=".service_locator.ELyYSaO"/>
+        <argument key="App\Controller\HomeController:home" type="service_closure" id=".service_locator.mB7Aevp"/>
         <argument key="App\Controller\LoginController:login" type="service_closure" id=".service_locator.Q1F27w5"/>
         <argument key="App\Controller\LoginController:logout" type="service_closure" id=".service_locator.Q1F27w5"/>
         <argument key="App\Controller\RegisterController:index" type="service_closure" id=".service_locator.thcXORb"/>
@@ -7411,12 +7411,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.xqXWdUV"/>
+      <argument type="service" id=".service_locator.V.wzLzg"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.xqXWdUV"/>
+      <argument type="service" id=".service_locator.V.wzLzg"/>
     </service>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
       <argument type="iterator">
@@ -8375,7 +8375,7 @@
     <service id="doctrine_mongodb.odm.event_manager" alias="doctrine_mongodb.odm.default_connection.event_manager"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.xqXWdUV"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.V.wzLzg"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -8399,7 +8399,7 @@
     <service id=".service_locator.ug1LklU" alias=".service_locator.thcXORb"/>
     <service id=".service_locator.LJnYiyc" alias=".service_locator.mB7Aevp"/>
     <service id=".service_locator.9JaK8Ej" alias=".service_locator.ELyYSaO"/>
-    <service id=".service_locator.pIjbsMD" alias=".service_locator.xqXWdUV"/>
+    <service id=".service_locator.cDcwjwe" alias=".service_locator.V.wzLzg"/>
     <service id=".service_locator.Naiw5mr" alias=".service_locator.HuqLxd2"/>
     <service id=".service_locator.zR5ECBq" alias=".service_locator.IG7brIl"/>
     <service id=".service_locator.XW18Svm" alias=".service_locator.TcKhdzh"/>

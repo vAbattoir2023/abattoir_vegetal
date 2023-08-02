@@ -18,8 +18,8 @@ return [
         '/api_user' => [[['_route' => 'app_api_user', '_controller' => 'App\\Controller\\ApiUserController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/group/select_group' => [[['_route' => 'app_select_group', '_controller' => 'App\\Controller\\GroupController::select_group'], null, null, null, false, false, null]],
         '/group/users-list' => [[['_route' => 'app_get_users_list_without_filters', '_controller' => 'App\\Controller\\GroupController::showUsersListFull'], null, null, null, true, false, null]],
-        '/group/resa' => [[['_route' => 'app_get_resa', '_controller' => 'App\\Controller\\GroupController::resa'], null, null, null, false, false, null]],
-        '/' => [[['_route' => 'app_home', '_controller' => 'App\\Controller\\HomeController::index'], null, null, null, false, false, null]],
+        '/group/invitation' => [[['_route' => 'app_invitation', '_controller' => 'App\\Controller\\GroupController::invitation'], null, null, null, false, false, null]],
+        '/' => [[['_route' => 'app_home', '_controller' => 'App\\Controller\\HomeController::home'], null, null, null, false, false, null]],
         '/help' => [[['_route' => 'app_home_help', '_controller' => 'App\\Controller\\HomeController::help'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\LoginController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\LoginController::logout'], null, null, null, false, false, null]],
@@ -54,11 +54,11 @@ return [
                     .'|Grp/deleteGrp/([^/]++)(*:265)'
                 .')'
                 .'|/group/(?'
-                    .'|users\\-list/([^/]++)(*:304)'
                     .'|a(?'
-                        .'|dd/([^/]++)(*:327)'
-                        .'|ccept/([^/]++)/([^/]++)(*:358)'
+                        .'|dd/([^/]++)/([^/]++)(*:308)'
+                        .'|ccept/([^/]++)/([^/]++)(*:339)'
                     .')'
+                    .'|users\\-list/([^/]++)(*:368)'
                 .')'
             .')/?$}sDu',
     ],
@@ -74,10 +74,10 @@ return [
         211 => [[['_route' => 'app_admin_edit', '_controller' => 'App\\Controller\\AdminController::edit'], ['id'], null, null, false, true, null]],
         234 => [[['_route' => 'app_admin_delete', '_controller' => 'App\\Controller\\AdminController::delete'], ['id'], null, null, false, true, null]],
         265 => [[['_route' => 'app_grpadmin_delete', '_controller' => 'App\\Controller\\AdminGroupController::delete'], ['id'], null, null, false, true, null]],
-        304 => [[['_route' => 'app_get_users_list_from_filters', '_controller' => 'App\\Controller\\GroupController::showUsersList'], ['filters'], null, null, false, true, null]],
-        327 => [[['_route' => 'app_add_group', '_controller' => 'App\\Controller\\GroupController::addGroup'], ['idUsers'], null, null, false, true, null]],
-        358 => [
-            [['_route' => 'accept_Invitation', '_controller' => 'App\\Controller\\GroupController::acceptInvitation'], ['id', 'bool'], null, null, false, true, null],
+        308 => [[['_route' => 'app_add_group', '_controller' => 'App\\Controller\\GroupController::addGroup'], ['idUsers', 'date'], null, null, false, true, null]],
+        339 => [[['_route' => 'accept_Invitation', '_controller' => 'App\\Controller\\GroupController::acceptInvitation'], ['id', 'bool'], null, null, false, true, null]],
+        368 => [
+            [['_route' => 'app_get_users_list_from_filters', '_controller' => 'App\\Controller\\GroupController::showUsersList'], ['filters'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

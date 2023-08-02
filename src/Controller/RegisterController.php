@@ -47,9 +47,9 @@ class RegisterController extends AbstractController
 
         $email = $sessionInterface->get('email');
 
-        if(isset($email)){
-            echo $email;
-        }
+        // if(isset($email)){
+        //     echo $email;
+        // }
 
         // return to Register/index.html.twig page
         return $this->render('Register/index.html.twig',[

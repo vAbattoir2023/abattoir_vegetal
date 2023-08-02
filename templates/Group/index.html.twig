@@ -1,119 +1,71 @@
-{% extends 'base.html.twig' %}
-
-{% block title  %}
-	Green Meet
-{% endblock %}
-{% block stylesheets %}
-	<link rel="stylesheet" href="{{asset('./assets/css/mur.css')}}">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-
-{% endblock %}
-
-{% block body %}
-
-	{{ include('_header.html.twig') }}
-	<!-- Modal resa-->
-	<div class="modal fade" id="modal-date" tabindex="-1" aria-labelledby="ModalDate" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content justify-content-center d-flex " style="width:1000px">
-
-				<div class="modal-header mx-auto position-relative">
-					<h1 class="modal-title fs-5" id="ModalResaLabel">Choisi ta date de résérvation</h1>
-
-					<!-- Je sais pas comment enlever la croix que bootstrap a mise -->
-					<button type="button" class="btn-close position-absolute croix-close-modal-resa" data-bs-dismiss="modal" aria-label="Close"><img src="../assets/img/icones/croix/croix-fleur-orange-small.svg" alt=""></button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{ asset('./assets/css/selectGroup.css') }}">
+    <title>SELECT USERS</title>
+</head>
+<body>
+	<!-- header nav bar -->
+	{% include "_header.html.twig" %}
+    <!-- contianer users and checkbox -->
+    <div id="container">
+        <!-- checkbox -->
+        <div id="inputBox">
+            <div id="subtitle">
+                <h1>Filter</h1>
+            </div>
+            <div id="allCenterIfInterest">
+                <div id="subtitle">
+                    <h3>Centre of interest</h3>
+                </div>
+				{% for formData in dataFormCheckbox %}
+				<div>
+					<label class="form-check-label me-auto label_checkbox" for="checkbox_{{ formData }}">{{ formData }}</label>
+					<input name="{{ formData }}" type="checkbox" id="checkbox_{{ formData }}" name="checkbox_{{ formData }}" data-filter="{{formData}}" class="filter-checkbox">
 				</div>
-
-				<div id="reserver" class="container">
-					<div
-						class="row position-relative">
-
-						<!-- calendrier -->
-						<div class="position-relative">
-							<div class="position-absolute title-screen">
-								<h1>réserver</h1>
-							</div>
-							<form action="#" method="post">
-								<div class="fond-calendar">
-									<div class="lisere-calendar">
-										<div class="calendar d-flex flex-column">
-											<div class="header-calendar">
-												<div class="titre">
-													<h2>Choisis ton jour et ton Heure</h2>
-												</div>
-												<div class="d-flex justify-content-between  mt-5 mb-2"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-					</section>
-
-
-				</div>
-			</div>
-
-		</div>
-	</div>
-</div></div></div></div></div></div><div id="mur" class="container tout mt-5"><div class="row"><div class="col-12 col-md-3 conteneur filtres"><article class="lisere"><div class="row">
-<div class="col">
-	<h2>filtres</h2>
-	<form action="#" method="post">
-		<div class="form-filtres">
-			<div class="d-flex">
-				<fieldset>
-					{# Matth retour des centres d'interest de l'user CSS modifier #}
-					<h4 class="me-auto">
-						Mes choix
-					</h4>
-					{% for interest in userFromBdd.centerOfInterest %}
-						<div>
-							<p class="badge text-bg-success">
-								{{ interest }}
-							</p>
-						</div>
-						{# Fin du retour des centres d'interest de l'user  #}
-
-					{% endfor %}
-					<h4 class="me-auto">centre d'intérêts -</h4>
-					{% for formData in dataFormCheckbox %}
-						<div>
-							{# <input class="form-check-input"  name="{{ formData }}" type="checkbox" id="checkbox_{{ formData }}" name="checkbox_{{ formData }}" data-filter="{{formData}}" class="filter-checkbox">
-																				<label for="checkbox_{{ formData }}  class="form-check-label me-auto"">{{ formData }}</label> #}
-							<input name="{{ formData }}" type="checkbox" id="checkbox_{{ formData }}" name="checkbox_{{ formData }}" data-filter="{{formData}}" class="filter-checkbox">
-							<label class="form-check-label me-auto label_checkbox" for="checkbox_{{ formData }}">{{ formData }}</label>
-						</div>
-					{% endfor %}
-				</fieldset>
-			</div>
-		</form>
-	</div>
-</div>
-<h4 class="me-auto">Ma date -</h4>
-<div class="d-flex justify-content-center">
-
-	{{ form_errors(DateRegister)}}
-	{{ form_start(DateRegister)}}
-	{{ form_widget(DateRegister.reservationDate) }}
-	{{ form_label(DateRegister.submit) }}
-	{{ form_widget(DateRegister.submit, {'attr': {'class': 'btn btn-outline-success'}}) }}
-	{{ form_end(DateRegister)}}
-</div></article></div><div class="col-md-9 defile-card d-flex row g-0"><div class="container ms-5 ">
-
-<h1 class="somanyfriends ms-5 mt-5">so many friends...</h1>
-
-<div
-	class="container">
-	{# <button type='submit' id="addGroup">add group</button> #}
-
-	<ul class="d-flex row" id="users_list"></ul>
-</div></div></div></div></div></div>{% endblock %}{% block javascripts %}<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script><script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><script src="{{ asset('./assets/js/createGroup.js')}}"></script><script>$(document).ready(function () { // you may need to change this code if you are not using Bootstrap Datepicker
-$('.js-datepicker').datepicker({
-'format' => 'yyyy-MM-dd', // Optional: Define the format for the datetime-local input
-todayHighlight: true,
-timeFormat: 'hh:mm tt',
-hourMin: 10,
-hourMax: 23
-});
-});</script>{% endblock %}
+				{% endfor %}
+            </div>
+            <input id="datePicker" type="date" name="datePicker">
+            <button type='submit' id="addGroup">Réserver Maintenant</button>
+        </div>
+        <!-- all users -->
+        <main id='allUsers'>
+		    <h6>so many <br> friends ... <br> </h6>
+		    {% for user in users %}
+			<article>
+                <figure>
+                    <img src="{{ user.image }}" alt="headUser">
+                </figure>
+                <div class="info">
+                    <div class="firstData">
+                        <strong>{{ user.username }}</strong>
+                        <figure>
+                            {% for languageCode in user.language %}
+                			<img src="https://www.countryflagicons.com/SHINY/32/{{ languageCode }}.png" alt="{{ languageCode }}">
+            				{% endfor %}
+                        </figure>
+                    </div>
+                    <div class="secondData">
+                        <span>{{ user.age }} yo</span>
+                        <span>{{ user.city }}</span>
+                    </div>
+                    <div class="thirdData">
+                        <p>{{ user.description|slice(0,100) }}...</p>
+                    </div>
+                    <div class="quarterData">
+                        <button id="idUser" value='{{ user.id }}'>Gimme this friend</button>
+                    </div>
+                </div>
+            </article>
+			{% endfor %}
+        </main>
+		<!-- footer -->
+		{% include "_footer.html.twig" %}
+    </div>
+	<script src='{{ asset('./assets/js/header.js') }}'></script>
+	<script src='{{ asset('./assets/js/createGroup.js') }}'></script>
+</body>
+</html>

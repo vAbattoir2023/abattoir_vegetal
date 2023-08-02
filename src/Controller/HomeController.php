@@ -18,12 +18,11 @@ use MongoDB\BSON\ObjectId;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(SessionInterface $sessionInterface, GroupRepository $groupRepository, DocumentManager $dm): Response
+    public function home(SessionInterface $sessionInterface, GroupRepository $groupRepository,UserRepository $userRepository, DocumentManager $dm): Response
     {
-
-        $group = new Group();
         $email = $sessionInterface->get('email');
         $idSession = $sessionInterface->get('id');
+
         //dd(new ObjectId($idSession));
 
         //appelle dans group ton id dans guest
@@ -36,16 +35,11 @@ class HomeController extends AbstractController
                 ]
             ]
         ]));
-        
-        if(isset($email)){
-            echo $email;
-        }
-        //dd($notifInvitation);
-        
+
+        // dd($notifInvitation);
+
         return $this->render('base.html.twig',[
-            'message' => 'Welcome to your new controller!',
             'idSession' => $idSession,
-            'notifications' => $notifInvitation,
         ]);
         
     }

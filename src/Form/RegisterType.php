@@ -20,27 +20,27 @@ class RegisterType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'attr' => [
-                    'placeholder' => 'Votre adresse mail',
+                    'placeholder' => 'Your email adress',
                 ],
             ])
 
             ->add('password', RepeatedType::class,[
-                'label' => 'mot de passe',
-                'first_name' => 'password',
-                'second_name' => 'confirm',
                 'attr' => [
-                    'placeholder' => 'Mot de passe',
+                    'placeholder' => 'Password',
                 ],
                 'type' => PasswordType::class,
                 ])
+                ->add('submit', SubmitType::class, [
+                    'attr' => [
+                    ],
+                ])
+            ->add('terms', CheckboxType::class, [
+                'label' => 'I have read and accept the general conditions',
+                'property_path' => 'termsAccepted'])
 
-        ->add('terms', CheckboxType::class, [
-            'label' => 'J\'ai lu et j\'accepte les conditions générales',
-            'property_path' => 'termsAccepted'])
-
-                   ->add('submit', SubmitType::class, [
-                    'label' => 'S\'enregistrer'
-                ]);
+                    ->add('submit', SubmitType::class, [
+                        'label' => 'S\'enregistrer'
+                    ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

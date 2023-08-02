@@ -21,8 +21,8 @@ class Group
     #[MongoDB\Field(type: 'string')]
     public ?string $authors = null;
     
-    #[MongoDB\Field(type: "string")]
-    public ?string $createdAt = null;
+    #[MongoDB\Field(type: "date")]
+    public ?\DateTimeInterface $createdAt = null;
     
     // #[MongoDB\Field(type: "string")]
     // public ?string $reservationDate = null;
@@ -76,12 +76,12 @@ class Group
     }
 
 
-    public function getCreateGroup(): ?string
+    public function getCreateGroupDate(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
 
-    public function setCreateGroup(string $createdAt): Group
+    public function setCreateGroupDate( ?\DateTimeInterface $createdAt): Group
     {
         $this->createdAt = $createdAt;
 

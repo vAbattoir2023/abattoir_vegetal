@@ -1,25 +1,38 @@
- <header>
-
-        <nav class="d-flex justify-content-between header01">
-            <div class="d-flex"> <!-- MENU BURGER -->
-                <a href="{{ path('app_home') }}"><img src="../assets/img/icones/menuburger/menu-burger-dark.svg" alt=""></a>
+<!-- header nav bar -->
+<header>
+    <div>
+        <figure id="burger">
+            <img src="{{ asset('./assets/img/icones/menuburger/menu-burger-dark.svg')}}" alt="burgerIcon">
+        </figure>
+        <figure id="logo">
+            <a href="{{ path('app_home') }}"><img src="{{ asset('./assets/img/logo/abattoir-vegetal-logo-big-dark.svg')}}" alt="title logo"/></a>
+        </figure>
+        <nav>
+            <div class='logoNavBox'>
+                <img class="logoNav"  src="{{ asset('./assets/img/icones/profil/profil-small-light.svg') }}" alt="logo" />
             </div>
-
-            <a id="logo" href="{{ path('app_home') }}"> <!-- LOGO -->
-                <img src="../assets/img/logo/abattoir-vegetal-logo-medium-dark.svg" alt="Logo yogasaloon">
-            </a>
-
-            <div class="d-flex">
-                <a class="iconeheader me-2" href="{{ path('app_user_profil_success') }}"><img class="test" src="../assets/img/icones/profil/profil-small-light.svg"
-                        alt=""></a>
-                {# <a class="iconeheader me-2" type="button" data-bs-toggle="modal" data-bs-target="#modal-resa"><img src="../assets/img/icones/notifications/notification-small-light.svg" #}
-                <a class="iconeheader me-2" ><img src="../assets/img/icones/notifications/notification-small-light.svg"
-                        alt=""></a>
-                <a class="iconeheader" href="{{ path('app_get_resa') }}"><img src="../assets/img/icones/reservation/reservation-small-light.svg"
-                        alt=""></a>
+            <div id='notif' class='logoNavBox'>
+                <img class="logoNav"  src="{{ asset('./assets/img/icones/notifications/notification-small-light.svg')}}" alt="logo" />
             </div>
-
+            <div class='logoNavBox'>
+                <img class="logoNav"  src="{{ asset('./assets/img/icones/reservation/reservation-small-light.svg')}}" alt="logo" />
+            </div>
         </nav>
-    </header class="mb-3">
+    </div>
+</header>
+<div id='notificationBox'>
 
- 
+</div>
+<div id="navResponsive">
+    <nav>
+        <ul>
+			<a href="{{ path('app_home') }}"><li>Home</li></a>
+            <a href="{{ path('app_register') }}"><li>register</li></a>
+            <a href="{{ path('app_login') }}"><li>login</li></a>
+            <a href="{{ path('app_select_group') }}"><li>gimme a friend</li></a>
+            <a href="{{ path('app_select_group') }}"><li>click & collect</li></a>
+            <a href="{{ path('app_select_group') }}"><li>gimme a table</li></a>
+			<a href="{{ path('app_logout') }}"><li>Logout</li></a>
+        </ul>
+    </nav>
+</div>
