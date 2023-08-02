@@ -1,3 +1,7 @@
+
+
+
+
 /* *************
 COMMUN
 ************** */
@@ -525,17 +529,6 @@ a.link-jaime.active::after {
     margin-top: 4%;
     margin-left: 91.4%;
 }
-#jesuis #gender label{
-    margin-left: 6px;
-    margin-right: 15px;
-    
-}
-/*
-#jesuis .description{
-    height: 200px;
-    width: 100%;
-}
-*/
 
 /* FIN DE JESUIS */
 
@@ -570,15 +563,15 @@ a.link-jaime.active::after {
     padding: 17px 10px !important;
     color: var(--foret-noire);
     font-size: 18px;
-    /*width: 175px;*/
-    margin-top: 25px;
+    width: 175px;
+    margin-top: 5px;
     margin-bottom: 49px;
     padding-left: 32px;
 }
 
 #jaime input[type="checkbox"].btn-check:checked+label {
     background-color: transparent !important;
-    border: 4px solid var(--framboise-ecrasee) !important;
+    border: 3px solid var(--framboise-ecrasee) !important;
     font-weight: 600 !important;
     color: var(--foret-noire);
 }
@@ -594,7 +587,7 @@ a.link-jaime.active::after {
     border-bottom: 1.5px solid var(--foret-noire, #12231A);
     width: 838px;
     background-color: transparent;
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 
@@ -605,13 +598,6 @@ a.link-jaime.active::after {
 
 #jaime .gouts {
     margin: auto;
-}
-
-#jaime .gouts label {
-    border: 1.5px solid var(--framboise-ecrasee) ;
-    width: 30%;
-    margin:  15px 5px;
-    padding: 15px;
 }
 
 #jaime .jaimebouton {
@@ -926,7 +912,9 @@ input[type="radio"].btn-check:checked+label {
 
 /* RESERVER */
 #reserver{
-    margin-top: 6rem;
+    margin-top: 4rem;
+    margin-bottom:4rem ;
+    z-index: -1;
 }   ²
 
 #reserver .title-screen{
@@ -946,32 +934,42 @@ input[type="radio"].btn-check:checked+label {
 }
 
 #reserver .algue{
-    width: 11rem;
-    height: 31.25rem;
-    top: 20rem;
-    right: 74rem;
-    animation: move-algue-reserver ease-in-out 600ms;
+    display: flex;
+    width: 173.283px;
+    height: 499.977px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 231px;
+    margin-left: -65px;
+   
+    
 }
 
 #reserver .bande-orange{
-    height: 105rem;
+    height:742px;
     width: 32rem;
     background-color: var(--orange-sanguine);
-    top: -50rem;
+    top: -3rem;
     left: 60rem;
+    
+  
 }
 
 /* Calendrier */
 
 #reserver .fond-calendar{
     padding: 1rem;
-    background-color: var(--choux-fleur);
     box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14);
+    
+    
+   
 }
 
 #reserver .lisere-calendar{
     border: 2px solid var(--orange-sanguine);
     padding: 2rem;
+   
 }
 
 #reserver .numeros{
@@ -982,6 +980,7 @@ input[type="radio"].btn-check:checked+label {
 #reserver .calendar{
     margin: auto;
     width: 350px;
+    z-index: -100;
 }
 
 #reserver .header-calendar{
@@ -1279,7 +1278,7 @@ input:-webkit-autofill:active{
     box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14);
     width: 592px;
     height: 651px;
-    margin-top: 150px;
+    
 }
 
 #card-inscription .titre-inscription {
@@ -1303,8 +1302,8 @@ section#inscription .monstera-ptn{
 } 
 
 #card-inscription .algue-ptn{
-    top: 400px;
-    right: 425px;
+    top: 270px;
+    right: 470px;
 }
 
 #card-inscription .input-mt {
@@ -1377,8 +1376,8 @@ section#inscription .monstera-ptn{
 #commentcamarche .numero1 {
     position: absolute;
     color: var(--orange-sanguine);
-    top: 450px;
-    right: 1598px;
+    top: 352px;
+    right: 1597px;
 }
 
 #commentcamarche .feuille-ptn1 {
@@ -1394,8 +1393,8 @@ section#inscription .monstera-ptn{
 #commentcamarche .numero2 {
     position: absolute;
     color: var(--menthe-givree);
-    top: 450px;
-    right: 1105px;
+    top: 352px;
+    right: 1102px;
 
 }
 
@@ -1414,8 +1413,8 @@ section#inscription .monstera-ptn{
 #commentcamarche .numero3 {
     position: absolute;
     color: var(--framboise-ecrasee);
-    top:450px;
-    right: 610px;
+    top: 352px;
+    right: 607px;
 }
 
 #commentcamarche .feuille-ptn3 {
@@ -1519,7 +1518,7 @@ section#inscription .monstera-ptn{
     background-color:var(--bouton-dor);
     position: absolute;
     width: 708px;
-    height: 1000px;
+    height: 1020px;
     top: 56px;
     left: 0;
     z-index: 1;
@@ -1555,6 +1554,9 @@ section#inscription .monstera-ptn{
   #profil .algue-verte-profil{
     margin-top: -500px;
     padding-left: 1200px;
+    margin-bottom: -13px;
+  
+    
   }
  
   #profil .icone-modifier{
@@ -1742,6 +1744,7 @@ section#inscription .monstera-ptn{
         background-color: var(--foret-noire);
         padding-top: 60px;
         padding-bottom: 60px;
+        
     }
 
     footer .lienresto {
