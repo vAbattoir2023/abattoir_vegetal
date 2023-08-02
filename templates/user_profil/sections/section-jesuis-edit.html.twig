@@ -43,7 +43,11 @@
             <div class="align-top maDiv col-4 offset-2"> <!-- 2ème partie card -->
             <div class="wrap-bouton mb-1"> <!-- img + btn -->
                 <div>
-                    <img src="../assets/img/icones/profil/profil-big.svg" alt="" class="largeur">
+                    {% if user is defined %}
+                        <img src="{{ user.image }}" alt="" class="largeur">
+                    {% else %}
+                        <img src="../assets/img/icones/profil/profil-big.svg" alt="" class="largeur">
+                    {% endif %}
                 </div>
                 <div class="position-bouton">
                     {{ form_widget(UserForm.image, {'attr': {'class': 'bouton-smallest-hug size-btn mb-3'}}) }}                  

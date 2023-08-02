@@ -47,8 +47,8 @@
                 <a  class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="height: 29px;">
                     <img src="../assets/img/icones/menuburger/menu-burger-dark.svg" alt="">
                 </a>
-                <div class="dropdown-menu">
-                    <div><a class="dropdown-item" href="{{ path('app_resa') }}">gimme a friend</a></div>
+                <div class="dropdown-menu ">
+                    <div class=""><a class="dropdown-item " href="{{ path('app_select_group') }}">gimme a friend</a></div>
                     {#<div><a class="dropdown-item" href="{{ path('app_date') }}">date</a></div>#}
                     <div><a class="dropdown-item" href="{{ path('app_home') }}">home</a></div>
                     <div><a class="dropdown-item" href="{{ path('app_logout') }}">deconnexion</a></div>
@@ -68,13 +68,13 @@
 
         
             <div class="d-flex flex-column">
-                <a href="{{ path('app_login') }}">
+                <a href="{{ path('app_login') }}" class="text-end">
                     <img class="bouton-gmaf img-fluid" src="../assets/img/boutons/abattoir-vegetal-gimme-friend-off.svg" alt="">
                 </a>
                 <a>
                     <img class="bouton-cec img-fluid" src="../assets/img/boutons/abattoir-vegetal-click-collect-off.svg" alt="">
                 </a>
-                <a>
+                <a class="text-end">
                     <img class="bouton-gmat img-fluid" src="../assets/img/boutons/abattoir-vegetal-gimme-table-off.svg" alt="">
                 </a>
             </div>
