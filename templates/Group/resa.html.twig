@@ -17,21 +17,21 @@
                 <!-- debut de la boucle pour injecter les groupe-->
                  {# {% for group in groups %} #}
                 <div class="col-2"> <!-- CARD RESA PETITE -->
-                    <div class="mesresassmall mt-5 position-relative d-flex flex-column justify-content-between mx-auto">
+                    <div class="mesresassmall mt-5 position-relative d-flex flex-column justify-content-between mx-auto"  onclick="toggleInfo(this)">
                         <div class="d-flex justify-content-end">
                             <img class="statut" src="../assets/img/icones/curseur/curseur-big-confirme.svg" alt="">
                         </div>
                         <div class="datebig">
                             <p>
-                            1987/11/03
-                            {# {{ group.createdAt|date('Y-m-d') }} #}
+                            03/08/2023
+                                                         {# {{ group.createdAt|date('Y-m-d') }} #}
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-2"> <!-- CARD RESA PETITE 02 -->
 
-                    <div class="mesresassmall mt-5 position-relative d-flex flex-column justify-content-between">
+                    <div class="mesresassmall mt-5 position-relative d-flex flex-column justify-content-between"   onclick="toggleInfo(this)">
                         <div class="d-flex justify-content-end">
                             <img class="statut" src="../assets/img/icones/curseur/curseur-big-refuse.svg" alt="">
                         </div>
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="col-2"> <!-- CARD RESA PETITE 03-->
-                    <div class="mesresassmall mt-5 position-relative d-flex flex-column justify-content-between">
+                    <div class="mesresassmall mt-5 position-relative d-flex flex-column justify-content-between"   onclick="toggleInfo(this)">
                         <div class="d-flex justify-content-end">
                             <img class="statut" src="../assets/img/icones/curseur/curseur-big-enattente.svg" alt="">
                         </div>
@@ -111,7 +111,7 @@
         </div>
     </main>
    
- 
+    
 
 
 
