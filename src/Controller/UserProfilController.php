@@ -59,7 +59,12 @@ class UserProfilController extends AbstractController
     public function index(Request $request, UserRepository $userRepository, DocumentManager $documentManager, SessionInterface $sessionInterface): Response
     {
 
+        // vérifier que le user est bien connecté (et le récupère)
+        if(!$sessionInterface->get('id')) return $this->redirectToRoute('app_login');
+        $user = $userRepository->findUserById($sessionInterface->get('id'));
+
         $user  = new User();
+        
         
         // get id user from session
         $idSession = $sessionInterface->get('id');
@@ -171,6 +176,7 @@ class UserProfilController extends AbstractController
        return $this->render('user_profil/edit.html.twig', [
             // send form for database
              'UserForm' => $form->createView(),
+             'user' => $user
         ]); 
         return new Response('test');
     }

@@ -24,6 +24,7 @@ class RegisterController extends AbstractController
         // instantiates the class User
         $user = new User();
         
+        
         // create form for /Register/index.html.twig
         $form = $this->createForm(RegisterType::class, $user);
 

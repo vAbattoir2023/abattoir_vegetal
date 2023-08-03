@@ -21,6 +21,7 @@ class LoginController extends AbstractController
     #[Route('/login', name: 'app_login')]
     public function login(UserRepository $userRepository, Request $request, SessionInterface $sessionInterface): Response
     {
+            
 
         $user = new User(); // get User class document
 
