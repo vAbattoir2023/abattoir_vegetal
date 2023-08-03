@@ -118,7 +118,7 @@ class UserType extends AbstractType
                 'label' => 'Je me décris en quelque mot ...',
                 'attr' => [
                     'class' => 'form-control',
-                    'rows'=> 5
+                    'rows'=>1
                 ]
             ])
 
