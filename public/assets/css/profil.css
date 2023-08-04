@@ -1,0 +1,684 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Gasoek One', sans-serif;
+}
+body{
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+
+/* navbar */
+header{
+    height: 130px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background: #fff;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header div{
+    height: 100%;
+    width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/* navbar burger */
+header #burger{
+    height: 100%;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header #burger img{
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+/* navbar logo image */
+header #logo{
+    height: 100%;
+    width: 130px;
+}
+#logo a{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header #logo a img{
+    height: 100%;
+    width: 100%;
+}
+
+/* navbar navlink */
+header nav{
+    height: 100%;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logoNav{
+    height: auto;
+    width: 30px;
+    margin: 0px 10px;
+    border-radius: 50%;
+    background: #12231A;
+    cursor: pointer;
+}
+
+/* Formulaire - JE SUIS */
+
+fieldset{
+    border:none;
+}
+
+.container {
+    margin-top: 240px;
+    width: 1082px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: 25%;
+    margin-left: 10%;
+    
+}
+
+
+.border-card {
+    background:  #FBFAF4;
+    box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14);
+    margin-top: 120px;
+    padding-top: 100px;
+    padding-bottom: 70px;
+    
+}
+
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+/* Title of the box  */
+.titleCard{
+    margin-top: -12%;
+    justify-content: flex-end;
+    flex: 0 0 90%;
+    max-width: 90%;
+    z-index: 3;
+    position: relative;
+    align-items: baseline;
+    display: flex;
+}
+
+
+.title h2 {
+    font-family: 'Gasoek One';
+    text-transform: uppercase;
+    color: #224934;
+    margin-left: 2rem;
+    font-weight: 400;
+
+}
+
+.active {
+    position: relative;
+}
+
+.titleCard .active h2 {
+    font-size: 45px;
+    color: #12231a;
+    margin-top: -5px;
+}
+
+.titleCard .active::after {
+    content: "";
+    display: block;
+    width: 75%;
+    height: 16px;
+    background-color: #ff6c27;
+    position: absolute;
+    left: 65px;
+    bottom: 8px;
+    z-index: -1;
+}
+
+/* formulaire  */
+
+p{
+    font-family: 'Work Sans';
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 0px!important;
+}
+  
+/* right_Side  */
+.rightSide{
+    display: inline-block;
+    margin-left: 8.33333333%;
+    width: 33.33333333%;
+}
+
+.stroke-input {
+    margin-bottom: 25px;
+    border: 0px;
+    border-bottom: 1.5px solid  #12231A;
+    width: 100%;
+    background-color: transparent;
+}
+
+
+.date{
+    margin-bottom: 25px;
+    width: max-content;
+}
+
+.date p, .date-gender, .wrap-img{
+    display: inline-flex;
+}
+
+
+.stroke {
+    border: none;
+    border-bottom: 1.5px solid #12231A;
+    width: 70%;
+    background-color: transparent;
+    text-align: center;
+}
+
+
+.date-gender{
+    margin-bottom: 25px;
+    width: max-content;
+}
+
+
+.formCard .form-check-input:checked {
+    background-color: #ff6c27;
+    border-color: #ff6c27;
+    box-shadow: none;
+}
+
+.gender label{
+    font-family: 'Work Sans';
+    font-weight: 400;
+    font-size: 15px;
+    margin: 0 8px;
+}
+.gender{
+    margin-left: 15px;
+}
+
+.form-check-input[type=radio] {
+    border-radius: 50%;
+}
+
+.form-check-input[type=radio] {
+    border-radius: 50%;
+}
+
+.form-check-input {
+    width: 1em;
+    height: 1em;
+    margin-top: .25em;
+    vertical-align: top;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    appearance: none;
+}
+
+.gender p{
+    display: inline-block;
+}
+.langue {
+    display: none;
+    flex-wrap: wrap;
+}
+
+.langue+label {
+    display: inline-flex;
+    width: 19%;
+    height: auto;
+    padding: 10px 2px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    font-family: 'Work Sans';
+    font-weight: 900;
+    font-size: 10px;
+    border: 1.5px solid #FF6C27;
+    text-decoration: #12231A;
+    background-color: transparent;
+    margin-right:30px;
+    margin-top:10px;
+}
+.langue:hover+label {
+    background-color: transparent;
+    border: 3px solid #FF6C27;
+}
+
+.langue:checked+label {
+    background-color: transparent;
+    border: 3px solid #FF6C27;
+}
+
+.form-sides-container {
+    display: flex;
+}
+
+/* left_Side  */
+
+.leftSide{
+    margin-left: 16.33333333%;
+    width: 33.33333333%;
+    display: inline-block;
+}
+
+.position-bouton {
+    margin-left: 70px;
+    padding-top: 10px;
+}
+
+.img {
+    width: 91px;
+    height: 91px;
+    border: 1.5px solid #12231A;
+}
+
+.btn-img {
+    padding: 5px 20px;
+    font-family: 'Work Sans';
+    font-size: 13px;
+    font-weight: bolder;
+    margin-bottom: 24px;
+    background-color: #fff;
+}
+
+.wrap-img{
+    margin-bottom: 25px;
+}
+
+/* bottom  */
+
+.bottom{
+    margin-left: 8.33333333%;
+    margin-top: 25px;
+}
+.bottom div{
+    margin-top: 25px;
+}
+
+.regime {
+    display: none;
+    flex-wrap: wrap;
+}
+
+.regime+label {
+    display: inline-flex;
+    width: 19%;
+    height: auto;
+    padding: 10px 2px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    font-family: 'Work Sans';
+    font-weight: 400;
+    font-size: 20px;
+    border: 1.5px solid #FF6C27;
+    text-decoration: #12231A;
+    background-color: transparent;
+    margin-right:30px;
+}
+
+.regime:hover+label {
+    background-color: transparent;
+    border: 3px solid #FF6C27;
+}
+
+.regime:checked+label {
+    background-color: transparent;
+    border: 3px solid #FF6C27;
+}
+
+
+.btn-submit {
+    margin-top: 45px;
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-submit button{
+    padding: 13px 35px;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-family: Work Sans;
+
+}
+
+/* FIN DE JESUIS */
+
+/* Media Queries */
+@media only screen and (max-width: 768px) {
+ 
+    .border-card {
+      padding-top: 10%;
+      padding-bottom: 6%;
+    }
+  
+    .rightSide {
+      width: 100%;
+      margin-left: 0;
+      margin-bottom: 2rem;
+    }
+  
+    .leftSide {
+      width: 100%;
+      margin-left: 10%;
+    }
+    
+    .titleCard {
+        margin-top: -13%!important;
+    }
+
+    .langue+label {
+        font-size: 9px;
+    }
+
+    .container {
+        width:650px!important;
+        margin-right: 0;
+        margin-left: 0;
+       }
+
+    .containerForm {
+        margin-left: 5%!important;
+    }
+  }
+
+ 
+@media screen and (max-width: 1344px) {
+    .container {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 1110px) {
+    .container {
+     width:950px;
+     margin-right: 0;
+     margin-left: 0;
+
+    }
+}
+
+@media screen and ( max-width : 970px ) {
+    .btn-img {
+        font-size: 9px;
+    }
+    .container {
+        width:850px;
+        margin-right: 0;
+        margin-left: 0;
+   
+       }
+}
+
+@media screen and ( max-width : 850px ) {
+    .container {
+        width:750px;
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .containerForm {
+        width: 70%;
+        margin-right: 25%;
+        margin-left: 15%;
+    }
+
+    /*title card*/
+    .titleCard{
+    margin-top: -16%;
+    }
+
+    /*box card*/
+    p {
+    font-size: 15px;
+    }
+
+    .stroke {
+        width: 20px;
+    }
+
+    .gender {
+    padding-left: 0px;
+    }
+
+       
+    .avatar {
+        font-size: 11px;
+    }
+ 
+    .linkUrl  {
+        max-width: 50%;
+    } 
+
+    .bottom {
+        margin-left: 0px; 
+    }
+
+    .btn-diet {
+        margin-left: 0px; 
+    }
+
+    .regime+label {
+        width: 17%;
+        font-size: 11px;
+        padding: 7px 1px;
+    }
+    
+    .rightSide {
+        margin-left: 0; 
+        width: 100%;
+    }
+
+    .btn-submit button {
+        padding: 10px 20px;
+        font-size: 17px;
+    }
+
+    .position-bouton {
+        margin-left: 30px;
+        padding-top: 0px; 
+    }
+    /*navbar*/
+    header div nav{
+    visibility: hidden;
+    }
+ 
+}
+@media screen and ( max-width : 670px ) {
+
+
+    /*box card*/
+    .rightSide, .leftSide {
+        margin-left: 0;
+        margin-top: 25px;
+    }
+   
+    .container {
+        width: 550px !important;
+    }
+
+    .form-sides-container {
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+    }
+
+    .titleCard .active h2 {
+        font-size: 35px;
+        color: #12231a;
+        margin-top: -5px;
+    }
+    
+
+
+    .titleCard .active::after {
+        width: 75%;
+        left: 50px;
+    }
+
+    .btn-img {
+        font-size: 14px;
+    }
+
+    .btn-submit button {
+        padding:7px 15px;
+        font-size: 14px;
+    }
+
+    .regime+label {
+        width: 15%;
+        font-size: 7px;
+    }
+
+    /* navbar logo image */
+    header #logo{
+        margin-left: 60px;
+    }
+
+    .containerForm {
+        margin-left: 15%!important;
+    }
+}
+
+@media screen and ( max-width : 573px ) {
+    /*box card*/
+    .container {
+        width: 500px !important;
+    }
+}
+
+@media screen and ( max-width : 513px ) {
+    /*box card*/
+    .container {
+        width: 400px !important;
+    }
+
+    .bottom div {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .bottom input {
+        margin-bottom: 5px;
+    }
+
+    .regime+label {
+        width: 100%;
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+
+}
+@media screen and ( max-width : 413px ) {
+    /*box card*/
+    .container {
+        width: 330px !important;
+    }
+
+    .wrap-img {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-diet {
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+    }
+    .linkUrl {
+        max-width: 100%; 
+    }
+
+    .avatar {
+        width: 100%;
+    } 
+
+    .position-bouton {
+    margin-top: 20px;
+    }
+
+    .gender label {
+        font-size: 10px;
+    }
+}
+
+
+@media screen and ( max-width : 376px ) {
+    .container {
+        width: 300px!important;
+    }
+
+    /*box card*/
+
+    .gender label {
+        font-size: 10px;
+    }
+
+    .titleCard {
+        justify-content: center;
+    }
+
+    .titleCard .active h2 {
+        font-size: 30px;
+
+    }
+
+    .titleCard {
+        margin-bottom: 36px;
+    }
+
+    .title h2 {
+        font-size: 20px;
+    }
+
+    .btn-img {
+        font-size: 15px;
+        padding: 5px 15px;
+    }
+
+    .langue+label {
+        font-size: 8px;
+    }
+
+    .rightSide, .leftSide {
+        margin-top: 0; 
+    }
+
+}
