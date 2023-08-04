@@ -375,25 +375,24 @@ p{
 
 }
 
-/* FIN DE JESUIS */
 
 /* Media Queries */
 @media only screen and (max-width: 768px) {
- 
+    
     .border-card {
-      padding-top: 10%;
-      padding-bottom: 6%;
+        padding-top: 10%;
+        padding-bottom: 6%;
     }
   
     .rightSide {
-      width: 100%;
-      margin-left: 0;
-      margin-bottom: 2rem;
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 2rem;
     }
   
     .leftSide {
-      width: 100%;
-      margin-left: 10%;
+        width: 100%;
+        margin-left: 10%;
     }
     
     .titleCard {
@@ -408,8 +407,8 @@ p{
         width:650px!important;
         margin-right: 0;
         margin-left: 0;
-       }
-
+    }
+    
     .containerForm {
         margin-left: 5%!important;
     }
@@ -427,7 +426,7 @@ p{
      width:950px;
      margin-right: 0;
      margin-left: 0;
-
+     
     }
 }
 
@@ -439,8 +438,8 @@ p{
         width:850px;
         margin-right: 0;
         margin-left: 0;
-   
-       }
+        
+    }
 }
 
 @media screen and ( max-width : 850px ) {
@@ -449,36 +448,36 @@ p{
         margin-right: 0;
         margin-left: 0;
     }
-
+    
     .containerForm {
         width: 70%;
         margin-right: 25%;
         margin-left: 15%;
     }
-
+    
     /*title card*/
     .titleCard{
-    margin-top: -16%;
+        margin-top: -16%;
     }
-
+    
     /*box card*/
     p {
     font-size: 15px;
-    }
+}
 
-    .stroke {
-        width: 20px;
-    }
+.stroke {
+    width: 20px;
+}
 
-    .gender {
+.gender {
     padding-left: 0px;
-    }
+}
 
-       
-    .avatar {
-        font-size: 11px;
-    }
- 
+
+.avatar {
+    font-size: 11px;
+}
+
     .linkUrl  {
         max-width: 50%;
     } 
@@ -490,7 +489,7 @@ p{
     .btn-diet {
         margin-left: 0px; 
     }
-
+    
     .regime+label {
         width: 17%;
         font-size: 11px;
@@ -501,31 +500,31 @@ p{
         margin-left: 0; 
         width: 100%;
     }
-
+    
     .btn-submit button {
         padding: 10px 20px;
         font-size: 17px;
     }
-
+    
     .position-bouton {
         margin-left: 30px;
         padding-top: 0px; 
     }
     /*navbar*/
     header div nav{
-    visibility: hidden;
+        visibility: hidden;
     }
- 
+    
 }
 @media screen and ( max-width : 670px ) {
-
-
+    
+    
     /*box card*/
     .rightSide, .leftSide {
         margin-left: 0;
         margin-top: 25px;
     }
-   
+    
     .container {
         width: 550px !important;
     }
@@ -535,39 +534,39 @@ p{
         flex-direction: column;
         align-items:center;
     }
-
+    
     .titleCard .active h2 {
         font-size: 35px;
         color: #12231a;
         margin-top: -5px;
     }
     
-
-
+    
+    
     .titleCard .active::after {
         width: 75%;
         left: 50px;
     }
-
+    
     .btn-img {
         font-size: 14px;
     }
-
+    
     .btn-submit button {
         padding:7px 15px;
         font-size: 14px;
     }
-
+    
     .regime+label {
         width: 15%;
         font-size: 7px;
     }
-
+    
     /* navbar logo image */
     header #logo{
         margin-left: 60px;
     }
-
+    
     .containerForm {
         margin-left: 15%!important;
     }
@@ -585,7 +584,7 @@ p{
     .container {
         width: 400px !important;
     }
-
+    
     .bottom div {
         margin-top: 15px;
         display: flex;
@@ -595,20 +594,20 @@ p{
     .bottom input {
         margin-bottom: 5px;
     }
-
+    
     .regime+label {
         width: 100%;
         font-size: 15px;
         margin-bottom: 10px;
     }
-
+    
 }
 @media screen and ( max-width : 413px ) {
     /*box card*/
     .container {
         width: 330px !important;
     }
-
+    
     .wrap-img {
         display: flex;
         flex-direction: column;
@@ -629,9 +628,9 @@ p{
     .avatar {
         width: 100%;
     } 
-
+    
     .position-bouton {
-    margin-top: 20px;
+        margin-top: 20px;
     }
 
     .gender label {
@@ -644,30 +643,30 @@ p{
     .container {
         width: 300px!important;
     }
-
+    
     /*box card*/
-
+    
     .gender label {
         font-size: 10px;
     }
-
+    
     .titleCard {
         justify-content: center;
     }
-
+    
     .titleCard .active h2 {
         font-size: 30px;
-
+        
     }
-
+    
     .titleCard {
         margin-bottom: 36px;
     }
-
+    
     .title h2 {
         font-size: 20px;
     }
-
+    
     .btn-img {
         font-size: 15px;
         padding: 5px 15px;
@@ -676,9 +675,255 @@ p{
     .langue+label {
         font-size: 8px;
     }
-
+    
     .rightSide, .leftSide {
         margin-top: 0; 
     }
-
+    
 }
+/* FIN DE JESUIS */
+
+
+/* Formulaire - J'AIME */
+
+.btn-submit-fin {
+    margin-top: 45px;
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-submit-fin button {
+    padding: 13px 35px;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-family: Work Sans;
+}
+
+.centerOfI{
+    margin: 10px 50px;
+}
+
+.btn-centerOfI{
+    margin-bottom: 50px; 
+    margin-left: 100px; 
+}
+
+
+.btn-centerOfI .regime+label {
+    display: inline-flex;
+    width: 19%;
+    height: auto;
+    padding: 20px 31px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    font-family: 'Work Sans';
+    font-weight: 400;
+    font-size: 20px;
+    border: 1.5px solid #FF6C27;
+    text-decoration: #12231A;
+    background-color: transparent;
+    margin-right:30px;
+    margin-top:30px;
+}
+
+.btn-centerOfI .regime:hover+label {
+    background-color: transparent;
+    border: 3px solid #FF6C27;
+}
+
+.btn-centerOfI .regime:checked+label {
+    background-color: transparent;
+    border: 3px solid #FF6C27;
+}
+
+.stroke-input-fin {
+    margin-bottom: 25px;
+    border: 0px;
+    border-bottom: 1.5px solid #12231A;
+    margin-top: 20px;
+    width: 90%;
+    background-color: transparent;
+}
+
+.containerjaime {
+    margin-top: 240px;
+    width: 1082px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: 25%;
+    margin-left: 10%;
+}
+/* Media Queries */
+
+
+@media screen and (max-width: 1440px ) {
+
+    .containerjaime {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 1344px) {
+    .btn-submit-fin button {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+
+@media screen and (max-width: 1110px) {
+    .btn-submit-fin button {
+        margin-left: 10px;
+        margin-right: 10px;
+    } 
+
+    .containerjaime {
+        width:950px;
+        margin-right: 0;
+        margin-left: 0;
+       }
+}
+
+@media screen and (max-width: 1218px) {
+
+    .containerjaime {
+        width:950px;
+        margin-right: 0;
+        margin-left: 0;
+       }
+}
+
+@media screen and (max-width: 1084px) {
+
+    .containerjaime {
+        width:870px;
+        margin-right: 0;
+        margin-left: 0;
+       }
+
+       .btn-centerOfI {
+        margin-left: 0px;
+    }
+
+    .centerOfI {
+        margin-left: 100px;
+    }
+}
+
+@media only screen and (max-width: 778px) {
+    .containerjaime {
+        width:690px !important;
+       }
+  }
+
+
+
+@media screen and ( max-width : 970px ) {
+    /* .btn-img {
+        font-size: 9px;
+    } */
+}
+
+@media screen and ( max-width : 870px ) {
+  
+
+    .btn-centerOfI{
+        margin-bottom: 50px; 
+        margin-left: 10px;
+    }
+    
+    .btn-centerOfI .regime+label {
+        padding: 20px 10px;
+        font-size: 15px;
+    }
+   
+  
+    .containerjaime {
+        width:750px;
+        margin-right: 0;
+        margin-left: 0;
+       }
+
+       .centerOfI {
+        margin-left: 30px !important; 
+   }
+
+   .containerFormjaime {
+    width: 100%; 
+    margin-right: 25%; 
+    margin-left: 8%;
+}
+}
+
+@media screen and ( max-width : 670px ) {
+    
+    .btn-centerOfI .regime+label {
+        padding: 20px 25px !important;
+        margin-left: 10px;
+        font-size: 15px;
+    }
+    .centerOfI{
+        margin: 7px 10px;
+    }
+
+    .containerjaime {
+        width:550px !important;
+       }
+}
+
+@media screen and ( max-width : 570px ) {
+    
+    .containerjaime {
+        width:480px !important;
+       }
+}
+@media screen and ( max-width : 480px ) {
+    
+    .containerjaime {
+        width:320px !important;
+       }
+
+       .btn-centerOfI .regime+label {
+        font-size: 12px;
+    }
+
+    .stroke-input-fin {
+        width: auto;
+    }
+    .centerOfI {
+        margin-top: 17px;
+    }
+}
+
+@media screen and ( max-width : 376px ) {
+
+    .btn-centerOfI .regime+label {
+        padding: 20px 45px !important;
+    }
+
+    .containerjaime {
+        width:300px!important;
+    }
+
+    .btn-submit-fin button {
+    padding: 10px 10px;
+    }
+
+    .btn-centerOfI {
+        margin-right: 60px;
+    }
+}
+
+@media screen and ( max-width : 326px ) {
+
+
+    .containerjaime {
+        width:290px!important;
+    }
+
+  
+}
+/* FIN DE Formulaire - J'AIME */

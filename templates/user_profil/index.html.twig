@@ -22,13 +22,13 @@
 
 
   <!-- Profil form  -->
+  <fieldset class="active">
   <div class="formCard">
 
   
   <div class="container ">
   <div class=" border-card">
 
-  <fieldset class="active">
      <!-- TITRE CARD FORMULAIRE -->
     <div class="row">
     <div class="titleCard">
@@ -106,7 +106,6 @@
       </div>
 
       </div>
-    </fieldset>
       </div>
 
       <div class="btn-submit">
@@ -118,65 +117,63 @@
       </div>
       </div>
       </div>
+    </fieldset>
 
 
 {# fin card je suis 1 #}
 
 
 {# J'aime partie 2 #}
-    <fieldset  style="display: none; margin-top:100px;">
-<div class="container " id="jaime">
-          
-                    <div class="cardjaime ">
-                        
-                        <div class="row"> <!-- TITRE CARD FORMULAIRE -->
-                            <div
-                                class="col-11 d-flex justify-content-end titrecard z-3 position-relative align-items-baseline">
-                                <a class="me-4 link-jesuis" href="#">
-                                    <h2>JE SUIS</h2>
-                                </a>
-                                <a class="me-4 link-jaime active" href="#">
-                                    <h2>J'AIME</h2>
-                                </a>
-                                <a href="#" class="link-jeveux">
-                                    <h2>JE VEUX</h2>
-                                </a>
-                            </div>
-    
-                        </div>
-    
-    
-                            <div class="mb-3 ">
-                             {{ form_label(UserForm.centerOfInterest) }}
-                            </div>
-    
-                               <div class="d-flex column">
-                             {{ form_widget(UserForm.centerOfInterest) }}
-                            </div>
-    
-                               
-                        <div class="mt-3">
-    
-                        {{ form_label(UserForm.centerOfInterestPerso) }}
-                          {{ form_widget(UserForm.centerOfInterestPerso, {'attr': {'class': 'stroke-input '}}) }}
-    
-                         </div>
-                            </div>
-    
-    
-                    </div>
-                </div>
+   <fieldset style="display: none;">
+   <div class="formCard ">
 
-                <div class="row g0">
-                    <div class="offset-md-3 col-md-9 d-flex jaimebouton">
-                        <a class="bouton-smallest-transparent me-5" onclick="previousStep()">Retour</a>
-        {{ form_widget(UserForm.submit, {'attr': {'class': 'bouton-smallest-transparent '}}) }}
-                    </div>
-              
-        </div>
-        </div>
-        </div>
-</fieldset>
+   <div class="containerjaime">
+   <div class=" border-card">
+
+    <!-- TITRE CARD FORMULAIRE -->
+    <div class="row">
+    <div class="titleCard">
+
+      <div class="title ">
+        <h2>je suis</h2>
+      </div>
+      <div class="title active">
+        <h2>j'aime</h2>
+      </div>
+
+    </div>
+    </div>
+            
+    <!-- Form 2 J'AIME  -->
+    <div class="containerFormjaime">
+  
+      <div class="centerOfI"> 
+        
+      <p >Mes centres d'intérêts</p>
+    
+      <div class="btn-diet btn-centerOfI">
+      {{ form_widget(UserForm.centerOfInterest, {'attr': {'class': 'btn-diet btn-centerOfI'}}) }}
+      </div>
+    
+      <p>J’en ai d’autres ... </p>
+      {{ form_widget(UserForm.centerOfInterestPerso, {'attr': {'class': 'stroke-input-fin'}}) }}
+    
+      </div>
+    
+     </div>
+     </div>
+
+     <div class="btn-submit-fin">
+      <button onclick="previousStep()" class="btn-img ">
+        Retour
+      </button>
+        
+      {{ form_widget(UserForm.submit, {'attr': {'class': 'btn-img btn-fin '}}) }}
+      </div>
+            
+      </div>
+      </div>
+      </fieldset>
 
         {# Fin de j'aime partie 2  #}
 

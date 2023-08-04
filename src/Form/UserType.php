@@ -117,13 +117,7 @@ class UserType extends AbstractType
        
          // New fields for Step 2: J'AIME
         ->add('centerOfInterest',  ChoiceType::class, [
-            'label' => 'Mes centres d\'interets ...',
-            'attr' => [
-                'class' => 'form-control'
-            ],
             'choices'  => [
-                
-                //
                 'Animaux' => 'Animaux',
                 'Environnement' => 'Environnement',
                 'Jeux vidéos' => 'Jeux vidéos',
@@ -138,30 +132,27 @@ class UserType extends AbstractType
                 'Activités sociales' => 'Activités sociales'
             ],
             'choice_attr' => [
-                'Animaux' => ['class' => 'btn btn-outline-danger'],
-                'Environnement' => ['class' => 'btn btn-outline-danger'],
-                'Jeux vidéos' => ['class' => 'btn btn-outline-danger'],
-                'Art et Culture' => ['class' => 'btn btn-outline-danger'],
-                'Sport' => ['class' => 'btn btn-outline-danger'],
-                'Voyage' => ['class' => 'btn btn-outline-danger'],
-                'Musique' => ['class' => 'btn btn-outline-danger'],
-                'Danse' => ['class' => 'btn btn-outline-danger'],
-                'Sciences' => ['class' => 'btn btn-outline-danger'],
-                'Bien-etre' => ['class' => 'btn btn-outline-danger'],
-                'Food' => ['class' => 'btn btn-outline-danger'],
-                'Activités sociales' => ['class' => 'btn btn-outline-danger'],           
+                'Animaux' => ['class' => 'regime'],
+                'Environnement' => ['class' => 'regime'],
+                'Jeux vidéos' => ['class' => 'regime'],
+                'Art et Culture' => ['class' => 'regime'],
+                'Sport' => ['class' => 'regime'],
+                'Voyage' => ['class' => 'regime'],
+                'Musique' => ['class' => 'regime'],
+                'Danse' => ['class' => 'regime'],
+                'Sciences' => ['class' => 'regime'],
+                'Bien-etre' => ['class' => 'regime'],
+                'Food' => ['class' => 'regime'],
+                'Activités sociales' => ['class' => 'regime'],           
              ],
             'multiple' => true,
             'expanded' => true
         ])
 
-        ->add('centerOfInterestPerso', TextType::class, [
-            'label' => 'J\'en ai d\'autres ...',
-            'attr' => [
-                'class' => 'form-control',
-            ]
-        ])
-        ->add('submit', SubmitType::class);
+        ->add('centerOfInterestPerso', TextType::class)
+        ->add('submit', SubmitType::class, [
+            'label' => 'valider',
+        ]);
 
     }
 
