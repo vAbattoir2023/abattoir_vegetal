@@ -29,25 +29,11 @@ class UserType extends AbstractType
         // Existing fields for Step 1: JE SUIS
             $builder
                
-            // ->add('email', EmailType::class)
-            
-            // ->add('password', RepeatedType::class,[
-            //     'first_name' => 'password',
-            //     'second_name' => 'confirm',
-            //     'type' => PasswordType::class,
-            //     ])
-               
-            ->add('username', TextType::class,[
-                'label' => 'Je m\'appelle ...',
-                'attr' => [
-                    'class' => 'form-control'
-                ]
-            ])
+            ->add('username', TextType::class)
 
             ->add('postalCode', TextType::class, [
                 'attr' => [
-                    'class' => 'form-control',
-                    'placeholder' => 'Entrez un code postal',
+                    'placeholder' => 'Code postal',
                 ],
             ])
             // ->add('birthdate', BirthdayType::class, [
@@ -58,28 +44,24 @@ class UserType extends AbstractType
             //     'format' => 'yyyy-MM-dd',
             // ])
 
-            ->add('age', IntegerType::class, [
-                'attr' => [
-                    'class' => 'form-control'
-                ]
-            ])
+            ->add('age', IntegerType::class)
 
             ->add('gender', ChoiceType::class, [
-                'label' => 'Je suis ...',
-                'attr' => [
-                    'class' => 'form-control'
-                ],
                 'choices'  => [
-                    'Homme' => 'Homme',
-                    'Femme' => 'Femme',
+                    'H' => 'Homme',
+                    'F' => 'Femme',
                     'Non-binaire' => 'Non-binaire'
+                ],
+                'choice_attr' => [
+                    'H' => ['class' => 'form-check-input'],
+                    'F' => ['class' => 'form-check-input'],
+                    'Non-binaire' => ['class' => 'form-check-input'],
                 ],
                 'multiple' => false,
                 'expanded' => true
             ])
 
             ->add('language', ChoiceType::class, [
-                'label' => 'Je parle ....',
                 'choices' => [
                     'Anglais' => 'GB',
                     'Français' => 'FR',
@@ -89,39 +71,32 @@ class UserType extends AbstractType
                     'Bresilien' => 'BR',
                     'Chinois ' => 'CN',
                     'Algerien ' => 'DZ',
-                    
                 ],
-                'attr' => [
-                    'class' => 'form-control',
+                'choice_attr' => [
+                    'Anglais' => ['class' => 'langue'],
+                    'Français' => ['class' => 'langue'],
+                    'Espagnol' => ['class' => 'langue'],
+                    'Italien' => ['class' => 'langue'],
+                    'Néerlandais' => ['class' => 'langue'],
+                    'Bresilien' => ['class' => 'langue'],
+                    'Chinois ' => ['class' => 'langue'],
+                    'Algerien ' => ['class' => 'langue'],
                 ],
                 'multiple' => true,
                 'expanded' => true,
             ])
 
             ->add('image', TextType::class, [
-                'label' => 'Mon image',
                 'attr' => [
-                    'placeholder' => 'image = link url',
+                    'placeholder' => 'https://',
                 ],
             ])
 
-            ->add('job', TextType::class,[
-                'label' => 'Je boss dans ...',
-                'attr' => [
-                    'class' => 'form-control'
-                ]
-            ])
+            ->add('job', TextType::class)
 
-            ->add('description', TextType::class,[
-                'label' => 'Je me décris en quelque mot ...',
-                'attr' => [
-                    'class' => 'form-control'
-                ]
-            ])
-
+            ->add('description', TextType::class,)
 
             ->add('diet', ChoiceType::class, [
-                'label' => 'Mon régime alimentaire ...',
                 
                 'choices'  => [
                     'Végan(ne)' => 'Végan(ne)',
@@ -130,10 +105,10 @@ class UserType extends AbstractType
                     'Fléxitarien(ne)' => 'Fléxitarien(ne)'
                 ],
                 'choice_attr' => [
-                    'Végan(ne)' => ['class' => 'btn btn-outline-danger'],
-                    'Curieu(x/se)' => ['class' => 'btn btn-outline-danger'],
-                    'Végétarien(ne)' => ['class' => 'btn btn-outline-danger'],
-                    'Fléxitarien(ne)' => ['class' => 'btn btn-outline-danger'],
+                    'Végan(ne)' => ['class' => 'regime'],
+                    'Curieu(x/se)' => ['class' => 'regime'],
+                    'Végétarien(ne)' => ['class' => 'regime'],
+                    'Fléxitarien(ne)' => ['class' => 'regime'],
                 ],
                 'multiple' => false,
                 'expanded' => true
@@ -141,13 +116,7 @@ class UserType extends AbstractType
        
          // New fields for Step 2: J'AIME
         ->add('centerOfInterest',  ChoiceType::class, [
-            'label' => 'Mes centres d\'interets ...',
-            'attr' => [
-                'class' => 'form-control'
-            ],
             'choices'  => [
-                
-                //
                 'Animaux' => 'Animaux',
                 'Environnement' => 'Environnement',
                 'Jeux vidéos' => 'Jeux vidéos',
@@ -162,30 +131,27 @@ class UserType extends AbstractType
                 'Activités sociales' => 'Activités sociales'
             ],
             'choice_attr' => [
-                'Animaux' => ['class' => 'btn btn-outline-danger'],
-                'Environnement' => ['class' => 'btn btn-outline-danger'],
-                'Jeux vidéos' => ['class' => 'btn btn-outline-danger'],
-                'Art et Culture' => ['class' => 'btn btn-outline-danger'],
-                'Sport' => ['class' => 'btn btn-outline-danger'],
-                'Voyage' => ['class' => 'btn btn-outline-danger'],
-                'Musique' => ['class' => 'btn btn-outline-danger'],
-                'Danse' => ['class' => 'btn btn-outline-danger'],
-                'Sciences' => ['class' => 'btn btn-outline-danger'],
-                'Bien-etre' => ['class' => 'btn btn-outline-danger'],
-                'Food' => ['class' => 'btn btn-outline-danger'],
-                'Activités sociales' => ['class' => 'btn btn-outline-danger'],           
+                'Animaux' => ['class' => 'regime'],
+                'Environnement' => ['class' => 'regime'],
+                'Jeux vidéos' => ['class' => 'regime'],
+                'Art et Culture' => ['class' => 'regime'],
+                'Sport' => ['class' => 'regime'],
+                'Voyage' => ['class' => 'regime'],
+                'Musique' => ['class' => 'regime'],
+                'Danse' => ['class' => 'regime'],
+                'Sciences' => ['class' => 'regime'],
+                'Bien-etre' => ['class' => 'regime'],
+                'Food' => ['class' => 'regime'],
+                'Activités sociales' => ['class' => 'regime'],           
              ],
             'multiple' => true,
             'expanded' => true
         ])
 
-        ->add('centerOfInterestPerso', TextType::class, [
-            'label' => 'J\'en ai d\'autres ...',
-            'attr' => [
-                'class' => 'form-control',
-            ]
-        ])
-        ->add('submit', SubmitType::class);
+        ->add('centerOfInterestPerso', TextType::class)
+        ->add('submit', SubmitType::class, [
+            'label' => 'valider',
+        ]);
 
     }
 

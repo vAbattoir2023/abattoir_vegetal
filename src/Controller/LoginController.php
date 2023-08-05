@@ -57,8 +57,7 @@ class LoginController extends AbstractController
         }
 
         return $this->render('Login/index.html.twig',[
-            'Form' => $form->createView(),
-            'message' => $message,
+            'Form' => $form->createView()
         ]);
     }
 
