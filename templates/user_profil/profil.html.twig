@@ -1,355 +1,252 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    {# <link rel="stylesheet" href="{{asset('./assets/css/profil.css')}}">
+    <link rel="stylesheet" href="{{ asset('./assets/css/selectGroup.css') }}"> #}
+    <link rel="stylesheet" href="{{ asset('./assets/css/monProfil.css') }}">
+    <link rel="stylesheet" href="{{ asset('./assets/css/monProfilUser.css') }}">
+      <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Work+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
-{% block title %}Profil user
-{% endblock %}
-{% block stylesheets %}<link rel="stylesheet" href="{{asset('./assets/css/profil.css')}}">{% endblock %}
+    <title>PROFIL USER </title>
+</head>
+<!-- body of page -->
+<body>
 
-{% block body %}
-	{# <h1>mes informations</h1> #}
-		        {{ include('_header.html.twig') }}
- <section id="profil">
-  
-        <div class="container"> <!-- MARGES -->
+	{{ include('_header.html.twig') }}
 
-            <div class="row">
-                <div class="col-12 z-2 ">
-                    <div class="mes-informations d-flex justify-content-between align-items-center">
-                        
-                        
-                        <h1>Mes informations</h1>
-                        <a href="{{ path('app_user_profil') }}" class="lien-modifier">
-                            <img class="icone-modifier" src="../assets/img/icones/modifier.svg" alt="icone crayon"> Modifier
-                        </a>
-                    </div>
-                </div>
-               </div>
- </div>
-{# CARD JE SUIS 1 #}
-    <fieldset class="active">
-    <div id="jesuis" class="container ">
-   <div class=" row">
-        <div class="">
-          <article class="psmall border-card">
-          
-            <div class="row"> <!-- TITRE CARD FORMULAIRE -->
-              <div class="col-11 d-flex justify-content-end titrecard z-3 position-relative align-items-baseline">
-                <a class="me-4 link-jesuis active" href="#">
-                  <h2>JE SUIS</h2>
-                </a>
-                <a class="me-4 link-jaime" href="#">
-                  <h2>J'AIME</h2>
-                </a>
-                <a href="#" class="link-jeveux">
-                  <h2>JE VEUX</h2>
-                </a>
-              </div>
+    <div class="rectangle"></div>
+      
+      <div class="containerC"> 
 
-            </div>
+      <div class="titleProfil">  
+      <div>
+        <h2>Mes informations</h2>
+      </div>
+    <div>
+        <a href="{{ path('app_user_profil') }}" class="modifier">
+         <p><img class="icone-modifier" src="../assets/img/icones/modifier.svg" alt="icone crayon">Modifier</p> 
+        </a>
+    </div>
+    </div>
 
-            
-            <div class="container">
-              <div class="row">
-                <div class="col-md-12 ">
-                  <div class="align-top maDiv col-4 offset-1"> <!-- 1ère partie card -->
-                    <div>
-                      <div class="mb-3"> <!-- je m'appelle et j'habite input -->
-                        <div>
-                          <div>                    
-                          <label>Je m'appelle ...</label>
-                          </div>
-                          <p class="stroke-input mb-3">	{{ user.username }}</p>
-                          <div>
-                            <label>J'habite ...</label>
-                            {% if user.postalCode is not empty %}
-                              <label>J'habite ...</label>
-                              <p class="stroke-input mb-3">
-                                  {{ user.city }} ({{ user.region }})
-                              </p>
-                          {% endif %}     
-                            </div>
-                        </div>
-                      </div>
-                      {# <div class="mb-1 align-text"> <!-- je suis né inputx3-->
-                      {{ form_label(UserForm.dateOfBirth) }} 
-                       <div class="date-wrap">
-                      {{ form_widget(UserForm.dateOfBirth, {'attr': {'class': 'stroke-input mb-3'}}) }} 
-                        </div> #}
-                      <div class="mb-1 align-text"> <!-- je suis né inputx3-->
-                            <label>Age</label>
-                       <div class="date-wrap">
-                          <p class="stroke-input mb-3">	{{ user.age }}</p>
-                        </div>
-                      </div>
-                      <div class="mb-4 date-wrap align-text"> <!-- je suis bouton radio -->
-                        <label >Je suis ...</label>                                 
-                        <div class="flex-end">{{ user.gender }}</div>
-                      </div>
-                      <div> <!-- Je parle input -->
-                        <div>
-							 <label >Je parle ...</label>  
-                        </div>
-						    {% for languageCode in user.language %}
+   <div class="boxSide">
+    <!-- Card user  -->
+    <div class="cardSide">
+
+    <div class="row">
+
+    <article class="cardUser ">
+    <article class="cardUserBody">
+    <img class="img-user" src="{{ user.image }}" alt="">
+
+    <div class="description">
+        <div class="row">
+            <p class="name">{{ user.username }} </p>
+        <div class="drapeau ">
+        {% for languageCode in user.language %}
               <img src="https://www.countryflagicons.com/SHINY/32/{{ languageCode }}.png" alt="{{ languageCode }} ">
-                {% endfor %}
-                      </div>
-                    </div>
-                  </div>
-                  <div class="align-top maDiv col-4 offset-2"> <!-- 2ème partie card -->
-                    <div class="wrap-bouton mb-1"> <!-- img + btn -->
-                      <div>
-							<img class="img-thumbnail  float-start" src="{{ user.image }}" alt="">
-                      </div>
-                    
-                    </div>
-                    <div class="mb-3"> <!-- input 2ème partie card -->
-                      <div>
-                        <label >Je boss dans ...</label>
-                        </div>
-                        <p class="stroke-input mb-3">	{{ user.job }}</p>
-                     <div class="mt-3">
-                      <label >Je me décris en quelque mot ..</label>
-					  <p class="stroke-input mb-3">	{{ user.description }}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="offset-1"> <!-- 3ème partie card -->
-                    <div> <!-- texte 3ème partie card -->
-					<label >Mon régime alimentaire ...</label>               
-    				 </div>
-                    <div> <!-- btn radio -->
-                      <div class="flex-pref mt-4">
-						{{ user.diet }}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        {% endfor %}
+        </div>
+    </div>
+
+    <div class="row">
+
+        <p class="cardGender">{{ user.gender }}</p>
+
+    <div class="infoUser">
+    <div class=" tag-prefs ">
+        {% if user.postalCode is not empty %}
+        <p class="tag-menthe"> {{ user.city }}</p>
+        {% endif %} 
+        <p class="tag-menthe">{{ user.age }} Ans</p>
+    </div>
+    </div>
+    </div>
+
+    </div>    
+
+    
+    <p class="citation">« {{ user.description }}. »</p>
+
+
+    </article>
+    </div>
+    </div>
+
+
+    
+    <!-- box profil  -->
+    <div class=" CardProfil  ">
+    <!-- Profil form : JE SUIS -->
+    <fieldset class="active">
+    <div class="formCard">
+  
+      <div class="container ">
+    <div class=" border-card">
+    <!-- <img src="Assets/formes/algue-medium-menthe-gauche.svg" alt="" class="algue-profil position-relative">
+      <fieldset class="active">
+    <img src="Assets/formes/marguerite-framboise.svg" alt="" class="marguerite-profil  position-relative "> -->
+  
+      <!-- TITRE CARD FORMULAIRE -->
+      <div class="row">
+      <div class="titleCard">
+  
+        <div class="title active">
+          <h2>je suis</h2>
+        </div>
+        <div class="title ">
+          <h2>j'aime</h2>
+        </div>
+  
+      </div>
+      </div>
+              
+      <!-- Form 1 JE SUIS  -->
+      <div class="containerForm">
+    
+        <div class="rightSide"> 
+          
+          <!-- right side -->
+          <p >Je m'apelle...</p>
+          <p class="stroke-input">{{ user.username }}</p>
+
+          <p >J'habite...</p>
+          {% if user.postalCode is not empty %}
+          <p class="stroke-input"> {{ user.city }} ({{ user.region }})</p>
+          {% endif %}     
+
+          <div class="date"> 
+            <p> Age ...</p>
+            <p>	{{ user.age }} Ans</p>
+          </div>
+
+          <div class="date"> 
+          <p>Je suis un(e)</p>
+          <p > {{ user.gender }}</p>
+          </div>
+
+        <p>Je parle...</p>
+         {% for languageCode in user.language %}
+        <img src="https://www.countryflagicons.com/SHINY/32/{{ languageCode }}.png" alt="{{ languageCode }} ">
+        {% endfor %}
+        
         </div>
 
-        </article>
-        <div class="row">
-          <div class="jesuisbouton">
-            <button id='btnstep1' href="#" onclick="nextStep()" class="bouton-smallest-transparent">
-              suivant
-            </button>
-          </div>
+
+        <!-- left side -->
+        <div class="leftSide"> 
+
+        <div class="wrap-img"> 
+            <img src="{{ user.image }}" alt="" class="img">
+        </div>
+  
+        <p>Je bosse dans...</p>
+        <p class="stroke-input">{{ user.job }}</p>
+
+        <div class="decris">
+        <p>Je me décris en quelques mots...</p>
+        <p class="stroke-input">{{ user.description }}</p>
+       
+        </div>
+        </div>
+
+        <!-- bottom  -->
+        <div class="bottom"> 
+        <p> Mon régime alimentaire ... </p>
+         <div class="btn-diet">
+         <input type="radio" id="ProfilChoice1" name="choice" value="{{ user.diet}}"class="regime">
+        <label for="ProfilChoice1">{{ user.diet}}</label>
+        </div>
+        </div>
+  
+    </div>
+  </div>
+        <div class="btn-submit">
+        <button onclick="nextStep()" class="btn-img ">
+            suivant
+        </button>
+        </div>
+
         </div>
       </div>
-    </div>
-    </div>
-    </div>
     </fieldset>
-
-{# fin card je suis 1 #}
-
-
-{# J'aime partie 2 #}
-    <fieldset class="mt-5 mb-5" style="display: none;">
-<div class="container" id="jaime">
-          
-                    <div class="cardjaime ">
-                        
-                        <div class="row"> <!-- TITRE CARD FORMULAIRE -->
-                            <div
-                                class="col-11 d-flex justify-content-end titrecard z-3 position-relative align-items-baseline">
-                                <a class="me-4 link-jesuis" href="#">
-                                    <h2>JE SUIS</h2>
-                                </a>
-                                <a class="me-4 link-jaime active" href="#">
-                                    <h2>J'AIME</h2>
-                                </a>
-                                <a href="#" class="link-jeveux">
-                                    <h2>JE VEUX</h2>
-                                </a>
-                            </div>
-    
-                        </div>
-    
-    
-                            <div class="mb-3 ">
-                             <label >Mes centres d'interets</label>
-                            </div>
-    
-                               <div class="row">
-                           {% for interest in user.centerOfInterest %}
-									<p class="border ms-3 p-3 border-danger col-2 text-center">{{ interest }}</p>
-								{% endfor %}                         
-								</div>
-                               
-                        <div class="mt-3">
-                                 <label >J'en ai d'autres</label>
-                        		 <p class="stroke-input mb-3">	{{ user.centerOfInterestPerso }}</p>
-
-                         </div>
-                            </div>
-    
-    
-                    </div>
-                </div>
-                <div class="row g0">
-                    <div class="offset-md-3 col-md-9 d-flex  jaimebouton">
-                        <a class="bouton-smallest-transparent me-5" onclick="previousStep()">Retour</a>
-                        <a class="bouton-smallest-transparent" onclick="nextStep()">Suivant</a>
-                    </div>
+    <!-- Profil form : J'AIME -->
+    <fieldset style="display: none;">
+    <div class="formCard ">
+  
+      <div class="containerjaime">
+    <div class=" border-card">
+    <!-- <img src="Assets/formes/algue-medium-menthe-gauche.svg" alt="" class="algue-profil position-relative">
+      <fieldset class="active">
+    <img src="Assets/formes/marguerite-framboise.svg" alt="" class="marguerite-profil  position-relative "> -->
+  
+      <!-- TITRE CARD FORMULAIRE -->
+      <div class="row">
+      <div class="titleCard">
+  
+        <div class="title ">
+          <h2>je suis</h2>
+        </div>
+        <div class="title active">
+          <h2>j'aime</h2>
+        </div>
+  
+      </div>
+      </div>
               
-        </div>
+      <!-- Form J'AIME  -->
+      <div class="containerFormjaime">
+    
+        <div class="centerOfI"> 
+          
+        <!-- right side -->
+        <p >Mes centres d'intérêts</p>
+        <div class="btn-diet btn-centerOfI">
+        {% for interest in user.centerOfInterest %}
+        <input type="radio" id="ProfilChoice1" name="choice" value=" {{ interest }}" class="regime">
+        <label for="ProfilChoice1">{{ interest }}</label>
+        {% endfor %}
 
         </div>
+          
+        <p>J’en ai d’autres ... </p>
+        <p class="stroke-input-fin"> {{ user.centerOfInterestPerso }} </p>
         </div>
-</fieldset>
-
-        {# Fin de j'aime partie 2  #}
-
-   <fieldset class="mt-5" style="display: none;">
-   <div class="container" >
-        {# je veux Etape 3 #}
-        <div class="container" style="margin-top: -150px" >
-            <section> <!-- PAGE ENTIERE -->
-            <div class="container justify-content-center" > <!-- MARGES -->
-                <div class="row ">
-
-                <article class="psmall border-card">
-                    <div id="jeveuxV2" class="col-lg-9 jeveux"> <!-- CARD FORMULAIRE -->
-                        <div class="row"> <!-- TITRE CARD FORMULAIRE -->
-                            <div class="col-11 d-flex justify-content-end titrecard z-3 position-relative align-items-baseline">
-                                <a class="me-4 link-jesuis" href="#">
-                                    <h2>JE SUIS</h2>
-                                </a>
-                                <a class="me-4 link-jaime" href="#" >
-                                    <h2>J'AIME</h2>
-                                </a>
-                                <a href="#" class="link-jeveux active">
-                                    <h2>JE VEUX</h2>
-                                </a>
-                            </div>
-            
-                        </div>
-
-                        <div class="row">
-                            <div class="offset-md-1 col-md-4"> <!-- PARTIE GAUCHE -->
-                                <p>Je veux festoyer...</p>
-                                <div class="row mb-5">
-                                    <div class="col-6  mb-2"> <!-- PARTIE GAUCHE - PART GAUCHE -->
-                                        <input type="radio" name="nombre" value="unepersonne" class="btn-check"
-                                            id="btn-check-outlined-1" autocomplete="off">
-                                        <label class="btn btn-outline-primary jeveuxchoice  w-100 h-100" for="btn-check-outlined-1">
-                                            <img class="iconchoice"
-                                                src="../assets/img/icones/selection/selection-teteatete-off.svg" alt="">
-                                            <br>Avec 1 personne</label>
-                                    </div>
-
-                                    <div class="col-6  mb-2"> <!-- PARTIE GAUCHE - PART DROITE -->
-                                        <input type="radio" name="nombre" value="groupe" class="btn-check"
-                                            id="btn-check-outlined-2" autocomplete="off">
-                                        <label class="btn btn-outline-primary jeveuxchoice w-100 h-100 pt-3"
-                                            for="btn-check-outlined-2">
-                                            <img class="iconchoice"
-                                                src="../assets/img/icones/selection/selection-groupe-off.svg" alt=""> <br>
-                                            En groupe</label>
-                                    </div>
-
-                                </div>
-
-                                <p>Je préfère festoyer avec...</p>
-                                <div class="row mb-5">
-                                    <div class="col-4 col-md-6 mb-2"> <!-- PARTIE GAUCHE - PART GAUCHE -->
-                                        <input type="radio" name="genre" value="femme" class="btn-check"
-                                            id="btn-check-outlined-3" autocomplete="off">
-                                        <label class="btn btn-outline-primary jeveuxchoice  w-100 h-100" for="btn-check-outlined-3">
-                                            <img class="iconchoice"
-                                                src="../assets/img/icones/selection/selection-female-off.svg" alt="">
-                                            <br>La gente<br>féminine</label>
-                                    </div>
-
-                                    <div class="col-4 col-md-6  mb-2"> <!-- PARTIE GAUCHE - PART DROITE -->
-                                        <input type="radio" name="genre" value="homme" class="btn-check"
-                                            id="btn-check-outlined-4" autocomplete="off">
-                                        <label class="btn btn-outline-primary jeveuxchoice  w-100 h-100" for="btn-check-outlined-4">
-                                            <img class="iconchoice" src="../assets/img/icones/selection/selection-male-off.svg"
-                                                alt=""> <br>La gente masculine</label>
-                                    </div>
-
-                                    <div class="col-4 col-md-6  mb-2"> <!-- PARTIE GAUCHE - PART GAUCHE -->
-                                        <input type="radio" name="genre" value="indifferent" class="btn-check"
-                                            id="btn-check-outlined-5" autocomplete="off">
-                                        <label class="btn btn-outline-primary jeveuxchoice w-100 h-100 py-3"
-                                            for="btn-check-outlined-5">
-                                            <img class="iconchoice"
-                                                src="../assets/img/icones/selection/selection-malefemale-off.svg" alt="">
-                                            <br>Les deux</label>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class="offset-md-1 col-md-5"> <!-- PARTIE DROITE -->
-
-                                <p>Je veux une expérience internationale</p>
-                                <div class="d-flex mb-5">
-                                    <div class="form-check me-4">
-                                        <input class="form-check-input" type="radio" name="international" id="oui"
-                                            value="oui">
-                                        <label class="form-check-label interchoice" for="oui">
-                                            Oui
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="international" id="non"
-                                            value="non">
-                                        <label class="form-check-label interchoice" for="non">
-                                            Non
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <p>Je veux une limite d'âge</p>
-                                <img src="../assets/img/icones/jauge.svg" alt="">
-
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="offset-md-1 col-md-10 criteres"> <!-- PARTIE EN BAS -->
-                                <p>J'ai des critères rédhibitoires sur ces sujets...</p>
-                                <div class="tag-menthe-small d-inline-block">
-                                    <p class="tag-menthe-small psmall tag">Politique <img
-                                            src="../assets/img/icones/croix/croix-noire-small.svg" alt=""></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row g-0">
-                    <div class=" col-md-9 d-flex justify-content-between jaimebouton">
-                    
-        <button type="button" class="bouton-smallest-transparent mb-5 " onclick="previousStep()">Retour</button>
-                       
-                    </div>
-         
-                
-
-            </div>
-        </section>
-        {# Fin de je veux Etape 3   #}
+  
         </div>
-</fieldset>
-        {# Fin de je veux Etape 3   #}
-
-                    <div class="infoprofil position-relative ">
-                <p>{{ user.username }}</p>
-                <span class="vertical-line"></span>
-                <p class="tag">{{ user.email }}</p>
-            </div>
-            
-                   
         </div>
 
+        <div class="btn-submit-fin">
+        <button onclick="previousStep()" class="btn-img ">
+            Retour
+        </button>
 
+        </div>
+        </div>
+      </div>
+      </fieldset>
+      </div>
+      </div>
 
-    </section>
+       <div class=" CardInfos">
+        <p>{{ user.username }}</p>
+        <span class="vertical-line"></span>
+        <p class="tag">{{ user.email }}</p>
+        </div>
+        </div>
+        </div>
 
-{% endblock %}
+     
+
+<!-- footer -->
+		{% include "_footer.html.twig" %}
+</body>
+<script src="{{asset('./assets/js/header.js')}}"></script>
+<script src="{{asset('./assets/js/form.js')}}"></script>
+</html>
