@@ -8,6 +8,7 @@ use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
 use Doctrine\Bundle\MongoDBBundle\Repository\ServiceDocumentRepository;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\ODM\MongoDB\Repository\DocumentRepository;
+use MongoDB\BSON\ObjectId;
 
 class GroupRepository extends ServiceDocumentRepository 
 {
@@ -25,11 +26,10 @@ class GroupRepository extends ServiceDocumentRepository
             $this->getDocumentManager()->flush();
     }
 
-    public function findGroupsById(string $id):array{
+    public function findGroupsById(string $id):array
+    {
 
         return $this->findBy([ 'id' => $id ]);
-
-
     }
     public function findAllGrpFromBdd() : array 
     {
@@ -40,5 +40,36 @@ class GroupRepository extends ServiceDocumentRepository
     {
         $this->getDocumentManager()->remove($group);
         $this->getDocumentManager()->flush();
+    }
+
+    public function findGuestById(string $idSession, string $response) : array 
+    {
+        return $this->findBy([
+            'status' => "waiting",
+            'guests' => [
+                '$elemMatch' => [
+                    'invitation' => "$response",
+                    'guest.$id' => new ObjectId($idSession),
+                ]
+            ]
+        ]);
+    }
+
+    public function findReadyGroup(string $idSession): array
+    {
+        return $this->findBy([
+            'status' => "waiting",
+            'guests' => [
+                '$elemMatch' => [
+                    'guest.$id' => new ObjectId($idSession),
+                    'invitation' => "accept",
+                ],
+                '$not' => [
+                    '$elemMatch' => [
+                        'invitation' => "waiting",
+                    ],
+                ],
+            ],
+        ]);
     }
 }

@@ -86,7 +86,7 @@ header nav{
 }
 /* nav responsive */
 #navResponsive{
-    position: absolute;
+    position: fixed;
     height: 100%;
     width: 100%;
     background: #fff;
@@ -693,6 +693,21 @@ footer{
     }
 }
 @media screen and ( max-width : 550px ) {
+    #navResponsive{
+        height: 120%;
+    }
+    #burgerBox {
+        margin-left: 24px;
+    }
+    #navResponsive nav ul li {
+        margin: 26px 14px;
+        font-size: 1.5rem;
+    }
+    #navResponsive nav {
+        margin-top: 50%;
+        margin-left: 27px;
+    }
+    #mod
     #notificationBox{
         position: fixed;
         width: 90%;

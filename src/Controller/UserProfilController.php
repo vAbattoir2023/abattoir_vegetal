@@ -13,6 +13,19 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpClient\HttpClient;
 
+use Cloudinary\Configuration\Configuration;
+
+// Configuration::instance([
+//     'cloud' => [
+//         'cloud_name' => $_ENV['CLOUDINARY_CLOUD_NAME'], 
+//         'api_key' => $_ENV['CLOUDINARY_API_KEY'], 
+//         'api_secret' => $_ENV['CLOUDINARY_API_SECRET']
+//     ],
+//     'url' => [
+//         'secure' => true
+//     ]
+// ]);
+
 #[Route('/user_profil')]
 class UserProfilController extends AbstractController
 {
@@ -20,32 +33,27 @@ class UserProfilController extends AbstractController
     public function index(Request $request, UserRepository $userRepository, DocumentManager $documentManager, SessionInterface $sessionInterface): Response
     {
 
-        $user  = new User();
+        $user  = new User();                                    // instancie user document
         
-        // get id user from session
-        $idSession = $sessionInterface->get('id');
+        $idSession = $sessionInterface->get('id');              // get id user from session
 
-        if(!$idSession){
-            return $this->redirectToRoute('app_home');
-        }
-        // gey user by id session 
-        $user = $userRepository->findUserById($idSession);
+        if(!$idSession) return $this->redirectToRoute('app_home'); // if idSession is undifined, then redirect to app_home
         
-        // if not user then redirect to app_register
-        if (!$user) {
-            return $this->redirectToRoute('app_register');
-        }
-        //  dd($userFromBdd);
-        // create form for the database
-        $form = $this->createForm(UserType::class, $user);
-        // get the data from form
-        $form->handleRequest($request);
+        $user = $userRepository->findUserById($idSession);      // get user by id session 
+        
+        if (!$user) return $this->redirectToRoute('app_register');  // if user is undifined then redirect to app_register
 
-        // if data from form is submitted and valid
+        $form = $this->createForm(UserType::class, $user);      // create a form
+        
+        $form->handleRequest($request);                         // get the form datas
+
+        $flagIconUrl = [];                                     // initialise flag array
+
+        // if data form is submitted and valid
         if ($form->isSubmitted() && $form->isValid()) {
 
             $selectedLanguages = $form->get('language')->getData();
-            $flagIconUrl = [];
+            
             if (is_array($selectedLanguages)) {
                 // Définir la valeur de la propriété "language"
                 $user->setLanguage($selectedLanguages);    
@@ -62,8 +70,6 @@ class UserProfilController extends AbstractController
                     }
                 }
                 $user->setFlagIconUrl($flagIconUrl);
-            } else {
-                echo 'false';
             }
              // Récupérer le code postal à partir du formulaire
              $codePostal = $user->getPostalCode();
@@ -77,20 +83,17 @@ class UserProfilController extends AbstractController
              $response = $httpClient->request('GET', $apiUrl);
              $data = $response->toArray();
  
+            // if data 
              if (!empty($data)) {
-                 // Mettre à jour la valeur de city en fonction de la commune trouvée
-                 $city = $data[0]['nom'];
-                 // Attribuer les valeurs au document USER                
-                 $user->setCity($city);
+                 $city = $data[0]['nom'];                   // Mettre à jour la valeur de city en fonction de la commune trouvée              
+                 $user->setCity($city);                     // Attribuer les valeurs au document USER  
                  $user->setPostalCode($codePostal);
-                 // Récupérer le code du département à partir des données du codeDepartement de l'API
-                 $codeDepartement = $data[0]['codeDepartement'];
-                 // Attribuer les valeurs au document USER
-                 $user->setCodeDepartement($codeDepartement);
-                
+                 $codeDepartement = $data[0]['codeDepartement']; // Récupérer le code du département à partir des données du codeDepartement de l'API
+                 $user->setCodeDepartement($codeDepartement);    // Attribuer les valeurs au document USER
              }
-             // Récupérer le code du département à partir des données de la commune
-             $codeDepartement = $user->getCodeDepartement();
+
+             
+             $codeDepartement = $user->getCodeDepartement();    // Récupérer le code du département à partir des données de la commune
  
              // URL de base vers l'API gouvernementale pour obtenir les informations du département à partir du code du département
              $apiUrl = "https://geo.api.gouv.fr/departements/" . $codeDepartement;

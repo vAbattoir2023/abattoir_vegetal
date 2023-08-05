@@ -62,9 +62,7 @@ body{
     margin-top: 10%;
     margin-left: 50px;
 }
-a{
-    text-decoration: none;
-}
+
 #navResponsive nav ul li{
     list-style-type: square;
     margin: 30px 40px;
@@ -74,6 +72,9 @@ a{
     text-shadow: 1px 1px 1px #12231A;
     text-transform: uppercase;
     cursor: pointer;
+}
+a{
+    text-decoration: none;
 }
 #textBox{
     width: 80%;
@@ -222,12 +223,19 @@ a{
     }
 }
 @media screen and ( max-width : 550px ) {
+    #navResponsive{
+        height: 120%;
+    }
     #burgerBox {
         margin-left: 24px;
     }
     #navResponsive nav ul li {
         margin: 26px 14px;
         font-size: 1.5rem;
+    }
+    #navResponsive nav {
+        margin-top: 50%;
+        margin-left: 27px;
     }
     #modal{
         height: 200px;
@@ -263,11 +271,11 @@ a{
     /* navbars */
     #navbarBox img{
         margin: 20px 0px;
-        height: 80px;
+        height: 100px;
         cursor: pointer;
     }
     #titleBox img {
-        height: 52px;
+        height: 70px;
         position: none;
         margin-bottom: 0px;
     }
@@ -276,11 +284,7 @@ a{
         margin-top: 0%;
     }
     #burgerBox img {
-        height: 14px;
+        height: 22px;
         width: auto;
-    }
-    #navResponsive nav {
-        margin-top: 80px;
-        margin-left: 27px;
     }
 }

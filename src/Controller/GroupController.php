@@ -31,7 +31,6 @@ class GroupController extends AbstractController
     #[Route('/select_group', name: 'app_select_group')]
     public function select_group(GroupRepository $groupRepository,UserRepository $userRepository, SessionInterface $sessionInterface,  Request $request , DocumentManager $dm ): Response
     {
-
         $group = new Group();
 
         // if id user is undifined, return to login
@@ -190,7 +189,8 @@ class GroupController extends AbstractController
 
         // Save the updated group document back to the database
         $dm->flush();
-        return $this->redirectToRoute('app_home');
+        
+        return $this->redirectToRoute('app_reservation');
     }
 
     #[Route('/invitation', name: 'app_invitation')]
@@ -213,4 +213,5 @@ class GroupController extends AbstractController
         
         return $this->json(['notifications' => $notifInvitation]);
     }
+    
 }

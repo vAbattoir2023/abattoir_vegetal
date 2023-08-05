@@ -38,13 +38,11 @@ notifBtn.addEventListener('click', (event)=>{
     countNotif == 2  ? (notifBox.style.display = 'none', countNotif = 0) : null;
 });
 
-/**
- * when clicked body -> count +1
- * if count = 1 then open nav bar 
- * if count = 2 then close nav bar et count = 0
- */
+
+// when clicked body then close nav bar et count = 0
 body.addEventListener('click', ()=> (notifBox.style.display = 'none' ,countNotif = 0));
 
+// property click
 notifBox.addEventListener('click',(event)=> event.stopPropagation());
 
 // FETCH
