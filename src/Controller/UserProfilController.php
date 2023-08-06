@@ -91,7 +91,6 @@ class UserProfilController extends AbstractController
                  $codeDepartement = $data[0]['codeDepartement']; // Récupérer le code du département à partir des données du codeDepartement de l'API
                  $user->setCodeDepartement($codeDepartement);    // Attribuer les valeurs au document USER
              }
-
              
              $codeDepartement = $user->getCodeDepartement();    // Récupérer le code du département à partir des données de la commune
  
