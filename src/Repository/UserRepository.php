@@ -71,7 +71,7 @@ class UserRepository extends ServiceDocumentRepository
             return $this->findOneBy([ 'id' => $id]);
         }
     }
-    public function findUserByRoles(string $roles) : object
+    public function findUserByRoles(string $roles) : ?object
     {
         if($roles){
             return $this->findOneBy([ 'roles' => $roles]);

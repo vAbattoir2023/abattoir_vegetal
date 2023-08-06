@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
 
@@ -21,12 +21,24 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 class AdminController extends AbstractController
 {
     #[Route('/', name: 'app_admin_index')]
-    public function index(UserRepository $userRepository): Response
+    public function index(UserRepository $userRepository, sessionInterface $sessionInterface): Response
     {
+    // Get the logged-in user from the session
+    $user = $userRepository->find($sessionInterface->get('id'));
 
-     // Check if the current user has the ROLE_ADMIN role
-     if (!$this->isGranted('ROLE_ADMIN')) {
-        // Redirect users without ROLE_ADMIN to your custom page
+    // If no user is found with the given ID, redirect to the home page
+    if (!$user) {
+        return $this->redirectToRoute('app_home_help');
+    }
+
+    // Check if the user has the 'ROLE_ADMIN' role
+    $isAdmin = in_array('ROLE_ADMIN', $user->getRoles());
+
+    // Dump the isAdmin variable for testing
+    // dd($isAdmin);
+
+    // If the user is not an admin, redirect to the home page
+    if (!$isAdmin) {
         return $this->redirectToRoute('app_home_help');
     }
 
