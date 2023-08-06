@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 
 
@@ -20,15 +21,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminController extends AbstractController
 {
     #[Route('/', name: 'app_admin_index')]
-    public function index(UserRepository $userRepository, sessionInterface $sessionInterface): Response    {
+    public function index(UserRepository $userRepository): Response
+    {
 
-           // get id user from session
-           $admins = $sessionInterface->get('id');
-           $userRepository->findUserByRoles('ROLE_ADMIN');
-          // if not user then redirect to app_register
-          if (!$userRepository) {
-            return $this->redirectToRoute('app_register');
-        } 
+     // Check if the current user has the ROLE_ADMIN role
+     if (!$this->isGranted('ROLE_ADMIN')) {
+        // Redirect users without ROLE_ADMIN to your custom page
+        return $this->redirectToRoute('app_home_help');
+    }
+
         return $this->render('Admin/index.html.twig', [
             //on recupere la liste des administrateur en fonction du ROLE_ADMIN
             'users' => $userRepository->findAllFromBdd(),
