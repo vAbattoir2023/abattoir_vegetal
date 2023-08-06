@@ -15,10 +15,16 @@
     {% include "_nav.html.twig" %}
     <!-- register Box -->
     <article id="registerBox1">
-        <h1>register</h1>
+        <h1>S'inscrire</h1>
         <div id="registerBox2">
             {{ form_errors(FormRegister) }}
             {{ form_start(FormRegister, {'attr': {'class': 'inputBox'}}) }}
+
+            {# Display alert message if there are any errors #}
+              {% if alert is not empty %}
+                <div class="alert">{{ alert }}</div>
+              {% endif %}
+
                 <!-- email form -->
                 <div class="input">
                     {{ form_widget(FormRegister.email, {'attr': {'class': 'input custom-input', 'placeholder': 'Votre adresse mail'}}) }}
@@ -43,8 +49,8 @@
                 <!-- button submit -->
                 {{ form_widget(FormRegister.submit, {'attr': {'id': 'btn', 'class': 'btn'}}) }}
                  <!-- go to login page -->
-                <a href="">
-                    <span>Login</span>
+                <a href="{{ path('app_login') }}">
+                    <span>Se connecter</span>
                 </a>
             {{ form_end(FormRegister) }}
         </div>

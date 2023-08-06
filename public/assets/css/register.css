@@ -330,6 +330,11 @@ a{
 .inputBox a{
     color: #000;
 }
+
+.alert{
+    color: #E83647;
+    font-weight: 800;
+}
 @media screen and ( max-width : 1000px ) {
     /* second background element*/
     #seaweedLeftBox{
