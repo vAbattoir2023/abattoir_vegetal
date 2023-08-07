@@ -51,6 +51,7 @@ class UserProfilController extends AbstractController
 
         // if data form is submitted and valid
         if ($form->isSubmitted() && $form->isValid()) {
+            
 
             //////////////////////////////////////////////////////////////////////////////////// STEP DRAPEAU LANGAGE
             $selectedLanguages = $form->get('language')->getData();

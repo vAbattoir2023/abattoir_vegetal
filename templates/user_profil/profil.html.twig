@@ -64,7 +64,7 @@
         {% if user.postalCode is not empty %}
         <p class="tag-menthe"> {{ user.city }}</p>
         {% endif %} 
-        <p class="tag-menthe">{{ user.age }} Ans</p>
+        <p class="tag-menthe">{{ user.age|date("m/d/Y") }} Ans</p>
     </div>
     </div>
     </div>

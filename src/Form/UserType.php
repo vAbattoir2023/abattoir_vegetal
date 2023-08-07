@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -36,15 +37,9 @@ class UserType extends AbstractType
                     'placeholder' => 'Code postal',
                 ],
             ])
-            // ->add('birthdate', BirthdayType::class, [
-            //     'widget' => 'single_text',
-            //     'attr' => [
-            //         'class' => 'form-control'
-            //     ],
-            //     'format' => 'yyyy-MM-dd',
-            // ])
-
-            ->add('age', IntegerType::class)
+            ->add('age', IntegerType::class, [
+                
+            ])
 
             ->add('gender', ChoiceType::class, [
                 'choices'  => [
@@ -65,33 +60,18 @@ class UserType extends AbstractType
                 'choices' => [
                     'Anglais' => 'GB',
                     'Français' => 'FR',
-                    'Espagnol' => 'ES',
-                    'Italien' => 'IT',
-                    'Néerlandais' => 'NL',
-                    'Bresilien' => 'BR',
-                    'Chinois ' => 'CN',
-                    'Algerien ' => 'DZ',
                 ],
                 'choice_attr' => [
                     'Anglais' => ['class' => 'langue'],
                     'Français' => ['class' => 'langue'],
-                    'Espagnol' => ['class' => 'langue'],
-                    'Italien' => ['class' => 'langue'],
-                    'Néerlandais' => ['class' => 'langue'],
-                    'Bresilien' => ['class' => 'langue'],
-                    'Chinois ' => ['class' => 'langue'],
-                    'Algerien ' => ['class' => 'langue'],
                 ],
                 'multiple' => true,
                 'expanded' => true,
             ])
-
-            ->add('image', TextType::class, [
-                'attr' => [
-                    'placeholder' => 'https://',
-                ],
+            ->add('image', FileType::class, [
+                'label'=> 'add a picture',
+                'data_class' => null,
             ])
-
             ->add('job', TextType::class)
 
             ->add('description', TextType::class,)
@@ -117,18 +97,18 @@ class UserType extends AbstractType
          // New fields for Step 2: J'AIME
         ->add('centerOfInterest',  ChoiceType::class, [
             'choices'  => [
-                'Animaux' => 'Animaux',
-                'Environnement' => 'Environnement',
-                'Jeux vidéos' => 'Jeux vidéos',
-                'Art et Culture' => 'Art et Culture',
-                'Sport' => 'Sport',
-                'Voyage' => 'Voyage',
-                'Musique' => 'Musique',
-                'Danse' => 'Danse',
+                'Animals' => 'Animaux',
+                'Environment' => 'Environnement',
+                'Games' => 'Jeux vidéos',
+                'Art & Cult' => 'Art et Culture',
+                'Sports' => 'Sport',
+                'Travel' => 'Voyage',
+                'Music' => 'Musique',
+                'Dance' => 'Danse',
                 'Sciences' => 'Sciences',
                 'Bien-etre' => 'Bien-etre',
                 'Food' => 'Food',
-                'Activités sociales' => 'Activités sociales'
+                'Social Act' => 'Activités sociales'
             ],
             'choice_attr' => [
                 'Animaux' => ['class' => 'regime'],
@@ -145,7 +125,8 @@ class UserType extends AbstractType
                 'Activités sociales' => ['class' => 'regime'],           
              ],
             'multiple' => true,
-            'expanded' => true
+            'expanded' => true,
+            'attr' => ['class'=> 'checkboxBox']
         ])
 
         ->add('centerOfInterestPerso', TextType::class)

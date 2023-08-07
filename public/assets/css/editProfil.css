@@ -484,7 +484,7 @@ input:focus {
     flex-direction: column;
     display: none;
 }
-#checkboxBox{
+#user_centerOfInterest{
     height: auto;
     display: flex;
     flex-wrap: wrap;
@@ -518,6 +518,16 @@ input:focus {
 }
 #check input[type="radio"]:checked + label {
     border: 2px solid #FF6C27;
+}
+.checkboxBox{
+    height: auto;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: center;
+    flex-direction: row;
 }
   
 #btnBox{
@@ -735,6 +745,12 @@ footer{
     }
 }
 @media screen and ( max-width : 650px ) {
+    #mentheBG{
+        display: none;
+    }
+    #flowerRed{
+        display: none;
+    }
     /* navbar logo image */
     header #logo{
         margin-left: 60px;
@@ -876,27 +892,6 @@ footer{
         justify-content: space-between;
         align-items: center;
         overflow: scroll;
-    }
-}
-@media screen and ( max-width : 350px ) {
-    main article{
-        height: 520px;
-        width: 100%;
-        margin: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-direction: column;
-    }
-    main article:nth-child(2n){
-        height: 520px;
-        width: 100%;
-        margin: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-direction: column;
-        margin-top: 25%;
     }
 }
 @media screen and ( max-width : 330px ) {

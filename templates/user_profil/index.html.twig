@@ -1,165 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit</title>
-    <link rel="stylesheet" href="{{ asset('./assets/css/editProfil.css') }}">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil Edit</title>
+  <link rel="stylesheet" href="{{ asset('./assets/css/editProfil.css') }}">
 </head>
 <body>
-    <img id="mentheBG" src="{{ asset('./assets/img/formes/algue-medium-menthe-gauche.svg') }}" alt="">
-    <img id="flowerRed" src="{{ asset('./assets/img/formes/marguerite-framboise.svg') }}" alt="">
-    {# JUSTE je viens de push #nuit blanche #on va finir ce projet #}
-    <!-- header nav bar -->
-    {% include "_header.html.twig" %}
-    <!-- container -->
-    <main>
-        <form id="container">
-            <article>
-                <div id="first_second">
-                    <h1 id='title'>My profile</h1>
-                    <!-- first page (Matthieu -> remplacer les inputs en dur par les input du formtype ) -->
-                    <div id="firstData">
-                        <div class="inputBox">
-                            <label for="">My name is ...</label>
-                            <input type="text" />
-                        </div>
-                        <div class="inputBox2">
-                            <label for="">I live in ...</label>
-                            <input type="text" />
-                        </div>
-                        <div class="inputBox3">
-                            <label for="">I was born in </label>
-                            <input type="date">
-                        </div>
-                        <div class="inputBox4">
-                            <label for="">I am a ...</label>
-                            <section>
-                                <div class="checkGender">
-                                    <input id="Men" name="gender" type="radio" value="Men" />
-                                    <label for="Men" for="Men">Men</label>
-                                </div>
-                                <div class="checkGender">
-                                    <input id="woman" name="gender" type="radio" value="woman" />
-                                    <label for="woman">Woman</label>
-                                </div>
-                                <div class="checkGender">
-                                    <input id="other" name="gender" type="radio" value="other" />
-                                    <label for="other">Other</label>
-                                </div>
-                            </section>
-                        </div>
-                        <div class="inputBox">
-                            <label for="">I speak ...</label>
-                            <input type="text" />
-                        </div>
-                    </div>
-                    <div id="secondData">
-                        <div id="imageBox">
-                            <figure id="imageProfil">
-                                <img src="{{ asset('./assets/img/icones/profil/profil-big.svg') }}" alt="">
-                            </figure>
-                            <div id="inputFileBox">
-                                <input id="picture" type="file" title="" />
-                                <label for="picture">add a picture</label>
-                                <input id="avatar" disabled type="file" title="" />
-                                <label for="avatar">select an avatar</label>
-                            </div>
-                        </div>
-                        <div class="inputBox">
-                            <label for="">I work in ...</label>
-                            <input type="text" />
-                        </div>
-                        <div class="inputBox">
-                            <label for="">My description ...</label>
-                            <input type="text" />
-                        </div>
-                    </div>
-                </div>
-                <div id="thirdData">
-                    <span for="">My diet ...</span>
-                    <div>
-                        <div id="check">
-                            <input type="radio" name="diet" id="vegan" value="vegan">
-                            <label for="vegan">vegan</label>
-                            <input type="radio" name="diet" id="curious" value="curious">
-                            <label for="curious">curious</label>
-                            <input type="radio" name="diet" id="vegetarian" value="vegetarian">
-                            <label for="vegetarian">vegetarian</label>
-                            <input type="radio" name="diet" id="flexitarian" value="flexitarian">
-                            <label for="flexitarian">flexitarian</label>
-                        </div>
-                        <button type="button" id="next">Next</button>
-                    </div>
-                </div>
-                <!-- second page (Matthieu -> remplacer les inputs en dur par les input du formtype ) -->
-                <div id="nextSelect">
-                    <span>My center of interest ...</span>
-                    <div id="allCheckbox">
-                        <div id="checkboxBox">
-                            <input id="Animaux" type="checkbox">
-                            <label for="Animaux">Animaux</label>
-                        </div>
-                        <div id="checkboxBox">
-                            <input id="Test" type="checkbox">
-                            <label for="Test">Test</label>
-                        </div>
-                        <div id="checkboxBox">
-                            <input id="Animaux" type="checkbox">
-                            <label for="Animaux">Animaux</label>
-                        </div>
-                        <div id="checkboxBox">
-                            <input id="Animaux" type="checkbox">
-                            <label for="Animaux">Animaux</label>
-                        </div>
-                        <div id="checkboxBox">
-                            <input id="Animaux" type="checkbox">
-                            <label for="Animaux">Animaux</label>
-                        </div>
-                        <div id="checkboxBox">
-                            <input id="Animaux" type="checkbox">
-                            <label for="Animaux">Animaux</label>
-                        </div>
-                        <div id="checkboxBox">
-                            <input id="Animaux" type="checkbox">
-                            <label for="Animaux">Animaux</label>
-                        </div>
-                        <div id="checkboxBox">
-                            <input id="Animaux" type="checkbox">
-                            <label for="Animaux">Animaux</label>
-                        </div>
-                        <div id="checkboxBox">
-                            <input id="Animaux" type="checkbox">
-                            <label for="Animaux">Animaux</label>
-                        </div>
-                        <div id="checkboxBox">
-                            <input id="Animaux" type="checkbox">
-                            <label for="Animaux">Animaux</label>
-                        </div>
-                        <div id="checkboxBox">
-                            <input id="Animaux" type="checkbox">
-                            <label for="Animaux">Animaux</label>
-                        </div>
-                        <div id="checkboxBox">
-                            <input id="Animaux" type="checkbox">
-                            <label for="Animaux">Animaux</label>
-                        </div>
-                    </div>
-                    <div class="nextInputText">
-                        <label for="">J'en ai d'autres ...</label>
-                        <input type="text" />
-                    </div>
-                    <div id="btnBox">
-                        <button id="preview">preview</button>
-                        <button type="submit">submit</button>
-                    </div>
-                </div>
-            </article>
-        </form>
-        <!-- footer -->
-        {% include "_footer.html.twig" %}
-    </main>
+  <img id="mentheBG" src="{{ asset('./assets/img/formes/algue-medium-menthe-gauche.svg') }}" alt="">
+  <img id="flowerRed" src="{{ asset('./assets/img/formes/marguerite-framboise.svg') }}" alt="">
+  <!-- header nav bar -->
+  {% include "_header.html.twig" %}
+  <!-- container -->
+  <main>
+    {{ form_errors(UserForm) }}
+    {{ form_start(UserForm, {'attr': {'id': 'container'}}) }}
+      <article>
+        <div id="first_second">
+          <!-- title -->
+          <h1 id='title'>My profile</h1>
+          <!-- left content -->
+          <div id="firstData">
+            <div class="inputBox">
+              <label for="">My name is ...</label>
+              {{ form_widget(UserForm.username) }}
+            </div>
+            <div class="inputBox2">
+              <label for="">I live in ...</label>
+              {{ form_widget(UserForm.postalCode) }}
+            </div>
+            <div class="inputBox3">
+              <label for="">I was born in  ...</label>
+              {{ form_widget(UserForm.age) }}
+            </div>
+            <div class="inputBox4">
+              <label for="">I am a ...</label>
+              <section>
+                {{ form_widget(UserForm.gender) }}
+              </section>
+            </div>
+            <div class="inputBox">
+              <label for="">I speak ...</label>
+              {{ form_widget(UserForm.language, {'attr': {'class': 'btn-diet'}}) }}
+            </div>
+          </div>
+          <!-- right content -->
+          <div id="secondData">
+            <div id="imageBox">
+              <figure id="imageProfil">
+                <img src="../assets/img/icones/profil/profil-big.svg" alt="">
+              </figure>
+              <div id="inputFileBox">
+                {{ form_widget(UserForm.image) }}
+                {{ form_label(UserForm.image) }}
+                <input id="avatar" disabled type="file" title=""/>
+                <label for="avatar">select an avatar</label>
+              </div>
+            </div>
+            <div class="inputBox">
+              <label for="">I work in ...</label>
+              {{ form_widget(UserForm.job) }}
+            </div>
+            <div class="inputBox">
+              <label for="">My description ...</label>
+              {{ form_widget(UserForm.description) }}
+            </div>
+          </div>
+        </div>
+        <!-- bottom content  -->
+        <div id="thirdData">
+          <span>My diet ...</span>
+          <div>
+            <div id="check">
+              <div class="btn-diet">
+                {{ form_widget(UserForm.diet) }}
+              </div>
+              <button type="button" id="next">Next</button>
+            </div>
+          </div>
+        </div>
+        <!-- next content -->
+        <div id="nextSelect"> 
+          <span>My center of interest ...</span>
+          <div id="allCheckbox">
+              <div id="checkboxBox">
+                {{ form_widget(UserForm.centerOfInterest) }}
+              </div>
+          </div>
+          <div class="nextInputText">
+            <label for="">I have others ...</label>
+            {{ form_widget(UserForm.centerOfInterestPerso) }}
+          </div>
+          <div id="btnBox">
+            <button id="preview">preview</button>
+            {{ form_widget(UserForm.submit) }}
+          </div>
+        </div>
+      </article>
+    {{ form_end(UserForm) }}
+    <!-- footer -->
+    {% include "_footer.html.twig" %}
+  </main>
 </body>
 </html>
 <script src="{{ asset('./assets/js/editProfil.js') }}"></script>
