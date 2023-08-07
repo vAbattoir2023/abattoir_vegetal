@@ -87,12 +87,16 @@ class UserType extends AbstractType
                 'expanded' => true,
             ])
 
-            ->add('image', TextType::class, [
-                'attr' => [
-                    'placeholder' => 'https://',
-                ],
+            // ->add('image', TextType::class, [
+            //     'attr' => [
+            //         'placeholder' => 'https://',
+            //     ],
+            // ])
+            ->add('image', FileType::class, [
+                'data_class' => null,
             ])
 
+            
             ->add('job', TextType::class)
 
             ->add('description', TextType::class,)

@@ -4,29 +4,66 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="{{asset('./assets/css/profil.css')}}">
-    <link rel="stylesheet" href="{{ asset('./assets/css/selectGroup.css') }}">
+    <link rel="stylesheet" href="{{asset('./assets/css/admin.css')}}">
+
       <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Work+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 
-    <title>PROFIL USER </title>
+	<title>ADMIN</title>
 </head>
 <!-- body of page -->
 <body>
 
+
+    {% include "Admin/_adminNav.html.twig" %}
+
 <section class="container">
 
+<!-- MAIN -->
+<main>
+    <div class="head-title">
+        <div class="left">
+            <h1>Utilisateurs</h1>
+            
+        </div>
 
-    <h1>Gestion administrateur</h1>
+    </div>
 
-     <a href="{{ path('app_admin_grpindex')}}" class="btn btn-primary">Liste des Résérvation</a>
-     <a href="{{ path('app_api_user')}}" class="btn btn-warning">Api</a>
-          <a href="{{ path('app_home') }}" class="btn btn-success">Accueil</a>
+    <!-- <ul class="box-info">
+        <li>
+            <i class='bx bxs-calendar-check' ></i>
+            <span class="text">
+                <h3>1020</h3>
+                <p>Utilisateurs</p>
+            </span>
+        </li>
+        <li>
+            <i class='bx bxs-group' ></i>
+            <span class="text">
+                <h3>2834</h3>
+                <p>API Users</p>
+            </span>
+        </li>
+        <li>
+            <i class='bx bxs-dollar-circle' ></i>
+            <span class="text">
+                <h3>$2543</h3>
+                <p>Total Sales</p>
+            </span>
+        </li>
+    </ul> -->
 
-    <h4>Liste des utilisateurs </h4>
-    <table class="table bg-light ">
+
+    <div class="table-data">
+    <div class="order">
+        <div class="head">
+            <h3>Liste des utilisateurs</h3>
+        </div>
+    <table>
         <thead>
             <tr>
                 <th>Email</th>
@@ -37,15 +74,21 @@
         <tbody>
         {% for user in users %}
             <tr>
-                <td>{{ user.email }}</td>
-                <td>{{ user.username }}</td>
-                <td class="d-flex ">
-                       <a href="{{ path('app_admin_show', {'id': user.id}) }}" class="btn btn-primary fa fa-eye "></a>
-                         <a href="{{ path('app_admin_edit', {'id': user.id}) }}" class="btn btn-primary fa fa-edit me-3 ms-3"></a> 
-<form method="post" action="{{ path('app_admin_delete', {'id': user.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?');">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
-    <button class="btn btn-danger mt-1">Delete</button>
-</form>
+                <td>
+                    <img src="{{ user.image }}" alt="">
+                    {{ user.email }}
+                </td>
+                <td>
+                    <a href="{{ path('app_admin_show', {'id': user.id}) }}">
+                    {{ user.username }}
+                    </a>
+                </td>
+                <td style="display:flex;">
+                    <a href="{{ path('app_admin_edit', {'id': user.id}) }}" class="bx bx-edit"></a> 
+                    <form method="post" action="{{ path('app_admin_delete', {'id': user.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+                        <a class="bx bxs-trash"></a>
+                    </form>
                 </td>
             </tr>
         {% else %}
@@ -55,7 +98,14 @@
         {% endfor %}
         </tbody>
     </table>
-</section>
+	</div>
+			
+			</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
 </body>
+<script src="{{asset('./assets/js/admin.js')}}"></script>
 
 </html>

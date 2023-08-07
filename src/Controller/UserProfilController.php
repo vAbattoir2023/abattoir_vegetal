@@ -12,6 +12,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Service\CloudinaryService;
+use Cloudinary\Api\Upload\UploadApi;
 
 #[Route('/user_profil')]
 class UserProfilController extends AbstractController
@@ -42,6 +45,27 @@ class UserProfilController extends AbstractController
 
         // if data from form is submitted and valid
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // IMAGE UPLOAD
+            //Get the uploaded image file
+            $imageFile = $form['image']->getData();
+
+            if ($imageFile) {
+            // Generate a unique filename for the image
+            $newFilename = uniqid().'.'.$imageFile->getClientOriginalExtension();
+
+            // Move the image to the uploads directory
+            $imageFile->move(
+            // Set the directory where you want to store the images
+            $this->getParameter('uploads_directory'),
+            $newFilename
+            );  
+             
+            // Save the image file path to the user entity
+            $user->setImage($newFilename);
+        }
+        // $cloudinaryService;
+
 
             $selectedLanguages = $form->get('language')->getData();
             $flagIconUrl = [];
@@ -126,7 +150,6 @@ class UserProfilController extends AbstractController
             // send form for database
              'UserForm' => $form->createView(),
         ]); 
-        return new Response('test');
     }
 
     #[Route('/profil', name: 'app_user_profil_success')]
@@ -147,4 +170,25 @@ class UserProfilController extends AbstractController
             'user' => $userFromBdd,
         ]);
     }
+
+   
+    // #[Route('/upload', name: 'upload_image')]
+    // public function uploadImage(Request $request, CloudinaryService $cloudinaryService): Response
+    // {
+    //     // Handle the image upload from the request
+    //     $uploadedFile = $request->files->get('image');
+
+    //     if ($uploadedFile) {
+    //         // Call the uploadImage method from CloudinaryService
+    //         $imageUrl = $cloudinaryService->uploadImage($uploadedFile);
+
+    //         // Do something with the $imageUrl (e.g., save it to the database)
+
+    //         // Return a response (e.g., a JSON response) indicating the success and image URL
+    //         return $this->json(['success' => true, 'url' => $imageUrl]);
+    //     }
+
+    //     return $this->json(['success' => false, 'message' => 'Image upload failed.']);
+    // }
+
 }
