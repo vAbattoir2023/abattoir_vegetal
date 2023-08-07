@@ -1,8 +1,21 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="{{asset('./assets/css/profil.css')}}">
+    <link rel="stylesheet" href="{{ asset('./assets/css/selectGroup.css') }}">
+      <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Work+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
-{% block title %}User index{% endblock %}
+    <title>PROFIL USER </title>
+</head>
+<!-- body of page -->
+<body>
 
-{% block body %}
 <section class="container">
 
 
@@ -43,4 +56,6 @@
         </tbody>
     </table>
 </section>
-{% endblock %}
+</body>
+
+</html>

@@ -52,6 +52,7 @@ class UserProfilController extends AbstractController
         // if data form is submitted and valid
         if ($form->isSubmitted() && $form->isValid()) {
 
+            //////////////////////////////////////////////////////////////////////////////////// STEP DRAPEAU LANGAGE
             $selectedLanguages = $form->get('language')->getData();
             
             if (is_array($selectedLanguages)) {
@@ -71,6 +72,8 @@ class UserProfilController extends AbstractController
                 }
                 $user->setFlagIconUrl($flagIconUrl);
             }
+            //////////////////////////////////////////////////////////////////////////////////// STEP POSTAL CODE
+
              // Récupérer le code postal à partir du formulaire
              $codePostal = $user->getPostalCode();
              $codeDepartement = $user->getCodeDepartement();
@@ -92,16 +95,16 @@ class UserProfilController extends AbstractController
                  $user->setCodeDepartement($codeDepartement);    // Attribuer les valeurs au document USER
              }
              
-             $codeDepartement = $user->getCodeDepartement();    // Récupérer le code du département à partir des données de la commune
+            $codeDepartement = $user->getCodeDepartement();    // Récupérer le code du département à partir des données de la commune
  
-             // URL de base vers l'API gouvernementale pour obtenir les informations du département à partir du code du département
-             $apiUrl = "https://geo.api.gouv.fr/departements/" . $codeDepartement;
+            // URL de base vers l'API gouvernementale pour obtenir les informations du département à partir du code du département
+            $apiUrl = "https://geo.api.gouv.fr/departements/" . $codeDepartement;
  
-             // Effectuer une requête HTTP GET vers l'API en utilisant l'URL construite
-             $response = $httpClient->request('GET', $apiUrl);
-             $data = $response->toArray();
+            // Effectuer une requête HTTP GET vers l'API en utilisant l'URL construite
+            $response = $httpClient->request('GET', $apiUrl);
+            $data = $response->toArray();
  
-             if (!empty($data)) {
+            if (!empty($data)) {
                  // Récupérer le nom du département à partir de la réponse de l'API
                 
                  $codeRegion = $data['codeRegion'];
@@ -112,12 +115,10 @@ class UserProfilController extends AbstractController
                  $data = $response->toArray();
  
                  if (!empty($data)) {
-                     // Mettre à jour la valeur de region en fonction du nom de la région trouvée
-                     $region = $data['nom'];
-                     // Attribuer la valeur au document USER
-                     $user->setRegion($region);
-                 }
-             }
+                    $region = $data['nom'];      // Mettre à jour la valeur de region en fonction du nom de la région trouvée
+                    $user->setRegion($region);   // Attribuer la valeur au document USER
+                }
+            }
 
             //update the data to user in database
             $userRepository->save($user, true);

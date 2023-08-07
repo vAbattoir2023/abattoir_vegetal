@@ -283,7 +283,7 @@ p{
         margin-left: 60px;
         margin-bottom: 0px;
     }
-    .titleProfil .modifier{
+    .titleProfil .modifier p{
         margin-left: 470px;
         margin-bottom: 0px;
     }
@@ -534,6 +534,7 @@ p{
 @media screen and ( max-width : 670px ) {
     .container {
         width: 380px;
+        margin-right:90px;
     }
 
     /*box card*/
@@ -579,34 +580,54 @@ p{
  
 }
 
-@media screen and ( max-width : 491px ) {
+@media screen and ( max-width : 561px ) {
     .titleProfil h2 {
         font-size: 30px;
-        margin-left: 260px;
+        margin-left: 160px;
+    }  
+}
+@media screen and ( max-width : 491px ) {
+    .titleProfil h2 {
+        margin-left: 180px;
+    }
+    .titleProfil .modifier p {
+        margin-left: 440px;
+        margin-bottom: 0px;
     }
     .CardInfos {
-        margin-left:400px!important;
+            margin-left: 400px!important;
+            padding: 15px 9px;
+        }   
+}
+@media screen and ( max-width : 401px ) {
+    .container {
+        width: 340px;
+        margin-right:90px;
     }
 }
 
 @media screen and ( max-width : 376px ) {
     .container {
-        width: 300px;
-        margin-left: 0;
+        width: 280px;
+        margin-left: 5px;
+        margin-right:0px;
+
     }
     .CardInfos {
-        margin-left: 400px!important;
+        margin-left: 440px!important;
         padding: 15px 9px;
+        width: 260px!important;
     }
 
     .titleProfil h2 {
-        font-size: 29px;
-        margin-left: 200px;
+        font-size: 20px;
+        margin-left: 220px;
     }
 
-    .titleProfil .modifier {
-        margin-left: 350px;
+    .titleProfil .modifier p{
+        margin-left: 340px!important;
         margin-bottom: 0px;
+        margin-top: 10px;
     }
     /*box card*/
     .titleCard .active h2 {
@@ -827,8 +848,16 @@ p{
     }
 
     .containerjaime {
-        width:550px !important;
-        margin-right: 120px;
+        width:450px !important;
+        margin-right:90px;
+       }
+}
+
+@media screen and ( max-width :500px ) {
+  
+    .containerjaime {
+        width:370px !important;
+        margin-right:90px;
        }
 }
 
@@ -839,10 +868,10 @@ p{
 
     }
     .containerjaime {
-        width:300px!important;
+        width:280px!important;
         margin-right: 80px;
        }
-       
+
        .btn-submit-fin button {
         padding: 10px 10px;
     }

@@ -14,7 +14,6 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 
-
 #[Route('/adminGrp')]
 class AdminGroupController extends AbstractController
 {

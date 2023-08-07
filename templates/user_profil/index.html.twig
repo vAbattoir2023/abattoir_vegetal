@@ -3,185 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="{{asset('./assets/css/profil.css')}}">
-    <link rel="stylesheet" href="{{ asset('./assets/css/selectGroup.css') }}">
-      <!-- font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Work+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-
-    <title>PROFIL USER </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+    <link rel="stylesheet" href="{{ asset('./assets/css/editProfil.css') }}">
 </head>
-<!-- body of page -->
 <body>
-
-<!-- header nav bar -->
-	{% include "_header.html.twig" %}
- 
-
-
-  <!-- Profil form  -->
-  <fieldset class="active">
-  <div class="formCard">
-
-  
-  <div class="container ">
-  <div class=" border-card">
-
-     <!-- TITRE CARD FORMULAIRE -->
-    <div class="row">
-    <div class="titleCard">
-
-      <div class="title active">
-        <h2>je suis</h2>
-      </div>
-      <div class="title ">
-        <h2>j'aime</h2>
-      </div>
-
-    </div>
-    </div>
-
-    {{ form_errors(UserForm) }}
-    {{ form_start(UserForm) }}
-     <!-- Form 1 JE SUIS  -->
-    <div class="containerForm">
-      <div class="form-sides-container">
-      <div class="rightSide"> 
-        
-        <!-- right side -->
-        <p>Je m'apelle...</p>
-        {{ form_widget(UserForm.username, {'attr': {'class': 'stroke-input'}}) }}
-
-        <p>J'habite...</p>
-        {{ form_widget(UserForm.postalCode, {'attr': {'class': 'stroke-input'}}) }}
-
-
-        <div class="date">
-        <p>Age ...</p>
-        {{ form_widget(UserForm.age, {'attr': {'class': 'stroke'}}) }} 
-        </div>
-
-        <div class="date-gender "> 
-          <p>Je suis ...</p>
-          <div class="gender">
-          {{ form_widget(UserForm.gender) }} 
-          </div>
-        </div>
-
-        <p>Je parle...</p>
-         {{ form_widget(UserForm.language, {'attr': {'class': 'btn-diet'}}) }} 
-
-      </div>
-
-     <!-- left side -->
-      <div class="leftSide"> 
-
-      <div class="wrap-img"> 
-          <img src="../assets/img/icones/profil/profil-big.svg" alt="" class="img">
-          <div class="position-bouton">
-          {{ form_widget(UserForm.image, {'attr': {'class': 'btn-img linkUrl'}}) }}
-          <button class="btn-img avatar" >
-            choisir un avatar
-          </button>
-        </div>
-      </div>
-
-      <p>Je bosse dans...</p>
-      {{ form_widget(UserForm.job, {'attr': {'class': 'stroke-input'}}) }}
-
-      <p>Je me décris en quelques mots...</p>
-      {{ form_widget(UserForm.description, {'attr': {'class': 'stroke-input'}}) }}
-      </div>
-     </div>
-
-      <!-- bottom  -->
-      <div class="bottom"> 
-      <p> Mon régime alimentaire ... </p>
-
-      <div class="btn-diet">
-      {{ form_widget(UserForm.diet, {'attr': {'class': 'btn-diet'}}) }}
-      </div>
-      </div>
-
-      </div>
-      </div>
-
-      <div class="btn-submit">
-        <button onclick="nextStep()" class="btn-img ">
-          suivant
-        </button>
-      </div>
-    
-      </div>
-      </div>
-      </div>
-    </fieldset>
-
-
-{# fin card je suis 1 #}
-
-
-{# J'aime partie 2 #}
-   <fieldset style="display: none;">
-   <div class="formCard ">
-
-   <div class="containerjaime">
-   <div class=" border-card">
-
-    <!-- TITRE CARD FORMULAIRE -->
-    <div class="row">
-    <div class="titleCard">
-
-      <div class="title ">
-        <h2>je suis</h2>
-      </div>
-      <div class="title active">
-        <h2>j'aime</h2>
-      </div>
-
-    </div>
-    </div>
-            
-    <!-- Form 2 J'AIME  -->
-    <div class="containerFormjaime">
-  
-      <div class="centerOfI"> 
-        
-      <p >Mes centres d'intérêts</p>
-    
-      <div class="btn-diet btn-centerOfI">
-      {{ form_widget(UserForm.centerOfInterest, {'attr': {'class': 'btn-diet btn-centerOfI'}}) }}
-      </div>
-    
-      <p>J’en ai d’autres ... </p>
-      {{ form_widget(UserForm.centerOfInterestPerso, {'attr': {'class': 'stroke-input-fin'}}) }}
-    
-      </div>
-    
-     </div>
-     </div>
-
-     <div class="btn-submit-fin">
-      <button onclick="previousStep()" class="btn-img ">
-        Retour
-      </button>
-        
-      {{ form_widget(UserForm.submit, {'attr': {'class': 'btn-img btn-fin '}}) }}
-      </div>
-            
-      </div>
-      </div>
-      </fieldset>
-
-        {# Fin de j'aime partie 2  #}
-
-  
-
-
-{{ form_end(UserForm) }}
+    <img id="mentheBG" src="{{ asset('./assets/img/formes/algue-medium-menthe-gauche.svg') }}" alt="">
+    <img id="flowerRed" src="{{ asset('./assets/img/formes/marguerite-framboise.svg') }}" alt="">
+    {# JUSTE je viens de push #nuit blanche #on va finir ce projet #}
+    <!-- header nav bar -->
+    {% include "_header.html.twig" %}
+    <!-- container -->
+    <main>
+        <form id="container">
+            <article>
+                <div id="first_second">
+                    <h1 id='title'>My profile</h1>
+                    <!-- first page (Matthieu -> remplacer les inputs en dur par les input du formtype ) -->
+                    <div id="firstData">
+                        <div class="inputBox">
+                            <label for="">My name is ...</label>
+                            <input type="text" />
+                        </div>
+                        <div class="inputBox2">
+                            <label for="">I live in ...</label>
+                            <input type="text" />
+                        </div>
+                        <div class="inputBox3">
+                            <label for="">I was born in </label>
+                            <input type="date">
+                        </div>
+                        <div class="inputBox4">
+                            <label for="">I am a ...</label>
+                            <section>
+                                <div class="checkGender">
+                                    <input id="Men" name="gender" type="radio" value="Men" />
+                                    <label for="Men" for="Men">Men</label>
+                                </div>
+                                <div class="checkGender">
+                                    <input id="woman" name="gender" type="radio" value="woman" />
+                                    <label for="woman">Woman</label>
+                                </div>
+                                <div class="checkGender">
+                                    <input id="other" name="gender" type="radio" value="other" />
+                                    <label for="other">Other</label>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="inputBox">
+                            <label for="">I speak ...</label>
+                            <input type="text" />
+                        </div>
+                    </div>
+                    <div id="secondData">
+                        <div id="imageBox">
+                            <figure id="imageProfil">
+                                <img src="{{ asset('./assets/img/icones/profil/profil-big.svg') }}" alt="">
+                            </figure>
+                            <div id="inputFileBox">
+                                <input id="picture" type="file" title="" />
+                                <label for="picture">add a picture</label>
+                                <input id="avatar" disabled type="file" title="" />
+                                <label for="avatar">select an avatar</label>
+                            </div>
+                        </div>
+                        <div class="inputBox">
+                            <label for="">I work in ...</label>
+                            <input type="text" />
+                        </div>
+                        <div class="inputBox">
+                            <label for="">My description ...</label>
+                            <input type="text" />
+                        </div>
+                    </div>
+                </div>
+                <div id="thirdData">
+                    <span for="">My diet ...</span>
+                    <div>
+                        <div id="check">
+                            <input type="radio" name="diet" id="vegan" value="vegan">
+                            <label for="vegan">vegan</label>
+                            <input type="radio" name="diet" id="curious" value="curious">
+                            <label for="curious">curious</label>
+                            <input type="radio" name="diet" id="vegetarian" value="vegetarian">
+                            <label for="vegetarian">vegetarian</label>
+                            <input type="radio" name="diet" id="flexitarian" value="flexitarian">
+                            <label for="flexitarian">flexitarian</label>
+                        </div>
+                        <button type="button" id="next">Next</button>
+                    </div>
+                </div>
+                <!-- second page (Matthieu -> remplacer les inputs en dur par les input du formtype ) -->
+                <div id="nextSelect">
+                    <span>My center of interest ...</span>
+                    <div id="allCheckbox">
+                        <div id="checkboxBox">
+                            <input id="Animaux" type="checkbox">
+                            <label for="Animaux">Animaux</label>
+                        </div>
+                        <div id="checkboxBox">
+                            <input id="Test" type="checkbox">
+                            <label for="Test">Test</label>
+                        </div>
+                        <div id="checkboxBox">
+                            <input id="Animaux" type="checkbox">
+                            <label for="Animaux">Animaux</label>
+                        </div>
+                        <div id="checkboxBox">
+                            <input id="Animaux" type="checkbox">
+                            <label for="Animaux">Animaux</label>
+                        </div>
+                        <div id="checkboxBox">
+                            <input id="Animaux" type="checkbox">
+                            <label for="Animaux">Animaux</label>
+                        </div>
+                        <div id="checkboxBox">
+                            <input id="Animaux" type="checkbox">
+                            <label for="Animaux">Animaux</label>
+                        </div>
+                        <div id="checkboxBox">
+                            <input id="Animaux" type="checkbox">
+                            <label for="Animaux">Animaux</label>
+                        </div>
+                        <div id="checkboxBox">
+                            <input id="Animaux" type="checkbox">
+                            <label for="Animaux">Animaux</label>
+                        </div>
+                        <div id="checkboxBox">
+                            <input id="Animaux" type="checkbox">
+                            <label for="Animaux">Animaux</label>
+                        </div>
+                        <div id="checkboxBox">
+                            <input id="Animaux" type="checkbox">
+                            <label for="Animaux">Animaux</label>
+                        </div>
+                        <div id="checkboxBox">
+                            <input id="Animaux" type="checkbox">
+                            <label for="Animaux">Animaux</label>
+                        </div>
+                        <div id="checkboxBox">
+                            <input id="Animaux" type="checkbox">
+                            <label for="Animaux">Animaux</label>
+                        </div>
+                    </div>
+                    <div class="nextInputText">
+                        <label for="">J'en ai d'autres ...</label>
+                        <input type="text" />
+                    </div>
+                    <div id="btnBox">
+                        <button id="preview">preview</button>
+                        <button type="submit">submit</button>
+                    </div>
+                </div>
+            </article>
+        </form>
+        <!-- footer -->
+        {% include "_footer.html.twig" %}
+    </main>
 </body>
-<script src="{{asset('./assets/js/header.js')}}"></script>
-<script src="{{asset('./assets/js/form.js')}}"></script>
 </html>
+<script src="{{ asset('./assets/js/editProfil.js') }}"></script>
+<script src="{{ asset('./assets/js/header.js') }}"></script>

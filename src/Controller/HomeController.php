@@ -102,7 +102,7 @@ class HomeController extends AbstractController
     public function help(SessionInterface $sessionInterface): Response
     {
 
-        return $this->render('Home/help.html.twig',[
+        return $this->render('404.html.twig',[
           
         ]);
         
