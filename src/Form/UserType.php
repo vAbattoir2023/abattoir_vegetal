@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -33,7 +34,7 @@ class UserType extends AbstractType
 
             ->add('postalCode', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'Code postal',
+                    'placeholder' => 'Zip Code',
                 ],
             ])
 
@@ -47,16 +48,17 @@ class UserType extends AbstractType
 
             ->add('age', IntegerType::class)
 
+
             ->add('gender', ChoiceType::class, [
                 'choices'  => [
-                    'H' => 'Homme',
-                    'F' => 'Femme',
-                    'Non-binaire' => 'Non-binaire'
+                    'Men' => 'Men',
+                    'Woman' => 'Woman',
+                    'Other' => 'Other'
                 ],
                 'choice_attr' => [
-                    'H' => ['class' => 'form-check-input'],
-                    'F' => ['class' => 'form-check-input'],
-                    'Non-binaire' => ['class' => 'form-check-input'],
+                    'Men' => ['class' => 'form-check-input'],
+                    'Woman' => ['class' => 'form-check-input'],
+                    'Other' => ['class' => 'form-check-input'],
                 ],
                 'multiple' => false,
                 'expanded' => true
@@ -64,24 +66,24 @@ class UserType extends AbstractType
 
             ->add('language', ChoiceType::class, [
                 'choices' => [
-                    'Anglais' => 'GB',
-                    'Français' => 'FR',
-                    'Espagnol' => 'ES',
-                    'Italien' => 'IT',
-                    'Néerlandais' => 'NL',
-                    'Bresilien' => 'BR',
-                    'Chinois ' => 'CN',
-                    'Algerien ' => 'DZ',
+                    'English' => 'GB',
+                    'French' => 'FR',
+                    // 'Espagnol' => 'ES',
+                    // 'Italien' => 'IT',
+                    // 'Néerlandais' => 'NL',
+                    // 'Bresilien' => 'BR',
+                    // 'Chinois ' => 'CN',
+                    // 'Algerien ' => 'DZ',
                 ],
                 'choice_attr' => [
-                    'Anglais' => ['class' => 'langue'],
-                    'Français' => ['class' => 'langue'],
-                    'Espagnol' => ['class' => 'langue'],
-                    'Italien' => ['class' => 'langue'],
-                    'Néerlandais' => ['class' => 'langue'],
-                    'Bresilien' => ['class' => 'langue'],
-                    'Chinois ' => ['class' => 'langue'],
-                    'Algerien ' => ['class' => 'langue'],
+                    'English' => ['class' => 'langue'],
+                    'French' => ['class' => 'langue'],
+                    // 'Espagnol' => ['class' => 'langue'],
+                    // 'Italien' => ['class' => 'langue'],
+                    // 'Néerlandais' => ['class' => 'langue'],
+                    // 'Bresilien' => ['class' => 'langue'],
+                    // 'Chinois ' => ['class' => 'langue'],
+                    // 'Algerien ' => ['class' => 'langue'],
                 ],
                 'multiple' => true,
                 'expanded' => true,
@@ -93,6 +95,7 @@ class UserType extends AbstractType
             //     ],
             // ])
             ->add('image', FileType::class, [
+                'label'=> 'add a picture',
                 'data_class' => null,
             ])
 
@@ -104,16 +107,16 @@ class UserType extends AbstractType
             ->add('diet', ChoiceType::class, [
                 
                 'choices'  => [
-                    'Végan(ne)' => 'Végan(ne)',
-                    'Curieu(x/se)' => 'Curieu(x/se)',
-                    'Végétarien(ne)' => 'Végétarien(ne)',
-                    'Fléxitarien(ne)' => 'Fléxitarien(ne)'
+                    'vegan' => 'vegan',
+                    'curious' => 'curious',
+                    'vegetarian' => 'vegetarian',
+                    'flexitarian' => 'flexitarian'
                 ],
                 'choice_attr' => [
-                    'Végan(ne)' => ['class' => 'regime'],
-                    'Curieu(x/se)' => ['class' => 'regime'],
-                    'Végétarien(ne)' => ['class' => 'regime'],
-                    'Fléxitarien(ne)' => ['class' => 'regime'],
+                    'vegan' => ['class' => 'regime'],
+                    'curious' => ['class' => 'regime'],
+                    'vegetarian' => ['class' => 'regime'],
+                    'flexitarian' => ['class' => 'regime'],
                 ],
                 'multiple' => false,
                 'expanded' => true
@@ -122,18 +125,18 @@ class UserType extends AbstractType
          // New fields for Step 2: J'AIME
         ->add('centerOfInterest',  ChoiceType::class, [
             'choices'  => [
-                'Animaux' => 'Animaux',
-                'Environnement' => 'Environnement',
-                'Jeux vidéos' => 'Jeux vidéos',
-                'Art et Culture' => 'Art et Culture',
-                'Sport' => 'Sport',
-                'Voyage' => 'Voyage',
-                'Musique' => 'Musique',
-                'Danse' => 'Danse',
+                'Animals' => 'Animaux',
+                'Environment' => 'Environnement',
+                'Games' => 'Jeux vidéos',
+                'Art & Cult' => 'Art et Culture',
+                'Sports' => 'Sport',
+                'Travel' => 'Voyage',
+                'Music' => 'Musique',
+                'Dance' => 'Danse',
                 'Sciences' => 'Sciences',
                 'Bien-etre' => 'Bien-etre',
                 'Food' => 'Food',
-                'Activités sociales' => 'Activités sociales'
+                'Social Act' => 'Activités sociales'
             ],
             'choice_attr' => [
                 'Animaux' => ['class' => 'regime'],
@@ -154,9 +157,7 @@ class UserType extends AbstractType
         ])
 
         ->add('centerOfInterestPerso', TextType::class)
-        ->add('submit', SubmitType::class, [
-            'label' => 'valider',
-        ]);
+        ->add('submit', SubmitType::class);
 
     }
 

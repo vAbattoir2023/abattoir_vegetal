@@ -2,7 +2,7 @@
 {% for user in users %}
 <article>
     <figure>
-        <img src="{{ user.image }}" alt="headUser">
+        <img class="img-thumbnail" src="{{ user.image }}" alt="headUser">
     </figure>
     <div class="info">
         <div class="firstData">
@@ -14,7 +14,7 @@
             </figure>
         </div>
         <div class="secondData">
-            <span>{{ user.age }} Ans</span>
+            <span>{{ user.age }} Yo</span>
             <span>{{ user.city|slice(0,15) }}</span>
         </div>
         <div class="thirdData">

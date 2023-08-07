@@ -1,187 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="{{asset('./assets/css/profil.css')}}">
-    <link rel="stylesheet" href="{{ asset('./assets/css/selectGroup.css') }}">
-      <!-- font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Work+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-
-    <title>PROFIL USER </title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil Edit</title>
+  <link rel="stylesheet" href="{{ asset('./assets/css/editProfil.css') }}">
 </head>
-<!-- body of page -->
 <body>
-
-<!-- header nav bar -->
-	{% include "_header.html.twig" %}
- 
-
-
-  <!-- Profil form  -->
-  <fieldset class="active">
-  <div class="formCard">
-
-  
-  <div class="container ">
-  <div class=" border-card">
-
-     <!-- TITRE CARD FORMULAIRE -->
-    <div class="row">
-    <div class="titleCard">
-
-      <div class="title active">
-        <h2>je suis</h2>
-      </div>
-      <div class="title ">
-        <h2>j'aime</h2>
-      </div>
-
-    </div>
-    </div>
-
+  <img id="mentheBG" src="{{ asset('./assets/img/formes/algue-medium-menthe-gauche.svg') }}" alt="">
+  <img id="flowerRed" src="{{ asset('./assets/img/formes/marguerite-framboise.svg') }}" alt="">
+  <!-- header nav bar -->
+  {% include "_header.html.twig" %}
+  <!-- container -->
+  <main>
     {{ form_errors(UserForm) }}
-    {{ form_start(UserForm) }}
-     <!-- Form 1 JE SUIS  -->
-    <div class="containerForm">
-      <div class="form-sides-container">
-      <div class="rightSide"> 
-        
-        <!-- right side -->
-        <p>Je m'apelle...</p>
-        {{ form_widget(UserForm.username, {'attr': {'class': 'stroke-input'}}) }}
-
-        <p>J'habite...</p>
-        {{ form_widget(UserForm.postalCode, {'attr': {'class': 'stroke-input'}}) }}
-
-
-        <div class="date">
-        <p>Age ...</p>
-        {{ form_widget(UserForm.age, {'attr': {'class': 'stroke'}}) }} 
-        </div>
-
-        <div class="date-gender "> 
-          <p>Je suis ...</p>
-          <div class="gender">
-          {{ form_widget(UserForm.gender) }} 
+    {{ form_start(UserForm, {'attr': {'id': 'container'}}) }}
+      <article>
+        <div id="first_second">
+          <!-- title -->
+          <h1 id='title'>My profile</h1>
+          <!-- left content -->
+          <div id="firstData">
+            <div class="inputBox">
+              <label for="">My name is ...</label>
+              {{ form_widget(UserForm.username) }}
+            </div>
+            <div class="inputBox2">
+              <label for="">I live in ...</label>
+              {{ form_widget(UserForm.postalCode) }}
+            </div>
+            <div class="inputBox3">
+              <label for="">I was born in  ...</label>
+              {{ form_widget(UserForm.age) }}
+            </div>
+            <div class="inputBox4">
+              <label for="">I am a ...</label>
+              <section>
+                {{ form_widget(UserForm.gender) }}
+              </section>
+            </div>
+            <div class="inputBox">
+              <label for="">I speak ...</label>
+              {{ form_widget(UserForm.language, {'attr': {'class': 'btn-diet'}}) }}
+            </div>
+          </div>
+          <!-- right content -->
+          <div id="secondData">
+            <div id="imageBox">
+              <figure id="imageProfil">
+                <img src="../assets/img/icones/profil/profil-big.svg" alt="">
+              </figure>
+              <div id="inputFileBox">
+                {{ form_widget(UserForm.image) }}
+                {{ form_label(UserForm.image) }}
+                <input id="avatar" disabled type="file" title=""/>
+                <label for="avatar">select an avatar</label>
+              </div>
+            </div>
+            <div class="inputBox">
+              <label for="">I work in ...</label>
+              {{ form_widget(UserForm.job) }}
+            </div>
+            <div class="inputBox">
+              <label for="">My description ...</label>
+              {{ form_widget(UserForm.description) }}
+            </div>
           </div>
         </div>
-
-        <p>Je parle...</p>
-         {{ form_widget(UserForm.language, {'attr': {'class': 'btn-diet'}}) }} 
-
-      </div>
-
-     <!-- left side -->
-      <div class="leftSide"> 
-
-      <div class="wrap-img"> 
-          <img src="../assets/img/icones/profil/profil-big.svg" alt="" class="img">
-          <div class="position-bouton">
-          {{ form_widget(UserForm.image, {'attr': {'class': 'btn-img linkUrl'}}) }}
-          <button class="btn-img avatar" >
-            choisir un avatar
-          </button>
+        <!-- bottom content  -->
+        <div id="thirdData">
+          <span>My diet ...</span>
+          <div>
+            <div id="check">
+              <div class="btn-diet">
+                {{ form_widget(UserForm.diet) }}
+              </div>
+              <button type="button" id="next">Next</button>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <p>Je bosse dans...</p>
-      {{ form_widget(UserForm.job, {'attr': {'class': 'stroke-input'}}) }}
-
-      <p>Je me décris en quelques mots...</p>
-      {{ form_widget(UserForm.description, {'attr': {'class': 'stroke-input'}}) }}
-      </div>
-     </div>
-
-      <!-- bottom  -->
-      <div class="bottom"> 
-      <p> Mon régime alimentaire ... </p>
-
-      <div class="btn-diet">
-      {{ form_widget(UserForm.diet, {'attr': {'class': 'btn-diet'}}) }}
-      </div>
-      </div>
-
-      </div>
-      </div>
-
-      <div class="btn-submit">
-        <button onclick="nextStep()" class="btn-img ">
-          suivant
-        </button>
-      </div>
-    
-      </div>
-      </div>
-      </div>
-    </fieldset>
-
-
-{# fin card je suis 1 #}
-
-
-{# J'aime partie 2 #}
-   <fieldset style="display: none;">
-   <div class="formCard ">
-
-   <div class="containerjaime">
-   <div class=" border-card">
-
-    <!-- TITRE CARD FORMULAIRE -->
-    <div class="row">
-    <div class="titleCard">
-
-      <div class="title ">
-        <h2>je suis</h2>
-      </div>
-      <div class="title active">
-        <h2>j'aime</h2>
-      </div>
-
-    </div>
-    </div>
-            
-    <!-- Form 2 J'AIME  -->
-    <div class="containerFormjaime">
-  
-      <div class="centerOfI"> 
-        
-      <p >Mes centres d'intérêts</p>
-    
-      <div class="btn-diet btn-centerOfI">
-      {{ form_widget(UserForm.centerOfInterest, {'attr': {'class': 'btn-diet btn-centerOfI'}}) }}
-      </div>
-    
-      <p>J’en ai d’autres ... </p>
-      {{ form_widget(UserForm.centerOfInterestPerso, {'attr': {'class': 'stroke-input-fin'}}) }}
-    
-      </div>
-    
-     </div>
-     </div>
-
-     <div class="btn-submit-fin">
-      <button onclick="previousStep()" class="btn-img ">
-        Retour
-      </button>
-        
-      {{ form_widget(UserForm.submit, {'attr': {'class': 'btn-img btn-fin '}}) }}
-      </div>
-            
-      </div>
-      </div>
-      </fieldset>
-
-        {# Fin de j'aime partie 2  #}
-
-  
-
-
-{{ form_end(UserForm) }}
+        <!-- next content -->
+        <div id="nextSelect"> 
+          <span>My center of interest ...</span>
+          <div id="allCheckbox">
+              <div id="checkboxBox">
+                {{ form_widget(UserForm.centerOfInterest) }}
+              </div>
+          </div>
+          <div class="nextInputText">
+            <label for="">I have others ...</label>
+            {{ form_widget(UserForm.centerOfInterestPerso) }}
+          </div>
+          <div id="btnBox">
+            <button id="preview">preview</button>
+            {{ form_widget(UserForm.submit) }}
+          </div>
+        </div>
+      </article>
+    {{ form_end(UserForm) }}
+    <!-- footer -->
+    {% include "_footer.html.twig" %}
+  </main>
 </body>
-<script src="{{asset('./assets/js/header.js')}}"></script>
-<script src="{{asset('./assets/js/form.js')}}"></script>
 </html>
+<script src="{{ asset('./assets/js/editProfil.js') }}"></script>
+<script src="{{ asset('./assets/js/header.js') }}"></script>

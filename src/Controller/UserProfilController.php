@@ -15,6 +15,7 @@ use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use App\Service\CloudinaryService;
 use Cloudinary\Api\Upload\UploadApi;
+use DateTime;
 
 #[Route('/user_profil')]
 class UserProfilController extends AbstractController
@@ -49,7 +50,8 @@ class UserProfilController extends AbstractController
             // IMAGE UPLOAD
             //Get the uploaded image file
             $imageFile = $form['image']->getData();
-
+            
+            //////////////////////////////////////////////////////////////////////////////////// local
             if ($imageFile) {
             // Generate a unique filename for the image
             $newFilename = uniqid().'.'.$imageFile->getClientOriginalExtension();
@@ -60,13 +62,13 @@ class UserProfilController extends AbstractController
             $this->getParameter('uploads_directory'),
             $newFilename
             );  
-             
-            // Save the image file path to the user entity
             $user->setImage($newFilename);
-        }
-        // $cloudinaryService;
+               }
+            // Save the image file path to the user entity
+            
+     
 
-
+//////////////////////////////////////////////////////////////////////////////////// STEP DRAPEAU LANGAGE
             $selectedLanguages = $form->get('language')->getData();
             $flagIconUrl = [];
             if (is_array($selectedLanguages)) {
@@ -88,6 +90,8 @@ class UserProfilController extends AbstractController
             } else {
                 echo 'false';
             }
+
+//////////////////////////////////////////////////////////////////////////////////// STEP POSTAL CODE
              // Récupérer le code postal à partir du formulaire
              $codePostal = $user->getPostalCode();
              $codeDepartement = $user->getCodeDepartement();
@@ -172,23 +176,6 @@ class UserProfilController extends AbstractController
     }
 
    
-    // #[Route('/upload', name: 'upload_image')]
-    // public function uploadImage(Request $request, CloudinaryService $cloudinaryService): Response
-    // {
-    //     // Handle the image upload from the request
-    //     $uploadedFile = $request->files->get('image');
 
-    //     if ($uploadedFile) {
-    //         // Call the uploadImage method from CloudinaryService
-    //         $imageUrl = $cloudinaryService->uploadImage($uploadedFile);
-
-    //         // Do something with the $imageUrl (e.g., save it to the database)
-
-    //         // Return a response (e.g., a JSON response) indicating the success and image URL
-    //         return $this->json(['success' => true, 'url' => $imageUrl]);
-    //     }
-
-    //     return $this->json(['success' => false, 'message' => 'Image upload failed.']);
-    // }
 
 }

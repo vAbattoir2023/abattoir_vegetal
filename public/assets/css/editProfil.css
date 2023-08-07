@@ -12,8 +12,21 @@ body{
     height: 100vh;
     width: 100vw;
 }
-
-
+#mentheBG{
+    position: absolute;
+    bottom: 0;
+    margin-bottom: -50px;
+    left: 100px;
+}
+#flowerRed{
+    position: absolute;
+    top: 0;
+    margin-top: 100px;
+    left: 150px;
+    scale: 0.8;
+    z-index: 0;
+}
+/* HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - */
 /* navbar */
 header{
     height: 130px;
@@ -88,7 +101,7 @@ header nav{
 }
 /* nav responsive */
 #navResponsive{
-    position: absolute;
+    position: fixed;
     height: 100%;
     width: 100%;
     background: #fff;
@@ -241,231 +254,329 @@ a{
     cursor: pointer;
     z-index: 40;
 }
-/* container */
-#container{
-    width: 100%;
-    margin-top: 150px;
-    flex-wrap: wrap;
-}
-/* content checkbox and users */
+/* MAIN - MAIN - MAIN - MAIN - MAIN - MAIN - MAIN - MAIN - MAIN - MAIN - MAIN - MAIN - MAIN - MAIN - */
 main{
-    width: 60%;
+    height: 100%;
+    width: 100%;
+    background: #000;
+}
+#container{
+    height: 100%;
+    width: 100%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+article{
+    height: 500px;
+    width: 850px;
+    background: #FBFAF4;
+    margin-top: 120px;
+    padding: 50px;
     position: relative;
-    display: flex;
-    margin-left: 25%;
-    margin-top: 2%;
-    flex-wrap: wrap;
-    flex-direction: row-reverse; /* Inverser l'ordre des éléments */
 }
-
-
-main h6{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    color: #FF6C27;
-    font-size: 3.2rem;
-    text-transform: uppercase;
-    margin-top: 30px;
-    right: 0;
-    font-weight: 900;
-    text-shadow: 1px 1px 1px  #FF6C27;
-    padding-right: 60px;
-    padding-bottom: 40px;
-    height: 100px;
-}
-main h6::after{
-    align-items: end;
-    content: '_____';
-    text-align: end;
-    margin-right: 50px;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    color: #46D4B3;
-    text-shadow: 2px 2px 2px 2px  #46D4B3;
-}
-main article{
-    height: 520px;
-    width: 290px;
-    margin: 59px;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    transition: 0.5s;
-}
-main article:nth-child(2n){
-    height: 520px;
-    width: 290px;
-    background: #fff;
-    margin: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
-    margin-top: 25%;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-}
-main article figure{
-    height: 50%;
-    width: 100%;
-}
-main article figure img{
-    height: 100%;
-    width: 100%;
-}
-.info{
-    height: 90%;
-    width: 85%;
-    background: #fff;
-    margin-top: 10%;
-}
-.firstData strong{
-    font-size: 1.2em;
-}
-.firstData{
-    height: 15%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.firstData figure{
-    height: 100%;
-    width: 40%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.firstData figure img{
-    height: auto;
-    width: 30%;
-    overflow: scroll;
-}
-.firstData figure{
-    display: flex;
-    justify-content: center;
-    height: 100%;
-    width: 40%;
-}
-.secondData{
-    width: 100%;
-    height: 20%;
-    display: flex;
-    align-items: center;
-}
-.secondData span{
-    padding: 5px 15px;
-    background: #46D4B3;
-    margin-right: 10px;
-}
-.thirdData{
-    width: 100%;
-    height: 40%;
-}
-.thirdData p{
-    margin-top: 5px;
+label{
     font-weight: 300;
-    font-size: 0.9em;
+    font-size: 1.1rem;
 }
-.quarterData{
+input[type=text]{
+    background-color: none;
+    border: 0px;
+    border-bottom: 1.5px solid;
+    height: 25px;
+    width: 100%;
+    background-color: #FBFAF4;
+}
+#title{
+    position: absolute;
+    text-transform: uppercase;
+    top: 0;
+    margin: 0;
+    margin-top: -22px;
+    font-weight: bold;
+    -webkit-text-stroke-color: #000;
+    -webkit-text-stroke-width: 4px;
+    letter-spacing: 2px;
+    font-size: 2.5em;
+    color: #000;
+    z-index: 4;
+    margin-left: 30%;
+}
+#title::before{
+    content: '';
+    display: block;
+    width: 250px;
+    background: #E83647;
+    position: absolute;
+    height: 20px;
+    font-size: 1.2em;
+    margin-left: 30px;
+    margin-top: 26px;
+    z-index: -1;
+}
+input:focus {
+    outline: none;
+  }
+#first_second{
+    height: 85%;
+    width: 100%;
+    display: flex;
+}
+#firstData{
+    height: 100%;
+    width: 45%;
+    padding-right: 5%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: start;
+}
+#firstData .inputBox{
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+#firstData .inputBox2{
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+#firstData .inputBox3{
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    width: 100%;
+}
+#firstData .inputBox3 input{
+    width: 50%;
+    border: 0px;
+    padding-left: 20px;
+    border-bottom: 1.5px solid;
+    background: #FBFAF4;
+}
+.inputBox4{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.inputBox4 section{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: end;
+}
+.inputBox4 section label{
+    font-size: 0.9rem;
+    margin-left: 5px;
+    margin-right: 8px;
+    margin-bottom: -3px;
+}
+.inputBox4 section .checkGender{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    width: 25%;
+}
+.checkGender{
+    display: flex;
+    flex-direction: row;
+    width: 10%;
+}
+
+
+
+.langue {
+    display: none;
+    flex-wrap: wrap;
+}
+
+.langue+label {
+    display: inline-flex;
+    height: auto;
+    padding: 5px 5px;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 12px;
+    /* border: 1.5px solid #FF6C27; */
+    text-decoration: #12231A;
+    background-color: transparent;
+    margin-right:10px;
+    margin-top:10px;
+}
+.langue:hover+label {
+    background-color: transparent;
+    border: 3px solid #FF6C27;
+}
+
+.langue:checked+label {
+    background-color: transparent;
+    color: #FF6C27;
+    font-weight: 900;
+}
+
+#secondData{
+    height: 100%;
+    width: 40%;
+    padding-left: 10%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: start;
+}
+#imageBox{
+    height: 130px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    width: 100%;
+}
+#imageProfil{
+    height: 100px;
+    width: 100px;
+    background: #FBFAF4;
+    border: 1.5px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#imageProfil img{
+    height: 80%;
+    width: 80%;
+}
+#inputFileBox{
+    height: 100%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+}
+#inputFileBox label:nth-child(2){
+    padding: 10px 20px;
+    border: 1.5px solid #000;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+#inputFileBox label:nth-child(4){
+    padding: 10px 10px;
+    border: 1.5px solid #000;
+    font-weight: 500;
+}
+#inputFileBox input{
+    display: none;
+}
+#thirdData{
     height: 15%;
     width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.info .quarterData button{
-    width: 90%;
-    padding: 8px 0px;
-    border: 1px solid #000;
-    text-transform: uppercase;
-    font-weight: 600;
-    background: #fff;
-    
-}
-/* CHECKBOX */
-#inputBox{
-    height: 660px;
-    width: 280px;
-    background: #FFE801;
-    position: fixed;
-    left: 0;
-    margin-left: 3%;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    padding: 10px;
-    margin-top: -10px;
-    overflow: scroll;
+    margin-top: 20px;
 }
-#allCenterIfInterest{
+#thirdData span{
+    width: 100%;
+}
+#thirdData input{
+    display: none;
+}
+#thirdData label{
+    border: 1px solid #FF6C27;
+    padding: 5px 10px;
+    margin-right: 20px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+}
+#thirdData div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+#thirdData button{
+    padding: 5px 30px;
+    text-transform: uppercase;
+    border: 1px solid #000;
+    font-size: 1.2rem;
+}
+#nextSelect{
+    height: 100%;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    display: none;
+}
+#user_centerOfInterest{
     height: auto;
     display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: center;
+    flex-direction: row;
+}
+#allCheckbox{
+    height: auto;
+    /* background: #ac5959; */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    flex-direction: row;
+    justify-content: center;
+}
+#checkboxBox input{
+    display: none;
+}
+#checkboxBox label{
+    border: 1px solid #FF6C27;
+    padding: 10px 25px;
+    margin: 45px 22px;
+    width: 90px;
+    display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
 }
-#inputBox::before{
-    content: '___';
-    position: absolute;
-    top: 0;
-    margin-top: -20px;
-    font-size: 2em;
-    font-weight: 900;
+#checkboxBox input[type="checkbox"]:checked + label {
+    border: 2px solid #FF6C27;
 }
-#subtitle{
-    width: 100%;
+#check input[type="radio"]:checked + label {
+    border: 2px solid #FF6C27;
+}
+.checkboxBox{
+    height: auto;
+    width: auto;
+    height: auto;
     display: flex;
-    justify-content: start;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: center;
+    flex-direction: row;
 }
-#subtitle h3{
-    font-weight: 900;
-    font-size: 1.2em;
+  
+#btnBox{
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-#subtitle h3::after{
-    content: '__';
-}
-#inputBox div{
-    width: 90%;
-    /* background: red; */
-    padding: 10px 0px;
-    margin: 0px 0px;
+    height: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 20px;
 }
-#inputBox button{
-    border: 1.5px solid #000;
-    background: none;
-    padding: 5px;
-    font-size: 1.2em;
-    font-weight: 500;
-    margin-top: 10px;
-    width: 100%;
-    opacity: 0.5;
-    pointer-events: none;
+#btnBox button{
+    padding: 3px 10px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
 }
-#datePicker{
-    pointer-events: none;
-    width: 90%;
-    height: 30px;
-    background: #FFE801;
-    border: 1.5px solid #000;
-    opacity: 0.5;
-}
-.label_checkbox{
-    font-size: 1em;
-}
-/* footer */
+/* FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - */
 footer{
     height: 200px;
     width: 100%;
@@ -544,6 +655,7 @@ footer{
     border: 0px solid;
     border-bottom: 1px solid #fff;
     margin-right: 10px;
+    width: 20%;
     text-align: start;
 }
 #midleContent div input::placeholder{
@@ -572,89 +684,90 @@ footer{
     text-transform: lowercase;
     font-size: 0.8em;
 }
-@media screen and ( max-width : 1270px ) {
-    /* content checkbox and users */
-    main{
-        margin-left: 30%;
-        width: 700px;
-    }
-    main article{
-        margin: 30px;
-    }
-    main article:nth-child(2n){
-    }
-    
-}
+
+
 @media screen and ( max-width : 1100px ) {
-    /* content checkbox and users */
-    main{
-        margin-left: 30%;
-    }
     /* footer */
     #footerContent{
         width: 90%;
     }
-    main article{
-        scale: 0.9;
-    }
-    main article:nth-child(2n){
-        scale: 0.9;
+}
+@media screen and ( max-width : 1000px ) {
+    #reservationBox{
+        width: 90%;
     }
 }
 @media screen and ( max-width : 970px ) {
-    /* container */
-    #container{
-        width: 100%;
-        margin-top: 150px;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-    }
-    /* content checkbox and users */
-    main{
-        width: 80%;
-        position: relative;
-        display: flex;
-        margin-left: 0%;
-        left: 50%;
-        transform: translateX(-50%);        
-        flex-wrap: wrap;
-        flex-direction: row-reverse; /* Inverser l'ordre des éléments */
-        margin: 0;
-    }
-    #inputBox{
-        width: 40%;
-        position: static;
-        margin-left: 0%;
-    }
     /* footer */
     #footerContent{
         width: 100%;
     }
-    #midleContent div input{
-        padding-right: 100px;
-        margin-right: 10px;
-        margin-bottom: 10px;
+    article {
+        height: auto;
+        width: 90%;
+        padding: 50px 0px;
+        margin-top: 176px;
+        margin-bottom: 100px;
+    }
+    #first_second {
+        height: 85%;
+        width: 100%;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+    }
+    #firstData{
+        width: 60%;
+    }
+    #thirdData span {
+        width: 90%;
+    }
+    #thirdData div {
+        width: 90%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 10px;
+    }
+    #thirdData {
+        justify-content: center;
+        align-items: center;
+        height: auto;
+    }
+    #firstData .inputBox {
+        margin-top: 30px;
+    }
+    #firstData .inputBox2 {
+        margin-top: 30px;
+    }
+    #firstData .inputBox3 {
+        margin-top: 30px;
+    }
+    .inputBox4 {
+        margin-top: 30px;
+    }
+    .inputBox{
+        margin-top: 30px;
+    }
+    #secondData {
+        height: 100%;
+        width: 60%;
+        padding-left: 0%;
+    }
+    .inputBox {
+        width: 100%;
+    }
+    #container {
+        height: auto;
+    }
+    #thirdData label {
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 }
 @media screen and ( max-width : 850px ) {
-    main{
-        width: 100%;
-        margin-left: 0%;
-        left: 0%;
-        transform: translateX(0%);        
-        margin: 0;
-    }
-    main h6{
-        display: none;
-    }
-    main article:nth-child(2n){
-        margin-top: 0%;
-    }
-    .logoNavBox:nth-child(1){
-        visibility: hidden;
-    }
-    .logoNavBox:nth-child(3){
+    header div nav{
         visibility: hidden;
     }
     /* footer */
@@ -665,38 +778,101 @@ footer{
     #footerContent #midleContent{
         width: 300px;
     }
-    #midleContent div button{
-        padding: 7px 50px;
-    }
-    #midleContent h3{
-        margin-top: 0px;
-    }
-    #midleContent div{
-        height: 30%;
-        margin-top: 10px;
-    }
 }
 @media screen and ( max-width : 650px ) {
-    #footerContent{
-        flex-direction: column;
+    #mentheBG{
+        display: none;
     }
-    #inputBox{
-        width: 100%;
-        position: static;
-        margin-left: 0%;
-        z-index: 10;
-        overflow: hidden;
-        padding: 0px;
+    #flowerRed{
+        display: none;
     }
     /* navbar logo image */
     header #logo{
         margin-left: 60px;
     }
+    #footerContent{
+        flex-direction: column;
+    }
     #footerContent #midleContent{
         display: none;
     }
+    #thirdData label {
+        width: 100%;
+        margin-right: 0px;
+    }
+    #thirdData div {
+        width: 80%;
+        height: auto;
+        margin-top: 10px;
+        justify-content: center;
+    }
+    #imageBox {
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        margin: 20px 0px;
+    }
+    #imageProfil {
+        margin: 20px 0px;
+    }
+    #thirdData span {
+        display: none;
+    }
+    #thirdData button {
+        padding: 5px 0px;
+        width: 80%;
+    }
+    #firstData .inputBox3 {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+    #firstData .inputBox3 input {
+        width: 100%;
+        padding-left: 0px;
+    }
+    .inputBox4 label:nth-child(1){
+        display: none;
+    }
+    .inputBox4 section {
+        justify-content: space-between;
+    }
 }
 @media screen and ( max-width : 550px ) {
+    #title{
+        margin: 0;
+        margin-top: -22px;
+        -webkit-text-stroke-width: 3px;
+        font-size: 1.5em;
+        color: #000;
+        margin-left: 30%;
+        margin-left: -40px;
+    }
+    #title::before{
+        width: 150px;
+        background: #E83647;
+        height: 20px;
+        font-size: 1.2em;
+        margin-left: 20px;
+        margin-top: 16px;
+    }
+    #navResponsive{
+        height: 120%;
+    }
+    #burgerBox {
+        margin-left: 24px;
+    }
+    #navResponsive nav ul li {
+        margin: 26px 14px;
+        font-size: 1.5rem;
+    }
+    #navResponsive nav {
+        margin-top: 50%;
+        margin-left: 27px;
+    }
     #notificationBox{
         position: fixed;
         width: 90%;
@@ -712,6 +888,20 @@ footer{
         overflow: scroll;
         height: 80%;
         display: none;
+    }
+}
+@media screen and ( max-width : 460px ) {
+    #firstData{
+        width: 80%;
+    }
+    #secondData {
+        width: 80%;
+    }
+    #inputFileBox {
+        width: 100%;
+    }
+    .inputBox4 section label {
+        margin-left: 0px;
     }
 }
 @media screen and ( max-width : 440px ) {
@@ -737,27 +927,6 @@ footer{
         justify-content: space-between;
         align-items: center;
         overflow: scroll;
-    }
-}
-@media screen and ( max-width : 350px ) {
-    main article{
-        height: 520px;
-        width: 100%;
-        margin: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-direction: column;
-    }
-    main article:nth-child(2n){
-        height: 520px;
-        width: 100%;
-        margin: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-direction: column;
-        margin-top: 25%;
     }
 }
 @media screen and ( max-width : 330px ) {
