@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    {# <link rel="stylesheet" href="{{asset('./assets/css/profil.css')}}">
+    <link rel="stylesheet" href="{{ asset('./assets/css/selectGroup.css') }}"> #}
+    <link rel="stylesheet" href="{{ asset('./assets/css/monProfil.css') }}">
+    <link rel="stylesheet" href="{{ asset('./assets/css/monProfilUser.css') }}">
+      <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Work+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>PROFIL USER </title>
+</head>
+<!-- body of page -->
+<body>
+
+	{{ include('_header.html.twig') }}
+
+    <div class="rectangle"></div>
+      
+      <div class="containerC"> 
+
+      <div class="titleProfil">  
+      <div>
+        <h2>Mes informations</h2>
+      </div>
+    <div>
+        <a href="{{ path('app_user_profil') }}" class="modifier">
+         <p><img class="icone-modifier" src="../assets/img/icones/modifier.svg" alt="icone crayon">Modifier</p> 
+        </a>
+    </div>
+    </div>
+
+   <div class="boxSide">
+    <!-- Card user  -->
+    <div class="cardSide">
+
+    <div class="row">
+
+    <article class="cardUser ">
+    <article class="cardUserBody">
+    <img class="img-user" src="{{ user.image }}" alt="">
+
+    <div class="description">
+        <div class="row">
+            <p class="name">{{ user.username }} </p>
+        <div class="drapeau ">
+        {% for languageCode in user.language %}
+              <img src="https://www.countryflagicons.com/SHINY/32/{{ languageCode }}.png" alt="{{ languageCode }} ">
+        {% endfor %}
+        </div>
+    </div>
+
+    <div class="row">
+
+        <p class="cardGender">{{ user.gender }}</p>
+
+    <div class="infoUser">
+    <div class=" tag-prefs ">
+        {% if user.postalCode is not empty %}
+        <p class="tag-menthe"> {{ user.city }}</p>
+        {% endif %} 
+        <p class="tag-menthe">{{ user.age }} Ans</p>
+    </div>
+    </div>
+    </div>
+
+    </div>    
+
+    
+    <p class="citation">« {{ user.description }}. »</p>
+
+
+    </article>
+    </div>
+    </div>
+
+
+    
+    <!-- box profil  -->
+    <div class=" CardProfil  ">
+    <!-- Profil form : JE SUIS -->
+    <fieldset class="active">
+    <div class="formCard">
+  
+      <div class="container ">
+    <div class=" border-card">
+    <!-- <img src="Assets/formes/algue-medium-menthe-gauche.svg" alt="" class="algue-profil position-relative">
+      <fieldset class="active">
+    <img src="Assets/formes/marguerite-framboise.svg" alt="" class="marguerite-profil  position-relative "> -->
+  
+      <!-- TITRE CARD FORMULAIRE -->
+      <div class="row">
+      <div class="titleCard">
+  
+        <div class="title active">
+          <h2>je suis</h2>
+        </div>
+        <div class="title ">
+          <h2>j'aime</h2>
+        </div>
+  
+      </div>
+      </div>
+              
+      <!-- Form 1 JE SUIS  -->
+      <div class="containerForm">
+    
+        <div class="rightSide"> 
+          
+          <!-- right side -->
+          <p >Je m'apelle...</p>
+          <p class="stroke-input">{{ user.username }}</p>
+
+          <p >J'habite...</p>
+          {% if user.postalCode is not empty %}
+          <p class="stroke-input"> {{ user.city }} ({{ user.region }})</p>
+          {% endif %}     
+
+          <div class="date"> 
+            <p> Age ...</p>
+            <p>	{{ user.age }} Ans</p>
+          </div>
+
+          <div class="date"> 
+          <p>Je suis un(e)</p>
+          <p > {{ user.gender }}</p>
+          </div>
+
+        <p>Je parle...</p>
+         {% for languageCode in user.language %}
+        <img src="https://www.countryflagicons.com/SHINY/32/{{ languageCode }}.png" alt="{{ languageCode }} ">
+        {% endfor %}
+        
+        </div>
+
+
+        <!-- left side -->
+        <div class="leftSide"> 
+
+        <div class="wrap-img"> 
+            <img src="{{ user.image }}" alt="" class="img">
+        </div>
+  
+        <p>Je bosse dans...</p>
+        <p class="stroke-input">{{ user.job }}</p>
+
+        <div class="decris">
+        <p>Je me décris en quelques mots...</p>
+        <p class="stroke-input">{{ user.description }}</p>
+       
+        </div>
+        </div>
+
+        <!-- bottom  -->
+        <div class="bottom"> 
+        <p> Mon régime alimentaire ... </p>
+         <div class="btn-diet">
+         <input type="radio" id="ProfilChoice1" name="choice" value="{{ user.diet}}"class="regime">
+        <label for="ProfilChoice1">{{ user.diet}}</label>
+        </div>
+        </div>
+  
+    </div>
+  </div>
+        <div class="btn-submit">
+        <button onclick="nextStep()" class="btn-img ">
+            suivant
+        </button>
+        </div>
+
+        </div>
+      </div>
+    </fieldset>
+    <!-- Profil form : J'AIME -->
+    <fieldset style="display: none;">
+    <div class="formCard ">
+  
+      <div class="containerjaime">
+    <div class=" border-card">
+    <!-- <img src="Assets/formes/algue-medium-menthe-gauche.svg" alt="" class="algue-profil position-relative">
+      <fieldset class="active">
+    <img src="Assets/formes/marguerite-framboise.svg" alt="" class="marguerite-profil  position-relative "> -->
+  
+      <!-- TITRE CARD FORMULAIRE -->
+      <div class="row">
+      <div class="titleCard">
+  
+        <div class="title ">
+          <h2>je suis</h2>
+        </div>
+        <div class="title active">
+          <h2>j'aime</h2>
+        </div>
+  
+      </div>
+      </div>
+              
+      <!-- Form J'AIME  -->
+      <div class="containerFormjaime">
+    
+        <div class="centerOfI"> 
+          
+        <!-- right side -->
+        <p >Mes centres d'intérêts</p>
+        <div class="btn-diet btn-centerOfI">
+        {% for interest in user.centerOfInterest %}
+        <input type="radio" id="ProfilChoice1" name="choice" value=" {{ interest }}" class="regime">
+        <label for="ProfilChoice1">{{ interest }}</label>
+        {% endfor %}
+
+        </div>
+          
+        <p>J’en ai d’autres ... </p>
+        <p class="stroke-input-fin"> {{ user.centerOfInterestPerso }} </p>
+        </div>
+  
+        </div>
+        </div>
+
+        <div class="btn-submit-fin">
+        <button onclick="previousStep()" class="btn-img ">
+            Retour
+        </button>
+
+        </div>
+        </div>
+      </div>
+      </fieldset>
+      </div>
+      </div>
+
+       <div class=" CardInfos">
+        <p>{{ user.username }}</p>
+        <span class="vertical-line"></span>
+        <p class="tag">{{ user.email }}</p>
+        </div>
+        </div>
+        </div>
+
+     
+
+<!-- footer -->
+		{% include "_footer.html.twig" %}
+</body>
+<script src="{{asset('./assets/js/header.js')}}"></script>
+<script src="{{asset('./assets/js/form.js')}}"></script>
+</html>

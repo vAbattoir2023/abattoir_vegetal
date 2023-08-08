@@ -1,0 +1,879 @@
+/* Formulaire - JE SUIS */
+fieldset{
+    border:none;
+}
+
+.algue-profil {
+    margin-left: 0px;
+    margin-top: 0px;
+}
+
+.marguerite-profil {
+    margin-left: 0px;
+    margin-top: 0px;
+}
+
+.container {
+    width: 1084px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: 25%;
+    margin-left: 10%;
+}
+
+.border-card {
+    background:  #FBFAF4;
+    box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.14);
+    padding-top: 100px;
+    padding-bottom: 70px;
+}
+
+
+
+/* Title of the box  */
+.titleCard{
+    margin-top: -12%;
+    justify-content: flex-end;
+    flex: 0 0 90%;
+    max-width: 90%;
+    z-index: 3;
+    position: relative;
+    align-items: baseline;
+    display: flex;
+}
+
+
+.title h2 {
+    font-family: 'Gasoek One';
+    text-transform: uppercase;
+    color: #224934;
+    margin-left: 2rem
+}
+
+.active {
+    position: relative;
+}
+
+.titleCard .active h2 {
+    font-size: 45px;
+    color: #12231a;
+    margin-top: -5px;
+}
+
+.titleCard .active::after {
+    content: "";
+    display: block;
+    width: 75%;
+    height: 16px;
+    background-color: #ff6c27;
+    position: absolute;
+    left: 65px;
+    bottom: 8px;
+    z-index: -1;
+}
+
+
+/* formulaire  */
+
+p{
+    font-family: 'Work Sans';
+    font-weight: 400;
+    font-size: 20px;
+    /* margin-bottom: 0% !important; */
+}
+  
+/* right_Side  */
+.rightSide{
+    display: inline-block;
+    margin-left: 8.33333333%;
+    width: 33.33333333%;
+}
+
+.stroke-input {
+    margin-bottom: 25px;
+    border: 0px;
+    border-bottom: 1.5px solid  #12231A;
+    width: 100%;
+    background-color: transparent;
+}
+
+
+.date{
+    margin-bottom: 25px;
+    width: max-content;
+}
+
+.date p, .date-gender, .wrap-img{
+    display: inline-flex;
+}
+
+.date-wrap {
+    display: inline-flex;
+    padding-left: 15px;
+}
+
+.stroke {
+    border: none;
+    border-bottom: 1.5px solid #12231A;
+    width: 4%;
+    height: 1.3em;
+    background-color: transparent;
+    text-align: center;
+}
+
+.stroke-year {
+    border: none;
+    border-bottom: 1.5px solid #12231A;
+    width: 8%;
+    height: 1.3em;
+    background-color: transparent;
+    text-align: center;
+}
+
+.date-gender{
+    margin-bottom: 25px;
+    width: max-content;
+}
+.formCard .form-check-input:checked {
+    background-color: #ff6c27;
+    border-color: #ff6c27;
+    box-shadow: none;
+}
+
+.gender {
+    padding-left: 5px;
+}
+
+.form-check-input[type=radio] {
+    border-radius: 50%;
+}
+
+.form-check-input[type=radio] {
+    border-radius: 50%;
+}
+
+.form-check-input {
+    width: 1em;
+    height: 1em;
+    margin-top: .25em;
+    vertical-align: top;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    appearance: none;
+}
+
+.gender p{
+    display: inline-block;
+    font-size: 15px;
+}
+
+
+/* left_Side  */
+.leftSide{
+    margin-left: 16.66666667%;
+    width: 33.33333333%;
+    display: inline-block;
+}
+
+.position-bouton {
+    margin-left: 70px;
+    padding-top: 10px;
+}
+
+.img {
+    width: 91px;
+    height: 91px;
+    border: 1.5px solid #12231A;
+}
+
+.btn-img {
+    padding: 5px 20px;
+    font-family: 'Work Sans';
+    font-size: 13px;
+    font-weight: bolder;
+    margin-bottom: 24px;
+    background-color: #fff;
+}
+
+.wrap-img{
+    margin-bottom: 25px;
+}
+
+/* bottom  */
+
+.bottom{
+    margin-left: 8.33333333%;
+    margin-top: 25px;
+}
+.bottom div{
+    margin-top: 25px;
+}
+
+.regime {
+    display: none;
+    flex-wrap: wrap;
+}
+
+.regime+label {
+    display: inline-flex;
+    width: 19%;
+    height: auto;
+    padding: 10px 2px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    font-family: 'Work Sans';
+    font-weight: 400;
+    font-size: 16px;
+    border: 1.5px solid #FF6C27;
+    text-decoration: #12231A;
+    background-color: transparent;
+    margin-right:30px;
+}
+
+.regime:hover+label {
+    background-color: transparent;
+    border: 3px solid #FF6C27;
+}
+
+.regime:checked+label {
+    background-color: transparent;
+    border: 3px solid #FF6C27;
+}
+
+
+.btn-submit {
+    margin-top: 45px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+
+.btn-submit button{
+    padding: 13px 35px;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-family: 'Work Sans';
+
+}
+
+
+/* Media Queries */
+@media only screen and (max-width: 768px) {
+ 
+    .boxSide {
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+    }
+
+    .cardSide {
+        margin-left: 0px !important;
+        margin-bottom: 45px;
+    }
+
+    .titleProfil {
+        flex-direction: column;
+        margin-bottom: 0px;
+    }
+    .titleProfil h2{
+        margin-left: 60px;
+        margin-bottom: 0px;
+    }
+    .titleProfil .modifier p{
+        margin-left: 470px;
+        margin-bottom: 0px;
+    }
+
+    .CardInfos {
+     width: 320px!important;
+     margin-right:0px!important;
+     margin-left:340px!important;
+    }
+
+    .border-card {
+      padding-top: 10%;
+      padding-bottom: 6%;
+    }
+  
+    .rightSide {
+      width: 100%;
+      margin-left: 0;
+      margin-bottom: 2rem;
+    }
+  
+    .leftSide {
+      width: 100%;
+      margin-left: 0;
+    }
+    .leftSide .decris{
+    margin-top: 20px;
+    }
+    
+    .titleCard {
+        margin-top: -13%!important;
+    }
+
+    .date-gender {
+        display: inline-flex !important;
+    }
+
+
+    .titleCard {
+        margin-bottom: 50px;
+    }
+
+    .regime+label {
+        margin-bottom: 20px;
+    }
+
+    .bottom {
+        margin-left: 0;
+    }
+
+    .btn-diet {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .regime+label {
+        width: 50% !important; 
+        font-size: 15px !important; 
+        padding: 7px 1px;
+    }
+  }
+
+  
+ @media screen and (max-width: 1659px) {
+     .container {
+         width: 850px;
+     }
+ }
+ 
+ @media screen and (max-width: 1445px) {
+     .container {
+         width: 750px;
+     }
+ }
+ 
+
+ @media screen and (max-width: 1251px) {
+     .container {
+        width: 650px;
+     }
+
+    .cardSide {
+        margin-left: 65px;
+    }
+
+    
+.regime+label {
+    padding: 10px 0px;
+    font-size: 13px;
+  }
+
+  .gender {
+    padding-left: 0px!important;
+ }
+}
+ 
+  @media screen and (max-width: 1167px) {
+    .container {
+        width: 600px;
+     }
+
+     .titleProfil {
+        margin-left: 80px;
+        margin-right: 120px;
+    }
+
+    .CardInfos {
+        margin-left: 80px;
+        margin-right: 120px;
+    }
+
+    .cardSide .cardUser {
+        width: 250px;
+    }
+
+    .cardUserBody .tag-menthe {
+        margin-right: 10px;
+    }
+
+    .regime+label {
+        margin-right: 20px;
+    }
+
+}
+  @media screen and (max-width: 1066px) {
+ 
+    .cardSide {
+        margin-left: 125px;
+    }
+
+    .titleProfil {
+        margin-left: 120px;
+        margin-right: 120px;
+    }
+
+    .CardInfos {
+        margin-left: 120px;
+    }
+}
+
+@media screen and ( max-width : 970px ) {
+    .btn-img {
+        font-size: 9px;
+    }
+
+    .container {
+        width: 500px;
+     }
+
+     .date-gender {
+    display: block; 
+    }
+
+    .cardSide {
+        margin-left: 175px;
+    }
+
+    .titleProfil {
+        margin-left: 170px;
+        margin-right: 170px;
+    }
+
+    .CardInfos {
+        margin-left: 170px;
+        margin-right: 170px;
+
+    }
+}
+
+@media screen and ( max-width : 850px ) {
+
+    .container {
+        width: 450px;
+     }
+
+     .date-gender {
+    display: block; 
+    }
+
+    .cardSide {
+        margin-left: 205px;
+    }
+
+    .titleProfil {
+        margin-left: 200px;
+        margin-right: 220px;
+    }
+
+    .CardInfos {
+        margin-left: 220px;
+        margin-right: 220px;
+    }
+
+    .containerForm {
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+    /*title card*/
+    .titleCard{
+    margin-top: -16%;
+    }
+
+    /*box card*/
+    p {
+    font-size: 15px;
+    }
+
+
+    .stroke {
+        width: 20px;
+    }
+
+    .gender {
+    padding-left: 0px;
+    }
+
+       
+    .btn-img {
+        font-size: 15px;
+    }
+
+    .btn-diet {
+        margin-left: 0px; 
+    }
+
+    .regime+label {
+        width: 17%;
+        font-size: 8px;
+        padding: 7px 1px;
+        margin-right: 10px;
+    }
+    
+    .btn-submit button {
+        padding: 10px 20px;
+        font-size: 17px;
+    }
+
+    /*navbar*/
+    header div nav{
+    visibility: hidden;
+    }
+ 
+}
+
+@media screen and ( max-width : 670px ) {
+    .container {
+        width: 380px;
+        margin-right:90px;
+    }
+
+    /*box card*/
+    .titleCard .active h2 {
+        font-size: 35px;
+        color: #12231a;
+        margin-top: -5px;
+    }
+    
+    h2 {
+        font-size: 15px;
+        color: #12231a;
+        margin-top: -5px;
+    }
+
+    .active::after {
+        width: 75%;
+        left: 50px;
+    }
+
+    .btn-img {
+        font-size: 14px;
+    }
+
+    .btn-submit button {
+        padding:7px 15px;
+        font-size: 14px;
+    }
+
+    .regime+label {
+        width: 15%;
+        font-size: 7px;
+    }
+
+    /* navbar logo image */
+    header #logo{
+        margin-left: 60px;
+    }
+    .titleProfil h2{
+        margin-left: 160px;
+        margin-bottom: 0px;
+    }
+ 
+}
+
+@media screen and ( max-width : 561px ) {
+    .titleProfil h2 {
+        font-size: 30px;
+        margin-left: 160px;
+    }  
+}
+@media screen and ( max-width : 491px ) {
+    .titleProfil h2 {
+        margin-left: 180px;
+    }
+    .titleProfil .modifier p {
+        margin-left: 440px;
+        margin-bottom: 0px;
+    }
+    .CardInfos {
+            margin-left: 400px!important;
+            padding: 15px 9px;
+        }   
+}
+@media screen and ( max-width : 401px ) {
+    .container {
+        width: 340px;
+        margin-right:90px;
+    }
+}
+
+@media screen and ( max-width : 376px ) {
+    .container {
+        width: 280px;
+        margin-left: 5px;
+        margin-right:0px;
+
+    }
+    .CardInfos {
+        margin-left: 440px!important;
+        padding: 15px 9px;
+        width: 260px!important;
+    }
+
+    .titleProfil h2 {
+        font-size: 20px;
+        margin-left: 220px;
+    }
+
+    .titleProfil .modifier p{
+        margin-left: 340px!important;
+        margin-bottom: 0px;
+        margin-top: 10px;
+    }
+    /*box card*/
+    .titleCard .active h2 {
+        font-size: 30px;
+
+    }
+
+    .titleCard {
+        margin-bottom: 36px;
+    }
+
+    .title h2 {
+        font-size: 20px;
+    }
+
+    .btn-img {
+        font-size: 15px;
+        padding: 5px 15px;
+    }
+
+    .position-bouton {
+        margin-left: 40px;
+    }
+
+    .bottom div {
+        margin-top: 25px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .regime+label {
+        width: 55%;
+        font-size: 10px!important;
+        margin-bottom: 10px;
+    }
+}
+
+
+/* FIN DE JESUIS */
+
+
+
+/* Formulaire - J'AIME */
+
+.btn-submit-fin {
+    margin-top: 45px;
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-submit-fin button {
+    padding: 13px 35px;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-family: Work Sans;
+}
+
+.centerOfI{
+    margin: 10px 50px;
+}
+
+.btn-centerOfI{
+    margin-bottom: 50px; 
+    margin-left: 100px; 
+}
+
+
+.btn-centerOfI .regime+label {
+    display: inline-flex;
+    width: 19%;
+    height: auto;
+    padding: 20px 31px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    font-family: 'Work Sans';
+    font-weight: 400;
+    font-size: 20px;
+    border: 1.5px solid #FF6C27;
+    text-decoration: #12231A;
+    background-color: transparent;
+    margin-right:30px;
+    margin-top:30px;
+}
+
+.btn-centerOfI .regime:hover+label {
+    background-color: transparent;
+    border: 3px solid #FF6C27;
+}
+
+.btn-centerOfI .regime:checked+label {
+    background-color: transparent;
+    border: 3px solid #FF6C27;
+}
+
+.stroke-input-fin {
+    margin-bottom: 25px;
+    border: 0px;
+    border-bottom: 1.5px solid #12231A;
+    margin-top: 20px;
+    width: 90%;
+    background-color: transparent;
+}
+
+.containerjaime {
+    width: 1084px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: 25%;
+    margin-left: 10%;
+}
+/* Media Queries */
+
+@media screen and (max-width: 1659px) {
+    .containerjaime {
+        width: 900px;
+    }
+}
+@media screen and (max-width: 1510px ) {
+
+    .containerjaime {
+        width: 800px;
+        }
+}
+
+@media screen and (max-width: 1344px) {
+    .containerjaime {
+        width: 700px;
+        }
+
+    .btn-submit-fin button {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+
+@media screen and (max-width: 1110px) {
+    .btn-submit-fin button {
+        margin-left: 10px;
+        margin-right: 10px;
+    } 
+
+
+}
+
+@media screen and (max-width: 1218px) {
+
+    .containerjaime {
+        width: 600px;
+        }
+}
+
+@media screen and (max-width: 1084px) {
+
+
+
+       .btn-centerOfI {
+        margin-left: 0px;
+    }
+
+    .centerOfI {
+        margin-left: 100px;
+    }
+}
+
+@media only screen and (max-width: 778px) {
+    /* .containerjaime {
+        width:690px !important;
+       } */
+  }
+
+
+
+@media screen and ( max-width : 970px ) {
+    /* .btn-img {
+        font-size: 9px;
+    } */
+}
+
+@media screen and ( max-width : 870px ) {
+  
+
+    .btn-centerOfI{
+        margin-bottom: 50px; 
+        margin-left: 10px;
+    }
+    
+    .btn-centerOfI .regime+label {
+        padding: 20px 10px;
+        font-size: 10px;
+    }
+   
+  
+    .centerOfI {
+    margin-left: 30px !important; 
+   }
+
+
+
+.containerjaime {
+    width: 400px;
+    }
+}
+
+@media screen and ( max-width : 670px ) {
+    
+    .btn-centerOfI .regime+label {
+        padding: 20px 25px !important;
+        margin-left: 10px;
+        font-size: 15px;
+    }
+    .centerOfI{
+        margin: 7px 10px;
+    }
+
+    .containerjaime {
+        width:450px !important;
+        margin-right:90px;
+       }
+}
+
+@media screen and ( max-width :500px ) {
+  
+    .containerjaime {
+        width:370px !important;
+        margin-right:90px;
+       }
+}
+
+@media screen and ( max-width : 376px ) {
+
+    .btn-centerOfI .regime+label {
+        padding: 20px 45px !important;
+
+    }
+    .containerjaime {
+        width:280px!important;
+        margin-right: 80px;
+       }
+
+       .btn-submit-fin button {
+        padding: 10px 10px;
+    }
+}
+/* FIN DE Formulaire - J'AIME */
