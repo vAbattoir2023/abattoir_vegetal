@@ -101,7 +101,7 @@ class ReservationController extends AbstractController
         usort($allReservation, $sortByCreateGroupDate);
 
         foreach ($allReservation as $reservation) {
-            foreach ($reservation->guests as $guestItem) { // Changer le nom de la variable ici (par exemple, $guestItem)
+            foreach ($reservation->guests as $guestItem) {
                 $userReference = $guestItem->guest;
                 $user = $dm->getReference(User::class, $userReference->id);
                 $guestItem->guest->user = $user;

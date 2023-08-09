@@ -27,7 +27,7 @@
 <main>
     <div class="head-title">
         <div class="left">
-            <h1>Utilisateurs</h1>
+            <h1>Users</h1>
             
         </div>
 
@@ -61,7 +61,7 @@
     <div class="table-data">
     <div class="order">
         <div class="head">
-            <h3>Liste des utilisateurs</h3>
+            <h3>Users list</h3>
         </div>
     <table>
         <thead>
@@ -87,7 +87,7 @@
                     <a href="{{ path('app_admin_edit', {'id': user.id}) }}" class="bx bx-edit"></a> 
                     <form method="post" action="{{ path('app_admin_delete', {'id': user.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?');">
                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
-                        <a class="bx bxs-trash"></a>
+                        <button class="bx bxs-trash"></button>
                     </form>
                 </td>
             </tr>

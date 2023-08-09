@@ -507,23 +507,150 @@ body {
     border-color: #f5c6cb;
 }
 
-.formApi {
-    background-color: #f8f9fa !important;
-    padding: 1rem !important;
+.table-data  .inputBox {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
 }
 
-.btnApi{
-        color: #fff;
-        background-color: #007bff;
-        border-color: #007bff;
-        margin-top: 0.5rem 
-}
-.btnApi:hover{
-    color: #fff;
-    background-color: #0056b3;
-    border-color: #0052cc;
+.table-data  .btn-api {
+    padding: 5px 30px;
+    text-transform: uppercase;
+    border: 1px solid #000;
+    font-size: 1.2rem;
+	margin-top: 15px;
 }
 
+.table-data .bx {
+    background-color: transparent;
+	border: none;
+}
+
+input[type=text] {
+    background-color: none;
+    border: 0px;
+    border-bottom: 1.5px solid;
+    width: 100%;
+    background-color: #FBFAF4;
+}
+.table-data  label {
+    font-weight: 300;
+    font-size: 1.1rem;
+}
+
+#thirdData {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+#thirdData span {
+    width: 100%;
+}
+
+#thirdData div {
+    width: 100%;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+}
+#checkboxBox div {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+	flex-wrap: wrap;
+    align-items: center;
+}
+
+#thirdData input {
+    display: none;
+}
+
+#thirdData label {
+    border: 1px solid #FF6C27;
+    padding: 5px 10px;
+    margin-right: 20px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+}
+#checkboxBox label {
+    border: 1px solid #FF6C27;
+    padding: 5px 80px;
+    margin-right: 20px;
+    width: 100px;
+	margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+}
+
+.langue {
+    display: none;
+    flex-wrap: wrap;
+}
+
+#checkboxBox input[type="checkbox"]:checked + label {
+    border: 2px solid #FF6C27;
+}
+#thirdData input[type="radio"]:checked + label {
+    border: 2px solid #FF6C27;
+}
+.langue+label {
+    display: inline-flex;
+    height: auto;
+    padding: 5px 5px;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 12px;
+    /* border: 1.5px solid #FF6C27; */
+    text-decoration: #12231A;
+    background-color: transparent;
+    margin-right:10px;
+    margin-top:10px;
+}
+.langue:hover+label {
+    background-color: transparent;
+    border: 3px solid #FF6C27;
+}
+
+.langue:checked+label {
+    background-color: transparent;
+    color: #FF6C27;
+    font-weight: 900;
+}
+
+
+
+#allCheckbox {
+    height: auto;
+    /* background: #ac5959; */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#user_centerOfInterest {
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: center;
+    flex-direction: row;
+}
+#checkboxBox input {
+    display: none;
+}
 
 /* MAIN */
 

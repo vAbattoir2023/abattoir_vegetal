@@ -13,6 +13,17 @@
   <!-- header nav bar -->
   {% include "_header.html.twig" %}
   <!-- container -->
+  <div id='boxAvatar'>
+    <div>
+      <figure id='avatar1'>
+        <img src="https://static.vecteezy.com/system/resources/previews/002/002/403/original/man-with-beard-avatar-character-isolated-icon-free-vector.jpg" alt="">
+      </figure>
+      <figure id='avatar2'>
+        <img src="https://static.vecteezy.com/ti/vecteur-libre/p3/5419157-profil-utilisateur-femme-avatar-est-une-femme-un-personnage-pour-un-economiseur-d-ecran-avec-emotions-illustrationle-sur-fond-blanc-isole-vectoriel.jpg" alt="">
+      </figure>
+    </div>
+    <button id='selectAvatar'>select an avatar</button>
+  </div>
   <main>
     {{ form_errors(UserForm) }}
     {{ form_start(UserForm, {'attr': {'id': 'container'}}) }}
@@ -31,8 +42,9 @@
               {{ form_widget(UserForm.postalCode) }}
             </div>
             <div class="inputBox3">
-              <label for="">I was born in  ...</label>
+              <label for="">I am now  ...</label>
               {{ form_widget(UserForm.age) }}
+              <span>years old</span>
             </div>
             <div class="inputBox4">
               <label for="">I am a ...</label>
@@ -52,10 +64,10 @@
                 <img src="../assets/img/icones/profil/profil-big.svg" alt="">
               </figure>
               <div id="inputFileBox">
-                {{ form_widget(UserForm.image) }}
-                {{ form_label(UserForm.image) }}
+                {{ form_widget(UserForm.image, {'attr': {'class': 'imageInput'} } ) }}
+                {{ form_label(UserForm.image ) }}
                 <input id="avatar" disabled type="file" title=""/>
-                <label for="avatar">select an avatar</label>
+                <label id='btnSelect' for="avatar">select an avatar</label>
               </div>
             </div>
             <div class="inputBox">

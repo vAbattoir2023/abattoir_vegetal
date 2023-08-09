@@ -16,6 +16,8 @@ class ApiUserController extends AbstractController
     #[Route('/api_user', name: 'app_api_user', methods: ['GET', 'POST'])]
     public function new(Request $request, UserRepository $userRepository): Response
     {
+        $messageAlert = '';
+
         // Instanciation de la class USER
         $apiuser = new User();
         // Création d'un tableau avec les valeurs de la variable $apiuser
@@ -122,7 +124,7 @@ class ApiUserController extends AbstractController
             $response = $httpClient->request('GET', $apiUrl);
             $data = $response->toArray();
 
-            if (!empty($data)) {
+            if (!empty($data['codeRegion'])) {
                 // Récupérer le nom du département à partir de la réponse de l'API
                 // dd($data);
                 $codeRegion = $data['codeRegion'];
@@ -142,16 +144,19 @@ class ApiUserController extends AbstractController
             // A DECOMMENTER POUR ENREGISTRER EN BDD !!
             // Sauvegarder l'entité User mise à jour dans la base de données
              $userRepository->save($apiuser, true);
-// dd($apiuser);
+            // dd($apiuser);
             // Rediriger vers la route 'app_api_user' après la sauvegarde
             return $this->redirectToRoute('app_api_user', [], Response::HTTP_SEE_OTHER);
         }
-
+        
+        $messageAlert = 'user succefully created.';
         // Retourne le rendu du formulaire (apiuser.html.twig) au format HTML
         // avec les données de ApiUser de la variable $apiuser et les valeurs attribuées à $form
         return $this->render('Admin/apiuser.html.twig', [
             'apiuser' => $apiuser,
             'form' => $form->createView(),
+            'alert' => $messageAlert
+
         ]);
     }
 }

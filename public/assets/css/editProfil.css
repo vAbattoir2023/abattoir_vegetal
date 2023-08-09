@@ -576,6 +576,48 @@ input:focus {
     font-size: 1.2rem;
     text-transform: uppercase;
 }
+
+#boxAvatar{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 108, 39, 0.8);
+    /* backdrop-filter: blur(4px); */
+    position: fixed;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: none;
+}
+#boxAvatar div{
+    height: 400px;
+    width: 700px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#boxAvatar div figure{
+    height: 70%;
+    width: 40%;
+    margin: 20px;
+    background: #fff;
+}
+#boxAvatar div figure img{
+    height: 100%;
+    width: 100%;
+    border: 2px solid #FF6C27;
+}
+#boxAvatar button{
+    height: 40px;
+    width: 700px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    background: #FF6C27;
+    border: 2px solid #fff;
+    color: #fff;
+}
 /* FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - */
 footer{
     height: 200px;

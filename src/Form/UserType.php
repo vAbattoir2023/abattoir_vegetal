@@ -68,22 +68,10 @@ class UserType extends AbstractType
                 'choices' => [
                     'English' => 'GB',
                     'French' => 'FR',
-                    // 'Espagnol' => 'ES',
-                    // 'Italien' => 'IT',
-                    // 'Néerlandais' => 'NL',
-                    // 'Bresilien' => 'BR',
-                    // 'Chinois ' => 'CN',
-                    // 'Algerien ' => 'DZ',
                 ],
                 'choice_attr' => [
                     'English' => ['class' => 'langue'],
                     'French' => ['class' => 'langue'],
-                    // 'Espagnol' => ['class' => 'langue'],
-                    // 'Italien' => ['class' => 'langue'],
-                    // 'Néerlandais' => ['class' => 'langue'],
-                    // 'Bresilien' => ['class' => 'langue'],
-                    // 'Chinois ' => ['class' => 'langue'],
-                    // 'Algerien ' => ['class' => 'langue'],
                 ],
                 'multiple' => true,
                 'expanded' => true,
@@ -94,9 +82,8 @@ class UserType extends AbstractType
             //         'placeholder' => 'https://',
             //     ],
             // ])
-            ->add('image', FileType::class, [
+            ->add('image', TextType::class, [
                 'label'=> 'add a picture',
-                'data_class' => null,
             ])
 
             
@@ -105,7 +92,6 @@ class UserType extends AbstractType
             ->add('description', TextType::class,)
 
             ->add('diet', ChoiceType::class, [
-                
                 'choices'  => [
                     'vegan' => 'vegan',
                     'curious' => 'curious',

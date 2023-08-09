@@ -3,17 +3,25 @@
     padding: 0;
     font-family: 'Gasoek One', sans-serif;
 }
+#yellowBackground{
+    height: 100%;
+    width: 35%;
+    background: #FFE801;
+    position: absolute;
+    left: 0;
+    z-index: -1;
+}
 body{
     background: #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-    height: 100vh;
+    height: auto;
+    flex-wrap: wrap;
     width: 100vw;
 }
-
-
+/* HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - */
 /* navbar */
 header{
     height: 130px;
@@ -88,7 +96,7 @@ header nav{
 }
 /* nav responsive */
 #navResponsive{
-    position: absolute;
+    position: fixed;
     height: 100%;
     width: 100%;
     background: #fff;
@@ -241,63 +249,74 @@ a{
     cursor: pointer;
     z-index: 40;
 }
-/* container */
-#container{
-    width: 100%;
-    margin-top: 150px;
-    flex-wrap: wrap;
-}
-/* content checkbox and users */
-main{
-    width: 60%;
-    position: relative;
-    display: flex;
-    margin-left: 25%;
-    margin-top: 2%;
-    flex-wrap: wrap;
-    flex-direction: row-reverse; /* Inverser l'ordre des éléments */
-}
-
-
-main h6{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    color: #FF6C27;
-    font-size: 3.2rem;
-    text-transform: uppercase;
-    margin-top: 30px;
-    right: 0;
-    font-weight: 900;
-    text-shadow: 1px 1px 1px  #FF6C27;
-    padding-right: 60px;
-    padding-bottom: 40px;
-    height: 100px;
-}
-main h6::after{
-    align-items: end;
-    content: '_____';
-    text-align: end;
-    margin-right: 50px;
+#flower{
     position: absolute;
     bottom: 0;
-    right: 0;
-    color: #46D4B3;
-    text-shadow: 2px 2px 2px 2px  #46D4B3;
+    z-index: -1;
+    left: 20px;
+    height: 500px;
+    width: auto;
 }
-main article{
+#flower img{
+    height: 100%;
+    width: 100%;
+}
+/* HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - */
+main{
+    height: auto;
+    width: 80%;
+    margin-top: 130px;
+}
+#mainHeader{
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#mainHeader h1{
+    text-transform: uppercase;
+    color: #12231A;
+    font-weight: bold;
+    -webkit-text-stroke-color: #12231A;
+    -webkit-text-stroke-width: 4px;
+    letter-spacing: 2px;
+    font-size: 3rem;
+}
+#mainHeader figure{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#mainHeader figure a{
+    color: #12231A;
+    text-decoration: underline;
+    margin-left: 10px;
+}
+#userContent{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+/*card user*/
+#userCard{
     height: 520px;
     width: 290px;
-    margin: 59px;
+    margin-top: 50px;
     background: #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    transition: 0.5s;
+    scale: 1;
 }
-main article:nth-child(2n){
+i{
+    margin-left: 20px;
+    color: #355845;
+}
+#userCard:nth-child(2n){
     height: 520px;
     width: 290px;
     background: #fff;
@@ -309,11 +328,7 @@ main article:nth-child(2n){
     margin-top: 25%;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-main article figure{
-    height: 50%;
-    width: 100%;
-}
-main article figure img{
+#userCard figure img{
     height: 100%;
     width: 100%;
 }
@@ -338,16 +353,17 @@ main article figure img{
     width: 40%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
+}
+#flag{
+    height: 30px !important;
+    width: auto !important;
 }
 .firstData figure img{
-    height: auto;
-    width: 30%;
-    overflow: scroll;
+    height: 100%;
+    width: 40%;
 }
 .firstData figure{
-    display: flex;
-    justify-content: center;
     height: 100%;
     width: 40%;
 }
@@ -388,85 +404,81 @@ main article figure img{
     background: #fff;
     
 }
-/* CHECKBOX */
-#inputBox{
-    height: 660px;
-    width: 280px;
-    background: #FFE801;
-    position: fixed;
-    left: 0;
-    margin-left: 3%;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 10px;
-    margin-top: -10px;
-    overflow: scroll;
-}
-#allCenterIfInterest{
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-#inputBox::before{
-    content: '___';
-    position: absolute;
-    top: 0;
-    margin-top: -20px;
-    font-size: 2em;
-    font-weight: 900;
-}
-#subtitle{
-    width: 100%;
-    display: flex;
-    justify-content: start;
-}
-#subtitle h3{
-    font-weight: 900;
-    font-size: 1.2em;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-#subtitle h3::after{
-    content: '__';
-}
-#inputBox div{
-    width: 90%;
-    /* background: red; */
-    padding: 10px 0px;
-    margin: 0px 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-#inputBox button{
-    border: 1.5px solid #000;
-    background: none;
-    padding: 5px;
-    font-size: 1.2em;
-    font-weight: 500;
-    margin-top: 10px;
-    width: 100%;
-    opacity: 0.5;
-    pointer-events: none;
-}
-#datePicker{
-    pointer-events: none;
-    width: 90%;
+#mainHeader figure img{
     height: 30px;
-    background: #FFE801;
-    border: 1.5px solid #000;
-    opacity: 0.5;
+    width:  30px;
 }
-.label_checkbox{
-    font-size: 1em;
+#userData{
+    height: 400px;
+    width: 60%;
+    /* background: #000; */
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: space-between;
+    margin-top: 10px;
 }
-/* footer */
+#userData a{
+    height: 30px;
+    width: 70%;
+    font-size: 2.5rem;
+    border-right: 1.5px solid #12231A;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding-right: 50px;
+    color: #12231A;
+    -webkit-text-stroke-color: #12231A;
+    -webkit-text-stroke-width: 1px;
+    margin-top: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+#userData a:nth-child(5){
+    height: 30px;
+    width: 70%;
+    font-size: 2.5rem;
+    border: 1.5px solid #12231A;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding-right: 50px;
+    color: #fff;
+    -webkit-text-stroke-color: #fff;
+    -webkit-text-stroke-width: 1px;
+    margin-top: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: #355845;
+}
+/* footer data */
+#footerData{
+    width: 100%;
+    height: 100px;
+    background: #FBFAF4;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+#footerData span{
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #12231A;
+    font-size: 1.3rem;
+    color: #12231A;
+}
+#footerData #btn{
+    border: 1.5px solid #12231A;
+    padding: 5px 13px;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+/* FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - */
 footer{
     height: 200px;
     width: 100%;
@@ -545,6 +557,7 @@ footer{
     border: 0px solid;
     border-bottom: 1px solid #fff;
     margin-right: 10px;
+    width: 20%;
     text-align: start;
 }
 #midleContent div input::placeholder{
@@ -573,87 +586,117 @@ footer{
     text-transform: lowercase;
     font-size: 0.8em;
 }
-@media screen and ( max-width : 1270px ) {
-    /* content checkbox and users */
-    main{
-        margin-left: 30%;
-        width: 700px;
-    }
-    main article{
-        margin: 30px;
-    }
-
-}
 @media screen and ( max-width : 1100px ) {
-    /* content checkbox and users */
-    main{
-        margin-left: 30%;
-    }
     /* footer */
     #footerContent{
         width: 90%;
     }
-    main article{
-        scale: 0.9;
+    #userData a {
+        width: 100%;
     }
-    main article:nth-child(2n){
-        scale: 0.9;
+}
+@media screen and ( max-width : 1050px ) {
+}
+@media screen and ( max-width : 1000px ) {
+    #reservationBox{
+        width: 90%;
+    }
+    #footerData {
+        width: auto;
+        height: 300px;
+        background: #FBFAF4;
+        display: flex;
+        align-items: center;
+        padding: 30px;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 100px;
+        margin-bottom: 100px;
     }
 }
 @media screen and ( max-width : 970px ) {
-    /* container */
-    #container{
+    #userData {
+        height: 500px;
+    }
+    #userData a {
+        font-size: 2rem;
+    }
+    #userData a:nth-child(5){
+        font-size: 2rem;
+    }
+    #userData {
         width: 100%;
-        margin-top: 150px;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-    }
-    /* content checkbox and users */
-    main{
-        width: 80%;
-        position: relative;
-        display: flex;
-        margin-left: 0%;
-        left: 50%;
-        transform: translateX(-50%);        
-        flex-wrap: wrap;
-        flex-direction: row-reverse; /* Inverser l'ordre des éléments */
-        margin: 0;
-    }
-    #inputBox{
-        width: 40%;
-        position: static;
-        margin-left: 0%;
     }
     /* footer */
     #footerContent{
         width: 100%;
     }
-    #midleContent div input{
-        padding-right: 100px;
-        margin-right: 10px;
-        margin-bottom: 10px;
+    article {
+        height: auto;
+        width: 90%;
+        padding: 50px 0px;
+        margin-top: 176px;
+        margin-bottom: 100px;
+    }
+    #first_second {
+        height: 85%;
+        width: 100%;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+    }
+    #firstData{
+        width: 60%;
+    }
+    #thirdData span {
+        width: 90%;
+    }
+    #thirdData div {
+        width: 90%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 10px;
+    }
+    #thirdData {
+        justify-content: center;
+        align-items: center;
+        height: auto;
+    }
+    #firstData .inputBox {
+        margin-top: 30px;
+    }
+    #firstData .inputBox2 {
+        margin-top: 30px;
+    }
+    #firstData .inputBox3 {
+        margin-top: 30px;
+    }
+    .inputBox4 {
+        margin-top: 30px;
+    }
+    .inputBox{
+        margin-top: 30px;
+    }
+    #secondData {
+        height: 100%;
+        width: 60%;
+        padding-left: 0%;
+    }
+    .inputBox {
+        width: 100%;
+    }
+    #container {
+        height: auto;
+    }
+    #thirdData label {
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 }
 @media screen and ( max-width : 850px ) {
-    main{
-        width: 100%;
-        margin-left: 0%;
-        left: 0%;
-        transform: translateX(0%);        
-        margin: 0;
-    }
-    main h6{
-        display: none;
-    }
-    main article:nth-child(2n){
-        margin-top: 0%;
-    }
-    .logoNavBox:nth-child(1){
-        visibility: hidden;
-    }
-    .logoNavBox:nth-child(3){
+    header div nav{
         visibility: hidden;
     }
     /* footer */
@@ -664,38 +707,112 @@ footer{
     #footerContent #midleContent{
         width: 300px;
     }
-    #midleContent div button{
-        padding: 7px 50px;
+    #boxAvatar div{
+        height: auto;
+        width: 80%;
+        flex-direction: column;
     }
-    #midleContent h3{
-        margin-top: 0px;
+    #boxAvatar div figure{
+        height: 70%;
+        width: 40%;
+        margin: 20px;
+        background: #fff;
     }
-    #midleContent div{
-        height: 30%;
-        margin-top: 10px;
+    #boxAvatar div figure img{
+        height: 100%;
+        width: 100%;
+        border: 2px solid #FF6C27;
+    }
+    #boxAvatar button{
+        height: 40px;
+        width: 80%;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        background: #FF6C27;
+        border: 2px solid #fff;
+        color: #fff;
     }
 }
 @media screen and ( max-width : 650px ) {
-    #footerContent{
-        flex-direction: column;
-    }
-    #inputBox{
-        width: 100%;
-        position: static;
-        margin-left: 0%;
-        z-index: 10;
-        overflow: hidden;
-        padding: 0px;
-    }
     /* navbar logo image */
     header #logo{
         margin-left: 60px;
     }
+    #footerContent{
+        flex-direction: column;
+    }
     #footerContent #midleContent{
         display: none;
     }
+    #thirdData label {
+        width: 100%;
+        margin-right: 0px;
+    }
+    #thirdData div {
+        width: 80%;
+        height: auto;
+        margin-top: 10px;
+        justify-content: center;
+    }
+    #imageBox {
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        margin: 20px 0px;
+    }
+    #imageProfil {
+        margin: 20px 0px;
+    }
+    #thirdData span {
+        display: none;
+    }
+    #thirdData button {
+        padding: 5px 0px;
+        width: 80%;
+    }
+    #firstData .inputBox3 {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+    #firstData .inputBox3 input {
+        width: 100%;
+        padding-left: 0px;
+    }
+    .inputBox4 label:nth-child(1){
+        display: none;
+    }
+    .inputBox4 section {
+        justify-content: space-between;
+    }
 }
 @media screen and ( max-width : 550px ) {
+    article {
+        margin-bottom: 0px;
+    }
+    #userCard{
+        scale: 0.9;
+    }
+    #mainHeader h1 {
+        font-size: 2rem;
+    }
+    #navResponsive{
+        height: 120%;
+    }
+    #burgerBox {
+        margin-left: 24px;
+    }
+    #navResponsive nav ul li {
+        margin: 26px 14px;
+        font-size: 1.5rem;
+    }
+    #navResponsive nav {
+        margin-top: 50%;
+        margin-left: 27px;
+    }
     #notificationBox{
         position: fixed;
         width: 90%;
@@ -711,6 +828,32 @@ footer{
         overflow: scroll;
         height: 80%;
         display: none;
+    }
+    #userData a {
+        font-size: 1.5rem;
+    }
+    #userData a:nth-child(5){
+        font-size: 1.5rem;
+    }
+}
+@media screen and ( max-width : 460px ) {
+    #userCard{
+        scale: 0.8;
+    }
+    #firstData{
+        width: 80%;
+    }
+    #secondData {
+        width: 80%;
+    }
+    #inputFileBox {
+        width: 100%;
+    }
+    .inputBox4 section label {
+        margin-left: 0px;
+    }
+    #boxAvatar button{
+        font-size: 1.2rem;
     }
 }
 @media screen and ( max-width : 440px ) {
@@ -738,25 +881,15 @@ footer{
         overflow: scroll;
     }
 }
-@media screen and ( max-width : 350px ) {
-    main article{
-        height: 520px;
-        width: 100%;
-        margin: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-direction: column;
+@media screen and ( max-width : 400px ) {
+    #userData a {
+        font-size: 1.2rem;
     }
-    main article:nth-child(2n){
-        height: 520px;
-        width: 100%;
-        margin: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-direction: column;
-        margin-top: 25%;
+    #userData a:nth-child(5){
+        font-size: 1.2rem;
+    }
+    #footerData #btn {
+        font-size: 0.9rem;
     }
 }
 @media screen and ( max-width : 330px ) {
@@ -766,5 +899,7 @@ footer{
         font-weight: 900;
         font-size: 1em;
     }
-
+    main {
+        width: 90%;
+    }
 }

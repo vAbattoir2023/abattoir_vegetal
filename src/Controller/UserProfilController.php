@@ -47,27 +47,7 @@ class UserProfilController extends AbstractController
         // if data from form is submitted and valid
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // IMAGE UPLOAD
-            //Get the uploaded image file
-            $imageFile = $form['image']->getData();
-            
-            //////////////////////////////////////////////////////////////////////////////////// local
-            if ($imageFile) {
-            // Generate a unique filename for the image
-            $newFilename = uniqid().'.'.$imageFile->getClientOriginalExtension();
-
-            // Move the image to the uploads directory
-            $imageFile->move(
-            // Set the directory where you want to store the images
-            $this->getParameter('uploads_directory'),
-            $newFilename
-            );  
-            $user->setImage($newFilename);
-               }
-            // Save the image file path to the user entity
-            
-     
-
+         
 //////////////////////////////////////////////////////////////////////////////////// STEP DRAPEAU LANGAGE
             $selectedLanguages = $form->get('language')->getData();
             $flagIconUrl = [];

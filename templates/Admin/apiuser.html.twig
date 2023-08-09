@@ -38,7 +38,7 @@
     <div class="table-data">
     <div class="order">
         <div class="head">
-            <h3>Création des API users en base de donnée</h3>
+            <h3>Creation of API users in database</h3>
         </div>
    
 
@@ -48,11 +48,50 @@
             {{ form_errors(form.postalCode) }}
         </div>
     {% endif %}
+    {% if alert is not empty %}
+        <div class="alert-danger">{{ alert }}</div>
+    {% endif %}
      
-    <div  class="formApi">
+    <div  class="table-data">
     {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btnApi" type="submit">Enregistrer</button>
+
+    <div class="inputBox">
+        <label for="">I speak ...</label>
+        {{ form_widget(form.language) }}
+    </div>
+
+    <div class="inputBox">
+        <label for="">I live in ...</label>
+        {{ form_widget(form.postalCode) }}
+    </div>
+
+    <div class="inputBox">
+        <label for="">I work in ...</label>
+        {{ form_widget(form.job) }}
+    </div>
+
+    <div class="inputBox">
+        <label for="">My description ...</label>
+        {{ form_widget(form.description) }}
+    </div>
+
+    <div id="thirdData">
+          <span>My diet ...</span>
+          <div>
+                {{ form_widget(form.diet) }}
+          </div>
+        </div>
+
+        <div id="thirdData"> 
+          <span>My center of interest ...</span>
+          <div id="allCheckbox">
+              <div id="checkboxBox">
+                {{ form_widget(form.centerOfInterest) }}
+              </div>
+          </div>
+        </div>
+
+        <button class='btn-api' type="submit">Enregistrer</button>
     {{ form_end(form) }}
     </div>
 </div>

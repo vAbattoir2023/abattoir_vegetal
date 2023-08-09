@@ -21,32 +21,22 @@ class ApiUserType extends AbstractType
         $builder
 
         ->add('language', ChoiceType::class, [
-            'label' => 'Langue',
             'choices' => [
-                'Anglais' => 'GB',
-                'Français' => 'FR',
-                'Espagnol' => 'ES',
-                'Italien' => 'IT',
-                'Néerlandais' => 'NL',
-                'Bresilien' => 'BR',
-                'Chinois ' => 'CN',
-                'Algerien ' => 'DZ',
-                
+                'English' => 'GB',
+                'French' => 'FR',
             ],
-            'attr' => [
-                'class' => 'form-control',
+            'choice_attr' => [
+                'English' => ['class' => 'langue'],
+                'French' => ['class' => 'langue'],
             ],
             'multiple' => true, 
             'expanded' => true,
         ]) 
-        ->add('job', TextType::class, [
-            'attr' => ['class' => 'form-control',
-                    'placeholder' => 'Entre une profession'],
-        ])
+        ->add('job', TextType::class)
+        
         ->add('postalCode', TextType::class, [
             'attr' => [
-                'class' => 'form-control',
-                'placeholder' => 'Entrez un code postal',
+                'placeholder' => 'Zip Code',
             ],
             'constraints' => [
                 new Length(['min' => 5, 'max' => 5, 'exactMessage' => 'Le code postal doit comporter 5 chiffres.']),
@@ -57,48 +47,56 @@ class ApiUserType extends AbstractType
             ],
         ])
         ->add('diet', ChoiceType::class, [
-            'label' => 'Diet',
-            'attr' => [
-                'class' => 'form-control',
+            'choices'  => [
+                'vegan' => 'vegan',
+                'curious' => 'curious',
+                'vegetarian' => 'vegetarian',
+                'flexitarian' => 'flexitarian'
             ],
-            'choices' => [
-                'Végan(ne)' => 'Végan(ne)',
-                'Curieu(x/se)' => 'Curieu(x/se)',
-                'Végétarien(ne)' => 'Végétarien(ne)',
-                'Fléxitarien(ne)' => 'Fléxitarien(ne)',
+            'choice_attr' => [
+                'vegan' => ['class' => 'regime'],
+                'curious' => ['class' => 'regime'],
+                'vegetarian' => ['class' => 'regime'],
+                'flexitarian' => ['class' => 'regime'],
             ],
+            'multiple' => false,
+            'expanded' => true
         ])
           
-        ->add('description', TextType::class, [
-            'attr' => ['class' => 'form-control',
-                    'placeholder' => 'Entre une description'],
-        ])
-        ->add('centerOfInterest', ChoiceType::class, [
-            'label' => 'CenterOfInterest',
-            'attr' => [
-                'class' => 'form-control',
+        ->add('description', TextType::class)
+
+        ->add('centerOfInterest',  ChoiceType::class, [
+            'choices'  => [
+                'Animals' => 'Animaux',
+                'Environment' => 'Environnement',
+                'Games' => 'Jeux vidéos',
+                'Art & Cult' => 'Art et Culture',
+                'Sports' => 'Sport',
+                'Travel' => 'Voyage',
+                'Music' => 'Musique',
+                'Dance' => 'Danse',
+                'Sciences' => 'Sciences',
+                'Bien-etre' => 'Bien-etre',
+                'Food' => 'Food',
+                'Social Act' => 'Activités sociales'
             ],
-            'choices' => [
-                    'Animaux' => 'Animaux',
-                    'Environnement' => 'Environnement',
-                    'Jeux vidéos' => 'Jeux vidéos',
-                    'Art et Culture' => 'Art et Culture',
-                    'Sport' => 'Sport',
-                    'Voyage' => 'Voyage',
-                    'Musique' => 'Musique',
-                    'Danse' => 'Danse',
-                    'Sciences' => 'Sciences',
-                    'Bien-etre' => 'Bien-etre',
-                    'Food' => 'Food',
-                    'Activités sociales' => 'Activités sociales',
-            ],
+            'choice_attr' => [
+                'Animaux' => ['class' => 'regime'],
+                'Environnement' => ['class' => 'regime'],
+                'Jeux vidéos' => ['class' => 'regime'],
+                'Art et Culture' => ['class' => 'regime'],
+                'Sport' => ['class' => 'regime'],
+                'Voyage' => ['class' => 'regime'],
+                'Musique' => ['class' => 'regime'],
+                'Danse' => ['class' => 'regime'],
+                'Sciences' => ['class' => 'regime'],
+                'Bien-etre' => ['class' => 'regime'],
+                'Food' => ['class' => 'regime'],
+                'Activités sociales' => ['class' => 'regime'],           
+             ],
             'multiple' => true,
-            'expanded' => true,
-        ]);   
-        // ->add('allergy', TextType::class, [
-            //     'attr' => ['class' => 'form-control',
-            //             'placeholder' => 'Entre une allergie'],
-            // ])  
+            'expanded' => true
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
