@@ -26,7 +26,6 @@ return [
         '/register/add' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegisterController::index'], null, null, null, false, false, null]],
         '/reservation' => [[['_route' => 'reservation_page', '_controller' => 'App\\Controller\\ReservationController::reservationPage'], null, null, null, true, false, null]],
         '/reservation/allReservation' => [[['_route' => 'app_reservation', '_controller' => 'App\\Controller\\ReservationController::allReservations'], null, null, null, false, false, null]],
-        '/user/s' => [[['_route' => 'app_userapp_user', '_controller' => 'App\\Controller\\UserController::index'], null, null, null, false, false, null]],
         '/user_profil/edit' => [[['_route' => 'app_user_profil', '_controller' => 'App\\Controller\\UserProfilController::index'], null, null, null, false, false, null]],
         '/user_profil/profil' => [[['_route' => 'app_user_profil_success', '_controller' => 'App\\Controller\\UserProfilController::success'], null, null, null, false, false, null]],
     ],

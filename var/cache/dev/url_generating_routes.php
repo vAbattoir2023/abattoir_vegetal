@@ -35,7 +35,6 @@ return [
     'app_register' => [[], ['_controller' => 'App\\Controller\\RegisterController::index'], [], [['text', '/register/add']], [], [], []],
     'reservation_page' => [[], ['_controller' => 'App\\Controller\\ReservationController::reservationPage'], [], [['text', '/reservation/']], [], [], []],
     'app_reservation' => [[], ['_controller' => 'App\\Controller\\ReservationController::allReservations'], [], [['text', '/reservation/allReservation']], [], [], []],
-    'app_userapp_user' => [[], ['_controller' => 'App\\Controller\\UserController::index'], [], [['text', '/user/s']], [], [], []],
     'app_user_profil' => [[], ['_controller' => 'App\\Controller\\UserProfilController::index'], [], [['text', '/user_profil/edit']], [], [], []],
     'app_user_profil_success' => [[], ['_controller' => 'App\\Controller\\UserProfilController::success'], [], [['text', '/user_profil/profil']], [], [], []],
 ];

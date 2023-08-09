@@ -3,28 +3,23 @@
     padding: 0;
     font-family: 'Gasoek One', sans-serif;
 }
+#yellowBackground{
+    height: 100%;
+    width: 35%;
+    background: #FFE801;
+    position: absolute;
+    left: 0;
+    z-index: -1;
+}
 body{
     background: #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-    height: 100vh;
+    height: auto;
+    flex-wrap: wrap;
     width: 100vw;
-}
-#mentheBG{
-    position: absolute;
-    bottom: 0;
-    margin-bottom: -50px;
-    left: 100px;
-}
-#flowerRed{
-    position: absolute;
-    top: 0;
-    margin-top: 100px;
-    left: 150px;
-    scale: 0.8;
-    z-index: 0;
 }
 /* HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - */
 /* navbar */
@@ -254,336 +249,234 @@ a{
     cursor: pointer;
     z-index: 40;
 }
-/* MAIN - MAIN - MAIN - MAIN - MAIN - MAIN - MAIN - MAIN - MAIN - MAIN - MAIN - MAIN - MAIN - MAIN - */
-main{
-    height: 100%;
-    width: 100%;
-    background: #000;
+#flower{
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
+    left: 20px;
+    height: 500px;
+    width: auto;
 }
-#container{
+#flower img{
     height: 100%;
     width: 100%;
+}
+/* HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - */
+main{
+    height: auto;
+    width: 80%;
+    margin-top: 130px;
+}
+#mainHeader{
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#mainHeader h1{
+    text-transform: uppercase;
+    color: #12231A;
+    font-weight: bold;
+    -webkit-text-stroke-color: #12231A;
+    -webkit-text-stroke-width: 4px;
+    letter-spacing: 2px;
+    font-size: 3rem;
+}
+#mainHeader figure{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#mainHeader figure a{
+    color: #12231A;
+    text-decoration: underline;
+    margin-left: 10px;
+}
+#userContent{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+/*card user*/
+#userCard{
+    height: 520px;
+    width: 290px;
+    margin-top: 50px;
     background: #fff;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    scale: 1;
 }
-article{
-    height: 500px;
-    width: 850px;
-    background: #FBFAF4;
-    margin-top: 120px;
-    padding: 50px;
-    position: relative;
+i{
+    margin-left: 20px;
+    color: #355845;
 }
-label{
-    font-weight: 300;
-    font-size: 1.1rem;
+#userCard:nth-child(2n){
+    height: 520px;
+    width: 290px;
+    background: #fff;
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 25%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-input[type=text]{
-    background-color: none;
-    border: 0px;
-    border-bottom: 1.5px solid;
-    height: 25px;
+#userCard figure img{
+    height: 100%;
     width: 100%;
-    background-color: #FBFAF4;
 }
-#title{
-    position: absolute;
-    text-transform: uppercase;
-    top: 0;
-    margin: 0;
-    margin-top: -22px;
-    font-weight: bold;
-    -webkit-text-stroke-color: #000;
-    -webkit-text-stroke-width: 4px;
-    letter-spacing: 2px;
-    font-size: 2.5em;
-    color: #000;
-    z-index: 4;
-    margin-left: 30%;
+.info{
+    height: 90%;
+    width: 85%;
+    background: #fff;
+    margin-top: 10%;
 }
-#title::before{
-    content: '';
-    display: block;
-    width: 250px;
-    background: #E83647;
-    position: absolute;
-    height: 20px;
+.firstData strong{
     font-size: 1.2em;
-    margin-left: 30px;
-    margin-top: 26px;
-    z-index: -1;
 }
-input:focus {
-    outline: none;
-  }
-#first_second{
-    height: 85%;
-    width: 100%;
-    display: flex;
-}
-#firstData{
-    height: 100%;
-    width: 45%;
-    padding-right: 5%;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    align-items: start;
-}
-#firstData .inputBox{
-    height: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-}
-#firstData .inputBox2{
-    height: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-}
-#firstData .inputBox3{
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    width: 100%;
-}
-#firstData .inputBox3 input{
-    width: 10%;
-    border: 0px;
-    padding-left: 20px;
-    border-bottom: 1.5px solid;
-    background: #FBFAF4;
-}
-.inputBox4{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-}
-.inputBox4 section{
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: end;
-}
-.inputBox4 section label{
-    font-size: 0.9rem;
-    margin-left: 5px;
-    margin-bottom: -3px;
-}
-.inputBox4 section .checkGender{
-    display: flex;
-    flex-direction: row;
-    align-items: end;
-    width: 25%;
-}
-.checkGender{
-    display: flex;
-    flex-direction: row;
-    width: 10%;
-}
-
-#secondData{
-    height: 100%;
-    width: 40%;
-    padding-left: 10%;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: start;
-}
-#imageBox{
-    height: 130px;
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    width: 100%;
-}
-#imageProfil{
-    height: 100px;
-    width: 100px;
-    background: #FBFAF4;
-    border: 1.5px solid #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-#imageProfil img{
-    height: 80%;
-    width: 80%;
-}
-#inputFileBox{
-    height: 100%;
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: end;
-}
-#inputFileBox label:nth-child(2){
-    padding: 10px 20px;
-    border: 1.5px solid #000;
-    margin-bottom: 20px;
-    font-weight: 500;
-    opacity: 0.4;
-}
-#inputFileBox label:nth-child(4){
-    padding: 10px 10px;
-    border: 1.5px solid #000;
-    font-weight: 500;
-}
-#inputFileBox input{
-    display: none;
-}
-#thirdData{
+.firstData{
     height: 15%;
     width: 100%;
     display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-}
-#thirdData span{
-    width: 100%;
-}
-#thirdData input{
-    display: none;
-}
-#thirdData label{
-    border: 1px solid #FF6C27;
-    padding: 5px 10px;
-    margin-right: 20px;
-    width: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-transform: capitalize;
-}
-#thirdData div{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-#thirdData button{
-    padding: 5px 30px;
-    text-transform: uppercase;
-    border: 1px solid #000;
-    font-size: 1.2rem;
-}
-#nextSelect{
-    height: 100%;
-    width: 90%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    display: none;
-}
-#user_centerOfInterest{
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: start;
-    justify-content: center;
-    flex-direction: row;
-}
-#allCheckbox{
-    height: auto;
-    /* background: #ac5959; */
-    display: flex;
-    flex-wrap: wrap;
-    align-items: start;
-    flex-direction: row;
-    justify-content: center;
-}
-#checkboxBox input{
-    display: none;
-}
-#checkboxBox label{
-    border: 1px solid #FF6C27;
-    padding: 10px 25px;
-    margin: 45px 22px;
-    width: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-#checkboxBox input[type="checkbox"]:checked + label {
-    border: 2px solid #FF6C27;
-}
-#check input[type="radio"]:checked + label {
-    border: 2px solid #FF6C27;
-}
-.checkboxBox{
-    height: auto;
-    width: auto;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: start;
-    justify-content: center;
-    flex-direction: row;
-}
-  
-#btnBox{
-    width: 100%;
-    height: auto;
-    display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
 }
-#btnBox button{
-    padding: 3px 10px;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-}
-#boxAvatar{
+.firstData figure{
     height: 100%;
-    width: 100%;
-    background-color: rgba(255, 108, 39, 0.8);
-    /* backdrop-filter: blur(4px); */
-    position: fixed;
-    z-index: 60;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    display: none;
-}
-#boxAvatar div{
-    height: 400px;
-    width: 700px;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-#boxAvatar div figure{
-    height: 70%;
     width: 40%;
-    margin: 20px;
-    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
-#boxAvatar div figure img{
+#flag{
+    height: 30px !important;
+    width: auto !important;
+}
+.firstData figure img{
     height: 100%;
-    width: 100%;
-    border: 2px solid #FF6C27;
+    width: 40%;
 }
-#boxAvatar button{
-    height: 40px;
-    width: 700px;
-    font-size: 1.5rem;
+.firstData figure{
+    height: 100%;
+    width: 40%;
+}
+.secondData{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+}
+.secondData span{
+    padding: 5px 15px;
+    background: #46D4B3;
+    margin-right: 10px;
+}
+.thirdData{
+    width: 100%;
+    height: 40%;
+}
+.thirdData p{
+    margin-top: 5px;
+    font-weight: 300;
+    font-size: 0.9em;
+    word-wrap: break-word;
+}
+.quarterData{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.info .quarterData button{
+    width: 90%;
+    padding: 8px 0px;
+    border: 1px solid #000;
     text-transform: uppercase;
-    background: #FF6C27;
-    border: 2px solid #fff;
+    font-weight: 600;
+    background: #fff;
+    
+}
+#mainHeader figure img{
+    height: 30px;
+    width:  30px;
+}
+#userData{
+    height: 400px;
+    width: 60%;
+    /* background: #000; */
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+#userData a{
+    height: 30px;
+    width: 70%;
+    font-size: 2.5rem;
+    border-right: 1.5px solid #12231A;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding-right: 50px;
+    color: #12231A;
+    -webkit-text-stroke-color: #12231A;
+    -webkit-text-stroke-width: 1px;
+    margin-top: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+#userData a:nth-child(5){
+    height: 30px;
+    width: 70%;
+    font-size: 2.5rem;
+    border: 1.5px solid #12231A;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding-right: 50px;
     color: #fff;
+    -webkit-text-stroke-color: #fff;
+    -webkit-text-stroke-width: 1px;
+    margin-top: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: #355845;
+}
+/* footer data */
+#footerData{
+    width: 100%;
+    height: 100px;
+    background: #FBFAF4;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+#footerData span{
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #12231A;
+    font-size: 1.3rem;
+    color: #12231A;
+}
+#footerData #btn{
+    border: 1.5px solid #12231A;
+    padding: 5px 13px;
+    font-size: 1rem;
+    text-transform: uppercase;
 }
 /* FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - FOOTER - */
 footer{
@@ -698,13 +591,42 @@ footer{
     #footerContent{
         width: 90%;
     }
+    #userData a {
+        width: 100%;
+    }
+}
+@media screen and ( max-width : 1050px ) {
 }
 @media screen and ( max-width : 1000px ) {
     #reservationBox{
         width: 90%;
     }
+    #footerData {
+        width: auto;
+        height: 300px;
+        background: #FBFAF4;
+        display: flex;
+        align-items: center;
+        padding: 30px;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
 }
 @media screen and ( max-width : 970px ) {
+    #userData {
+        height: 500px;
+    }
+    #userData a {
+        font-size: 2rem;
+    }
+    #userData a:nth-child(5){
+        font-size: 2rem;
+    }
+    #userData {
+        width: 100%;
+    }
     /* footer */
     #footerContent{
         width: 100%;
@@ -812,12 +734,6 @@ footer{
     }
 }
 @media screen and ( max-width : 650px ) {
-    #mentheBG{
-        display: none;
-    }
-    #flowerRed{
-        display: none;
-    }
     /* navbar logo image */
     header #logo{
         margin-left: 60px;
@@ -874,22 +790,14 @@ footer{
     }
 }
 @media screen and ( max-width : 550px ) {
-    #title{
-        margin: 0;
-        margin-top: -22px;
-        -webkit-text-stroke-width: 3px;
-        font-size: 1.5em;
-        color: #000;
-        margin-left: 30%;
-        margin-left: -40px;
+    article {
+        margin-bottom: 0px;
     }
-    #title::before{
-        width: 150px;
-        background: #E83647;
-        height: 20px;
-        font-size: 1.2em;
-        margin-left: 20px;
-        margin-top: 16px;
+    #userCard{
+        scale: 0.9;
+    }
+    #mainHeader h1 {
+        font-size: 2rem;
     }
     #navResponsive{
         height: 120%;
@@ -921,8 +829,17 @@ footer{
         height: 80%;
         display: none;
     }
+    #userData a {
+        font-size: 1.5rem;
+    }
+    #userData a:nth-child(5){
+        font-size: 1.5rem;
+    }
 }
 @media screen and ( max-width : 460px ) {
+    #userCard{
+        scale: 0.8;
+    }
     #firstData{
         width: 80%;
     }
@@ -964,6 +881,17 @@ footer{
         overflow: scroll;
     }
 }
+@media screen and ( max-width : 400px ) {
+    #userData a {
+        font-size: 1.2rem;
+    }
+    #userData a:nth-child(5){
+        font-size: 1.2rem;
+    }
+    #footerData #btn {
+        font-size: 0.9rem;
+    }
+}
 @media screen and ( max-width : 330px ) {
     #notificationBox h2{
         margin: 10px 0px;
@@ -971,5 +899,7 @@ footer{
         font-weight: 900;
         font-size: 1em;
     }
-
+    main {
+        width: 90%;
+    }
 }

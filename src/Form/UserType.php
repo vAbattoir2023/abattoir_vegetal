@@ -68,9 +68,8 @@ class UserType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
             ])
-            ->add('image', FileType::class, [
+            ->add('image', TextType::class, [
                 'label'=> 'add a picture',
-                'data_class' => null,
             ])
             ->add('job', TextType::class)
 

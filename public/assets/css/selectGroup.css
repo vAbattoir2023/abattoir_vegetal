@@ -366,6 +366,7 @@ main article figure img{
     margin-top: 5px;
     font-weight: 300;
     font-size: 0.9em;
+    word-wrap: break-word;
 }
 .quarterData{
     height: 15%;

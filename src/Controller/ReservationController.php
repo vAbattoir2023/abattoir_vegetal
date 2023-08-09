@@ -41,15 +41,15 @@ class ReservationController extends AbstractController
     #[Route('/allReservation', name: 'app_reservation')]
     public function allReservations(SessionInterface $sessionInterface, GroupRepository $groupRepository,UserRepository $userRepository, DocumentManager $dm): Response
     {
-        $idSession = $sessionInterface->get('id');                          // get id session
+        $idSession = $sessionInterface->get('id');           // get id session
 
         if(empty($idSession)) 
             // if $idSession is undefined then redirect to home
             return $this->redirectToRoute('app_home');                      
         
 
-        $user = $userRepository->findUserById($idSession);                  // find user by id
-        $username = $user->username;                                        // get username
+        $user = $userRepository->findUserById($idSession);   // find user by id
+        $username = $user->username;                         // get username
 
         // find all the groups for which I'm a guest
         $guest = $groupRepository->findGuestById($idSession, 'waiting');
@@ -65,7 +65,6 @@ class ReservationController extends AbstractController
 
         // find each group on which I am admin
         $authors = ($groupRepository->findBy(['authors' => "$username"]));
-
 
         $allReservation = [];       // initialise an array of all my reservations
 
@@ -102,13 +101,12 @@ class ReservationController extends AbstractController
         usort($allReservation, $sortByCreateGroupDate);
 
         foreach ($allReservation as $reservation) {
-            foreach ($reservation->guests as $guestItem) { // Changer le nom de la variable ici (par exemple, $guestItem)
+            foreach ($reservation->guests as $guestItem) {
                 $userReference = $guestItem->guest;
                 $user = $dm->getReference(User::class, $userReference->id);
                 $guestItem->guest->user = $user;
             }
         }
-        // dd($allReservation);
 
         // return the array of all my reservations and id session in json format for use it in javascript
         return $this->render('reservation/index.html.twig',[
