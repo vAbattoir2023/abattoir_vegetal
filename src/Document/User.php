@@ -186,7 +186,6 @@ class User
 
     public function setLanguage(?array $language): User
     {
-        // var_dump($language);
         $this->language = $language;
 
         return $this;

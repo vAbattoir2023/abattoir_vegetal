@@ -15,7 +15,7 @@
     {% include "_nav.html.twig" %}
     <!-- register Box -->
     <article id="registerBox1">
-        <h1>S'inscrire</h1>
+        <h1>register</h1>
         <div id="registerBox2">
             {{ form_errors(FormRegister) }}
             {{ form_start(FormRegister, {'attr': {'class': 'inputBox'}}) }}
@@ -27,14 +27,14 @@
 
                 <!-- email form -->
                 <div class="input">
-                    {{ form_widget(FormRegister.email, {'attr': {'class': 'input custom-input', 'placeholder': 'Votre adresse mail'}}) }}
+                    {{ form_widget(FormRegister.email, {'attr': {'class': 'input custom-input', 'placeholder': 'e-mail address'}}) }}
                 </div>
                 <!-- password form -->
                 <div class="input">
-                    {{ form_widget(FormRegister.password.first, {'attr': {'class': 'input custom-input', 'placeholder': 'Mot de passe'}}) }}
+                    {{ form_widget(FormRegister.password.first, {'attr': {'class': 'input custom-input', 'placeholder': 'Password'}}) }}
                 </div>
                 <div class="input">
-                    {{ form_widget(FormRegister.password.second, {'attr': {'class': 'input custom-input', 'placeholder': 'Confirmez votre mot de passe'}}) }}
+                    {{ form_widget(FormRegister.password.second, {'attr': {'class': 'input custom-input', 'placeholder': 'Confirm Password'}}) }}
                 </div>
                 <!-- accept form -->
                 <div class="form-group">
@@ -50,7 +50,7 @@
                 {{ form_widget(FormRegister.submit, {'attr': {'id': 'btn', 'class': 'btn'}}) }}
                  <!-- go to login page -->
                 <a href="{{ path('app_login') }}">
-                    <span>Se connecter</span>
+                    <span>login</span>
                 </a>
             {{ form_end(FormRegister) }}
         </div>

@@ -39,7 +39,7 @@ class RegisterType extends AbstractType
                 'property_path' => 'termsAccepted'])
 
                     ->add('submit', SubmitType::class, [
-                        'label' => 'S\'enregistrer'
+                        'label' => 'Register'
                     ]);
     }
 

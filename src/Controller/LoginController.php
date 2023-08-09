@@ -21,6 +21,7 @@ class LoginController extends AbstractController
     #[Route('/login', name: 'app_login')]
     public function login(UserRepository $userRepository, Request $request, SessionInterface $sessionInterface): Response
     {
+        $messageAlert = '';
 
         $user = new User(); // get User class document
 
@@ -51,12 +52,14 @@ class LoginController extends AbstractController
                 }
             }else{
                 // ajoute un message que les mot de passes ne sont pas valide
+                $messageAlert = 'Mot de passe invalide. Veuillez réessayer.';
             }
 
         }
 
         return $this->render('Login/index.html.twig',[
-            'Form' => $form->createView()
+            'Form' => $form->createView(),
+            'alert' => $messageAlert
         ]);
     }
 
