@@ -37,11 +37,81 @@ composer install
 symfony server:start -d
 ```
 
+
 ## Profil Utilisateur
 
-Le contrôleur ```/UserProfilcontroller``` traite les données soumises du formulaire, met à jour les informations de l'utilisateur et effectue des actions spécifiques avec une API.
+Le contrôleur ```/UserProfilcontroller``` traite les données soumises du formulaire, met à jour les informations de l'utilisateur et effectue des actions spécifiques avec des API.
 
-Explication sur la manière de créer un compte utilisateur sur votre application. Vous pouvez inclure des détails sur le formulaire d'inscription, la validation de l'adresse e-mail et le stockage sécurisé des mots de passe.
+* Utilisation des API
+* Drapeaux en fonction de la langue parlé avec [countryflagicons][1]<br>
+Lors de la soumission du formulaire, le contrôleur traite la langue sélectionnée par l'utilisateur.
+Il récupère les codes de langue sélectionnés dans le```/UserType``` et génère des URL pour afficher les drapeaux de langue correspondants à partir d'une source externe.
+
+
+**UserController**
+```
+$selectedLanguages = $form->get('language')->getData();
+$flagIconUrl = [];
+
+if (is_array($selectedLanguages)) {
+    $flagIconsBaseUrl = 'https://www.countryflagicons.com/SHINY/32/';
+
+    foreach ($selectedLanguages as $languageCode) {
+        if (isset($languageCode)) {
+            $flagIconUrl[] = $flagIconsBaseUrl . $languageCode . '.png';
+        } else {
+            $flagIconUrl[] = $flagIconsBaseUrl . 'unknown.png';
+        }
+    }
+    $user->setFlagIconUrl($flagIconUrl);
+}
+```
+
+*  Récupération d'Informations de Commune à partir du Code Postal
+Le contrôleur récupère les informations de commune à partir du code postal fourni par l'utilisateur. Il utilise une API gouvernementale pour obtenir des informations sur la commune.
+
+```
+$codePostal = $user->getPostalCode();
+$apiUrl = "https://geo.api.gouv.fr/communes?codePostal=" . $codePostal;
+
+$httpClient = HttpClient::create();
+$response = $httpClient->request('GET', $apiUrl);
+$data = $response->toArray();
+
+if (!empty($data)) {
+    $city = $data[0]['nom'];
+    $user->setCity($city);
+    $user->setPostalCode($codePostal);
+    $codeDepartement = $data[0]['codeDepartement'];
+    $user->setCodeDepartement($codeDepartement);
+}
+```
+Le contrôleur construit une URL pour l'API gouvernementale en fonction du code postal. Il effectue ensuite une requête HTTP GET à cette API pour obtenir les informations de la commune associée au code postal. Si des données sont renvoyées, il met à jour les informations de la commune et le département de l'utilisateur.
+
+Étape 3: Récupération d'Informations de Région à partir du Code Département
+Dans cette section, le contrôleur récupère les informations de région à partir du code département de l'utilisateur. Il utilise une autre API gouvernementale pour obtenir des informations sur la région correspondant au code département.
+
+php
+Copy code
+$apiUrl = "https://geo.api.gouv.fr/departements/" . $codeDepartement;
+$response = $httpClient->request('GET', $apiUrl);
+$data = $response->toArray();
+
+if (!empty($data)) {
+    $codeRegion = $data['codeRegion'];
+    $apiUrl = "https://geo.api.gouv.fr/regions/" . $codeRegion;
+    $response = $httpClient->request('GET', $apiUrl);
+    $data = $response->toArray();
+
+    if (!empty($data)) {
+        $region = $data['nom'];
+        $user->setRegion($region);
+    }
+}
+Le contrôleur utilise le code département récupéré précédemment pour construire une URL vers l'API gouvernementale correspondante. Il fait ensuite une autre requête HTTP GET pour obtenir les informations de la région associée au code département. Si des données sont renvoyées, il met à jour les informations de région de l'utilisateur.
+
+Conclusion
+En utilisant ces étapes, le contrôleur effectue des appels à des API externes pour enrichir les informations de profil de l'utilisateur, telles que les drapeaux de langue, la commune et la région. Cela permet d'améliorer la qualité et la précision des informations stockées dans la base de données de l'application, offrant ainsi une meilleure expérience utilisateur.
 
 
 
@@ -71,3 +141,12 @@ Désigner :
 * Alexis https://www.behance.net/apiot152938e
 * Violette  https://www.behance.net/violettekristy2
 * Camille https://www.behance.net/camillefornes1
+
+
+
+[1]: https://www.countryflagicons.com
+[2]: https://symfony.com/doc/current/setup.html#technical-requirements
+[3]: https://symfony.com/doc/current/setup/web_server_configuration.html
+[4]: https://symfony.com/download
+[5]: https://symfony.com/book
+[6]: https://getcomposer.org/
