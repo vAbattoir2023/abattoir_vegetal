@@ -94,7 +94,10 @@ header nav{
     display: none;
 }
 #navResponsive nav{
-    margin-top: 10%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
     margin-left: 50px;
 }
 a{
@@ -705,7 +708,6 @@ footer{
         font-size: 1.5rem;
     }
     #navResponsive nav {
-        margin-top: 50%;
         margin-left: 27px;
     }
     #mod

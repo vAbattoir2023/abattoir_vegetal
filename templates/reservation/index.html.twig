@@ -47,7 +47,7 @@
                                 <section class="dataMidle">
                                     <div class="firstMiddle">
                                         <h4>Who eats ?</h4>
-                                        <span>{{group.guests|length}} Peoples</span>
+                                        <span>{{group.guests|length}} People</span>
                                     </div>
                                     <div class="secondMiddle">
                                         {% for guest in group.guests %}
@@ -57,7 +57,7 @@
                                 </section>
                                 <section class="dataFooter">
                                     <div class="dataBonus">
-                                        <h6 style='color: {{colorData}}'>{{group.authors}} t'as invité à manger</h6>
+                                        <h6 style='color: {{colorData}}'>{{group.authors}} invited you to eat</h6>
                                         <div class="usersFooter">
                                             {% for guest in group.guests %}
                                                 <span>{{guest.guest.username}} <span>({{guest.invitation}})</span></span>

@@ -72,9 +72,6 @@ class ReservationController extends AbstractController
          * loops over each received array 
          *  and push each data item to the array of all my reservations
          */
-        // foreach($allUserAccept as $allAccept){
-        //     array_push($allReservation, $allAccept);
-        // }
         foreach($accept as $guestAccept){
             array_push($allReservation, $guestAccept);
         }

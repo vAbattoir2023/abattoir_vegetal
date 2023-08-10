@@ -70,7 +70,10 @@ body{
     display: none;
 }
 #navResponsive nav{
-    margin-top: 50%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
     margin-left: 50px;
 }
 a{
@@ -372,9 +375,6 @@ a{
     #registerBox1 h1{
         margin-left: 0px;
     }
-    #navResponsive nav ul{
-        margin-top: 50%;
-    }
     #navResponsive nav ul li{
         font-size: 2rem;
         margin: 30px 0px;
@@ -392,7 +392,6 @@ a{
         font-size: 1.5rem;
     }
     #navResponsive nav {
-        margin-top: 80px;
         margin-left: 27px;
     }
 }
@@ -408,7 +407,6 @@ a{
         font-size: 1.5rem;
     }
     #navResponsive nav {
-        margin-top: 50%;
         margin-left: 27px;
     }
 }

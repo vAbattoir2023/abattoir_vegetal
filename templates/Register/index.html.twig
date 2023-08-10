@@ -43,7 +43,7 @@
                 <!-- button submit -->
                 {{ form_widget(FormRegister.submit, {'attr': {'id': 'btn', 'class': 'btn'}}) }}
                  <!-- go to login page -->
-                <a href="">
+                <a href="{{ path('app_login') }}">
                     <span>Login</span>
                 </a>
             {{ form_end(FormRegister) }}

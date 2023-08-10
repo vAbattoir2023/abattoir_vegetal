@@ -1,3 +1,5 @@
+// list button of navigation 
+const ulNavbar = document.querySelector('#ulNavbar');
 // button navbar 
 const btnNavRespisove = document.querySelector('#burgerBox');
 //respo
@@ -29,12 +31,23 @@ btnNavRespisove.addEventListener('click', ()=>{
     count == 2  ? (navbarResponsive.style.display = 'none', count = 0) : null;
 });
 
+
+// close modal 
+btnCloseModal.addEventListener('click',()=>{
+    modal = false, 
+    modal ? modalBox.style.display = 'flex' : modalBox.style.display = 'none';
+});
+fetch('http://127.0.0.1:8000/header')
+.then(res=>res.json())
+.then(data=>{
+    console.log(data);
+
 /**
  * when click on first nav
  * if user is connected then redirect to page else open modal
  */
 nav1.addEventListener('click',()=>{
-    true ? (modal = true)  : ( location.href = 'https://www.youtube.com/') ;
+    !data.user ? (modal = true)  : ( location.href = '/group/select_group') ;
     modal ? modalBox.style.display = 'flex' : modalBox.style.display = 'none';
 });
 
@@ -43,7 +56,7 @@ nav1.addEventListener('click',()=>{
  * if user is connected then redirect to page else open modal
  */
 nav2.addEventListener('click',()=>{
-    true ? (modal = true)  : ( location.href = 'https://www.youtube.com/') ;
+    !data.user ? (modal = true)  : ( location.href = '/group/select_group') ;
     modal ? modalBox.style.display = 'flex' : modalBox.style.display = 'none';
 });
 
@@ -52,11 +65,8 @@ nav2.addEventListener('click',()=>{
  * if user is connected then redirect to page else open modal
  */
 nav3.addEventListener('click',()=>{
-    true ? (modal = true)  : ( location.href = 'https://www.youtube.com/') ;
+    !data.user ? (modal = true)  : ( location.href = '/group/select_group') ;
     modal ? modalBox.style.display = 'flex' : modalBox.style.display = 'none';});
 
-// close modal 
-btnCloseModal.addEventListener('click',()=>{
-    modal = false, 
-    modal ? modalBox.style.display = 'flex' : modalBox.style.display = 'none';
-});
+    
+})

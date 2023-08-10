@@ -29,6 +29,7 @@ return [
     'accept_Invitation' => [['id', 'bool'], ['_controller' => 'App\\Controller\\GroupController::acceptInvitation'], [], [['variable', '/', '[^/]++', 'bool', true], ['variable', '/', '[^/]++', 'id', true], ['text', '/group/accept']], [], [], []],
     'app_invitation' => [[], ['_controller' => 'App\\Controller\\GroupController::invitation'], [], [['text', '/group/invitation']], [], [], []],
     'app_home' => [[], ['_controller' => 'App\\Controller\\HomeController::home'], [], [['text', '/']], [], [], []],
+    'app_header' => [[], ['_controller' => 'App\\Controller\\HomeController::header'], [], [['text', '/header']], [], [], []],
     'app_home_help' => [[], ['_controller' => 'App\\Controller\\HomeController::help'], [], [['text', '/help']], [], [], []],
     'app_login' => [[], ['_controller' => 'App\\Controller\\LoginController::login'], [], [['text', '/login']], [], [], []],
     'app_logout' => [[], ['_controller' => 'App\\Controller\\LoginController::logout'], [], [['text', '/logout']], [], [], []],

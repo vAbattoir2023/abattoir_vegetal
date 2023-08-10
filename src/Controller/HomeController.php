@@ -20,82 +20,23 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function home(SessionInterface $sessionInterface, GroupRepository $groupRepository,UserRepository $userRepository, DocumentManager $dm): Response
     {
-        // $email = $sessionInterface->get('email');
-        // $idSession = $sessionInterface->get('id');
+        return $this->render('base.html.twig');
+    }
 
-        // $username = $userRepository->findUserByEmail($email)->username;
+    #[Route('/header', name: 'app_header')]
+    public function header(SessionInterface $sessionInterface, GroupRepository $groupRepository,UserRepository $userRepository, DocumentManager $dm): Response
+    {
+        $user = null;
 
-        // //appelle dans group ton id dans guest
-        // $guest = ($groupRepository->findBy([
-        //     'status' => "waiting",
-        //     'guests' => [
-        //         '$elemMatch' => [
-        //             'invitation' => "waiting",
-        //             'guest.$id' => new ObjectId($idSession),
-        //         ]
-        //     ]
-        // ]));
-
-        // $declin = ($groupRepository->findBy([
-        //     'status' => "waiting",
-        //     'guests' => [
-        //         '$elemMatch' => [
-        //             'invitation' => "refuse",
-        //             'guest.$id' => new ObjectId($idSession),
-        //         ]
-        //     ]
-        // ]));
-
-        // $accept = ($groupRepository->findBy([
-        //     'status' => "waiting",
-        //     'guests' => [
-        //         '$elemMatch' => [
-        //             'invitation' => "accept",
-        //             'guest.$id' => new ObjectId($idSession),
-        //         ]
-        //     ]
-        // ]));
-
-        // $allAccept = $groupRepository->findBy([
-        //     'status' => "waiting",
-        //     'guests' => [
-        //         '$elemMatch' => [
-        //             'guest.$id' => new ObjectId($idSession),
-        //         ],
-        //         '$elemMatch' => [
-        //             'invitation' => "accept",
-        //         ],
-        //         '$not' => [
-        //             '$elemMatch' => [
-        //                 'invitation' => "waiting",
-        //             ],
-        //         ],
-        //     ],
-        // ]);
-
-        // $authors = ($groupRepository->findBy(['authors' => "$username"]));
-
-        // //all accept
-        // $allAccept;
-
-        // // notif accept
-        // $accept;
-
-        // // notif declin
-        // $declin;
-
-        // //notif you invite
-        // $guest ;
+        $userFromBdd = null;
         
-        // //notif authors
-        // $authors ;
+        $id = $sessionInterface->get('id');
 
-        // dd($guest);
+        if($id) $userFromBdd = $userRepository->findUserById($id);
 
-        return $this->render('base.html.twig',[
-            // 'idSession' => $idSession,
-        ]);
-        
+        if($userFromBdd) $user = $userFromBdd;
+
+        return $this->json(['user'=>$user]);
     }
 
     #[Route('/help', name: 'app_home_help')]

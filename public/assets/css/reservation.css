@@ -118,11 +118,14 @@ header nav{
     height: 100%;
     width: 100%;
     background: #fff;
-    z-index: 10;
+    z-index: 30;
     display: none;
 }
 #navResponsive nav{
-    margin-top: 10%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
     margin-left: 50px;
 }
 
@@ -677,7 +680,6 @@ footer{
         font-size: 1.5rem;
     }
     #navResponsive nav {
-        margin-top: 80px;
         margin-left: 27px;
     }
     #mod
@@ -770,7 +772,6 @@ footer{
         font-size: 1.5rem;
     }
     #navResponsive nav {
-        margin-top: 50%;
         margin-left: 27px;
     }
     #notificationBox{
