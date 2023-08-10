@@ -10,7 +10,6 @@ body{
     width: 100vw;
     background-image: url('../img/background/404.svg');
     background-size: cover;
-    background-position: 50% 25%  !important;
     display: flex;
     align-items: center;
     justify-content: center;

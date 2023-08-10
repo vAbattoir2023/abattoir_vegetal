@@ -1,35 +1,24 @@
-version: '3'
-
+version: "3.8"
 services:
-  php-apache:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "80:80"
-    volumes:
-      - .:/var/www
-    environment:
-      APP_ENV: prod
-    depends_on:
-      - mongodb
-    networks:
-      - dev
-
   mongodb:
-    image: mongo
+  image: mongo
+  container_name: mongodb
+  environment:
+        MONGO_INITDB_ROOT_USERNAME: teamcava
+        MONGO_INITDB_ROOT_PASSWORD: lapasserelle
+  volumes:
+  - mongodb-data:/data/db
+  networks:
+  - mongodb_network
+  ports:
+  - 27017:27017
+  
+  mongo-express:
+    image: mongo-express
     restart: always
     ports:
-      - 27017:27017
-    volumes:
-      - ./init.sh:/docker-entrypoint-initdb.d/init.sh:ro
+      - 8081:8081
     environment:
-      MONGODB_USER: teamcava
-      MONGODB_PASSWORD: lapasserelle
-      MONGODB_DB: abattoir_vegetal
-
-networks:
-  dev:
-
-volumes:
-  database_data:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: teamcava
+      ME_CONFIG_MONGODB_ADMINPASSWORD: lapasserelle
+      ME_CONFIG_MONGODB_URL: mongodb+srv://teamcava:lapasserelle@mongo:27017/

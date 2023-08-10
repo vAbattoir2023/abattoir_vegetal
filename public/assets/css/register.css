@@ -69,7 +69,10 @@ body{
     display: none;
 }
 #navResponsive nav{
-    margin-top: 10%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
     margin-left: 50px;
 }
 a{

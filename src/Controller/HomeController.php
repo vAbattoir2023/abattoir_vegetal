@@ -18,35 +18,30 @@ use MongoDB\BSON\ObjectId;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function home(SessionInterface $sessionInterface, GroupRepository $groupRepository,UserRepository $userRepository, DocumentManager $dm): Response
+    public function home(): Response
     {
-        $email = $sessionInterface->get('email');
-        $idSession = $sessionInterface->get('id');
+        return $this->render('base.html.twig');
+    }
 
-        //call in group your id in guest
-        $notifInvitation = ($groupRepository->findBy([
-            'status' => "waiting",
-            'guests' => [
-                '$elemMatch' => [
-                    'invitation' => "waiting",
-                    'guest.$id' => new ObjectId($idSession),
-                ]
-            ]
-        ]));
+    #[Route('/header', name: 'app_header')]
+    public function header(SessionInterface $sessionInterface ,UserRepository $userRepository): Response
+    {
+        $user = null;
 
-        return $this->render('base.html.twig',[
-            'idSession' => $idSession,
-        ]);
+        $userFromBdd = null;
         
+        $id = $sessionInterface->get('id');
+
+        if($id) $userFromBdd = $userRepository->findUserById($id);
+
+        if($userFromBdd) $user = $userFromBdd;
+
+        return $this->json(['user'=>$user]);
     }
 
     #[Route('/help', name: 'app_home_help')]
     public function help(SessionInterface $sessionInterface): Response
     {
-
-        return $this->render('404.html.twig',[
-          
-        ]);
-        
+        return $this->render('404.html.twig');
     }
 }

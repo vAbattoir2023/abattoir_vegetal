@@ -10,12 +10,29 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class ApiUserController extends AbstractController
 {
     #[Route('/api_user', name: 'app_api_user', methods: ['GET', 'POST'])]
-    public function new(Request $request, UserRepository $userRepository): Response
+    public function new(SessionInterface $sessionInterface, Request $request, UserRepository $userRepository): Response
     {
+          // Get the logged-in user from the session
+          $user = $userRepository->find($sessionInterface->get('id'));
+
+          // If no user is found with the given ID, redirect to the home page
+          if (!$user) {
+              return $this->redirectToRoute('app_home_help');
+          }
+  
+          // Check if the user has the 'ROLE_ADMIN' role
+          $isAdmin = in_array('ROLE_ADMIN', $user->getRoles());
+  
+          // If the user is not an admin, redirect to the home page
+          if (!$isAdmin) {
+              return $this->redirectToRoute('app_home_help');
+          }
+  
         // Instantiation of the USER class
         $apiuser = new User();
         // Creating an array with the values from the $apiuser variable
@@ -148,6 +165,7 @@ class ApiUserController extends AbstractController
             return $this->redirectToRoute('app_api_user', [], Response::HTTP_SEE_OTHER);
         }
 
+        
         // Return the rendered form (apiuser.html.twig) in HTML format
         // with ApiUser data from the $apiuser variable and values assigned to $form
         return $this->render('Admin/apiuser.html.twig', [
