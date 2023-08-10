@@ -47,7 +47,14 @@ Le contrôleur ```/UserProfilcontroller``` traite les données soumises du formu
 Lors de la soumission du formulaire, le contrôleur traite la langue sélectionnée par l'utilisateur.
 Il récupère les codes de langue sélectionnés dans le```/UserType``` et génère des URL pour afficher les drapeaux de langue correspondants à partir d'une source externe.
 
-
+**UserType**
+```
+ ->add('language', ChoiceType::class, [
+                'choices' => [
+                    'English' => 'GB',
+                    'French' => 'FR',
+                ]
+```
 **UserController**
 ```
 $selectedLanguages = $form->get('language')->getData();
