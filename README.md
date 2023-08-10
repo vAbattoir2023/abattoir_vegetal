@@ -13,6 +13,15 @@
   * MongoDB
   * Symfony version 6.0.
 
+
+Bundle utilisé dans le projet : 
+
+- EasyAdmin              [Documentation EasyAdmin](https://symfony.com/doc/current/bundles/EasyAdminBundle/index.html) 
+- Swift Mailer           [Documentation Swift Mailer](https://symfony.com/doc/current/email.html) 
+- VichUploaderBundle     [Documentation VichUploaderBundle](https://symfony.com/doc/2.x/bundles/EasyAdminBundle/integration/vichuploaderbundle.html)
+- KnpPaginatorBundle     [Documentation KnpPaginatorBundle](https://github.com/KnpLabs/KnpPaginatorBundle) 
+- DoctrineFixturesBundle [Documentation DoctrineFixturesBundle](https://symfony.com/doc/current/bundles/DoctrineFixturesBundle/index.html) 
+
 # Installation
 
 Cloné le projet avec la commande
@@ -29,42 +38,18 @@ symfony server:start -d
 ```
 
 ## Profil Utilisateur
-Aprés etre 
+
+Le contrôleur ```/UserProfilcontroller``` traite les données soumises du formulaire, met à jour les informations de l'utilisateur et effectue des actions spécifiques avec une API.
 
 Explication sur la manière de créer un compte utilisateur sur votre application. Vous pouvez inclure des détails sur le formulaire d'inscription, la validation de l'adresse e-mail et le stockage sécurisé des mots de passe.
 
-php
-Copy code
-// Extrait du code pertinent pour la création de compte
-// Assurez-vous d'inclure des informations contextuelles
-Connexion à votre compte
-Expliquez comment les utilisateurs peuvent se connecter à leurs comptes enregistrés. Montrez comment ils peuvent accéder à différentes fonctionnalités une fois connectés.
-
-Réservation de repas végétaliens
-Détaillez le processus de réservation de repas végétaliens à travers votre application. Expliquez comment les utilisateurs peuvent choisir des dates, des heures, et d'autres options de réservation.
-
-Inviter des amis à partager un repas
-Décrivez comment les utilisateurs peuvent inviter leurs amis à partager un repas végétalien à travers votre application. Expliquez les étapes à suivre pour envoyer des invitations et comment les amis peuvent répondre.
 
 
-Puis enfin loger vous ``/login`` rendez vous dans le backoffice ``/admin``, il ne vous reste plus qu'a paramétrer votre administrateur et enregistrer vos projets ! 
+## Réservation 
 
 
+## Création de groupes 
 
-## Fabriqué avec
-
-Projet développé avec:
-
-* [Symfony](https://symfony.com/) - Framework PHP Symfony
-**Latest Stable Release:** 5.1.5
-
-Bundle utilisé dans le projet : 
-
-- EasyAdmin              [Documentation EasyAdmin](https://symfony.com/doc/current/bundles/EasyAdminBundle/index.html) 
-- Swift Mailer           [Documentation Swift Mailer](https://symfony.com/doc/current/email.html) 
-- VichUploaderBundle     [Documentation VichUploaderBundle](https://symfony.com/doc/2.x/bundles/EasyAdminBundle/integration/vichuploaderbundle.html)
-- KnpPaginatorBundle     [Documentation KnpPaginatorBundle](https://github.com/KnpLabs/KnpPaginatorBundle) 
-- DoctrineFixturesBundle [Documentation DoctrineFixturesBundle](https://symfony.com/doc/current/bundles/DoctrineFixturesBundle/index.html) 
 
 
 ## Versions
