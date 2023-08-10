@@ -1,61 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="{{asset('./assets/css/profil.css')}}">
-    <link rel="stylesheet" href="{{ asset('./assets/css/selectGroup.css') }}">
-      <!-- font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Work+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<link rel="stylesheet" href="{{asset('./assets/css/profil.css')}}">
+		<link
+		rel="stylesheet" href="{{ asset('./assets/css/selectGroup.css') }}">
+		<!-- font -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Work+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
-    <title>PROFIL USER </title>
-</head>
-<!-- body of page -->
-<body>
+		<title>PROFIL USER
+		</title>
+	</head>
+	<!-- body of page -->
+	<body>
+		<section class="container">
+			<h1>Gestion administrateur</h1>
 
-<section class="container">
-
-
-    <h1>Gestion administrateur</h1>
-
-     <a href="{{ path('app_admin_grpindex')}}" class="btn btn-primary">Liste des Résérvation</a>
-     <a href="{{ path('app_api_user')}}" class="btn btn-warning">Api</a>
-          <a href="{{ path('app_home') }}" class="btn btn-success">Accueil</a>
-
-    <h4>Liste des utilisateurs </h4>
-    <table class="table bg-light ">
-        <thead>
-            <tr>
-                <th>Email</th>
-                <th>username</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td>{{ user.email }}</td>
-                <td>{{ user.username }}</td>
-                <td class="d-flex ">
-                       <a href="{{ path('app_admin_show', {'id': user.id}) }}" class="btn btn-primary fa fa-eye "></a>
-                         <a href="{{ path('app_admin_edit', {'id': user.id}) }}" class="btn btn-primary fa fa-edit me-3 ms-3"></a> 
-<form method="post" action="{{ path('app_admin_delete', {'id': user.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?');">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
-    <button class="btn btn-danger mt-1">Delete</button>
-</form>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</section>
-</body>
-
+			<a href="{{ path('app_admin_grpindex')}}" class="btn btn-primary">Liste des Résérvation</a>
+			<a href="{{ path('app_api_user')}}" class="btn btn-warning">Api</a>
+			<a href="{{ path('app_home') }}" class="btn btn-success">Accueil</a>
+            
+			<h4>Liste des utilisateurs</h4>
+			<table class="table bg-light ">
+				<thead>
+					<tr>
+						<th>Email</th>
+						<th>username</th>
+						<th>actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for user in users %}
+						<tr>
+							<td>{{ user.email }}</td>
+							<td>{{ user.username }}</td>
+							<td class="d-flex ">
+								<a href="{{ path('app_admin_show', {'id': user.id}) }}" class="btn btn-primary fa fa-eye "></a>
+								<a href="{{ path('app_admin_edit', {'id': user.id}) }}" class="btn btn-primary fa fa-edit me-3 ms-3"></a>
+								<form method="post" action="{{ path('app_admin_delete', {'id': user.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?');">
+									<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+									<button class="btn btn-danger mt-1">Delete</button>
+								</form>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="7">no records found</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</section>
+	</body>
 </html>

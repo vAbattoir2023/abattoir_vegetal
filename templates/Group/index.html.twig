@@ -10,8 +10,10 @@
 <body>
 	<!-- header nav bar -->
 	{% include "_header.html.twig" %}
+
     <!-- contianer users and checkbox -->
     <div id="container">
+
         <!-- checkbox -->
         <div id="inputBox">
             <div id="subtitle">
@@ -31,6 +33,7 @@
             <input id="datePicker" type="date" name="datePicker">
             <button type='submit' id="addGroup">Réserver Maintenant</button>
         </div>
+
         <!-- all users -->
         <main id='allUsers'>
 		    <h6>so many <br> friends ... <br> </h6>
@@ -62,9 +65,11 @@
             </article>
 			{% endfor %}
         </main>
+
 		<!-- footer -->
 		{% include "_footer.html.twig" %}
     </div>
+    
 	<script src='{{ asset('./assets/js/header.js') }}'></script>
 	<script src='{{ asset('./assets/js/createGroup.js') }}'></script>
 </body>

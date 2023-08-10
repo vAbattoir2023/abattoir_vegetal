@@ -18,13 +18,13 @@ use MongoDB\BSON\ObjectId;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function home(SessionInterface $sessionInterface, GroupRepository $groupRepository,UserRepository $userRepository, DocumentManager $dm): Response
+    public function home(): Response
     {
         return $this->render('base.html.twig');
     }
 
     #[Route('/header', name: 'app_header')]
-    public function header(SessionInterface $sessionInterface, GroupRepository $groupRepository,UserRepository $userRepository, DocumentManager $dm): Response
+    public function header(SessionInterface $sessionInterface ,UserRepository $userRepository): Response
     {
         $user = null;
 
@@ -42,10 +42,6 @@ class HomeController extends AbstractController
     #[Route('/help', name: 'app_home_help')]
     public function help(SessionInterface $sessionInterface): Response
     {
-
-        return $this->render('404.html.twig',[
-          
-        ]);
-        
+        return $this->render('404.html.twig');
     }
 }
