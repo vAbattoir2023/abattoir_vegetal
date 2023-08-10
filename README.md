@@ -40,14 +40,14 @@ symfony server:start -d
 
 ## Profil Utilisateur
 
-Le contrôleur ```/UserProfilcontroller``` traite les données soumises du formulaire, met à jour les informations de l'utilisateur et effectue des actions spécifiques avec des API.
+Le contrôleur ```Controller/UserProfilcontroller.php``` traite les données soumises du formulaire, met à jour les informations de l'utilisateur et effectue des actions spécifiques avec des API.
 
-* Utilisation des API
+* Exemples utilisation d'une API
 * Drapeaux en fonction de la langue parlé avec [countryflagicons][1]<br>
 Lors de la soumission du formulaire, le contrôleur traite la langue sélectionnée par l'utilisateur.
-Il récupère les codes de langue sélectionnés dans le```/UserType``` et génère des URL pour afficher les drapeaux de langue correspondants à partir d'une source externe.
+Il récupère les codes de langue sélectionnés dans le```Form/UserType.php``` et génère des URL pour afficher les drapeaux de langue correspondants à partir d'une source externe.
 
-**UserType**
+**UserType.php**
 ```
  ->add('language', ChoiceType::class, [
                 'choices' => [
@@ -55,7 +55,7 @@ Il récupère les codes de langue sélectionnés dans le```/UserType``` et gén�
                     'French' => 'FR',
                 ]
 ```
-**UserController**
+**UserController.php**
 ```
 $selectedLanguages = $form->get('language')->getData();
 $flagIconUrl = [];
@@ -74,58 +74,49 @@ if (is_array($selectedLanguages)) {
 }
 ```
 
-*  Récupération d'Informations de Commune à partir du Code Postal
-Le contrôleur récupère les informations de commune à partir du code postal fourni par l'utilisateur. Il utilise une API gouvernementale pour obtenir des informations sur la commune.
+## Création de Groupe
+
+Le processus pour la création d'un groupe implique la sélection d'amis à inviter grâce aux filtres de centres d'intérêts, la spécification d'une date de réservation, et la création effective du groupe.
+Afin de créée un groupe nous utiliseront le ```Controller/Groupcontroller.php``` et le javascript ```js/creatGroupe.js```.
+
+* Affichage de la Liste d'Utilisateurs avec Filtres
+
+Lorsque les utilisateurs accèdent à la page de création de groupe, une liste d'utilisateurs est affichée, initialement sans filtres. Les utilisateurs peuvent alors choisir de filtrer cette liste en fonction de différents centres d'intérêt.
+
+**createGroup.js**
+```
+let url = '/group/users-list/';
+
+let filtersStr = '';    // initialise the filter string
+
+// loop on the keys from filters array
+Object.keys(filters).forEach(elName => {
+  if (filters[elName]) {
+    let filter = document.getElementById(elName).dataset['filter']; // get all data from filter
+    filtersStr += (filtersStr == '') ? filter : '#' + filter;       // add the filter data to the filtersStr
+  }
+});
+
+url += filtersStr; // concatenates url + filtersStr
+```
+
+Ensuite, une requête fetch est effectuez à cette URL pour récupérer la liste filtrée d'utilisateurs.
 
 ```
-$codePostal = $user->getPostalCode();
-$apiUrl = "https://geo.api.gouv.fr/communes?codePostal=" . $codePostal;
+   let idUsers = []; // initialise the ID users selected array
 
-$httpClient = HttpClient::create();
-$response = $httpClient->request('GET', $apiUrl);
-$data = $response->toArray();
-
-if (!empty($data)) {
-    $city = $data[0]['nom'];
-    $user->setCity($city);
-    $user->setPostalCode($codePostal);
-    $codeDepartement = $data[0]['codeDepartement'];
-    $user->setCodeDepartement($codeDepartement);
-}
+fetch(url)                                // fetch ('/group/users-list/')
+ .then(response => response.text())     // return the response in text format
+// rename response to html
+ .then(html => {
+    document.querySelector('#allUsers').innerHTML = html;    // get container users and add html data
 ```
-Le contrôleur construit une URL pour l'API gouvernementale en fonction du code postal. Il effectue ensuite une requête HTTP GET à cette API pour obtenir les informations de la commune associée au code postal. Si des données sont renvoyées, il met à jour les informations de la commune et le département de l'utilisateur.
-
-Étape 3: Récupération d'Informations de Région à partir du Code Département
-Dans cette section, le contrôleur récupère les informations de région à partir du code département de l'utilisateur. Il utilise une autre API gouvernementale pour obtenir des informations sur la région correspondant au code département.
-
-php
-Copy code
-$apiUrl = "https://geo.api.gouv.fr/departements/" . $codeDepartement;
-$response = $httpClient->request('GET', $apiUrl);
-$data = $response->toArray();
-
-if (!empty($data)) {
-    $codeRegion = $data['codeRegion'];
-    $apiUrl = "https://geo.api.gouv.fr/regions/" . $codeRegion;
-    $response = $httpClient->request('GET', $apiUrl);
-    $data = $response->toArray();
-
-    if (!empty($data)) {
-        $region = $data['nom'];
-        $user->setRegion($region);
-    }
-}
-Le contrôleur utilise le code département récupéré précédemment pour construire une URL vers l'API gouvernementale correspondante. Il fait ensuite une autre requête HTTP GET pour obtenir les informations de la région associée au code département. Si des données sont renvoyées, il met à jour les informations de région de l'utilisateur.
-
-Conclusion
-En utilisant ces étapes, le contrôleur effectue des appels à des API externes pour enrichir les informations de profil de l'utilisateur, telles que les drapeaux de langue, la commune et la région. Cela permet d'améliorer la qualité et la précision des informations stockées dans la base de données de l'application, offrant ainsi une meilleure expérience utilisateur.
-
 
 
 ## Réservation 
 
 
-## Création de groupes 
+
 
 
 
