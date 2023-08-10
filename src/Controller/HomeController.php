@@ -23,9 +23,7 @@ class HomeController extends AbstractController
         $email = $sessionInterface->get('email');
         $idSession = $sessionInterface->get('id');
 
-        //dd(new ObjectId($idSession));
-
-        //appelle dans group ton id dans guest
+        //call in group your id in guest
         $notifInvitation = ($groupRepository->findBy([
             'status' => "waiting",
             'guests' => [
@@ -35,8 +33,6 @@ class HomeController extends AbstractController
                 ]
             ]
         ]));
-
-        // dd($notifInvitation);
 
         return $this->render('base.html.twig',[
             'idSession' => $idSession,

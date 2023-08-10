@@ -42,12 +42,12 @@ class RegisterController extends AbstractController
             
             // Check if the email does not match the regex pattern
             if (!preg_match($regex, $email)) {
-                $messageAlert = 'Adresse e-mail invalide. Veuillez réessayer.';
+                $messageAlert = 'Invalid e-mail address. Please try again.';
             } else {      
            
             // If the email format is valid, check if the email already exists in the database
             if($userRepository->checkUserRegister($user->getEmail())){
-                $messageAlert = 'cet email existe déjà';
+                $messageAlert = 'this email already exists';
             }else{
                 $passwordHash = password_hash($user->getPassword(), PASSWORD_BCRYPT); // hash password from form 
                 $user->setPassword($passwordHash); // update password in User class
@@ -57,11 +57,6 @@ class RegisterController extends AbstractController
         }
     }
         $email = $sessionInterface->get('email');
-
-        // if(isset($email)){
-        //     echo $email;
-        // }
-
         // return to Register/index.html.twig page
         return $this->render('Register/index.html.twig',[
 

@@ -72,9 +72,7 @@ class ReservationController extends AbstractController
          * loops over each received array 
          *  and push each data item to the array of all my reservations
          */
-        // foreach($allUserAccept as $allAccept){
-        //     array_push($allReservation, $allAccept);
-        // }
+       
         foreach($accept as $guestAccept){
             array_push($allReservation, $guestAccept);
         }
@@ -107,7 +105,6 @@ class ReservationController extends AbstractController
                 $guestItem->guest->user = $user;
             }
         }
-        // dd($allReservation);
 
         // return the array of all my reservations and id session in json format for use it in javascript
         return $this->render('reservation/index.html.twig',[

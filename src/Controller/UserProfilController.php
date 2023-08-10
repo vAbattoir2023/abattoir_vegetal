@@ -32,13 +32,13 @@ class UserProfilController extends AbstractController
         if(!$idSession){
             return $this->redirectToRoute('app_home');
         }
-        // gey user by id session 
+        // get user by id session 
         $user = $userRepository->findUserById($idSession);
         // if not user then redirect to app_register
         if (!$user) {
             return $this->redirectToRoute('app_register');
         }
-        //  dd($userFromBdd);
+
         // create form for the database
         $form = $this->createForm(UserType::class, $user);
         // get the data from form
@@ -48,21 +48,21 @@ class UserProfilController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
          
-//////////////////////////////////////////////////////////////////////////////////// STEP DRAPEAU LANGAGE
+//////////////////////////////////////////////////////////////////////////////////// STEP DRAPEAU LANGUAGE
             $selectedLanguages = $form->get('language')->getData();
             $flagIconUrl = [];
             if (is_array($selectedLanguages)) {
-                // Définir la valeur de la propriété "language"
+                // Set the value of the "language" property
                 $user->setLanguage($selectedLanguages);    
-                // URL de base vers l'API des icônes des drapeaux
+                // Base URL to flag icon API
                 $flagIconsBaseUrl = 'https://www.countryflagicons.com/SHINY/32/';
                 
                 foreach ($selectedLanguages as $languageCode) {
-                    // SI le drapeau correspondant existe dans le tableau $languageFlags
+                    // IF the corresponding flag exists in the $languageFlags array
                     if (isset($languageCode)) {
                         $flagIconUrl[] = $flagIconsBaseUrl . $languageCode . '.png';
                     } else {
-                        // SINON le drapeau pour une langue n'est pas disponible, vous pouvez définir une URL générique ou une URL par défaut
+                        // IN CASE the flag for a language is not available, you can define a generic URL or a default URL
                         $flagIconUrl[] = $flagIconsBaseUrl . 'unknown.png';
                     }
                 }
@@ -72,54 +72,54 @@ class UserProfilController extends AbstractController
             }
 
 //////////////////////////////////////////////////////////////////////////////////// STEP POSTAL CODE
-             // Récupérer le code postal à partir du formulaire
+             // Retrieve the postal code from the form
              $codePostal = $user->getPostalCode();
              $codeDepartement = $user->getCodeDepartement();
  
-             // URL de base vers l'API gouvernementale pour obtenir les informations de la commune à partir d'un code postal
+             // Basic URL to the government API for obtaining commune information from a postal code
              $apiUrl = "https://geo.api.gouv.fr/communes?codePostal=" . $codePostal;
             
              $httpClient = HttpClient::create();
-             // Effectuer une requête HTTP GET vers l'API en utilisant l'URL construite
+             // Make an HTTP GET request to the API using the URL you've built
              $response = $httpClient->request('GET', $apiUrl);
              $data = $response->toArray();
  
              if (!empty($data)) {
-                 // Mettre à jour la valeur de city en fonction de la commune trouvée
+                 // Update the city value according to the municipality found
                  $city = $data[0]['nom'];
-                 // Attribuer les valeurs au document USER                
+                 // Assign values to USER document                
                  $user->setCity($city);
                  $user->setPostalCode($codePostal);
-                 // Récupérer le code du département à partir des données du codeDepartement de l'API
+                 // Retrieve the department code from the API's Department code data
                  $codeDepartement = $data[0]['codeDepartement'];
-                 // Attribuer les valeurs au document USER
+                 // Assign values to USER document
                  $user->setCodeDepartement($codeDepartement);
                 
              }
-             // Récupérer le code du département à partir des données de la commune
+             // Retrieve department code from commune data
              $codeDepartement = $user->getCodeDepartement();
  
-             // URL de base vers l'API gouvernementale pour obtenir les informations du département à partir du code du département
+             // Basic URL to the government API to obtain department information from the department code
              $apiUrl = "https://geo.api.gouv.fr/departements/" . $codeDepartement;
  
-             // Effectuer une requête HTTP GET vers l'API en utilisant l'URL construite
+             // Make an HTTP GET request to the API using the constructed URL
              $response = $httpClient->request('GET', $apiUrl);
              $data = $response->toArray();
  
              if (!empty($data)) {
-                 // Récupérer le nom du département à partir de la réponse de l'API
+                 // Retrieve department name from API response
                 
                  $codeRegion = $data['codeRegion'];
-                  // Utiliser le nom du département pour récupérer le nom de la région
+                  // Use department name to retrieve region name
                  $apiUrl = "https://geo.api.gouv.fr/regions/" . $codeRegion;
-                 // Effectuer une requête HTTP GET vers l'API en utilisant l'URL construite
+                 // Make an HTTP GET request to the API using the URL you've built
                  $response = $httpClient->request('GET', $apiUrl);
                  $data = $response->toArray();
  
                  if (!empty($data)) {
-                     // Mettre à jour la valeur de region en fonction du nom de la région trouvée
+                     // Update the value of region according to the name of the region found
                      $region = $data['nom'];
-                     // Attribuer la valeur au document USER
+                     // Assign value to USER document
                      $user->setRegion($region);
                  }
              }

@@ -5,11 +5,9 @@ namespace App\Document;
 use DateTime;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
-// use Doctrine\ODM\MongoDB\Mapping\Annotations\EmbedOne;
 use Symfony\Component\Validator\Constraints\Date;
 
-// A secondary class that is embedded in an array in our primary class
-// #[MongoDB\EmbeddedDocument]
+
 #[MongoDB\Document]
 class User
 {
@@ -34,11 +32,6 @@ class User
 
     #[MongoDB\Field(type: 'int')]
     public ?int $age = null;
-
-
-    // #[MongoDB\Field(type: 'date')]
-    // protected ?Date $dateOfBirth = null;
-
 
     #[MongoDB\Field(type: 'string')]
     public ?string $gender = null;
@@ -81,19 +74,6 @@ class User
     #[MongoDB\Field(type: 'string')]
     public ?string $region = null;
 
-    // #[MongoDB\Field(type: 'int')]
-    // public ?string $groupNbr = null;
-    
-    // #[MongoDB\Field(type: 'array')]
-    // public array $Allergy;
-
-    // #[MongoDB\Field(type: 'string')]
-    // protected string $birthdate;
-
- 
-    // ...
-    
-    
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
  
@@ -151,19 +131,6 @@ class User
 
         return $this;
     }
-
-    //BIRTHDAY
-    // public function getDateOfBirth(): ?DateTime
-    // {
-    //     return $this->dateOfBirth;
-    // }
-
-    // public function setDateOfBirth(?DateTime $dateOfBirth): User
-    // {
-    //     $this->dateOfBirth = $dateOfBirth;
-    //     return $this;
-    // }
-
 
     public function getGender(): string
     {

@@ -38,14 +38,6 @@ class UserType extends AbstractType
                 ],
             ])
 
-            // ->add('birthdate', BirthdayType::class, [
-            //     'widget' => 'single_text',
-            //     'attr' => [
-            //         'class' => 'form-control'
-            //     ],
-            //     'format' => 'yyyy-MM-dd',
-            // ])
-
             ->add('age', IntegerType::class)
 
 
@@ -77,11 +69,6 @@ class UserType extends AbstractType
                 'expanded' => true,
             ])
 
-            // ->add('image', TextType::class, [
-            //     'attr' => [
-            //         'placeholder' => 'https://',
-            //     ],
-            // ])
             ->add('image', TextType::class, [
                 'label'=> 'add a picture',
             ])

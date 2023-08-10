@@ -51,8 +51,8 @@ class LoginController extends AbstractController
                     return $this->redirectToRoute('app_user_profil');
                 }
             }else{
-                // ajoute un message que les mot de passes ne sont pas valide
-                $messageAlert = 'Mot de passe invalide. Veuillez réessayer.';
+                // adds a message that 
+                $messageAlert = 'Invalid password. Please try again.';
             }
 
         }

@@ -12,8 +12,6 @@ use Doctrine\ODM\MongoDB\Repository\DocumentRepository;
 class GuestRepository extends ServiceDocumentRepository 
 {
 
-    // bool $flush = false, DocumentManager $dm
-
     public function __construct(ManagerRegistry $registery)
     {
         parent::__construct($registery, Guest::class);

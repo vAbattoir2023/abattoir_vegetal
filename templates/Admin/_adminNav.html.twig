@@ -6,12 +6,7 @@
 			<span class="text">Admin</span>
 		</a>
 		<ul class="side-menu top">
-			<!-- <li class="active">
-				<a href="#">
-					<i class='bx bxs-dashboard' ></i>
-					<span class="text">Dashboard</span>
-				</a>
-			</li> -->
+
 			<li  class="{% if app.request.attributes.get('_route') == 'app_admin_index' %}active{% endif %}">
 				<a href="{{ path('app_admin_index')}}">
 					<i class='bx bxs-user-account' ></i>
@@ -57,12 +52,6 @@
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<!-- <form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form> -->
 			
 			</nav>
 		<!-- NAVBAR -->

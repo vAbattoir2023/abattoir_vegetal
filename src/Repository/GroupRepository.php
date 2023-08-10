@@ -13,8 +13,6 @@ use MongoDB\BSON\ObjectId;
 class GroupRepository extends ServiceDocumentRepository 
 {
 
-    // bool $flush = false, DocumentManager $dm
-
     public function __construct(ManagerRegistry $registery)
     {
         parent::__construct($registery, Group::class);

@@ -12,8 +12,6 @@ use Doctrine\ODM\MongoDB\Repository\DocumentRepository;
 class UserRepository extends ServiceDocumentRepository 
 {
 
-    // bool $flush = false, DocumentManager $dm
-
     public function __construct(ManagerRegistry $registery)
     {
         parent::__construct($registery, User::class);
@@ -87,12 +85,5 @@ class UserRepository extends ServiceDocumentRepository
         return $check;
     }
 
-    // public function remove(User $entity, bool $flush = false): void
-    // {
-    //     $this->getEntityManager()->remove($entity);
 
-    //     if ($flush) {
-    //         $this->getEntityManager()->flush();
-    //     }
-    // }
 } 

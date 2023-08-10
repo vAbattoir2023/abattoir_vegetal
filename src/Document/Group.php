@@ -3,7 +3,6 @@
 namespace App\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
-// use Doctrine\ODM\MongoDB\Mapping\Annotations\EmbedOne;
 use Symfony\Component\Validator\Constraints\Date;
 use Doctrine\Common\Collections\ArrayCollection;
 use App\Document\User;
@@ -23,9 +22,7 @@ class Group
     
     #[MongoDB\Field(type: "date")]
     public ?\DateTimeInterface $createdAt = null;
-    
-    // #[MongoDB\Field(type: "string")]
-    // public ?string $reservationDate = null;
+
     #[MongoDB\Field(type: "date")]
     public  ?\DateTimeInterface $reservationDate = null;
   
@@ -38,10 +35,7 @@ class Group
     {
         $this->guests = new ArrayCollection();
     }
-    // #[MongoDB\ReferenceOne(targetDocument: User::class)]
-    // private ?User $user = null; // Référence à l'utilisateur
 
-    
     //ID
     public function getId(): string
     {

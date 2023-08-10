@@ -31,8 +31,6 @@ class ResaType extends AbstractType
             'label' => 'enregistrer'
         ]);
 
-
-
 }
 
     public function configureOptions(OptionsResolver $resolver)
