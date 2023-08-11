@@ -25,11 +25,13 @@ class UserProfilController extends AbstractController
         
         $idSession = $sessionInterface->get('id');              // get id user from session
 
-        if(!$idSession) return $this->redirectToRoute('app_home'); // if idSession is undifined, then redirect to app_home
+        if(!$idSession) 
+            return $this->redirectToRoute('app_home'); // if idSession is undifined, then redirect to app_home
         
         $user = $userRepository->findUserById($idSession);      // get user by id session 
         
-        if (!$user) return $this->redirectToRoute('app_register');  // if user is undifined then redirect to app_register
+        if (!$user) 
+            return $this->redirectToRoute('app_register');  // if user is undifined then redirect to app_register
 
         $form = $this->createForm(UserType::class, $user);      // create a form
         

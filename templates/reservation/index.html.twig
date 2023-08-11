@@ -66,8 +66,8 @@
                                     <div class="btn">
                                     {% for guest in group.guests %}
                                         {% if guest.guest.id == id and guest.invitation == 'waiting'  %}
-                                            <a href="{{ path('accept_Invitation', { 'id': group.id, 'bool': 'true' }) }}">comfirm</a>
-                                            <a href="{{ path('accept_Invitation', { 'id': group.id, 'bool': 'false' }) }}">declin</a>
+                                            <a href="{{ path('response_Invitation', { 'id': group.id, 'bool': 'true' }) }}">comfirm</a>
+                                            <a href="{{ path('response_Invitation', { 'id': group.id, 'bool': 'false' }) }}">declin</a>
                                         {% endif %}
                                     {% endfor %}
                                     </div>

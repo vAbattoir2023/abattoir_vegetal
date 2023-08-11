@@ -3,6 +3,7 @@
     padding: 0;
     font-family: 'Gasoek One', sans-serif;
 }
+
 body{
     background: #fff;
     display: flex;
@@ -12,6 +13,32 @@ body{
     height: 100vh;
     width: 100vw;
 }
+#loaded{
+    height: 2000px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.loader {
+    width: 150px;
+    height: 150px;
+    border: 5px dotted #FF6C27;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    animation: rotation 10s linear infinite;
+    margin-top: 30%;
+  }
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+} 
 /* navbar */
 header{
     height: 130px;

@@ -36,34 +36,10 @@
 
         <!-- all users -->
         <main id='allUsers'>
-		    <h6>so many <br> friends ... <br> </h6>
-		    {% for user in users %}
-			<article>
-                <figure>
-                    <img src="{{ user.image }}" alt="headUser">
-                </figure>
-                <div class="info">
-                    <div class="firstData">
-                        <strong>{{ user.username }}</strong>
-                        <figure>
-                            {% for languageCode in user.language %}
-                			<img src="https://www.countryflagicons.com/SHINY/32/{{ languageCode }}.png" alt="{{ languageCode }}">
-            				{% endfor %}
-                        </figure>
-                    </div>
-                    <div class="secondData">
-                        <span>{{ user.age }} yo</span>
-                        <span>{{ user.city }}</span>
-                    </div>
-                    <div class="thirdData">
-                        <p>{{ user.description|slice(0,100) }}...</p>
-                    </div>
-                    <div class="quarterData">
-                        <button id="idUser" value='{{ user.id }}'>Gimme this friend</button>
-                    </div>
-                </div>
-            </article>
-			{% endfor %}
+            <div id='loaded'>
+                <!-- load animation -->
+                <span class="loader"></span>
+            </div>
         </main>
 
 		<!-- footer -->

@@ -2,46 +2,32 @@
 
 namespace App\Controller;
 
-use App\Document\Group;
 use App\Document\User;
-use App\Form\UserType;
 use App\Repository\GroupRepository;
 use App\Repository\UserRepository;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/reservation')]
-
 class ReservationController extends AbstractController
 {
-    #[Route('/', name: 'reservation_page')]
-    public function reservationPage(SessionInterface $sessionInterface): Response
-    {
-        $email = $sessionInterface->get('email');
-        $idSession = $sessionInterface->get('id');
-
-
-        return $this->render('reservation/index.html.twig');
-    }
-
 
     /**
      * this route is used to fetch my reservations
      * and return the data in json format for use in javascript 
      *
      * @param SessionInterface SessionInterface is used to fetch the session datas
-     * @param GroupRepository  GroupRepository is used for functions that interact with the database (User Group)
-     * @param UserRepository   UserRepository is used for functions that interact with the database  (User document)
-     * @return Response        the response sent is an array of all my reservations in json format
+     * @param GroupRepository GroupRepository is used for functions that interact with the database (User Group)
+     * @param UserRepository UserRepository is used for functions that interact with the database  (User document)
+     * @return Response the response sent is an array of all my reservations in json format
      */
     #[Route('/allReservation', name: 'app_reservation')]
     public function allReservations(SessionInterface $sessionInterface, GroupRepository $groupRepository,UserRepository $userRepository, DocumentManager $dm): Response
     {
-        $idSession = $sessionInterface->get('id');           // get id session
+        $idSession = $sessionInterface->get('id');  // GET id session
 
         if(empty($idSession)) 
             // if $idSession is undefined then redirect to home
@@ -49,7 +35,7 @@ class ReservationController extends AbstractController
         
 
         $user = $userRepository->findUserById($idSession);   // find user by id
-        $username = $user->username;                         // get username
+        $username = $user->username;  // GET username 
 
         // find all the groups for which I'm a guest
         $guest = $groupRepository->findGuestById($idSession, 'waiting');

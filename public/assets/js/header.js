@@ -73,8 +73,8 @@ fetch('http://127.0.0.1:8000/group/invitation')
                 </div>
             </div>
             <div class='btnBox'>
-                <a href='/group/accept/${data.notifications[i].id}/false'><button class='btnNotif'>Rejects</button></a>
-                <a href='/group/accept/${data.notifications[i].id}/true'><button  class='btnNotif'>Accept</button></a>
+                <a href='/group/response/${data.notifications[i].id}/false'><button class='btnNotif'>Rejects</button></a>
+                <a href='/group/response/${data.notifications[i].id}/true'><button  class='btnNotif'>Accept</button></a>
             </div>
         </article>`;
         
