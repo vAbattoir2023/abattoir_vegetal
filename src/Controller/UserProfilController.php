@@ -37,80 +37,10 @@ class UserProfilController extends AbstractController
         
         $form->handleRequest($request);                         // get the form datas
 
-        $flagIconUrl = [];                                     // initialise flag array
 
         // if data form is submitted and valid
         if ($form->isSubmitted() && $form->isValid()) {
             
-
-            //////////////////////////////////////////////////////////////////////////////////// STEP DRAPEAU LANGAGE
-            $selectedLanguages = $form->get('language')->getData();
-            
-            if (is_array($selectedLanguages)) {
-                // Définir la valeur de la propriété "language"
-                $user->setLanguage($selectedLanguages);    
-                // URL de base vers l'API des icônes des drapeaux
-                $flagIconsBaseUrl = 'https://www.countryflagicons.com/SHINY/32/';
-                
-                foreach ($selectedLanguages as $languageCode) {
-                    // SI le drapeau correspondant existe dans le tableau $languageFlags
-                    if (isset($languageCode)) {
-                        $flagIconUrl[] = $flagIconsBaseUrl . $languageCode . '.png';
-                    } else {
-                        // SINON le drapeau pour une langue n'est pas disponible, vous pouvez définir une URL générique ou une URL par défaut
-                        $flagIconUrl[] = $flagIconsBaseUrl . 'unknown.png';
-                    }
-                }
-                $user->setFlagIconUrl($flagIconUrl);
-            }
-            //////////////////////////////////////////////////////////////////////////////////// STEP POSTAL CODE
-
-             // Récupérer le code postal à partir du formulaire
-             $codePostal = $user->getPostalCode();
-             $codeDepartement = $user->getCodeDepartement();
- 
-             // URL de base vers l'API gouvernementale pour obtenir les informations de la commune à partir d'un code postal
-             $apiUrl = "https://geo.api.gouv.fr/communes?codePostal=" . $codePostal;
-            
-             $httpClient = HttpClient::create();
-             // Effectuer une requête HTTP GET vers l'API en utilisant l'URL construite
-             $response = $httpClient->request('GET', $apiUrl);
-             $data = $response->toArray();
- 
-            // if data 
-             if (!empty($data)) {
-                 $city = $data[0]['nom'];                   // Mettre à jour la valeur de city en fonction de la commune trouvée              
-                 $user->setCity($city);                     // Attribuer les valeurs au document USER  
-                 $user->setPostalCode($codePostal);
-                 $codeDepartement = $data[0]['codeDepartement']; // Récupérer le code du département à partir des données du codeDepartement de l'API
-                 $user->setCodeDepartement($codeDepartement);    // Attribuer les valeurs au document USER
-             }
-             
-            $codeDepartement = $user->getCodeDepartement();    // Récupérer le code du département à partir des données de la commune
- 
-            // URL de base vers l'API gouvernementale pour obtenir les informations du département à partir du code du département
-            $apiUrl = "https://geo.api.gouv.fr/departements/" . $codeDepartement;
- 
-            // Effectuer une requête HTTP GET vers l'API en utilisant l'URL construite
-            $response = $httpClient->request('GET', $apiUrl);
-            $data = $response->toArray();
- 
-            if (!empty($data)) {
-                 // Récupérer le nom du département à partir de la réponse de l'API
-                
-                 $codeRegion = $data['codeRegion'];
-                  // Utiliser le nom du département pour récupérer le nom de la région
-                 $apiUrl = "https://geo.api.gouv.fr/regions/" . $codeRegion;
-                 // Effectuer une requête HTTP GET vers l'API en utilisant l'URL construite
-                 $response = $httpClient->request('GET', $apiUrl);
-                 $data = $response->toArray();
- 
-                 if (!empty($data)) {
-                    $region = $data['nom'];      // Mettre à jour la valeur de region en fonction du nom de la région trouvée
-                    $user->setRegion($region);   // Attribuer la valeur au document USER
-                }
-            }
-
             //update the data to user in database
             $userRepository->save($user, true);
             // Redirect to success page
@@ -121,7 +51,6 @@ class UserProfilController extends AbstractController
             // send form for database
              'UserForm' => $form->createView(),
         ]); 
-        return new Response('test');
     }
 
     #[Route('/profil', name: 'app_user_profil_success')]
