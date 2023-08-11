@@ -36,10 +36,14 @@ class LoginController extends AbstractController
 
              // get user of database with email params from user class document
             $userFromBdd = $userRepository->findUserByEmail($email);
+            
+            if ($userFromBdd === null) {
+                // Redirect with the error message
+                $messageAlert = 'Invalid email. Please try again.';
 
+            } else if(password_verify($password, $userFromBdd->password)){
             // if the password hash and password from form is the same
-            if(password_verify($password, $userFromBdd->password)){
-                
+
                 $sessionInterface->set('email', $userFromBdd->email); // add email to session
                 $sessionInterface->set('id', $userFromBdd->id); // add id to session
 
@@ -54,7 +58,6 @@ class LoginController extends AbstractController
                 // adds a message that 
                 $messageAlert = 'Invalid password. Please try again.';
             }
-
         }
 
         return $this->render('Login/index.html.twig',[

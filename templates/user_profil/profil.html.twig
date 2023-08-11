@@ -27,14 +27,14 @@
                     <div class="firstData">
                         <strong>{{user.username}}</strong>
                         <figure>
-                            {% for flag in user.flagIconUrl %}
-                              <img id='flag' src="{{flag}}" alt="fr">
+                            {% for flag in user.language %}
+                              <img id='flag' src="https://www.countryflagicons.com/SHINY/32/{{flag}}.png" alt="fr">
                             {% endfor %}
                         </figure>
                     </div>
                     <div class="secondData">
                         <span>{{user.age}} yo</span>
-                        <span>{{user.city|slice(0,10)}}</span>
+                        <span>{{user.postalCode|slice(0,10)}}</span>
                     </div>
                     <div class="thirdData">
                         <p>{{user.description|slice(0,115)}}...</p>
@@ -48,7 +48,7 @@
                 <a>{{user.username|slice(0,15)}} <i class="fa fa-address-card" aria-hidden="true"></i></a>
                 <a>{{user.job|slice(0,13)}}... <i class="fa fa-briefcase" aria-hidden="true"></i></a>
                 <a>{{user.age}} years old <i class="fa fa-user-circle" aria-hidden="true"></i></a>
-                <a>{{user.city|slice(0,12)}}...<i class="fa-solid fa-map-pin"></i></a>
+                <a>{{user.postalCode|slice(0,12)}}...<i class="fa-solid fa-map-pin"></i></a>
                 <a href="{{ path('app_user_profil') }}">Edit profil <i class="fa fa-pencil-square" aria-hidden="true"></i></a>
             </div>
         </div>
