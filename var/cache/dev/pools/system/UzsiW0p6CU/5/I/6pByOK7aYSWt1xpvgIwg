@@ -1,0 +1,3 @@
+<?php //ProxyManager%255CProxy%255CGhostObjectInterface%2523getProxyInitializer
+
+return [PHP_INT_MAX, []];
