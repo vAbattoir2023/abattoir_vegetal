@@ -62,7 +62,7 @@
                              </div>
                              
                         </div>
-                    {{ form_end(FormRegister, {render_rest: false})}}
+                    {{ form_end(FormRegister)}}
     
                                  <a href="#" class="comment" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                  <img src="../assets/img/icones/emojidoigt.svg" alt="">Comment ça marche ?
@@ -129,7 +129,7 @@
     
         
    {#    
-        
+       pour cacher le formulaire manquant pas compatible avec form start et form end ", {render_rest: false} 
     {{ form_widget(FormRegister.submit) }}
     {{ form_end(FormRegister, {render_rest: false})}}
     #} 
