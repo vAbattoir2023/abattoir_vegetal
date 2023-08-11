@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  mongodb:
+  image: mongo
+  container_name: mongodb
+  environment:
+        MONGO_INITDB_ROOT_USERNAME: teamcava
+        MONGO_INITDB_ROOT_PASSWORD: lapasserelle
+  volumes:
+  - mongodb-data:/data/db
+  networks:
+  - mongodb_network
+  ports:
+  - 27017:27017
+  
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: teamcava
+      ME_CONFIG_MONGODB_ADMINPASSWORD: lapasserelle
+      ME_CONFIG_MONGODB_URL: mongodb+srv://teamcava:lapasserelle@mongo:27017/

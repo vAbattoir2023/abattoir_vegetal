@@ -1,0 +1,40 @@
+type: install
+name: abattoir_vegetal
+id: abattoir_vegetal
+categories: ["apps/dev-and-admin-tools"]
+logo: public/favicon.ico
+
+description: |
+  Fichier d'Infrastructure As Code pour déployer l'application HelloKaamelott sur Hidora.
+  
+ssl: true
+
+nodes:
+  - image: matthccode/abattoir_vegetal:latest
+    count: 1
+    cloudlets: 8
+    fixedCloudlets: 1
+    nodeGroup: cp
+    displayName: FrontWeb
+    volumes:
+      - /var/www
+
+  - nodeType: docker
+    image: mongo:latest
+    count: 1
+    cloudlets: 4
+    fixedCloudlets: 1
+    nodeGroup: mongodb
+    displayName: MongoDB
+    ssl: true
+    ports:
+      - protocol: tcp
+        internalPort: 27017
+        publicPort: 27017
+    envVars:
+      MONGODB_USER: teamcava
+      MONGODB_PASSWORD: lapasserelle
+
+
+success: |
+  Votre Application a été déployée sur Hidora avec succès !
