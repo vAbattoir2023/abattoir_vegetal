@@ -63,7 +63,7 @@ class UserRepository extends ServiceDocumentRepository
             return $this->findOneBy([ 'username' => $username]);
         }
     }
-    public function findUserById(string $id): User
+    public function findUserById(string $id): ?User
     {
         if($id){
             return $this->findOneBy([ 'id' => $id]);

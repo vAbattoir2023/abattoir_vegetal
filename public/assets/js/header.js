@@ -38,13 +38,11 @@ notifBtn.addEventListener('click', (event)=>{
     countNotif == 2  ? (notifBox.style.display = 'none', countNotif = 0) : null;
 });
 
-/**
- * when clicked body -> count +1
- * if count = 1 then open nav bar 
- * if count = 2 then close nav bar et count = 0
- */
+
+// when clicked body then close nav bar et count = 0
 body.addEventListener('click', ()=> (notifBox.style.display = 'none' ,countNotif = 0));
 
+// property click
 notifBox.addEventListener('click',(event)=> event.stopPropagation());
 
 // FETCH
@@ -75,8 +73,8 @@ fetch('http://127.0.0.1:8000/group/invitation')
                 </div>
             </div>
             <div class='btnBox'>
-                <a href='/group/accept/${data.notifications[i].id}/false'><button class='btnNotif'>Rejects</button></a>
-                <a href='/group/accept/${data.notifications[i].id}/true'><button  class='btnNotif'>Accept</button></a>
+                <a href='/group/response/${data.notifications[i].id}/false'><button class='btnNotif'>Rejects</button></a>
+                <a href='/group/response/${data.notifications[i].id}/true'><button  class='btnNotif'>Accept</button></a>
             </div>
         </article>`;
         

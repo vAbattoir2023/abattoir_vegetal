@@ -25,7 +25,7 @@
                 </figure>
                 <div class="info">
                     <div class="firstData">
-                        <strong>{{user.username}}</strong>
+                        <strong>{{user.username|slice(0,8)}}</strong>
                         <figure>
                             {% for flag in user.language %}
                               <img id='flag' src="https://www.countryflagicons.com/SHINY/32/{{flag}}.png" alt="fr">
@@ -45,7 +45,7 @@
                 </div>
             </article>
             <div id='userData'>
-                <a>{{user.username|slice(0,15)}} <i class="fa fa-address-card" aria-hidden="true"></i></a>
+                <a>{{user.username|slice(0,8)}} <i class="fa fa-address-card" aria-hidden="true"></i></a>
                 <a>{{user.job|slice(0,13)}}... <i class="fa fa-briefcase" aria-hidden="true"></i></a>
                 <a>{{user.age}} years old <i class="fa fa-user-circle" aria-hidden="true"></i></a>
                 <a>{{user.postalCode|slice(0,12)}}...<i class="fa-solid fa-map-pin"></i></a>
@@ -53,7 +53,7 @@
             </div>
         </div>
         <div id="footerData">
-            <span>{{user.username|slice(0,15)}}</span>
+            <span>{{user.username|slice(0,8)}}</span>
             <span>{{user.age}} years old</span>
             <span>|</span>
             <span>{{user.email}}</span>

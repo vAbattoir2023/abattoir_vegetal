@@ -12,10 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpClient\HttpClient;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-use App\Service\CloudinaryService;
-use Cloudinary\Api\Upload\UploadApi;
-use DateTime;
+use Cloudinary\Configuration\Configuration;
 
 #[Route('/user_profil')]
 class UserProfilController extends AbstractController
@@ -24,82 +21,95 @@ class UserProfilController extends AbstractController
     public function index(Request $request, UserRepository $userRepository, DocumentManager $documentManager, SessionInterface $sessionInterface): Response
     {
 
-        $user  = new User();
+        $user  = new User();                                    // instancie user document
         
-        // get id user from session
-        $idSession = $sessionInterface->get('id');
+        $idSession = $sessionInterface->get('id');              // get id user from session
 
-        if(!$idSession){
-            return $this->redirectToRoute('app_home');
-        }
-        // get user by id session 
-        $user = $userRepository->findUserById($idSession);
-        // if not user then redirect to app_register
-        if (!$user) {
-            return $this->redirectToRoute('app_register');
-        }
+        if(!$idSession) 
+            return $this->redirectToRoute('app_home'); // if idSession is undifined, then redirect to app_home
+        
+        $user = $userRepository->findUserById($idSession);      // get user by id session 
+        
+        if (!$user) 
+            return $this->redirectToRoute('app_register');  // if user is undifined then redirect to app_register
 
-        // create form for the database
-        $form = $this->createForm(UserType::class, $user);
-        // get the data from form
-        $form->handleRequest($request);
+        $form = $this->createForm(UserType::class, $user);      // create a form
+        
+        $form->handleRequest($request);                         // get the form datas
 
-        // if data from form is submitted and valid
+        $flagIconUrl = [];                                     // initialise flag array
+
+        // if data form is submitted and valid
         if ($form->isSubmitted() && $form->isValid()) {
-
-
-// //////////////////////////////////////////////////////////////////////////////////// STEP POSTAL CODE
-//              // Retrieve the postal code from the form
-//              $codePostal = $user->getPostalCode();
-//              $codeDepartement = $user->getCodeDepartement();
- 
-//              // Basic URL to the government API for obtaining commune information from a postal code
-//              $apiUrl = "https://geo.api.gouv.fr/communes?codePostal=" . $codePostal;
             
-//              $httpClient = HttpClient::create();
-//              // Make an HTTP GET request to the API using the URL you've built
-//              $response = $httpClient->request('GET', $apiUrl);
-//              $data = $response->toArray();
- 
-//              if (!empty($data)) {
-//                  // Update the city value according to the municipality found
-//                  $city = $data[0]['nom'];
-//                  // Assign values to USER document                
-//                  $user->setCity($city);
-//                  $user->setPostalCode($codePostal);
-//                  // Retrieve the department code from the API's Department code data
-//                  $codeDepartement = $data[0]['codeDepartement'];
-//                  // Assign values to USER document
-//                  $user->setCodeDepartement($codeDepartement);
+
+            //////////////////////////////////////////////////////////////////////////////////// STEP DRAPEAU LANGAGE
+            $selectedLanguages = $form->get('language')->getData();
+            
+            if (is_array($selectedLanguages)) {
+                // Définir la valeur de la propriété "language"
+                $user->setLanguage($selectedLanguages);    
+                // URL de base vers l'API des icônes des drapeaux
+                $flagIconsBaseUrl = 'https://www.countryflagicons.com/SHINY/32/';
                 
-//              }
-//              // Retrieve department code from commune data
-//              $codeDepartement = $user->getCodeDepartement();
+                foreach ($selectedLanguages as $languageCode) {
+                    // SI le drapeau correspondant existe dans le tableau $languageFlags
+                    if (isset($languageCode)) {
+                        $flagIconUrl[] = $flagIconsBaseUrl . $languageCode . '.png';
+                    } else {
+                        // SINON le drapeau pour une langue n'est pas disponible, vous pouvez définir une URL générique ou une URL par défaut
+                        $flagIconUrl[] = $flagIconsBaseUrl . 'unknown.png';
+                    }
+                }
+                $user->setFlagIconUrl($flagIconUrl);
+            }
+            //////////////////////////////////////////////////////////////////////////////////// STEP POSTAL CODE
+
+             // Récupérer le code postal à partir du formulaire
+             $codePostal = $user->getPostalCode();
+             $codeDepartement = $user->getCodeDepartement();
  
-//              // Basic URL to the government API to obtain department information from the department code
-//              $apiUrl = "https://geo.api.gouv.fr/departements/" . $codeDepartement;
+             // URL de base vers l'API gouvernementale pour obtenir les informations de la commune à partir d'un code postal
+             $apiUrl = "https://geo.api.gouv.fr/communes?codePostal=" . $codePostal;
+            
+             $httpClient = HttpClient::create();
+             // Effectuer une requête HTTP GET vers l'API en utilisant l'URL construite
+             $response = $httpClient->request('GET', $apiUrl);
+             $data = $response->toArray();
  
-//              // Make an HTTP GET request to the API using the constructed URL
-//              $response = $httpClient->request('GET', $apiUrl);
-//              $data = $response->toArray();
+            // if data 
+             if (!empty($data)) {
+                 $city = $data[0]['nom'];                   // Mettre à jour la valeur de city en fonction de la commune trouvée              
+                 $user->setCity($city);                     // Attribuer les valeurs au document USER  
+                 $user->setPostalCode($codePostal);
+                 $codeDepartement = $data[0]['codeDepartement']; // Récupérer le code du département à partir des données du codeDepartement de l'API
+                 $user->setCodeDepartement($codeDepartement);    // Attribuer les valeurs au document USER
+             }
+             
+            $codeDepartement = $user->getCodeDepartement();    // Récupérer le code du département à partir des données de la commune
  
-//              if (!empty($data)) {
-//                  // Retrieve department name from API response
+            // URL de base vers l'API gouvernementale pour obtenir les informations du département à partir du code du département
+            $apiUrl = "https://geo.api.gouv.fr/departements/" . $codeDepartement;
+ 
+            // Effectuer une requête HTTP GET vers l'API en utilisant l'URL construite
+            $response = $httpClient->request('GET', $apiUrl);
+            $data = $response->toArray();
+ 
+            if (!empty($data)) {
+                 // Récupérer le nom du département à partir de la réponse de l'API
                 
-//                  $codeRegion = $data['codeRegion'];
-//                   // Use department name to retrieve region name
-//                  $apiUrl = "https://geo.api.gouv.fr/regions/" . $codeRegion;
-//                  // Make an HTTP GET request to the API using the URL you've built
-//                  $response = $httpClient->request('GET', $apiUrl);
-//                  $data = $response->toArray();
+                 $codeRegion = $data['codeRegion'];
+                  // Utiliser le nom du département pour récupérer le nom de la région
+                 $apiUrl = "https://geo.api.gouv.fr/regions/" . $codeRegion;
+                 // Effectuer une requête HTTP GET vers l'API en utilisant l'URL construite
+                 $response = $httpClient->request('GET', $apiUrl);
+                 $data = $response->toArray();
  
-//                  if (!empty($data)) {
-//                      // Update the value of region according to the name of the region found
-//                      $region = $data['nom'];
-//                      // Assign value to USER document
-//                      $user->setRegion($region);
-//                  }
-//              }
+                 if (!empty($data)) {
+                    $region = $data['nom'];      // Mettre à jour la valeur de region en fonction du nom de la région trouvée
+                    $user->setRegion($region);   // Attribuer la valeur au document USER
+                }
+            }
 
             //update the data to user in database
             $userRepository->save($user, true);
@@ -111,6 +121,7 @@ class UserProfilController extends AbstractController
             // send form for database
              'UserForm' => $form->createView(),
         ]); 
+        return new Response('test');
     }
 
     #[Route('/profil', name: 'app_user_profil_success')]
@@ -131,8 +142,4 @@ class UserProfilController extends AbstractController
             'user' => $userFromBdd,
         ]);
     }
-
-   
-
-
 }

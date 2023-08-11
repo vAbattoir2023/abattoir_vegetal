@@ -17,6 +17,8 @@ class ApiUserController extends AbstractController
     #[Route('/api_user', name: 'app_api_user', methods: ['GET', 'POST'])]
     public function new(SessionInterface $sessionInterface, Request $request, UserRepository $userRepository): Response
     {
+
+           $messageAlert = '';
           // Get the logged-in user from the session
           $user = $userRepository->find($sessionInterface->get('id'));
 
@@ -41,6 +43,8 @@ class ApiUserController extends AbstractController
         $form->handleRequest($request);
         // This condition checks IF the form has been submitted and IF validation rules are met
         if ($form->isSubmitted() && $form->isValid()) {
+            $passwordHash = password_hash($apiuser->getPassword(), PASSWORD_BCRYPT); // hash password from form 
+            $apiuser->setPassword($passwordHash); // update password in User class
 
             $selectedLanguages = $form->get('language')->getData();
             $flagIconUrl = [];
@@ -91,13 +95,6 @@ class ApiUserController extends AbstractController
                     $age = $results['dob']['age'];
                     $image = $results['picture']['large'];
                     $username = $results['login']['username'];
-
-
-                    if ($gender === 'female') {
-                        $gender = 'femme';
-                    } elseif ($gender === 'male') {
-                        $gender = 'homme';
-                    }
 
                     // Assign values to the USER document
                     $apiuser->setGender($gender);
@@ -158,6 +155,7 @@ class ApiUserController extends AbstractController
                 }
             }
 
+            $messageAlert = 'Invalid password. Please try again.';
             // Save the updated User entity to the database
              $userRepository->save($apiuser, true);
 
@@ -171,6 +169,7 @@ class ApiUserController extends AbstractController
         return $this->render('Admin/apiuser.html.twig', [
             'apiuser' => $apiuser,
             'form' => $form->createView(),
+            'alert' => $messageAlert
         ]);
     }
 }

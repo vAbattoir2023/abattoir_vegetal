@@ -15,49 +15,45 @@ use Symfony\Component\Routing\Annotation\Route;
 class LoginController extends AbstractController
 {
     /**
-     * the route login execute login function
-     * login function  
+     * Description :
+     * connect the user
+     *
+     * @param UserRepository is used to use functions that query the database (User document)
+     * @param Request is used to filled in the form
+     * @param SessionInterface is used to POST data to the session
+     * @return Response return login page
      */
     #[Route('/login', name: 'app_login')]
     public function login(UserRepository $userRepository, Request $request, SessionInterface $sessionInterface): Response
     {
-        $messageAlert = '';
+        $user = new User(); // instancie the User class
 
-        $user = new User(); // get User class document
+        $messageAlert = ''; // initialise alert message
 
-        $form = $this->createForm(LoginType::class, $user); // create form for document user
-        $form->handleRequest($request); // get form data
+        $form = $this->createForm(LoginType::class, $user); // create User form 
+        $form->handleRequest($request);   // filled in the form 
 
         // form is submitted and valid
         if($form->isSubmitted() && $form->isValid()){
 
-            $email = $user->getEmail(); // store email user in $email
-            $password = $user->getPassword(); // store password user in $password
+            $email = $user->getEmail();            // GET user email
+            $password = $user->getPassword();      // GET User password
 
-             // get user of database with email params from user class document
-            $userFromBdd = $userRepository->findUserByEmail($email);
-            
-            if ($userFromBdd === null) {
-                // Redirect with the error message
-                $messageAlert = 'Invalid email. Please try again.';
+            $userFromBdd = $userRepository->findUserByEmail($email);  // find user by Email
 
-            } else if(password_verify($password, $userFromBdd->password)){
-            // if the password hash and password from form is the same
-
+            // if the password hash and the form password is the same
+            if(password_verify($password, $userFromBdd->password)){
+                
                 $sessionInterface->set('email', $userFromBdd->email); // add email to session
                 $sessionInterface->set('id', $userFromBdd->id); // add id to session
 
-                if(!empty($userFromBdd->centerOfInterest)) {
-                    // redirect to profil user with form data
-                    return $this->redirectToRoute('app_user_profil_success');
-                }else{
-                    // redirect to profil user for fill in form
-                    return $this->redirectToRoute('app_user_profil');
-                }
-            }else{
-                // adds a message that 
-                $messageAlert = 'Invalid password. Please try again.';
+                // if user interests is not undifined then redirect to your profil else profile to fill in
+                $result = !empty($userFromBdd->centerOfInterest) ? 'app_user_profil_success' : 'app_user_profil';
+                return $this->redirectToRoute($result);
             }
+
+            // alert message is Invalid password. Please try again.
+            $messageAlert = 'Invalid password. Please try again.';
         }
 
         return $this->render('Login/index.html.twig',[
@@ -66,8 +62,15 @@ class LoginController extends AbstractController
         ]);
     }
 
+    /**
+     * Description :
+     * clear the session
+     *
+     * @param SessionInterface is used to clear the session
+     * @return void redirect to homr page
+     */
     #[Route('/logout', name: 'app_logout')]
-    public function logout(UserRepository $userRepository, Request $request, SessionInterface $sessionInterface)
+    public function logout(SessionInterface $sessionInterface)
     {
         $sessionInterface->clear();
 

@@ -15,55 +15,54 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/register')]
 class RegisterController extends AbstractController
 {
+    /**
+     * Description :
+     * registers a user in the database
+     *
+     * @param Request is used to filled in the form
+     * @param UserRepository is used to use functions that query the database (User document)
+     * @return Response return to register page with a form & alert message
+     */
     #[Route('/add', name: 'app_register')]
-    public function index(Request $request, UserRepository $userRepository, DocumentManager $documentManager, SessionInterface $sessionInterface): Response
+    public function index(Request $request, UserRepository $userRepository): Response
     {
+        $user = new User(); // instantiates the class User
 
-        $messageAlert = '';
-
-        // instantiates the class User
-        $user = new User();
+        $messageAlert = ''; // initialise the alert message
         
-        // create form for /Register/index.html.twig
-        $form = $this->createForm(RegisterType::class, $user);
-
-        // retriev the inputs values from form 
-        $form->handleRequest($request);
+        $form = $this->createForm(RegisterType::class, $user);  // create form
+        $form->handleRequest($request);  // filled in the form 
 
         // if from is submitted and valid then save the forms values in database
         if($form->isSubmitted() && $form->isValid() ){
-            //forced roles 
-            //$user->setRoles(['ROLE_USER']);
 
-            // Get the email from the user object
-            $email = $user->getEmail();
-            // Validate email format using regex
+            $email = $user->getEmail(); // GET user email
+
+            // Email REGEX
             $regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
             
-            // Check if the email does not match the regex pattern
+            // Check if the email doesn't match the regular expression pattern
             if (!preg_match($regex, $email)) {
                 $messageAlert = 'Invalid e-mail address. Please try again.';
-            } else {      
-           
-            // If the email format is valid, check if the email already exists in the database
-            if($userRepository->checkUserRegister($user->getEmail())){
-                $messageAlert = 'this email already exists';
-            }else{
-                $passwordHash = password_hash($user->getPassword(), PASSWORD_BCRYPT); // hash password from form 
-                $user->setPassword($passwordHash); // update password in User class
-                $userRepository->save($user); // Post user to database
+            }
+
+            // Check if the email doesn't exist in the database
+            if(!$userRepository->checkUserRegister($user->getEmail()) ){
+
+                $passwordHash = password_hash($user->getPassword(), PASSWORD_BCRYPT); // hash the form password
+                $user->setPassword($passwordHash); // UPDATE the password to the User class
+
+                $userRepository->save($user);      // SAVE the user to database
+
                 return $this->redirectToRoute('app_login'); // redirect to app_home route
             }
+            // if email is already exsit 
+            $messageAlert = 'this email already exists';  // messageAlert = this email already exists
         }
-    }
-        $email = $sessionInterface->get('email');
-        // return to Register/index.html.twig page
+        
         return $this->render('Register/index.html.twig',[
-
-            'FormRegister' => $form->createView(), //send the form
+            'FormRegister' => $form->createView(),
             'alert' => $messageAlert
         ]);
-
-       
     }
 }

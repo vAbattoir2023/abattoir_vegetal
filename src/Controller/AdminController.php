@@ -2,175 +2,202 @@
 
 namespace App\Controller;
 
-use App\Document\User;
-use App\Document\Group;
 use App\Form\UserType;
 use App\Repository\GroupRepository;
 use App\Repository\UserRepository;
-use Doctrine\ODM\MongoDB\DocumentManager;
+use phpDocumentor\Reflection\Types\Void_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-
-
 
 #[Route('/admin')]
 class AdminController extends AbstractController
 {
-    #[Route('/', name: 'app_admin_index')]
-    public function index(UserRepository $userRepository, sessionInterface $sessionInterface): Response
+
+    /**
+     * Description :
+     * check if the user is Admin
+     * 
+     * @param UserRepository is used to use functions that query the database (User document)
+     * @param SessionInterface is used to GET the ID of the connected user 
+     */
+    public function checkIfUserIsAdmin(UserRepository $userRepository, SessionInterface $sessionInterface) 
     {
-        // Get the logged-in user from the session
-        $user = $userRepository->find($sessionInterface->get('id'));
+        $id = $sessionInterface->get('id');  // GET ID from session
 
-        // If no user is found with the given ID, redirect to the home page
-        if (!$user) {
-            return $this->redirectToRoute('app_home_help');
-        }
+        // check if ID is undifined
+        if(empty($id))
+            return $this->redirectToRoute('app_home');  // redirect to home page
 
-        // Check if the user has the 'ROLE_ADMIN' role
-        $isAdmin = in_array('ROLE_ADMIN', $user->getRoles());
+        $connectedUser = $userRepository->find($id);    // find user by id (session)
 
-        // If the user is not an admin, redirect to the home page
-        if (!$isAdmin) {
-            return $this->redirectToRoute('app_home_help');
-        }
+        $isAdmin = in_array('ROLE_ADMIN', $connectedUser->getRoles());  // check if user role = ROLE_ADMIN
 
-        return $this->render('Admin/index.html.twig', [
-                //on recupere la liste des administrateur en fonction du ROLE_ADMIN
-                'users' => $userRepository->findAllFromBdd(),
-            ]);
+        // Check if isAdmin is false
+        if (!$isAdmin) 
+            return $this->redirectToRoute('error_404');  // redirect to help page
     }
 
-    #[Route('/{id}', name: 'app_admin_show')]
-    public function show(User $user, $id, UserRepository  $userRepository, sessionInterface $sessionInterface): Response
+    /**
+     * Description :
+     * redirect to admin page with all users from the database
+     * 
+     * @param UserRepository is used to use functions that query the database (User document)
+     * @param sessionInterface is used to GET the ID of the connected user 
+     * @return Response return to admin page with user data
+     */
+    #[Route('/', name: 'app_admin_index')]
+    public function adminData(UserRepository $userRepository, SessionInterface $sessionInterface): Response 
     {
-        // Get the logged-in user from the session
-        $user = $userRepository->find($sessionInterface->get('id'));
+        $this->checkIfUserIsAdmin($userRepository, $sessionInterface);
 
-        // If no user is found with the given ID, redirect to the home page
-        if (!$user) {
-            return $this->redirectToRoute('app_home_help');
-        }
+        $allUsers = $userRepository->findAllFromBdd(); // GET all users from the database
 
-        // Check if the user has the 'ROLE_ADMIN' role
-        $isAdmin = in_array('ROLE_ADMIN', $user->getRoles());
+        $connectedUser = $userRepository->find($sessionInterface->get('id')); // find user by id
 
-        // If the user is not an admin, redirect to the home page
-        if (!$isAdmin) {
-            return $this->redirectToRoute('app_home_help');
-        }
+        $isAdmin = in_array('ROLE_ADMIN', $connectedUser->getRoles());        // check if user role = ROLE_ADMIN
 
-        // get id user from session
-        $userFromBdd = $userRepository->findUserById($id);
+        // Check if isAdmin is false
+        if (!$isAdmin) 
+            return $this->redirectToRoute('app_home_help');  // redirect to help page
+        
 
-        if(!$userFromBdd){
-            return $this->redirectToRoute('app_home');
-        }
+        return $this->render('Admin/index.html.twig', [
+            'users' => $allUsers,
+        ]);
+    }
 
-        // get document user from database
+    /**
+     * Description :
+     * Show the user selected with his ID
+     * 
+     * @param UserRepository is used to use functions that query the database
+     * @param SessionInterface is used to GET the ID of the connected user 
+     * @param id GET the user ID from URL
+     * @return Response return to user profil with user data
+     */
+    #[Route('/{id}', name: 'app_admin_show')]
+    public function showUser($id, UserRepository  $userRepository, SessionInterface $sessionInterface): Response
+    {
+
+        $this->checkIfUserIsAdmin($userRepository, $sessionInterface);
+
+        $userSelected = $userRepository->findUserById($id);  // find user by id (param)
+
+        // check if the user from databse is undifined
+        if(!$userSelected)
+            return $this->redirectToRoute('app_home'); // redirect to home page
+
         return $this->render('user_profil/profil.html.twig', [
-            'user' => $userFromBdd,
+            'user' => $userSelected,
         ]);
     }
 
 
+    /**
+     * Description :
+     * Edit user data
+     * 
+     * @param UserRepository is used to use functions that query the database (User document)
+     * @param request is used to GET form data
+     * @param id GET the user ID from URL
+     * @param Response return to user profil with his data
+     */
     #[Route('/edit/{id}', name: 'app_admin_edit')]
-    public function edit(User $user, $id, Request $request, UserRepository $userRepository, DocumentManager $documentManager, SessionInterface $sessionInterface): Response
+    public function edit($id, Request $request, UserRepository $userRepository, SessionInterface $sessionInterface): Response
     {
-        // Get the logged-in user from the session
-        $user = $userRepository->find($sessionInterface->get('id'));
 
-        // If no user is found with the given ID, redirect to the home page
-        if (!$user) {
-            return $this->redirectToRoute('app_home_help');
-        }
+        $this->checkIfUserIsAdmin($userRepository, $sessionInterface);
 
-        // Check if the user has the 'ROLE_ADMIN' role
-        $isAdmin = in_array('ROLE_ADMIN', $user->getRoles());
+        $userFromBdd = $userRepository->findUserById($id);          // find user by id
 
-        // If the user is not an admin, redirect to the home page
-        if (!$isAdmin) {
-            return $this->redirectToRoute('app_home_help');
-        }
-        // get id user from session
-        $userFromBdd = $userRepository->findUserById($id);
+        $form = $this->createForm(UserType::class, $userFromBdd);   // create a form for User document
+        $form->handleRequest($request);                             // GET form data
 
-        // create form for the database
-        $form = $this->createForm(UserType::class, $userFromBdd);
-        // get the data from form
-        $form->handleRequest($request);
+        // check if form data is submitted and valid
+        if($form->isSubmitted() && $form->isValid()) {
 
-        // if data from form is submitted and valid
-        if ($form->isSubmitted() && $form->isValid()) {
-            //update the data to user in database
-            $userRepository->save($userFromBdd, true);
-            // Redirect to success page
-            return $this->redirectToRoute('app_admin_index');
+            $userRepository->save($userFromBdd, true);          // update user data and save it in database
+
+            return $this->redirectToRoute('app_admin_index');   // redirect to admin page
         }
 
         return $this->render('user_profil/index.html.twig', [
-            // send form for database
             'UserForm' => $form->createView(),
-            'user' => $userFromBdd,
+            'user'     => $userFromBdd,
         ]);
     }
 
+    /**
+     * Description :
+     * Delete user
+     * 
+     * @param UserRepository is used to use functions that query the database 
+     * @param Request is used to GET form data
+     * @param id GET the user ID from URL
+     * @return Response return admin page
+     */
     #[Route('/delete/{id}', name: 'app_admin_delete')]
-    public function delete(Request $request, UserRepository $userRepository, $id): Response
+    public function delete(Request $request, UserRepository $userRepository, SessionInterface $sessionInterface, $id): Response
     {
+
+        $this->checkIfUserIsAdmin($userRepository, $sessionInterface);
 
         $userFromBdd = $userRepository->findUserById($id); // find user by id
 
-        // Checking the validity of the CSRF token before deleting the user
-        if ($this->isCsrfTokenValid('delete'.$userFromBdd->getId(), $request->request->get('_token'))) {
-            
+        // Check if user is not undifined
+        if($this->isCsrfTokenValid('delete'.$userFromBdd->getId(), $request->request->get('_token'))) {
             $userRepository->removeByDocument($userFromBdd, true); // delete user
         }
-
-        return $this->redirectToRoute('app_admin_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_admin_index');
     }
 
-    #[Route('adminGrp/', name: 'app_admin_grpindex')]
-    public function adminGrp(UserRepository $userRepository, GroupRepository $groupeRepository, sessionInterface $sessionInterface): Response    {
 
-          // Get the logged-in user from the session
-          $user = $userRepository->find($sessionInterface->get('id'));
+    /**
+     * Description :
+     * Show all groups from the database
+     *
+     * @param UserRepository is used to use functions that query the database  (User document)
+     * @param GroupRepository is used to use functions that query the database (Group document)
+     * @return Response return to Admin reservation page with all groups
+     */
+    #[Route('showAllGroups/', name: 'app_admin_grpindex')]
+    public function showAllGroups(GroupRepository $groupeRepository, UserRepository $userRepository, SessionInterface $sessionInterface): Response 
+    {
+        $this->checkIfUserIsAdmin($userRepository, $sessionInterface);
 
-          // If no user is found with the given ID, redirect to the home page
-          if (!$user) {
-              return $this->redirectToRoute('app_home_help');
-          }
-  
-          // Check if the user has the 'ROLE_ADMIN' role
-          $isAdmin = in_array('ROLE_ADMIN', $user->getRoles());
-  
-          // If the user is not an admin, redirect to the home page
-          if (!$isAdmin) {
-              return $this->redirectToRoute('app_home_help');
-          }
+        $groups = $groupeRepository->findAllGrpFromBdd(); // find all groups from the database
 
         return $this->render('Admin/reservation.html.twig', [
-            'groups' => $groupeRepository->findAllGrpFromBdd(),
+            'groups' => $groups,
         ]);
     }
 
-
+    /**
+     * Description :
+     * Delete the group
+     * 
+     * @param UserRepository is used to use functions that query the database  (User document)
+     * @param GroupRepository is used to use functions that query the database (Group document)
+     * @param Request is used to GET the token
+     * @param id GET the group ID from URL
+     * @return Response return to admin group page
+     */
     #[Route('/deleteGrp/{id}', name: 'app_grpadmin_delete')]
-    public function deleteAdminGrp(Request $request, GroupRepository  $groupRepository, $id): Response
+    public function deleteGroup(GroupRepository  $groupRepository, Request $request, $id , UserRepository $userRepository, SessionInterface $sessionInterface): Response
     {
-        $groupFromBdd = $groupRepository->find($id);
+        $this->checkIfUserIsAdmin($userRepository, $sessionInterface);
 
-        if ($this->isCsrfTokenValid('delete'. $groupFromBdd->getId(), $request->request->get('_token'))) {
-            $groupRepository->removeByDocument($groupFromBdd, true);
+        $groupFromBdd = $groupRepository->find($id);     // the group from the database
+
+        // Check the validity of the CSRF token
+        if($this->isCsrfTokenValid('delete'.$groupFromBdd->getId(), $request->request->get('_token'))) {
+            $groupRepository->removeByDocument($groupFromBdd, true); // delete the group from the database
         }
 
-        return $this->redirectToRoute('app_admin_grpindex', [], Response::HTTP_SEE_OTHER, [
-            'groups' => $groupFromBdd,
-        ]);
+        return $this->redirectToRoute('app_admin_grpindex');
     }
 
 }

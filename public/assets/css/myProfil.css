@@ -20,6 +20,7 @@ body{
     height: auto;
     flex-wrap: wrap;
     width: 100vw;
+    overflow-x: hidden; 
 }
 /* HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - */
 /* navbar */
