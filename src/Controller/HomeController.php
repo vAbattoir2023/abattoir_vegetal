@@ -2,18 +2,12 @@
 
 namespace App\Controller;
 
-use App\Document\Group;
-use App\Document\User;
-use App\Form\UserType;
-use App\Repository\GroupRepository;
 use App\Repository\UserRepository;
-use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use MongoDB\BSON\ObjectId;
 
 class HomeController extends AbstractController
 {
@@ -32,8 +26,6 @@ class HomeController extends AbstractController
     /**
      * Description :
      * check if user is connected or not cennected
-     * if user is not connected, user = null
-     * if user is connected, user = current user
      *
      * @param SessionInterface $sessionInterface
      * @param UserRepository $userRepository
@@ -70,4 +62,5 @@ class HomeController extends AbstractController
     {
         return $this->render('404.html.twig');
     }
+
 }

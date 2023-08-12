@@ -2,11 +2,7 @@
 
 namespace App\Document;
 
-use DateTime;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
-use Symfony\Component\Validator\Constraints\Date;
-
 
 #[MongoDB\Document]
 class User
@@ -23,7 +19,6 @@ class User
     #[MongoDB\Field(type: 'string')]
     public string $email;
 
-    // REGISTRATION SLIDE 1
     #[MongoDB\Field(type: 'string')]
     public string $password;
 
@@ -54,7 +49,6 @@ class User
     #[MongoDB\Field(type: 'string')]
     public ?string $diet = null;
 
-    // REGISTRATION SLIDE 2
     #[MongoDB\Field(type: 'string')]
     public ?string $centerOfInterestPerso = null;
  
@@ -63,7 +57,6 @@ class User
 
     #[MongoDB\Field(type: 'collection')]
     public array $roles = [];
-    
     
     #[MongoDB\Field(type: 'string')]
     public ?string $postalCode = null;
@@ -74,8 +67,6 @@ class User
     #[MongoDB\Field(type: 'string')]
     public ?string $region = null;
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
  
     public function getTermsAccepted()
     {

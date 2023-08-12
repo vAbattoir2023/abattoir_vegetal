@@ -18,20 +18,16 @@
         <div id="registerBox2">
             {{ form_errors(Form)}}
             {{ form_start(Form, {'attr': {'class': 'inputBox'}} )}}
-            
              {# Display alert message if there are any errors #}
               {% if alert is not empty %}
                 <div class="alert">{{ alert }}</div>
               {% endif %}
-
                 <div class="input">
                     {{ form_widget(Form.email, {'attr': {'class': 'input custom-input', 'placeholder': 'e-mail address'}}) }}
                 </div>        
-                {# <input class="input" type="text" name="" id="" placeholder="Your email"> #}
                 <div class="input">
                     {{ form_widget(Form.password, {'attr': {'class': 'input custom-input', 'placeholder': 'Password'}}) }}
                 </div>   
-                {# <input class="input" type="text" name="" id="" placeholder="Your password"> #}
                 {{ form_widget(Form.submit, {'attr': {'id': 'btn', 'class': 'btn'}}) }}
                 <figure>
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2008px-Google_%22G%22_Logo.svg.png" alt="google logo">
