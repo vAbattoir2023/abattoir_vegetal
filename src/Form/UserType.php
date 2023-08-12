@@ -4,17 +4,8 @@ namespace App\Form;
 
 use App\Document\User;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -32,9 +23,9 @@ class UserType extends AbstractType
                
             ->add('username', TextType::class)
 
-            ->add('postalCode', TextType::class, [
+            ->add('city', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'Code postal',
+                    'placeholder' => 'Paris',
                 ],
             ])
             ->add('age', IntegerType::class, [
@@ -48,9 +39,9 @@ class UserType extends AbstractType
                     'Non-binaire' => 'Non-binaire'
                 ],
                 'choice_attr' => [
-                    'H' => ['class' => 'form-check-input'],
-                    'F' => ['class' => 'form-check-input'],
-                    'Non-binaire' => ['class' => 'form-check-input'],
+                    'Men' => ['class' => 'form-check-input'],
+                    'Women' => ['class' => 'form-check-input'],
+                    'Other' => ['class' => 'form-check-input'],
                 ],
                 'multiple' => false,
                 'expanded' => true

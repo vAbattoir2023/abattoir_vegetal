@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Form\UserType;
 use App\Repository\GroupRepository;
 use App\Repository\UserRepository;
-use phpDocumentor\Reflection\Types\Void_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,26 +17,21 @@ class AdminController extends AbstractController
 
     /**
      * Description :
-     * check if the user is Admin
+     * check if the user is not the Admin
      * 
      * @param UserRepository is used to use functions that query the database (User document)
      * @param SessionInterface is used to GET the ID of the connected user 
      */
     public function checkIfUserIsAdmin(UserRepository $userRepository, SessionInterface $sessionInterface) 
     {
-        $id = $sessionInterface->get('id');  // GET ID from session
-
-        // check if ID is undifined
-        if(empty($id))
-            return $this->redirectToRoute('app_home');  // redirect to home page
-
-        $connectedUser = $userRepository->find($id);    // find user by id (session)
-
-        $isAdmin = in_array('ROLE_ADMIN', $connectedUser->getRoles());  // check if user role = ROLE_ADMIN
-
-        // Check if isAdmin is false
-        if (!$isAdmin) 
-            return $this->redirectToRoute('error_404');  // redirect to help page
+        $id = $sessionInterface->get('id');             // GET id session
+        $connectedUser = $userRepository->find($id);    // find user by id
+        
+        // if id session is null or connected user has not 'ROLE_ADMIN'
+        if ($id == null || !in_array('ROLE_ADMIN', $connectedUser->getRoles())){
+            dd('you are not the admin');
+            return $this->redirectToRoute('error_404');
+        }
     }
 
     /**
@@ -54,15 +48,6 @@ class AdminController extends AbstractController
         $this->checkIfUserIsAdmin($userRepository, $sessionInterface);
 
         $allUsers = $userRepository->findAllFromBdd(); // GET all users from the database
-
-        $connectedUser = $userRepository->find($sessionInterface->get('id')); // find user by id
-
-        $isAdmin = in_array('ROLE_ADMIN', $connectedUser->getRoles());        // check if user role = ROLE_ADMIN
-
-        // Check if isAdmin is false
-        if (!$isAdmin) 
-            return $this->redirectToRoute('app_home_help');  // redirect to help page
-        
 
         return $this->render('Admin/index.html.twig', [
             'users' => $allUsers,

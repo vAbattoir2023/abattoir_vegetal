@@ -27,8 +27,8 @@
                     <div class="firstData">
                         <strong>{{user.username|slice(0,8)}}</strong>
                         <figure>
-                            {% for flag in user.flagIconUrl %}
-                              <img id='flag' src="{{flag}}" alt="fr">
+                            {% for flag in user.language %}
+                              <img id='flag' src="https://www.countryflagicons.com/SHINY/32/{{flag}}.png" alt="fr">
                             {% endfor %}
                         </figure>
                     </div>

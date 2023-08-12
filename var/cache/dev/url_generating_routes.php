@@ -21,7 +21,6 @@ return [
     'app_admin_delete' => [['id'], ['_controller' => 'App\\Controller\\AdminController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/delete']], [], [], []],
     'app_admin_grpindex' => [[], ['_controller' => 'App\\Controller\\AdminController::showAllGroups'], [], [['text', '/admin/showAllGroups']], [], [], []],
     'app_grpadmin_delete' => [['id'], ['_controller' => 'App\\Controller\\AdminController::deleteGroup'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/deleteGrp']], [], [], []],
-    'app_api_user' => [[], ['_controller' => 'App\\Controller\\ApiUserController::new'], [], [['text', '/api_user']], [], [], []],
     'app_select_group' => [[], ['_controller' => 'App\\Controller\\GroupController::select_group'], [], [['text', '/group/select_group']], [], [], []],
     'app_get_users_list_without_filters' => [[], ['_controller' => 'App\\Controller\\GroupController::showListOfUsers'], [], [['text', '/group/users-list/']], [], [], []],
     'app_get_users_list_from_filters' => [['filters'], ['_controller' => 'App\\Controller\\GroupController::showUsersList'], [], [['variable', '/', '[^/]++', 'filters', true], ['text', '/group/users-list']], [], [], []],
