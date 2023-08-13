@@ -218,15 +218,16 @@ class __TwigTemplate_c8d7f40ef6f159c246a73b7ef6b32718393baee7a57fb474839ba9c69f4
                                             <a href=\"";
                     // line 70
                     echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("response_Invitation", ["id" => twig_get_attribute($this->env, $this->source, $context["group"], "id", [], "any", false, false, false, 70), "bool" => "false"]), "html", null, true);
-                    echo "\">declin</a>                                        ";
+                    echo "\">declin</a>
+                                        ";
                 }
-                // line 71
+                // line 72
                 echo "                                    ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['guest'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 72
+            // line 73
             echo "                                    </div>
                                 </section>
                             </div>
@@ -236,26 +237,27 @@ class __TwigTemplate_c8d7f40ef6f159c246a73b7ef6b32718393baee7a57fb474839ba9c69f4
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['group'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 77
+        // line 78
         echo "                </div>
             </div>
         </main>
         <!-- footer -->
         ";
-        // line 81
-        $this->loadTemplate("_footer.html.twig", "reservation/index.html.twig", 81)->display($context);
         // line 82
+        $this->loadTemplate("_footer.html.twig", "reservation/index.html.twig", 82)->display($context);
+        // line 83
         echo "    </div>
 </body>
 </html>
 <script src=\"";
-        // line 85
+        // line 86
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./assets/js/reservation.js"), "html", null, true);
         echo "\"></script>
 <script src='";
-        // line 86
+        // line 87
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./assets/js/header.js"), "html", null, true);
-        echo "'></script>";
+        echo "'></script>
+";
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
 
@@ -276,7 +278,7 @@ class __TwigTemplate_c8d7f40ef6f159c246a73b7ef6b32718393baee7a57fb474839ba9c69f4
 
     public function getDebugInfo()
     {
-        return array (  257 => 86,  253 => 85,  248 => 82,  246 => 81,  240 => 77,  230 => 72,  224 => 71,  220 => 70,  215 => 69,  212 => 68,  208 => 67,  203 => 64,  192 => 62,  188 => 61,  181 => 59,  175 => 55,  166 => 53,  162 => 52,  156 => 49,  148 => 44,  142 => 43,  134 => 38,  129 => 36,  125 => 34,  119 => 33,  113 => 32,  107 => 31,  102 => 30,  99 => 29,  95 => 28,  89 => 27,  86 => 26,  81 => 25,  78 => 24,  76 => 23,  70 => 20,  61 => 13,  59 => 12,  52 => 8,  43 => 1,);
+        return array (  258 => 87,  254 => 86,  249 => 83,  247 => 82,  241 => 78,  231 => 73,  225 => 72,  220 => 70,  215 => 69,  212 => 68,  208 => 67,  203 => 64,  192 => 62,  188 => 61,  181 => 59,  175 => 55,  166 => 53,  162 => 52,  156 => 49,  148 => 44,  142 => 43,  134 => 38,  129 => 36,  125 => 34,  119 => 33,  113 => 32,  107 => 31,  102 => 30,  99 => 29,  95 => 28,  89 => 27,  86 => 26,  81 => 25,  78 => 24,  76 => 23,  70 => 20,  61 => 13,  59 => 12,  52 => 8,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -350,7 +352,8 @@ class __TwigTemplate_c8d7f40ef6f159c246a73b7ef6b32718393baee7a57fb474839ba9c69f4
                                     {% for guest in group.guests %}
                                         {% if guest.guest.id == id and guest.invitation == 'waiting'  %}
                                             <a href=\"{{ path('response_Invitation', { 'id': group.id, 'bool': 'true' }) }}\">comfirm</a>
-                                            <a href=\"{{ path('response_Invitation', { 'id': group.id, 'bool': 'false' }) }}\">declin</a>                                        {% endif %}
+                                            <a href=\"{{ path('response_Invitation', { 'id': group.id, 'bool': 'false' }) }}\">declin</a>
+                                        {% endif %}
                                     {% endfor %}
                                     </div>
                                 </section>
@@ -366,6 +369,7 @@ class __TwigTemplate_c8d7f40ef6f159c246a73b7ef6b32718393baee7a57fb474839ba9c69f4
 </body>
 </html>
 <script src=\"{{ asset('./assets/js/reservation.js') }}\"></script>
-<script src='{{ asset('./assets/js/header.js') }}'></script>", "reservation/index.html.twig", "C:\\wamp64\\www\\projet\\Symfony\\FINAL\\abattoir_vegetal-Eze\\templates\\reservation\\index.html.twig");
+<script src='{{ asset('./assets/js/header.js') }}'></script>
+", "reservation/index.html.twig", "C:\\wamp64\\www\\projet\\Symfony\\FINAL\\DEPLOY\\abattoir_vegetal-MatthFin\\templates\\reservation\\index.html.twig");
     }
 }

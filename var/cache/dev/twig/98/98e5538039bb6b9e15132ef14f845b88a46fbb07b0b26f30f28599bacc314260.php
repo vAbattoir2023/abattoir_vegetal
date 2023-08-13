@@ -46,13 +46,8 @@ class __TwigTemplate_ebafa5da524be1b68ff15abab70d604e9504545c1e59089ce80bf84dd40
     <meta charset=\"UTF-8\"> 
     <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-    ";
-        // line 8
-        echo "    <link rel=\"stylesheet\" href=\"";
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./assets/css/selectGroup.css"), "html", null, true);
-        echo "\">
     <link rel=\"stylesheet\" href=\"";
-        // line 9
+        // line 7
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./assets/css/404.css"), "html", null, true);
         echo "\">
     <title>home page</title>
@@ -61,19 +56,12 @@ class __TwigTemplate_ebafa5da524be1b68ff15abab70d604e9504545c1e59089ce80bf84dd40
 <body>
     <!-- navbar -->
     ";
-        // line 15
-        $this->loadTemplate("_nav.html.twig", "404.html.twig", 15)->display($context);
-        // line 16
-        echo "
-
-<!-- footer -->
-\t\t";
-        // line 19
-        $this->loadTemplate("_footer.html.twig", "404.html.twig", 19)->display($context);
-        // line 20
+        // line 13
+        $this->loadTemplate("_nav.html.twig", "404.html.twig", 13)->display($context);
+        // line 14
         echo "</body>
 <script src=\"";
-        // line 21
+        // line 15
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./assets/js/navbar.js"), "html", null, true);
         echo "\"></script>
 </html>
@@ -98,7 +86,7 @@ class __TwigTemplate_ebafa5da524be1b68ff15abab70d604e9504545c1e59089ce80bf84dd40
 
     public function getDebugInfo()
     {
-        return array (  77 => 21,  74 => 20,  72 => 19,  67 => 16,  65 => 15,  56 => 9,  51 => 8,  43 => 1,);
+        return array (  65 => 15,  62 => 14,  60 => 13,  51 => 7,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -109,8 +97,6 @@ class __TwigTemplate_ebafa5da524be1b68ff15abab70d604e9504545c1e59089ce80bf84dd40
     <meta charset=\"UTF-8\"> 
     <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-    {# <link rel=\"stylesheet\" href=\"{{ asset('./assets/css/home.css') }}\"> #}
-    <link rel=\"stylesheet\" href=\"{{ asset('./assets/css/selectGroup.css') }}\">
     <link rel=\"stylesheet\" href=\"{{ asset('./assets/css/404.css') }}\">
     <title>home page</title>
 </head>
@@ -118,13 +104,9 @@ class __TwigTemplate_ebafa5da524be1b68ff15abab70d604e9504545c1e59089ce80bf84dd40
 <body>
     <!-- navbar -->
     {% include \"_nav.html.twig\" %}
-
-
-<!-- footer -->
-\t\t{% include \"_footer.html.twig\" %}
 </body>
 <script src=\"{{ asset('./assets/js/navbar.js') }}\"></script>
 </html>
-", "404.html.twig", "C:\\wamp64\\www\\projet\\Symfony\\FINAL\\abattoir_vegetal-Eze\\templates\\404.html.twig");
+", "404.html.twig", "C:\\wamp64\\www\\projet\\Symfony\\FINAL\\DEPLOY\\abattoir_vegetal-MatthFin\\templates\\404.html.twig");
     }
 }

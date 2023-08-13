@@ -116,8 +116,9 @@ class Group
         $this->guests->removeElement($guest);
         return $this;
     }
-  
+
 }
+
 
 #[MongoDB\EmbeddedDocument]
 class Guest

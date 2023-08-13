@@ -19,12 +19,10 @@
         <div id="registerBox2">
             {{ form_errors(FormRegister) }}
             {{ form_start(FormRegister, {'attr': {'class': 'inputBox'}}) }}
-
             {# Display alert message if there are any errors #}
               {% if alert is not empty %}
                 <div class="alert">{{ alert }}</div>
               {% endif %}
-
                 <!-- email form -->
                 <div class="input">
                     {{ form_widget(FormRegister.email, {'attr': {'class': 'input custom-input', 'placeholder': 'e-mail address'}}) }}
@@ -50,7 +48,7 @@
                 {{ form_widget(FormRegister.submit, {'attr': {'id': 'btn', 'class': 'btn'}}) }}
                  <!-- go to login page -->
                 <a href="{{ path('app_login') }}">
-                    <span>login</span>
+                    <span>Login</span>
                 </a>
             {{ form_end(FormRegister) }}
         </div>

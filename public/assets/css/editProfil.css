@@ -359,7 +359,7 @@ input:focus {
     width: 100%;
 }
 #firstData .inputBox3 input{
-    width: 50%;
+    width: 10%;
     border: 0px;
     padding-left: 20px;
     border-bottom: 1.5px solid;
@@ -380,7 +380,6 @@ input:focus {
 .inputBox4 section label{
     font-size: 0.9rem;
     margin-left: 5px;
-    margin-right: 8px;
     margin-bottom: -3px;
 }
 .inputBox4 section .checkGender{
@@ -469,6 +468,7 @@ input:focus {
     border: 1.5px solid #000;
     margin-bottom: 20px;
     font-weight: 500;
+    opacity: 0.4;
 }
 #inputFileBox label:nth-child(4){
     padding: 10px 10px;
@@ -580,7 +580,6 @@ input:focus {
     font-size: 1.2rem;
     text-transform: uppercase;
 }
-
 #boxAvatar{
     height: 100%;
     width: 100%;
@@ -739,8 +738,6 @@ footer{
     text-transform: lowercase;
     font-size: 0.8em;
 }
-
-
 @media screen and ( max-width : 1100px ) {
     /* footer */
     #footerContent{
@@ -832,6 +829,31 @@ footer{
     /* midlecontent */
     #footerContent #midleContent{
         width: 300px;
+    }
+    #boxAvatar div{
+        height: auto;
+        width: 80%;
+        flex-direction: column;
+    }
+    #boxAvatar div figure{
+        height: 70%;
+        width: 40%;
+        margin: 20px;
+        background: #fff;
+    }
+    #boxAvatar div figure img{
+        height: 100%;
+        width: 100%;
+        border: 2px solid #FF6C27;
+    }
+    #boxAvatar button{
+        height: 40px;
+        width: 80%;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        background: #FF6C27;
+        border: 2px solid #fff;
+        color: #fff;
     }
 }
 @media screen and ( max-width : 650px ) {
@@ -956,6 +978,9 @@ footer{
     }
     .inputBox4 section label {
         margin-left: 0px;
+    }
+    #boxAvatar button{
+        font-size: 1.2rem;
     }
 }
 @media screen and ( max-width : 440px ) {

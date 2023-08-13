@@ -37,25 +37,23 @@ btnCloseModal.addEventListener('click',()=>{
     modal ? modalBox.style.display = 'flex' : modalBox.style.display = 'none';
 });
 
-fetch('http://127.0.0.1:8000/header')
+fetch('/header')
 .then(res=>res.json())
 .then(data=>{
     
-    console.log(data);
-
     //when click on first nav, if user is connected then redirect to page else open modal
     nav1.addEventListener('click',()=>{
         !data.user ? (modal = true)  : ( location.href = '/group/select_group') ;
         modal ? modalBox.style.display = 'flex' : modalBox.style.display = 'none';
     });
 
-    //when click on first nav, if user is connected then redirect to page else open modal
+    //when click on second nav, if user is connected then redirect to page else open modal
     nav2.addEventListener('click',()=>{
         !data.user ? (modal = true)  : ( location.href = '/group/select_group') ;
         modal ? modalBox.style.display = 'flex' : modalBox.style.display = 'none';
     });
 
-    //when click on first nav, if user is connected then redirect to page else open modal
+    //when click on third nav, if user is connected then redirect to page else open modal
     nav3.addEventListener('click',()=>{
         !data.user ? (modal = true)  : ( location.href = '/group/select_group') ;
         modal ? modalBox.style.display = 'flex' : modalBox.style.display = 'none';

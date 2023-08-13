@@ -58,35 +58,29 @@ class __TwigTemplate_8cbfdcb0d0bbad793102e430e5ecc7d3356f3bcf4791ae27020e258281a
         echo "\" alt=\"title logo\"/></a>
         </figure>
         <nav>
-             <a href=\"";
+            <a href='";
         // line 11
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_profil_success");
-        echo "\">
-                <div class='logoNavBox'>
-                    <img class=\"logoNav\"  src=\"";
-        // line 13
+        echo "' class='logoNavBox'>
+                <img class=\"logoNav\"  src=\"";
+        // line 12
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./assets/img/icones/profil/profil-small-light.svg"), "html", null, true);
         echo "\" alt=\"logo\" />
-                </div>
-             </a>
-
+            </a>
             <div id='notif' class='logoNavBox'>
                 <img class=\"logoNav\"  src=\"";
-        // line 18
+        // line 15
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./assets/img/icones/notifications/notification-small-light.svg"), "html", null, true);
         echo "\" alt=\"logo\" />
             </div>
-
-            <a href=\"";
-        // line 21
+            <a href='";
+        // line 17
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reservation");
-        echo "\">
-                <div class='logoNavBox'>
+        echo "' class='logoNavBox'>
                 <img class=\"logoNav\"  src=\"";
-        // line 23
+        // line 18
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./assets/img/icones/reservation/reservation-small-light.svg"), "html", null, true);
         echo "\" alt=\"logo\" />
-            </div> 
             </a>
         </nav>
     </div>
@@ -99,39 +93,49 @@ class __TwigTemplate_8cbfdcb0d0bbad793102e430e5ecc7d3356f3bcf4791ae27020e258281a
 <div id=\"navResponsive\">
     <nav>
         <ul>
-\t\t\t<a href=\"";
-        // line 37
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home");
-        echo "\"><li>Home</li></a>
-            <a href=\"";
-        // line 38
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
-        echo "\"><li>register</li></a>
-            <a href=\"";
-        // line 39
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
-        echo "\"><li>login</li></a>
-            <a href=\"";
-        // line 40
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reservation");
-        echo "\"><li>my reservations</li></a>
-            <a href=\"";
-        // line 41
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_profil_success");
-        echo "\"><li>my profil</li></a>
-            <a href=\"";
+            ";
+        // line 31
+        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 31, $this->source); })()), "session", [], "any", false, false, false, 31), "get", ["id"], "method", false, false, false, 31)) > 1)) {
+            // line 32
+            echo "                <a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home");
+            echo "\"><li>Home</li></a>
+                <a href=\"";
+            // line 33
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reservation");
+            echo "\"><li>my reservations</li></a>
+                <a href=\"";
+            // line 34
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_profil_success");
+            echo "\"><li>my profil</li></a>
+                <a href=\"";
+            // line 35
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_select_group");
+            echo "\"><li>gimme a friend</li></a>
+                <a href=\"";
+            // line 36
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
+            echo "\"><li>Logout</li></a>
+            ";
+        } else {
+            // line 38
+            echo "                <a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home");
+            echo "\"><li>Home</li></a> 
+                <a href=\"";
+            // line 39
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
+            echo "\"><li>register</li></a>
+                <a href=\"";
+            // line 40
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
+            echo "\"><li>login</li></a>
+            ";
+        }
         // line 42
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_select_group");
-        echo "\"><li>gimme a friend</li></a>
-\t\t\t<a href=\"";
-        // line 43
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
-        echo "\"><li>Logout</li></a>
-        </ul>
+        echo "        </ul>
     </nav>
 </div>
-
-
 ";
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
@@ -153,7 +157,7 @@ class __TwigTemplate_8cbfdcb0d0bbad793102e430e5ecc7d3356f3bcf4791ae27020e258281a
 
     public function getDebugInfo()
     {
-        return array (  128 => 43,  124 => 42,  120 => 41,  116 => 40,  112 => 39,  108 => 38,  104 => 37,  87 => 23,  82 => 21,  76 => 18,  68 => 13,  63 => 11,  55 => 8,  49 => 5,  43 => 1,);
+        return array (  136 => 42,  131 => 40,  127 => 39,  122 => 38,  117 => 36,  113 => 35,  109 => 34,  105 => 33,  100 => 32,  98 => 31,  82 => 18,  78 => 17,  73 => 15,  67 => 12,  63 => 11,  55 => 8,  49 => 5,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -168,20 +172,14 @@ class __TwigTemplate_8cbfdcb0d0bbad793102e430e5ecc7d3356f3bcf4791ae27020e258281a
             <a href=\"{{ path('app_home') }}\"><img src=\"{{ asset('./assets/img/logo/abattoir-vegetal-logo-big-dark.svg')}}\" alt=\"title logo\"/></a>
         </figure>
         <nav>
-             <a href=\"{{ path('app_user_profil_success') }}\">
-                <div class='logoNavBox'>
-                    <img class=\"logoNav\"  src=\"{{ asset('./assets/img/icones/profil/profil-small-light.svg') }}\" alt=\"logo\" />
-                </div>
-             </a>
-
+            <a href='{{ path('app_user_profil_success') }}' class='logoNavBox'>
+                <img class=\"logoNav\"  src=\"{{ asset('./assets/img/icones/profil/profil-small-light.svg') }}\" alt=\"logo\" />
+            </a>
             <div id='notif' class='logoNavBox'>
                 <img class=\"logoNav\"  src=\"{{ asset('./assets/img/icones/notifications/notification-small-light.svg')}}\" alt=\"logo\" />
             </div>
-
-            <a href=\"{{ path('app_reservation') }}\">
-                <div class='logoNavBox'>
+            <a href='{{ path('app_reservation') }}' class='logoNavBox'>
                 <img class=\"logoNav\"  src=\"{{ asset('./assets/img/icones/reservation/reservation-small-light.svg')}}\" alt=\"logo\" />
-            </div> 
             </a>
         </nav>
     </div>
@@ -194,18 +192,20 @@ class __TwigTemplate_8cbfdcb0d0bbad793102e430e5ecc7d3356f3bcf4791ae27020e258281a
 <div id=\"navResponsive\">
     <nav>
         <ul>
-\t\t\t<a href=\"{{ path('app_home') }}\"><li>Home</li></a>
-            <a href=\"{{ path('app_register') }}\"><li>register</li></a>
-            <a href=\"{{ path('app_login') }}\"><li>login</li></a>
-            <a href=\"{{ path('app_reservation') }}\"><li>my reservations</li></a>
-            <a href=\"{{ path('app_user_profil_success') }}\"><li>my profil</li></a>
-            <a href=\"{{ path('app_select_group') }}\"><li>gimme a friend</li></a>
-\t\t\t<a href=\"{{ path('app_logout') }}\"><li>Logout</li></a>
+            {% if app.session.get('id')|length >1 %}
+                <a href=\"{{ path('app_home') }}\"><li>Home</li></a>
+                <a href=\"{{ path('app_reservation') }}\"><li>my reservations</li></a>
+                <a href=\"{{ path('app_user_profil_success') }}\"><li>my profil</li></a>
+                <a href=\"{{ path('app_select_group') }}\"><li>gimme a friend</li></a>
+                <a href=\"{{ path('app_logout') }}\"><li>Logout</li></a>
+            {% else %}
+                <a href=\"{{ path('app_home') }}\"><li>Home</li></a> 
+                <a href=\"{{ path('app_register') }}\"><li>register</li></a>
+                <a href=\"{{ path('app_login') }}\"><li>login</li></a>
+            {% endif %}
         </ul>
     </nav>
 </div>
-
-
-", "_header.html.twig", "C:\\wamp64\\www\\projet\\Symfony\\FINAL\\abattoir_vegetal-Eze\\templates\\_header.html.twig");
+", "_header.html.twig", "C:\\wamp64\\www\\projet\\Symfony\\FINAL\\DEPLOY\\abattoir_vegetal-MatthFin\\templates\\_header.html.twig");
     }
 }

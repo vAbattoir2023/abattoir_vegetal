@@ -76,48 +76,46 @@ class __TwigTemplate_08527f0702ffdbb9508c12c664fe0e3b79cc3c4b5c97fa2e53e75f0def2
         // line 21
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["FormRegister"]) || array_key_exists("FormRegister", $context) ? $context["FormRegister"] : (function () { throw new RuntimeError('Variable "FormRegister" does not exist.', 21, $this->source); })()), 'form_start', ["attr" => ["class" => "inputBox"]]);
         echo "
-
             ";
-        // line 24
+        // line 23
         echo "              ";
-        if ( !twig_test_empty((isset($context["alert"]) || array_key_exists("alert", $context) ? $context["alert"] : (function () { throw new RuntimeError('Variable "alert" does not exist.', 24, $this->source); })()))) {
-            // line 25
+        if ( !twig_test_empty((isset($context["alert"]) || array_key_exists("alert", $context) ? $context["alert"] : (function () { throw new RuntimeError('Variable "alert" does not exist.', 23, $this->source); })()))) {
+            // line 24
             echo "                <div class=\"alert\">";
-            echo twig_escape_filter($this->env, (isset($context["alert"]) || array_key_exists("alert", $context) ? $context["alert"] : (function () { throw new RuntimeError('Variable "alert" does not exist.', 25, $this->source); })()), "html", null, true);
+            echo twig_escape_filter($this->env, (isset($context["alert"]) || array_key_exists("alert", $context) ? $context["alert"] : (function () { throw new RuntimeError('Variable "alert" does not exist.', 24, $this->source); })()), "html", null, true);
             echo "</div>
               ";
         }
-        // line 27
-        echo "
-                <!-- email form -->
+        // line 26
+        echo "                <!-- email form -->
                 <div class=\"input\">
                     ";
-        // line 30
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["FormRegister"]) || array_key_exists("FormRegister", $context) ? $context["FormRegister"] : (function () { throw new RuntimeError('Variable "FormRegister" does not exist.', 30, $this->source); })()), "email", [], "any", false, false, false, 30), 'widget', ["attr" => ["class" => "input custom-input", "placeholder" => "e-mail address"]]);
+        // line 28
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["FormRegister"]) || array_key_exists("FormRegister", $context) ? $context["FormRegister"] : (function () { throw new RuntimeError('Variable "FormRegister" does not exist.', 28, $this->source); })()), "email", [], "any", false, false, false, 28), 'widget', ["attr" => ["class" => "input custom-input", "placeholder" => "e-mail address"]]);
         echo "
                 </div>
                 <!-- password form -->
                 <div class=\"input\">
                     ";
-        // line 34
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["FormRegister"]) || array_key_exists("FormRegister", $context) ? $context["FormRegister"] : (function () { throw new RuntimeError('Variable "FormRegister" does not exist.', 34, $this->source); })()), "password", [], "any", false, false, false, 34), "first", [], "any", false, false, false, 34), 'widget', ["attr" => ["class" => "input custom-input", "placeholder" => "Password"]]);
+        // line 32
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["FormRegister"]) || array_key_exists("FormRegister", $context) ? $context["FormRegister"] : (function () { throw new RuntimeError('Variable "FormRegister" does not exist.', 32, $this->source); })()), "password", [], "any", false, false, false, 32), "first", [], "any", false, false, false, 32), 'widget', ["attr" => ["class" => "input custom-input", "placeholder" => "Password"]]);
         echo "
                 </div>
                 <div class=\"input\">
                     ";
-        // line 37
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["FormRegister"]) || array_key_exists("FormRegister", $context) ? $context["FormRegister"] : (function () { throw new RuntimeError('Variable "FormRegister" does not exist.', 37, $this->source); })()), "password", [], "any", false, false, false, 37), "second", [], "any", false, false, false, 37), 'widget', ["attr" => ["class" => "input custom-input", "placeholder" => "Confirm Password"]]);
+        // line 35
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["FormRegister"]) || array_key_exists("FormRegister", $context) ? $context["FormRegister"] : (function () { throw new RuntimeError('Variable "FormRegister" does not exist.', 35, $this->source); })()), "password", [], "any", false, false, false, 35), "second", [], "any", false, false, false, 35), 'widget', ["attr" => ["class" => "input custom-input", "placeholder" => "Confirm Password"]]);
         echo "
                 </div>
                 <!-- accept form -->
                 <div class=\"form-group\">
                     ";
-        // line 41
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["FormRegister"]) || array_key_exists("FormRegister", $context) ? $context["FormRegister"] : (function () { throw new RuntimeError('Variable "FormRegister" does not exist.', 41, $this->source); })()), "terms", [], "any", false, false, false, 41), 'widget', ["attr" => ["class" => "custom-checkbox"]]);
+        // line 39
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["FormRegister"]) || array_key_exists("FormRegister", $context) ? $context["FormRegister"] : (function () { throw new RuntimeError('Variable "FormRegister" does not exist.', 39, $this->source); })()), "terms", [], "any", false, false, false, 39), 'widget', ["attr" => ["class" => "custom-checkbox"]]);
         echo "
                     ";
-        // line 42
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["FormRegister"]) || array_key_exists("FormRegister", $context) ? $context["FormRegister"] : (function () { throw new RuntimeError('Variable "FormRegister" does not exist.', 42, $this->source); })()), "terms", [], "any", false, false, false, 42), 'label', ["label_attr" => ["class" => "custom-label"], "label" => "I have read and accept the general conditions"]);
+        // line 40
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["FormRegister"]) || array_key_exists("FormRegister", $context) ? $context["FormRegister"] : (function () { throw new RuntimeError('Variable "FormRegister" does not exist.', 40, $this->source); })()), "terms", [], "any", false, false, false, 40), 'label', ["label_attr" => ["class" => "custom-label"], "label" => "I have read and accept the general conditions"]);
         echo "
                 </div>
                 <!-- register with google -->
@@ -127,25 +125,25 @@ class __TwigTemplate_08527f0702ffdbb9508c12c664fe0e3b79cc3c4b5c97fa2e53e75f0def2
                 </figure>
                 <!-- button submit -->
                 ";
-        // line 50
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["FormRegister"]) || array_key_exists("FormRegister", $context) ? $context["FormRegister"] : (function () { throw new RuntimeError('Variable "FormRegister" does not exist.', 50, $this->source); })()), "submit", [], "any", false, false, false, 50), 'widget', ["attr" => ["id" => "btn", "class" => "btn"]]);
+        // line 48
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["FormRegister"]) || array_key_exists("FormRegister", $context) ? $context["FormRegister"] : (function () { throw new RuntimeError('Variable "FormRegister" does not exist.', 48, $this->source); })()), "submit", [], "any", false, false, false, 48), 'widget', ["attr" => ["id" => "btn", "class" => "btn"]]);
         echo "
                  <!-- go to login page -->
                 <a href=\"";
-        // line 52
+        // line 50
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
         echo "\">
-                    <span>login</span>
+                    <span>Login</span>
                 </a>
             ";
-        // line 55
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["FormRegister"]) || array_key_exists("FormRegister", $context) ? $context["FormRegister"] : (function () { throw new RuntimeError('Variable "FormRegister" does not exist.', 55, $this->source); })()), 'form_end');
+        // line 53
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["FormRegister"]) || array_key_exists("FormRegister", $context) ? $context["FormRegister"] : (function () { throw new RuntimeError('Variable "FormRegister" does not exist.', 53, $this->source); })()), 'form_end');
         echo "
         </div>
     </article>
 </body>
 <script src=\"";
-        // line 59
+        // line 57
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./assets/js/navbar.js"), "html", null, true);
         echo "\"></script>
 </html>";
@@ -169,7 +167,7 @@ class __TwigTemplate_08527f0702ffdbb9508c12c664fe0e3b79cc3c4b5c97fa2e53e75f0def2
 
     public function getDebugInfo()
     {
-        return array (  149 => 59,  142 => 55,  136 => 52,  131 => 50,  120 => 42,  116 => 41,  109 => 37,  103 => 34,  96 => 30,  91 => 27,  85 => 25,  82 => 24,  77 => 21,  73 => 20,  67 => 16,  65 => 15,  62 => 14,  60 => 13,  51 => 7,  43 => 1,);
+        return array (  147 => 57,  140 => 53,  134 => 50,  129 => 48,  118 => 40,  114 => 39,  107 => 35,  101 => 32,  94 => 28,  90 => 26,  84 => 24,  81 => 23,  77 => 21,  73 => 20,  67 => 16,  65 => 15,  62 => 14,  60 => 13,  51 => 7,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -195,12 +193,10 @@ class __TwigTemplate_08527f0702ffdbb9508c12c664fe0e3b79cc3c4b5c97fa2e53e75f0def2
         <div id=\"registerBox2\">
             {{ form_errors(FormRegister) }}
             {{ form_start(FormRegister, {'attr': {'class': 'inputBox'}}) }}
-
             {# Display alert message if there are any errors #}
               {% if alert is not empty %}
                 <div class=\"alert\">{{ alert }}</div>
               {% endif %}
-
                 <!-- email form -->
                 <div class=\"input\">
                     {{ form_widget(FormRegister.email, {'attr': {'class': 'input custom-input', 'placeholder': 'e-mail address'}}) }}
@@ -226,13 +222,13 @@ class __TwigTemplate_08527f0702ffdbb9508c12c664fe0e3b79cc3c4b5c97fa2e53e75f0def2
                 {{ form_widget(FormRegister.submit, {'attr': {'id': 'btn', 'class': 'btn'}}) }}
                  <!-- go to login page -->
                 <a href=\"{{ path('app_login') }}\">
-                    <span>login</span>
+                    <span>Login</span>
                 </a>
             {{ form_end(FormRegister) }}
         </div>
     </article>
 </body>
 <script src=\"{{asset('./assets/js/navbar.js')}}\"></script>
-</html>", "Register/index.html.twig", "C:\\wamp64\\www\\projet\\Symfony\\FINAL\\abattoir_vegetal-Eze\\templates\\Register\\index.html.twig");
+</html>", "Register/index.html.twig", "C:\\wamp64\\www\\projet\\Symfony\\FINAL\\DEPLOY\\abattoir_vegetal-MatthFin\\templates\\Register\\index.html.twig");
     }
 }

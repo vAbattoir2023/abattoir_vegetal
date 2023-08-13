@@ -38,3 +38,10 @@ when@test:
                 cost: 4 # Lowest possible value for bcrypt
                 time_cost: 3 # Lowest possible value for argon
                 memory_cost: 10 # Lowest possible value for argon
+
+nelmio_cors:
+    defaults:
+        allow_credentials: false
+        allow_origin: ['http://abattoir-vegetal.sekhmet.lapasserelle.school/']
+        allow_headers: ['Content-Type']
+        allow_methods: ['GET', 'OPTIONS']

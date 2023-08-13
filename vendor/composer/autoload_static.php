@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit4291eb557aa8a2735da3e2a439ae86b4
+class ComposerStaticInit8b58e92ee7fbcd0cae078823b694554e
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -123,6 +123,10 @@ class ComposerStaticInit4291eb557aa8a2735da3e2a439ae86b4
             'ProxyManager\\' => 13,
             'PhpParser\\' => 10,
             'PHPStan\\PhpDocParser\\' => 21,
+        ),
+        'N' => 
+        array (
+            'Nelmio\\CorsBundle\\' => 18,
         ),
         'M' => 
         array (
@@ -476,8 +480,8 @@ class ComposerStaticInit4291eb557aa8a2735da3e2a439ae86b4
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -506,6 +510,10 @@ class ComposerStaticInit4291eb557aa8a2735da3e2a439ae86b4
         'PHPStan\\PhpDocParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src',
+        ),
+        'Nelmio\\CorsBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nelmio/cors-bundle',
         ),
         'Monolog\\' => 
         array (
@@ -624,13 +632,12 @@ class ComposerStaticInit4291eb557aa8a2735da3e2a439ae86b4
 
     public static $classMap = array (
         'App\\Controller\\AdminController' => __DIR__ . '/../..' . '/src/Controller/AdminController.php',
-        'App\\Controller\\AdminGroupController' => __DIR__ . '/../..' . '/src/Controller/AdminGroupController.php',
         'App\\Controller\\ApiUserController' => __DIR__ . '/../..' . '/src/Controller/ApiUserController.php',
         'App\\Controller\\GroupController' => __DIR__ . '/../..' . '/src/Controller/GroupController.php',
         'App\\Controller\\HomeController' => __DIR__ . '/../..' . '/src/Controller/HomeController.php',
         'App\\Controller\\LoginController' => __DIR__ . '/../..' . '/src/Controller/LoginController.php',
         'App\\Controller\\RegisterController' => __DIR__ . '/../..' . '/src/Controller/RegisterController.php',
-        'App\\Controller\\UserController' => __DIR__ . '/../..' . '/src/Controller/UserController.php',
+        'App\\Controller\\ReservationController' => __DIR__ . '/../..' . '/src/Controller/ReservationController.php',
         'App\\Controller\\UserProfilController' => __DIR__ . '/../..' . '/src/Controller/UserProfilController.php',
         'App\\Document\\Group' => __DIR__ . '/../..' . '/src/Document/Group.php',
         'App\\Document\\User' => __DIR__ . '/../..' . '/src/Document/User.php',
@@ -644,6 +651,10 @@ class ComposerStaticInit4291eb557aa8a2735da3e2a439ae86b4
         'App\\Repository\\GroupRepository' => __DIR__ . '/../..' . '/src/Repository/GroupRepository.php',
         'App\\Repository\\GuestRepository' => __DIR__ . '/../..' . '/src/Repository/GuestRepository.php',
         'App\\Repository\\UserRepository' => __DIR__ . '/../..' . '/src/Repository/UserRepository.php',
+        'App\\Tests\\Functional\\BasicTest' => __DIR__ . '/../..' . '/tests/Functional/BasicTest.php',
+        'App\\Tests\\Functional\\LoginTest' => __DIR__ . '/../..' . '/tests/Functional/LoginTest.php',
+        'App\\Tests\\Functional\\ProfilTest' => __DIR__ . '/../..' . '/tests/Functional/ProfilTest.php',
+        'App\\Tests\\Unit\\BasicTest' => __DIR__ . '/../..' . '/tests/Unit/BasicTest.php',
         'Cloudinary\\Api\\Admin\\AdminApi' => __DIR__ . '/..' . '/cloudinary/cloudinary_php/src/Api/Admin/AdminApi.php',
         'Cloudinary\\Api\\Admin\\ApiEndPoint' => __DIR__ . '/..' . '/cloudinary/cloudinary_php/src/Api/Admin/ApiEndPoint.php',
         'Cloudinary\\Api\\Admin\\AssetsTrait' => __DIR__ . '/..' . '/cloudinary/cloudinary_php/src/Api/Admin/AssetsTrait.php',
@@ -2307,6 +2318,7 @@ class ComposerStaticInit4291eb557aa8a2735da3e2a439ae86b4
         'Doctrine\\ORM\\Event\\PreUpdateEventArgs' => __DIR__ . '/..' . '/doctrine/orm/lib/Doctrine/ORM/Event/PreUpdateEventArgs.php',
         'Doctrine\\ORM\\Events' => __DIR__ . '/..' . '/doctrine/orm/lib/Doctrine/ORM/Events.php',
         'Doctrine\\ORM\\Exception\\ConfigurationException' => __DIR__ . '/..' . '/doctrine/orm/lib/Doctrine/ORM/Exception/ConfigurationException.php',
+        'Doctrine\\ORM\\Exception\\EntityIdentityCollisionException' => __DIR__ . '/..' . '/doctrine/orm/lib/Doctrine/ORM/Exception/EntityIdentityCollisionException.php',
         'Doctrine\\ORM\\Exception\\EntityManagerClosed' => __DIR__ . '/..' . '/doctrine/orm/lib/Doctrine/ORM/Exception/EntityManagerClosed.php',
         'Doctrine\\ORM\\Exception\\EntityMissingAssignedId' => __DIR__ . '/..' . '/doctrine/orm/lib/Doctrine/ORM/Exception/EntityMissingAssignedId.php',
         'Doctrine\\ORM\\Exception\\InvalidEntityRepository' => __DIR__ . '/..' . '/doctrine/orm/lib/Doctrine/ORM/Exception/InvalidEntityRepository.php',
@@ -3174,6 +3186,16 @@ class ComposerStaticInit4291eb557aa8a2735da3e2a439ae86b4
         'Monolog\\SignalHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/SignalHandler.php',
         'Monolog\\Test\\TestCase' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Test/TestCase.php',
         'Monolog\\Utils' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Utils.php',
+        'Nelmio\\CorsBundle\\DependencyInjection\\Compiler\\CorsConfigurationProviderPass' => __DIR__ . '/..' . '/nelmio/cors-bundle/DependencyInjection/Compiler/CorsConfigurationProviderPass.php',
+        'Nelmio\\CorsBundle\\DependencyInjection\\Configuration' => __DIR__ . '/..' . '/nelmio/cors-bundle/DependencyInjection/Configuration.php',
+        'Nelmio\\CorsBundle\\DependencyInjection\\NelmioCorsExtension' => __DIR__ . '/..' . '/nelmio/cors-bundle/DependencyInjection/NelmioCorsExtension.php',
+        'Nelmio\\CorsBundle\\EventListener\\CacheableResponseVaryListener' => __DIR__ . '/..' . '/nelmio/cors-bundle/EventListener/CacheableResponseVaryListener.php',
+        'Nelmio\\CorsBundle\\EventListener\\CorsListener' => __DIR__ . '/..' . '/nelmio/cors-bundle/EventListener/CorsListener.php',
+        'Nelmio\\CorsBundle\\NelmioCorsBundle' => __DIR__ . '/..' . '/nelmio/cors-bundle/NelmioCorsBundle.php',
+        'Nelmio\\CorsBundle\\Options\\ConfigProvider' => __DIR__ . '/..' . '/nelmio/cors-bundle/Options/ConfigProvider.php',
+        'Nelmio\\CorsBundle\\Options\\ProviderInterface' => __DIR__ . '/..' . '/nelmio/cors-bundle/Options/ProviderInterface.php',
+        'Nelmio\\CorsBundle\\Options\\Resolver' => __DIR__ . '/..' . '/nelmio/cors-bundle/Options/Resolver.php',
+        'Nelmio\\CorsBundle\\Options\\ResolverInterface' => __DIR__ . '/..' . '/nelmio/cors-bundle/Options/ResolverInterface.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
         'NumberFormatter' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/Resources/stubs/NumberFormatter.php',
         'PHPStan\\PhpDocParser\\Ast\\AbstractNodeVisitor' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/AbstractNodeVisitor.php',
@@ -7511,9 +7533,9 @@ class ComposerStaticInit4291eb557aa8a2735da3e2a439ae86b4
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit4291eb557aa8a2735da3e2a439ae86b4::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit4291eb557aa8a2735da3e2a439ae86b4::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit4291eb557aa8a2735da3e2a439ae86b4::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit8b58e92ee7fbcd0cae078823b694554e::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit8b58e92ee7fbcd0cae078823b694554e::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit8b58e92ee7fbcd0cae078823b694554e::$classMap;
 
         }, null, ClassLoader::class);
     }

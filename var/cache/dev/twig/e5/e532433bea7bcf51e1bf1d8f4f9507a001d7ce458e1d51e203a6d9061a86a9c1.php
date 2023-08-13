@@ -75,55 +75,50 @@ class __TwigTemplate_16e401639f8ae4ded3b669b4f687d1a5c16aedf89462aa414908364305f
         // line 20
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["Form"]) || array_key_exists("Form", $context) ? $context["Form"] : (function () { throw new RuntimeError('Variable "Form" does not exist.', 20, $this->source); })()), 'form_start', ["attr" => ["class" => "inputBox"]]);
         echo "
-            
              ";
-        // line 23
+        // line 22
         echo "              ";
-        if ( !twig_test_empty((isset($context["alert"]) || array_key_exists("alert", $context) ? $context["alert"] : (function () { throw new RuntimeError('Variable "alert" does not exist.', 23, $this->source); })()))) {
-            // line 24
+        if ( !twig_test_empty((isset($context["alert"]) || array_key_exists("alert", $context) ? $context["alert"] : (function () { throw new RuntimeError('Variable "alert" does not exist.', 22, $this->source); })()))) {
+            // line 23
             echo "                <div class=\"alert\">";
-            echo twig_escape_filter($this->env, (isset($context["alert"]) || array_key_exists("alert", $context) ? $context["alert"] : (function () { throw new RuntimeError('Variable "alert" does not exist.', 24, $this->source); })()), "html", null, true);
+            echo twig_escape_filter($this->env, (isset($context["alert"]) || array_key_exists("alert", $context) ? $context["alert"] : (function () { throw new RuntimeError('Variable "alert" does not exist.', 23, $this->source); })()), "html", null, true);
             echo "</div>
               ";
         }
-        // line 26
-        echo "
-                <div class=\"input\">
-                    ";
-        // line 28
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["Form"]) || array_key_exists("Form", $context) ? $context["Form"] : (function () { throw new RuntimeError('Variable "Form" does not exist.', 28, $this->source); })()), "email", [], "any", false, false, false, 28), 'widget', ["attr" => ["class" => "input custom-input", "placeholder" => "e-mail address"]]);
-        echo "
-                </div>        
-                ";
-        // line 31
+        // line 25
         echo "                <div class=\"input\">
                     ";
-        // line 32
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["Form"]) || array_key_exists("Form", $context) ? $context["Form"] : (function () { throw new RuntimeError('Variable "Form" does not exist.', 32, $this->source); })()), "password", [], "any", false, false, false, 32), 'widget', ["attr" => ["class" => "input custom-input", "placeholder" => "Password"]]);
+        // line 26
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["Form"]) || array_key_exists("Form", $context) ? $context["Form"] : (function () { throw new RuntimeError('Variable "Form" does not exist.', 26, $this->source); })()), "email", [], "any", false, false, false, 26), 'widget', ["attr" => ["class" => "input custom-input", "placeholder" => "e-mail address"]]);
+        echo "
+                </div>        
+                <div class=\"input\">
+                    ";
+        // line 29
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["Form"]) || array_key_exists("Form", $context) ? $context["Form"] : (function () { throw new RuntimeError('Variable "Form" does not exist.', 29, $this->source); })()), "password", [], "any", false, false, false, 29), 'widget', ["attr" => ["class" => "input custom-input", "placeholder" => "Password"]]);
         echo "
                 </div>   
                 ";
-        // line 35
-        echo "                ";
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["Form"]) || array_key_exists("Form", $context) ? $context["Form"] : (function () { throw new RuntimeError('Variable "Form" does not exist.', 35, $this->source); })()), "submit", [], "any", false, false, false, 35), 'widget', ["attr" => ["id" => "btn", "class" => "btn"]]);
+        // line 31
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["Form"]) || array_key_exists("Form", $context) ? $context["Form"] : (function () { throw new RuntimeError('Variable "Form" does not exist.', 31, $this->source); })()), "submit", [], "any", false, false, false, 31), 'widget', ["attr" => ["id" => "btn", "class" => "btn"]]);
         echo "
                 <figure>
                     <img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2008px-Google_%22G%22_Logo.svg.png\" alt=\"google logo\">
                     <button>login with google</button>
                 </figure>
                 <a href=\"";
-        // line 40
+        // line 36
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
         echo "\"><span>Register</span></a>
              ";
-        // line 41
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["Form"]) || array_key_exists("Form", $context) ? $context["Form"] : (function () { throw new RuntimeError('Variable "Form" does not exist.', 41, $this->source); })()), 'form_end');
+        // line 37
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["Form"]) || array_key_exists("Form", $context) ? $context["Form"] : (function () { throw new RuntimeError('Variable "Form" does not exist.', 37, $this->source); })()), 'form_end');
         echo "
         </div>
     </article>
 </body>
 <script src=\"";
-        // line 45
+        // line 41
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./assets/js/navbar.js"), "html", null, true);
         echo "\"></script>
 ";
@@ -147,7 +142,7 @@ class __TwigTemplate_16e401639f8ae4ded3b669b4f687d1a5c16aedf89462aa414908364305f
 
     public function getDebugInfo()
     {
-        return array (  127 => 45,  120 => 41,  116 => 40,  107 => 35,  102 => 32,  99 => 31,  94 => 28,  90 => 26,  84 => 24,  81 => 23,  76 => 20,  72 => 19,  66 => 15,  64 => 14,  61 => 13,  59 => 12,  51 => 7,  43 => 1,);
+        return array (  122 => 41,  115 => 37,  111 => 36,  103 => 31,  98 => 29,  92 => 26,  89 => 25,  83 => 23,  80 => 22,  76 => 20,  72 => 19,  66 => 15,  64 => 14,  61 => 13,  59 => 12,  51 => 7,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -172,20 +167,16 @@ class __TwigTemplate_16e401639f8ae4ded3b669b4f687d1a5c16aedf89462aa414908364305f
         <div id=\"registerBox2\">
             {{ form_errors(Form)}}
             {{ form_start(Form, {'attr': {'class': 'inputBox'}} )}}
-            
              {# Display alert message if there are any errors #}
               {% if alert is not empty %}
                 <div class=\"alert\">{{ alert }}</div>
               {% endif %}
-
                 <div class=\"input\">
                     {{ form_widget(Form.email, {'attr': {'class': 'input custom-input', 'placeholder': 'e-mail address'}}) }}
                 </div>        
-                {# <input class=\"input\" type=\"text\" name=\"\" id=\"\" placeholder=\"Your email\"> #}
                 <div class=\"input\">
                     {{ form_widget(Form.password, {'attr': {'class': 'input custom-input', 'placeholder': 'Password'}}) }}
                 </div>   
-                {# <input class=\"input\" type=\"text\" name=\"\" id=\"\" placeholder=\"Your password\"> #}
                 {{ form_widget(Form.submit, {'attr': {'id': 'btn', 'class': 'btn'}}) }}
                 <figure>
                     <img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2008px-Google_%22G%22_Logo.svg.png\" alt=\"google logo\">
@@ -197,37 +188,6 @@ class __TwigTemplate_16e401639f8ae4ded3b669b4f687d1a5c16aedf89462aa414908364305f
     </article>
 </body>
 <script src=\"{{asset('./assets/js/navbar.js')}}\"></script>
-{# </html>
-                                {{ form_errors(Form)}}
-                                   {{ form_start(Form)}}
-                                <div class=\"input-mt\">
-                                  {{ form_label(Form.email) }}
-                                {{ form_widget(Form.email, {'attr': {'class': 'bouton-small-transparent size-connexion'}}) }}
-
-                                  {{ form_label(Form.password) }}
-                                  {{ form_widget(Form.password, {'attr': {'class': 'bouton-small-transparent size-connexion'}}) }}
-
-                                </div>
-                                <div>
-                                <div class=\"d-flex row mt-5 p-5\"  style=\"padding:10px \">
-                                {{ form_widget(Form.submit) }}
-                                   
-                                    <a href=\"{{ path('app_register') }}\" class=\"MDP-center mt-4 psmallest\">
-                                        S'inscrire
-                                    </a>
-                                <a href=\"{{ path('app_home') }}\" class=\"MDP-center mt-4 psmallest\">
-                                    Retour a l'accueil
-                                    </a>
-                                </div>
-                                </div>
-                            </div>
-                        </div>  
-                    </article>
-
-                </div>
-             </div>
-        </div>
-
-        {{ form_end(Form)}} #}", "Login/index.html.twig", "C:\\wamp64\\www\\projet\\Symfony\\FINAL\\abattoir_vegetal-Eze\\templates\\Login\\index.html.twig");
+", "Login/index.html.twig", "C:\\wamp64\\www\\projet\\Symfony\\FINAL\\DEPLOY\\abattoir_vegetal-MatthFin\\templates\\Login\\index.html.twig");
     }
 }

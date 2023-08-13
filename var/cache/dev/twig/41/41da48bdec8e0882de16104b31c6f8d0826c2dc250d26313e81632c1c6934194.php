@@ -169,7 +169,6 @@ class __TwigTemplate_75ca74caed77ee55b8fed1982e43716e71accdb38627c984901386b1e4b
         // line 84
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./assets/js/admin.js"), "html", null, true);
         echo "\"></script>
-
 </html>
 ";
         
@@ -281,8 +280,7 @@ class __TwigTemplate_75ca74caed77ee55b8fed1982e43716e71accdb38627c984901386b1e4b
 \t<!-- CONTENT -->
 </body>
 <script src=\"{{asset('./assets/js/admin.js')}}\"></script>
-
 </html>
-", "Admin/index.html.twig", "C:\\wamp64\\www\\projet\\Symfony\\FINAL\\abattoir_vegetal-Eze\\templates\\Admin\\index.html.twig");
+", "Admin/index.html.twig", "C:\\wamp64\\www\\projet\\Symfony\\FINAL\\DEPLOY\\abattoir_vegetal-MatthFin\\templates\\Admin\\index.html.twig");
     }
 }
