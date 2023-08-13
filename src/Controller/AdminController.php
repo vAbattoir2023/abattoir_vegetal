@@ -6,6 +6,7 @@ use App\Form\UserType;
 use App\Repository\GroupRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Finder\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -24,19 +25,13 @@ class AdminController extends AbstractController
      */
     public function checkIfUserIsAdmin(UserRepository $userRepository, SessionInterface $sessionInterface) 
     {
-        $id = $sessionInterface->get('id');  // GET ID from session
-
-        // check if ID is undifined
-        if(empty($id))
-            return $this->redirectToRoute('app_home');  // redirect to home page
-
-        $connectedUser = $userRepository->find($id);    // find user by id (session)
-
-        $isAdmin = in_array('ROLE_ADMIN', $connectedUser->getRoles());  // check if user role = ROLE_ADMIN
-
-        // Check if isAdmin is false
-        if (!$isAdmin) 
-            return $this->redirectToRoute('error_404');  // redirect to help page
+        $id = $sessionInterface->get('id');             // GET id session
+        $connectedUser = $userRepository->find($id);    // find user by id
+        
+        // if id session is null or connected user has not 'ROLE_ADMIN'
+        if ($id == null || !in_array('ROLE_ADMIN', $connectedUser->getRoles())){
+            throw new AccessDeniedException('You do not have permission to access this page.');
+        }
     }
     
 
