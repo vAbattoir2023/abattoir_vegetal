@@ -23,7 +23,7 @@ class UserType extends AbstractType
                
             ->add('username', TextType::class)
 
-            ->add('city', TextType::class, [
+            ->add('postalCode', TextType::class, [
                 'attr' => [
                     'placeholder' => 'Zip Code',
                 ],
