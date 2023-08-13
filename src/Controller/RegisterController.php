@@ -51,6 +51,8 @@ class RegisterController extends AbstractController
 
                 $passwordHash = password_hash($user->getPassword(), PASSWORD_BCRYPT); // hash the form password
                 $user->setPassword($passwordHash); // UPDATE the password to the User class
+                
+                $user->setRoles(['ROLE_USER']); // set the ROLE_USER
 
                 $userRepository->save($user);      // SAVE the user to database
 
